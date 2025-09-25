@@ -1,17 +1,18 @@
-import 'package:app/ui/handles/drag_handle.dart';
-import 'package:app/ui/widgets/cards/location_card.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide BackButton;
 import 'package:app/core/theme/app_theme.dart';
-import 'package:app/ui/widgets/buttons/back_button_custom.dart';
 
-class SelectLocationScreen extends StatefulWidget {
-  const SelectLocationScreen({super.key});
+import 'package:app/ui/form_trips/widgets/drag_handle.dart';
+import 'package:app/ui/form_trips/widgets/input_location_start.dart';
+import 'package:app/ui/form_trips/widgets/back_button.dart';
+
+class FormTrips extends StatefulWidget {
+  const FormTrips({super.key});
 
   @override
-  State<SelectLocationScreen> createState() => _SelectLocationScreenState();
+  State<FormTrips> createState() => _FormTripsState();
 }
 
-class _SelectLocationScreenState extends State<SelectLocationScreen> {
+class _FormTripsState extends State<FormTrips> {
   @override
   Widget build(BuildContext context) { // Pantalla de selección de ubicación con DraggableScrollableSheet
     return Scaffold(
@@ -52,20 +53,20 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                         const DragHandle(),
                         const SizedBox(height: 10),
                         // Tarjetas de ubicación
-                        LocationCard(
+                        InputsLocation(
                           icon: Icons.location_on,
                           iconColor: AppTheme.primaryColor,
-                          text: "Ubicación inicial",
+                          hintText: "Ubicación inicial",
                         ),
                         const SizedBox(height: 20),
-                        LocationCard(
+                        InputsLocation(
                           icon: Icons.location_on,
                           iconColor: AppTheme.purpleColor,
-                          text: "Ubicación final",
+                          hintText: "Ubicación final",
                         ),
                         const SizedBox(height: 500),
                         // Botón volver
-                        BackButtonCustom(
+                        BackButton(
                           onPressed: () => Navigator.pop(context),
                           text: "Volver",
                         ),

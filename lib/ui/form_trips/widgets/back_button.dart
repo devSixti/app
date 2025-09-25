@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class BackButtonCustom extends StatelessWidget {
+class BackButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
 
-  const BackButtonCustom({
+  const BackButton({
     super.key,
     required this.onPressed,
     required this.text,
