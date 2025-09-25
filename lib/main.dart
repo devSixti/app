@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import '/core/initialize/app_initializer.dart';
 import '/ui/xisti_app.dart';
 
