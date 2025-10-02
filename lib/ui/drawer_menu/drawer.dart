@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'widgets/user_profile.dart';
-import 'widgets/menu_option.dart';
 import 'widgets/driver_mode_button.dart';
 import 'widgets/social_media_links.dart';
+import 'widgets/menu_option.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});

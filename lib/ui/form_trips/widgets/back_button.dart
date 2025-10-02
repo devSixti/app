@@ -3,29 +3,33 @@ import 'package:flutter/material.dart';
 class BackButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
+  final double? width;
 
   const BackButton({
     super.key,
     required this.onPressed,
     required this.text,
+    this.width,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: const Color.fromARGB(255, 71, 70, 70),
-        foregroundColor: Colors.white,
-        padding: const EdgeInsets.symmetric(vertical: 14),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-          side: const BorderSide(color: Colors.white24),
+    return SizedBox(
+      width: width,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          padding: const EdgeInsets.symmetric(vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
         ),
-      ),
-      onPressed: onPressed,
-      child: Text(
-        text,
-        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        child: Text(
+          text,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }

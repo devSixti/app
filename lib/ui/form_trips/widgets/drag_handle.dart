@@ -7,12 +7,12 @@ class DragHandle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 80,
-        height: 7,
-        margin: const EdgeInsets.only(bottom: 16),
+        width: 40,
+        height: 5,
+        margin: const EdgeInsets.symmetric(vertical: 8),
         decoration: BoxDecoration(
-          color: Colors.grey[600],
-          borderRadius: BorderRadius.circular(10),
+          color: Colors.grey[700],
+          borderRadius: BorderRadius.circular(4),
         ),
       ),
     );
