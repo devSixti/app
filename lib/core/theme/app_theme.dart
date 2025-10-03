@@ -1,4 +1,4 @@
-// Este archivo define los temas claro y oscuro de la aplicación.
+// Este archivo define los temas claros y oscuros de la aplicación.
 import 'package:flutter/material.dart';
 
 class AppTheme {
@@ -34,8 +34,8 @@ class AppTheme {
       ),
       colorScheme: ColorScheme.fromSeed(
         brightness: Brightness.light,
-        seedColor: primaryColor,
-        primary: primaryColor,
+        seedColor: Colors.white, // Cambia el color de la raya para escribir
+        primary: Colors.white, // Cambia el color de la raya para escribir
         secondary: purpleColor,
         secondaryFixed: purpleLigth,
         tertiary: lightPrimaryContainer,
@@ -48,7 +48,7 @@ class AppTheme {
       inputDecorationTheme: const InputDecorationTheme(
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: primaryColor,
+            color: Colors.transparent,
           ),
         ),
       ),
@@ -89,7 +89,7 @@ class AppTheme {
       inputDecorationTheme: const InputDecorationTheme(
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: primaryColor,
+            color: Colors.transparent, // Cambia el color del cuadro de texto
           ),
         ),
       ),
@@ -98,4 +98,20 @@ class AppTheme {
       ),
     );
   }
+
+  static Color? get backgroundColor => null;
+
+  static Color? get cardColor => null;
+
+  static Color? get dividerColor => null;
+
+  static Color? get inputBackgroundColor => null;
+
+  static Color? get secondaryTextColor => null;
+
+  static Color? get primaryTextColor => null;
+
+  static Color? get buttonTextColor => null;
+
+  static Color? get primaryButtonColor => null;
 }
