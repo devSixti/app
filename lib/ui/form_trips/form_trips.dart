@@ -204,10 +204,12 @@ class _FormTripsState extends State<FormTrips> {
                                 onPressed: () {
                                   if (offeredFare == null) {
                                     debugPrint(
-                                        "Debes ingresar una tarifa antes de buscar.");
+                                      "Debes ingresar una tarifa antes de buscar.",
+                                    );
                                   } else {
                                     debugPrint(
-                                        "Buscando conductor para $selectedVehicle con tarifa: $offeredFare");
+                                      "Buscando conductor para $selectedVehicle con tarifa: $offeredFare",
+                                    );
                                   }
                                 },
                               ),
