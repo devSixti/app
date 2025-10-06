@@ -12,7 +12,7 @@ class SearchDriverButton extends StatelessWidget {
       height: 60, // altura más grande
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color.fromARGB(255, 38, 255, 0), // Color de fondo verde
+          backgroundColor: const Color.fromRGBO(128, 255, 0, 1), // Color de fondo verde
           foregroundColor: Colors.black,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),

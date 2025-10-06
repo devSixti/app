@@ -1,6 +1,7 @@
-//  este archivo define un widget SocialMediaLinks que muestra iconos de redes sociales y un texto en un drawer. 
+// Este archivo define un widget SocialMediaLinks que muestra iconos de redes sociales y un texto en un drawer. 
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart'; // Import principal para usar launchUrl y LaunchMode
 
 class SocialMediaLinks extends StatelessWidget {
   const SocialMediaLinks({super.key});
@@ -18,19 +19,19 @@ class SocialMediaLinks extends StatelessWidget {
               _buildSocialIcon(
                 icon: Icons.facebook,
                 onTap: () {
-                  // Abrir Facebook
+                  _openUrl(context, "https://www.facebook.com/xistiapp?locale=es_LA");
                 },
               ),
               _buildSocialIcon(
                 icon: Icons.tiktok,
                 onTap: () {
-                  // Abrir TikTok
+                  _openUrl(context, "https://www.tiktok.com/@xistiapp"); // Abrir TikTok
                 },
               ),
               _buildSocialIcon(
                 icon: Icons.camera_alt, // Instagram icon
                 onTap: () {
-                  // Abrir Instagram
+                  _openUrl(context, "https://www.instagram.com/xistiapp/"); // Abrir Instagram
                 },
               ),
             ],
@@ -63,6 +64,7 @@ class SocialMediaLinks extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
+          // Uso de color con transparencia para el fondo del ícono
           // ignore: deprecated_member_use
           color: Colors.white.withOpacity(0.1),
         ),
@@ -71,7 +73,36 @@ class SocialMediaLinks extends StatelessWidget {
           color: Colors.white70,
           size: 20,
         ),
-      ),
+      ),  
+    );
+  }
+}
+
+// Implementación segura para abrir un link tanto en web como en móvil
+Future<void> _openUrl(BuildContext context, String url) async {
+  final Uri uri = Uri.parse(url);
+
+  try {
+    // Se verifica si el enlace puede ser abierto
+    if (!await canLaunchUrl(uri)) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("No se pudo abrir el enlace.")),
+      );
+      return;
+    }
+
+    // Se usa launchUrl con LaunchMode.externalApplication para móvil
+    // En web automáticamente abre una nueva pestaña
+    await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    );
+  } catch (e) {
+    // Si ocurre un error, se muestra un mensaje en pantalla
+    // ignore: use_build_context_synchronously
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Error al abrir enlace: $e")),
     );
   }
 }

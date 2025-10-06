@@ -114,7 +114,7 @@ class _LocationPanelState extends State<LocationPanel> {
               },
               child: const Text(
                 "Volver",
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                style: TextStyle(color:Color.fromRGBO(0, 0, 0, 1), fontSize: 16),
               ),
             ),
           ),

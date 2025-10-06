@@ -44,6 +44,7 @@ dependencies:
   equatable: ^2.0.5
   image_picker: ^1.2.0
   intl: ^0.20.2
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:
@@ -52,3 +53,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/videos/animacion-logo-de-carga-sin-fo-unscreen.gif

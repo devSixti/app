@@ -12,7 +12,7 @@ import 'package:app/ui/form_trips/widgets/input_location_start.dart';
 import 'package:app/ui/form_trips/widgets/back_button.dart';
 import 'package:app/ui/form_trips/widgets/fare_input.dart';
 import 'package:app/ui/form_trips/widgets/comment_button.dart';
-import 'package:app/ui/form_trips/widgets/location_panel.dart';
+import 'package:app/ui/form_trips/widgets/location_panel.dart'; 
 import "package:app/ui/drawer_menu/drawer.dart";
 
 class FormTrips extends StatefulWidget {
@@ -140,7 +140,7 @@ class _FormTripsState extends State<FormTrips> {
                         // Campo Ubicación inicial
                         InputsLocation(
                           icon: Icons.location_on,
-                          iconColor: AppTheme.primaryColor,
+                          iconColor: Color.fromRGBO(128, 255, 0, 1),
                           hintText: "Ubicación inicial",
                           controller: _startController,
                           onTap: _openLocationPanel,
@@ -150,7 +150,7 @@ class _FormTripsState extends State<FormTrips> {
                         // Campo Ubicación final
                         InputsLocation(
                           icon: Icons.location_on,
-                          iconColor: const Color.fromARGB(255, 92, 23, 230),
+                          iconColor: const Color.fromRGBO(96, 43, 201, 1),
                           hintText: "Ubicación final",
                           controller: _endController,
                           onTap: _openLocationPanel,
@@ -224,6 +224,7 @@ class _FormTripsState extends State<FormTrips> {
                             onPressed: _handleMainBackButton,
                             text: "Volver",
                             width: screenWidth * 0.5,
+                            textColor: Color.fromRGBO(0, 0, 0, 1),
                           ),
                         ),
                       ],

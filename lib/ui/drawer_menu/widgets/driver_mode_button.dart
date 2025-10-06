@@ -1,7 +1,6 @@
 // este archivo define un widget DriverModeButton que representa un botón para activar el modo conductor en un drawer.
 
 import 'package:flutter/material.dart';
-import 'package:app/core/theme/app_theme.dart';
 
 class DriverModeButton extends StatelessWidget {
   const DriverModeButton({super.key});
@@ -17,7 +16,7 @@ class DriverModeButton extends StatelessWidget {
           // Aquí puedes agregar la lógica para activar el modo conductor
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppTheme.primaryColor,
+          backgroundColor: Color.fromRGBO(128, 255, 0, 1),
           foregroundColor: Colors.black,
           padding: const EdgeInsets.symmetric(vertical: 12),
           shape: RoundedRectangleBorder(
