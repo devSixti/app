@@ -13,11 +13,18 @@ import '../pages_drawer/settings_page.dart';
 import '../pages_drawer/support_page.dart';
 import '../pages_drawer/driver_wallet_page.dart';
 import '../pages_drawer/travels_history_page.dart';
+import '../login/login_page.dart';
 
-class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
-  final bool isLogedIn = false;
+class CustomDrawer extends StatefulWidget {
+  const CustomDrawer({super.key, this.isLogedIn = false});
+  
+  final bool isLogedIn;
 
+  @override
+  State<CustomDrawer> createState() => _CustomDrawerState();
+}
+
+class _CustomDrawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -25,14 +32,18 @@ class CustomDrawer extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            if (isLogedIn) ...[
+            if (widget.isLogedIn) ...[
               const UserProfile(),
               const SizedBox(height: 20),
             ] else ...[
               // boton de iniciar sesión
               ElevatedButton(
                 onPressed: () {
-                  // Lógica para iniciar sesión
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                  );
                 },
                 child: const Text("Iniciar sesión"),
               ),

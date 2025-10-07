@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'components/login_components.dart';
-import 'otp_screen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -64,8 +63,13 @@ class _LoginPageState extends State<LoginPage> {
         // Navegar a la pantalla OTP
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => OTPScreen(
-              phoneNumber: '+57 300 123 4567', // Número simulado
+            builder: (context) => const Scaffold(
+              body: Center(
+                child: Text(
+                  'Pantalla OTP - Implementar verificación',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
             ),
           ),
         );
