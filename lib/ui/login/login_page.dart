@@ -126,9 +126,9 @@ class _LoginPageState extends State<LoginPage> {
                           const Text(
                             'Iniciar sesión',
                             style: TextStyle(
-                              fontSize: 28,
+                              fontSize: AppTheme.fontSizeLarge,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: AppTheme.primaryColor,
                             ),
                           ),
                           

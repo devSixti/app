@@ -16,21 +16,18 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
-    // El tiempo total de espera es de 3 segundos, incluyendo la duración de la animación de transición.
+    // El tiempo total de espera es de 3 segundos.
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          // Utilizamos PageRouteBuilder para crear una transición personalizada con efecto fade (desvanecimiento)
           PageRouteBuilder(
-            // La duración de la transición se establece en 500 milisegundos (0.5 segundos)
+            // La duración en 500 milisegundos (0.5 segundos)
             transitionDuration: const Duration(milliseconds: 500),
             pageBuilder: (context, animation, secondaryAnimation) =>
                 const FormTrips(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
-              // Animación de desvanecimiento (FadeTransition) para que la pantalla aparezca suavemente
               return FadeTransition(
                 opacity: animation,
                 child: child,
@@ -41,13 +38,11 @@ class _SplashScreenState extends State<SplashScreen> {
       }
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // Fondo oscuro del estilo Xisti
       backgroundColor: const Color.fromRGBO(0, 0, 0, 1),
-
       body: SafeArea(
         child: Center(
           // Solo se muestra el logo centrado
