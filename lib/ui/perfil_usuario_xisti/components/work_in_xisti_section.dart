@@ -1,7 +1,8 @@
+// Archivo de la sección "¿Deseas trabajar en xisti?"
+
 import 'package:flutter/material.dart';
 import '../models/work_option.dart';
 
-/// Componente de la sección "¿Deseas trabajar en xisti?"
 class WorkInXistiSection extends StatelessWidget {
   final List<WorkOption> workOptions;
 
@@ -16,12 +17,12 @@ class WorkInXistiSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Container(
         decoration: BoxDecoration(
-          color: const Color(0xFF232323),
-          borderRadius: BorderRadius.circular(24),
+          color: const Color(0xFF232323), // Color del contenedor completo de abajo.
+          borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
               // ignore: deprecated_member_use
-              color: Colors.black.withOpacity(0.15),
+              color: Color.fromRGBO(255, 255, 255, 1).withValues(alpha:0.15),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -35,8 +36,8 @@ class WorkInXistiSection extends StatelessWidget {
             const Text(
               '¿Deseas trabajar en xisti?',
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
+                color: Color.fromRGBO(255, 255, 255, 1),
+                fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -45,8 +46,8 @@ class WorkInXistiSection extends StatelessWidget {
             Text(
               'Regístrate y comienza hoy mismo',
               style: TextStyle(
-                color: Colors.grey.shade400,
-                fontSize: 13,
+                color: Color.fromRGBO(255, 255, 255, 1),
+                fontSize: 18,
               ),
             ),
             const SizedBox(height: 16),
@@ -67,7 +68,7 @@ class WorkInXistiSection extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             // ignore: deprecated_member_use
-            color: Colors.black.withOpacity(0.18),
+            color: Colors.black.withValues(alpha:0.18),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -97,8 +98,8 @@ class WorkInXistiSection extends StatelessWidget {
                     child: Text(
                       'XI',
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
+                        color: Color.fromRGBO(255, 255, 255, 1),
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1.5,
                       ),
@@ -114,8 +115,8 @@ class WorkInXistiSection extends StatelessWidget {
                       Text(
                         option.title,
                         style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
+                          color: Color.fromRGBO(255, 255, 255, 1),
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -123,8 +124,8 @@ class WorkInXistiSection extends StatelessWidget {
                       Text(
                         option.subtitle,
                         style: TextStyle(
-                          color: Colors.grey.shade400,
-                          fontSize: 13,
+                          color: Color.fromRGBO(255, 255, 255, 1),
+                          fontSize: 15,
                         ),
                       ),
                     ],

@@ -12,7 +12,7 @@ import 'package:app/ui/form_trips/widgets/input_location_start.dart';
 import 'package:app/ui/form_trips/widgets/back_button.dart';
 import 'package:app/ui/form_trips/widgets/fare_input.dart';
 import 'package:app/ui/form_trips/widgets/comment_button.dart';
-import 'package:app/ui/form_trips/widgets/location_panel.dart';
+import 'package:app/ui/form_trips/widgets/location_panel.dart'; 
 import "package:app/ui/drawer_menu/drawer.dart";
 
 class FormTrips extends StatefulWidget {
@@ -96,15 +96,14 @@ class _FormTripsState extends State<FormTrips> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: AppTheme.darkBackground,
+      backgroundColor:AppTheme.darkDrawerBackground,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 51, 51, 51),
-        elevation: 1,
+        backgroundColor: AppTheme.darkDrawerBackground,
         leading: Builder(
           builder: (context) => IconButton(
             icon: const Icon(
               Icons.menu,
-              color: Color.fromARGB(255, 179, 177, 177),
+              color: Color.fromARGB(255, 179, 177, 177), // color del menu
             ),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
@@ -122,7 +121,7 @@ class _FormTripsState extends State<FormTrips> {
             builder: (context, scrollController) {
               return Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.darkScaffold,
+                  color: AppTheme.darkDrawerBackground, // Color de la pestaña principal
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(1),
                   ),
@@ -140,7 +139,7 @@ class _FormTripsState extends State<FormTrips> {
                         // Campo Ubicación inicial
                         InputsLocation(
                           icon: Icons.location_on,
-                          iconColor: AppTheme.primaryColor,
+                          iconColor: Color.fromRGBO(128, 255, 0, 1),
                           hintText: "Ubicación inicial",
                           controller: _startController,
                           onTap: _openLocationPanel,
@@ -150,7 +149,7 @@ class _FormTripsState extends State<FormTrips> {
                         // Campo Ubicación final
                         InputsLocation(
                           icon: Icons.location_on,
-                          iconColor: const Color.fromARGB(255, 92, 23, 230),
+                          iconColor: const Color.fromRGBO(96, 43, 201, 1),
                           hintText: "Ubicación final",
                           controller: _endController,
                           onTap: _openLocationPanel,
@@ -204,10 +203,12 @@ class _FormTripsState extends State<FormTrips> {
                                 onPressed: () {
                                   if (offeredFare == null) {
                                     debugPrint(
-                                        "Debes ingresar una tarifa antes de buscar.");
+                                      "Debes ingresar una tarifa antes de buscar.",
+                                    );
                                   } else {
                                     debugPrint(
-                                        "Buscando conductor para $selectedVehicle con tarifa: $offeredFare");
+                                      "Buscando conductor para $selectedVehicle con tarifa: $offeredFare",
+                                    );
                                   }
                                 },
                               ),
@@ -222,11 +223,12 @@ class _FormTripsState extends State<FormTrips> {
                             onPressed: _handleMainBackButton,
                             text: "Volver",
                             width: screenWidth * 0.5,
+                            textColor: Color.fromRGBO(255, 255, 255, 1)
                           ),
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ),
               );
             },

@@ -1,3 +1,5 @@
+// Archivo de menú completo
+
 import 'package:flutter/material.dart';
 
 class MenuOption extends StatelessWidget {
@@ -17,14 +19,14 @@ class MenuOption extends StatelessWidget {
     return ListTile(
       leading: Icon(
         icon,
-        color: Colors.white70,
+        color: Color.fromRGBO(255, 255, 255, 1),
         size: 24,
       ),
       title: Text(
         title,
         style: const TextStyle(
-          color: Colors.white,
-          fontSize: 16,
+          color: Color.fromRGBO(255, 255, 255, 1),
+          fontSize: 18,
           fontWeight: FontWeight.w400,
         ),
       ),

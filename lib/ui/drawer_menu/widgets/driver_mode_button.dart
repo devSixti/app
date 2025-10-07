@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:app/core/theme/app_theme.dart';
+import '../../pages_drawer/main_driver_page.dart';
 
 class DriverModeButton extends StatelessWidget {
   const DriverModeButton({super.key});
@@ -14,21 +15,24 @@ class DriverModeButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           Navigator.pop(context);
-          // Aquí puedes agregar la lógica para activar el modo conductor
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const MainDriverPage()),
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppTheme.primaryColor,
-          foregroundColor: Colors.black,
+          foregroundColor: Color.fromRGBO(0, 0, 0, 1),
           padding: const EdgeInsets.symmetric(vertical: 12),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(15),
           ),
           elevation: 0,
         ),
         child: const Text(
           'Modo Conductor',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: FontWeight.w600,
           ),
         ),

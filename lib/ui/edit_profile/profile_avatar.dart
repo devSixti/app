@@ -1,3 +1,4 @@
+// Archivo para editar el avatar
 
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -30,10 +31,10 @@ class _ProfileAvatarState extends State<ProfileAvatar> {
       children: [
         CircleAvatar(
           radius: 48,
-          backgroundColor: Colors.white,
+          backgroundColor: Color.fromRGBO(255, 255, 255, 1),
           backgroundImage: _image != null ? FileImage(_image!) : null,
           child: _image == null
-              ? Icon(Icons.person, size: 64, color: Colors.grey[400])
+              ? Icon(Icons.person, size: 64, color: Color.fromRGBO(0, 0, 0, 1))
               : null,
         ),
         Positioned(
@@ -43,11 +44,11 @@ class _ProfileAvatarState extends State<ProfileAvatar> {
             onTap: _pickImage,
             child: Container(
               decoration: BoxDecoration(
-                color: Color(0xFF7C4DFF),
+                color: Color.fromRGBO(0, 0, 0, 1),
                 shape: BoxShape.circle,
               ),
               padding: const EdgeInsets.all(6),
-              child: const Icon(Icons.edit, color: Colors.white, size: 20),
+              child: const Icon(Icons.edit, color: Color.fromRGBO(255, 255, 255, 1)),
             ),
           ),
         ),
