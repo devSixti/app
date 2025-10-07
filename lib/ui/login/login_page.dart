@@ -11,37 +11,28 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _phoneController = TextEditingController();
   
-  bool _obscurePassword = true;
   bool _isLoading = false;
-  bool _rememberMe = false;
 
   @override
   void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
+    _phoneController.dispose();
     super.dispose();
   }
 
-  String? _validateEmail(String? value) {
+  String? _validatePhone(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Por favor ingresa tu email';
+      return 'Por favor ingresa tu número de celular';
     }
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    if (!emailRegex.hasMatch(value.trim())) {
-      return 'Por favor ingresa un email válido';
+    // Remover espacios y caracteres especiales
+    String phone = value.replaceAll(RegExp(r'[^\d]'), '');
+    
+    if (phone.length < 10) {
+      return 'El número debe tener al menos 10 dígitos';
     }
-    return null;
-  }
-
-  String? _validatePassword(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Por favor ingresa tu contraseña';
-    }
-    if (value.length < 6) {
-      return 'La contraseña debe tener al menos 6 caracteres';
+    if (phone.length > 10) {
+      return 'El número no puede tener más de 10 dígitos';
     }
     return null;
   }
@@ -56,29 +47,18 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     try {
-      // Simular autenticación
-      await Future.delayed(const Duration(seconds: 2));
+      // Simular autenticación simple
+      await Future.delayed(const Duration(seconds: 1));
       
       if (mounted) {
-        // Navegar a la pantalla OTP
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const Scaffold(
-              body: Center(
-                child: Text(
-                  'Pantalla OTP - Implementar verificación',
-                  style: TextStyle(fontSize: 18),
-                ),
-              ),
-            ),
-          ),
-        );
+        // Navegar directamente a la pantalla principal
+        Navigator.of(context).pushReplacementNamed('/home');
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Error al iniciar sesión. Verifica tus credenciales'),
+            content: Text('Error al iniciar sesión. Intenta nuevamente'),
             backgroundColor: Colors.red,
           ),
         );
@@ -90,47 +70,6 @@ class _LoginPageState extends State<LoginPage> {
         });
       }
     }
-  }
-
-  void _showForgotPasswordDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: AppTheme.inputBackgroundDark,
-        title: const Text(
-          'Recuperar contraseña',
-          style: TextStyle(color: Colors.white),
-        ),
-        content: const Text(
-          'Se enviará un enlace de recuperación a tu correo electrónico.',
-          style: TextStyle(color: Colors.grey),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text(
-              'Cancelar',
-              style: TextStyle(color: Colors.grey),
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Enlace de recuperación enviado'),
-                  backgroundColor: Colors.green,
-                ),
-              );
-            },
-            child: const Text(
-              'Enviar',
-              style: TextStyle(color: AppTheme.primaryColor),
-            ),
-          ),
-        ],
-      ),
-    );
   }
 
   @override
@@ -179,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                 
                 // Subtítulo
                 Text(
-                  'Ingresa tus credenciales para continuar',
+                  'Ingresa tu número de celular',
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.grey.shade400,
@@ -188,70 +127,13 @@ class _LoginPageState extends State<LoginPage> {
                 
                 const SizedBox(height: 40),
                 
-                // Campo Email
+                // Campo Número de celular
                 CustomTextField(
-                  hintText: 'Correo electrónico',
-                  prefixIcon: Icons.email_outlined,
-                  controller: _emailController,
-                  validator: _validateEmail,
-                  keyboardType: TextInputType.emailAddress,
-                ),
-                
-                const SizedBox(height: 16),
-                
-                // Campo Contraseña
-                CustomTextField(
-                  hintText: 'Contraseña',
-                  prefixIcon: Icons.lock_outline,
-                  controller: _passwordController,
-                  validator: _validatePassword,
-                  obscureText: _obscurePassword,
-                  suffixIcon: _obscurePassword ? Icons.visibility : Icons.visibility_off,
-                  onSuffixIconPressed: () {
-                    setState(() {
-                      _obscurePassword = !_obscurePassword;
-                    });
-                  },
-                ),
-                
-                const SizedBox(height: 16),
-                
-                // Row con recordarme y olvidé contraseña
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: _rememberMe,
-                          onChanged: (value) {
-                            setState(() {
-                              _rememberMe = value ?? false;
-                            });
-                          },
-                          activeColor: AppTheme.primaryColor,
-                          checkColor: Colors.black,
-                        ),
-                        const Text(
-                          'Recordarme',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ],
-                    ),
-                    TextButton(
-                      onPressed: _showForgotPasswordDialog,
-                      child: const Text(
-                        '¿Olvidaste tu contraseña?',
-                        style: TextStyle(
-                          color: AppTheme.primaryColor,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
-                  ],
+                  hintText: 'Número de celular',
+                  prefixIcon: Icons.phone_outlined,
+                  controller: _phoneController,
+                  validator: _validatePhone,
+                  keyboardType: TextInputType.phone,
                 ),
                 
                 const SizedBox(height: 32),
@@ -274,10 +156,11 @@ class _LoginPageState extends State<LoginPage> {
                 SecondaryButton(
                   text: 'Crear cuenta nueva',
                   onPressed: () {
+                    // Navegar a registro
                   },
                 ),
                 
-                const SizedBox(height: 40),
+                const SizedBox(height: 60),
                 
                 // Texto adicional
                 Center(
