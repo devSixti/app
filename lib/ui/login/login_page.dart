@@ -152,14 +152,7 @@ class _LoginPageState extends State<LoginPage> {
                 
                 const SizedBox(height: 24),
                 
-                // Botón Crear cuenta
-                SecondaryButton(
-                  text: 'Crear cuenta nueva',
-                  onPressed: () {
-                    // Navegar a registro
-                  },
-                ),
-                
+                // Botón Continuar con Google
                 const SizedBox(height: 60),
                 
                 // Texto adicional
