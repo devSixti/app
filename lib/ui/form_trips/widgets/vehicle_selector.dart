@@ -93,7 +93,8 @@ const Map<String, List<VehicleOption>> vehicleOptionsMap = {
 
 class VehicleSelector extends StatefulWidget {
   final ValueChanged<String> onVehicleSelected;
-  const VehicleSelector({super.key, required this.onVehicleSelected});
+  final VoidCallback? onTap;
+  const VehicleSelector({super.key, required this.onVehicleSelected, this.onTap});
 
   @override
   State<VehicleSelector> createState() => _VehicleSelectorState();
@@ -108,7 +109,7 @@ class _VehicleSelectorState extends State<VehicleSelector> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
+      onTap: widget.onTap ?? () {
         _showVehicleOptions(context);
       },
       child: Container(

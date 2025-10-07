@@ -6,9 +6,17 @@ import 'widgets/user_profile.dart';
 import 'widgets/driver_mode_button.dart';
 import 'widgets/social_media_links.dart';
 import 'widgets/menu_option.dart';
+import '../form_trips/form_trips.dart';
+import '../pages_drawer/help_page.dart';
+import '../pages_drawer/security_page.dart';
+import '../pages_drawer/settings_page.dart';
+import '../pages_drawer/support_page.dart';
+import '../pages_drawer/driver_wallet_page.dart';
+import '../pages_drawer/travels_history_page.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
+  final bool isLogedIn = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +25,20 @@ class CustomDrawer extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
+            if (isLogedIn) ...[
+              const UserProfile(),
+              const SizedBox(height: 20),
+            ] else ...[
+              // boton de iniciar sesión
+              ElevatedButton(
+                onPressed: () {
+                  // Lógica para iniciar sesión
+                },
+                child: const Text("Iniciar sesión"),
+              ),
+            ],
             // Perfil de usuario
-            const UserProfile(),
-            const SizedBox(height: 20),
+            
             // Opciones del menú
             Expanded(
               child: ListView(
@@ -30,6 +49,10 @@ class CustomDrawer extends StatelessWidget {
                     title: 'Pedir servicio',
                     onTap: () {
                       Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const FormTrips()),
+                      );
                     },
                   ),
                   MenuOption(
@@ -37,6 +60,10 @@ class CustomDrawer extends StatelessWidget {
                     title: 'Historial de solicitudes',
                     onTap: () {
                       Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const TravelsHistoryPage()),
+                      );
                     },
                   ),
                   MenuOption(
@@ -44,6 +71,10 @@ class CustomDrawer extends StatelessWidget {
                     title: 'Seguridad',
                     onTap: () {
                       Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SecurityPage()),
+                      );
                     },
                   ),
                   MenuOption(
@@ -51,6 +82,10 @@ class CustomDrawer extends StatelessWidget {
                     title: 'Configuración',
                     onTap: () {
                       Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SettingsPage()),
+                      );
                     },
                   ),
                   MenuOption(
@@ -58,6 +93,10 @@ class CustomDrawer extends StatelessWidget {
                     title: 'Ayuda',
                     onTap: () {
                       Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const HelpPage()),
+                      );
                     },
                   ),
                   MenuOption(
@@ -65,13 +104,28 @@ class CustomDrawer extends StatelessWidget {
                     title: 'Soporte',
                     onTap: () {
                       Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SupportPage()),
+                      );
+                    },
+                  ),
+                  MenuOption(
+                    icon: Icons.account_balance_wallet,
+                    title: 'Billetera',
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const DriverWallet()),
+                      );
                     },
                   ),
                 ],
               ),
             ),
             // Botón Modo Conductor
-            const DriverModeButton(),
+            DriverModeButton(),
             // Redes sociales
             const SocialMediaLinks(),
             // Espacio inferior

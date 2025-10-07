@@ -1,3 +1,5 @@
+// archivo que define la pantalla principal del perfil de usuario Xisti, que incluye un encabezado, una tarjeta de perfil, una sección de calificaciones de conductores y una sección de trabajo en Xisti. También maneja la navegación a la pantalla de edición de perfil.
+
 import 'package:flutter/material.dart';
 import 'package:app/core/theme/app_theme.dart';
 
