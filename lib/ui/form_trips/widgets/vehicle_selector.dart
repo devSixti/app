@@ -114,7 +114,7 @@ class _VehicleSelectorState extends State<VehicleSelector> {
       },
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10), // Bordes redondeados
+          borderRadius: BorderRadius.circular(15), // Bordes redondeados
           color: Colors.grey.shade800,
         ),
         padding: const EdgeInsets.all(11), // Espaciado interno
@@ -132,14 +132,14 @@ class _VehicleSelectorState extends State<VehicleSelector> {
                 Text(
                   _selectedVehicle, // Esto hace que muestre los textos.
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Color.fromRGBO(255, 255, 255, 1),
                     fontSize: 13, // Aqui se puede editar el tamaño de la letras principales. 
                   ), // Estilo del texto
                 ),
                 const Text(
                   "Cambiar >",
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Color.fromRGBO(255, 255, 255, 1),
                     fontSize: 12, 
                   ), // Estilo del texto secundario
                 ),
@@ -178,7 +178,7 @@ class _VehicleSelectorState extends State<VehicleSelector> {
           Text(
             option.name,
             style: TextStyle(
-              color: isSelected ? Colors.blue : const Color.fromARGB(255, 255, 255, 255), 
+              color: isSelected ? Colors.blue : const Color.fromRGBO(255, 255, 255, 1), 
               fontSize: 12,
             ),
             textAlign: TextAlign.center,
@@ -198,7 +198,7 @@ class _VehicleSelectorState extends State<VehicleSelector> {
           child: Text(
             "$categoryName:",
             style: const TextStyle(
-              color: Color.fromARGB(255, 255, 255, 255), 
+              color: Color.fromRGBO(255, 255, 255, 1),
               fontSize: 18, 
               fontWeight: FontWeight.bold,
             ),

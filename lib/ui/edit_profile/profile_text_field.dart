@@ -1,3 +1,5 @@
+// Archivo para editar la parte de las opciones para escribir en el campo del "Editar"
+
 import 'package:flutter/material.dart';
 
 class ProfileTextField extends StatelessWidget {
@@ -24,10 +26,14 @@ class ProfileTextField extends StatelessWidget {
       initialValue: initialValue,
       enabled: enabled,
       maxLength: maxLength,
-      style: const TextStyle(color: Colors.white, fontSize: 16),
+      style: const TextStyle(
+        color: Color.fromRGBO(255, 255, 255, 1),
+        fontSize: 18,
+        height: 0.1, // hace que el cursor sea más corto visualmente
+      ),
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
+        labelStyle: TextStyle(color: Colors.grey[400], fontSize: 18),
         hintText: hintText,
         hintStyle: TextStyle(color: Colors.grey[600]),
         suffixIcon: icon != null ? Icon(icon, color: Colors.grey[400]) : null,
@@ -35,14 +41,15 @@ class ProfileTextField extends StatelessWidget {
           borderSide: BorderSide(color: Colors.grey),
         ),
         focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Color(0xFF7C4DFF)),
+          borderSide: BorderSide(color: Color.fromRGBO(255, 255, 255, 1)),
         ),
         disabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.grey),
         ),
         counterText: maxLength != null ? null : '',
       ),
-      cursorColor: const Color(0xFF7C4DFF),
+      cursorColor: Color.fromRGBO(255, 255, 255, 1), // Color del cursor para escribir
+      cursorWidth: 1.2, // más delgado
     );
   }
 }

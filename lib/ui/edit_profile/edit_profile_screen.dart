@@ -1,3 +1,6 @@
+// Archivo para cambiar la pestaña completa de "Editar"
+
+import 'package:app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'edit_profile_form.dart';
 
@@ -7,15 +10,14 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF181818),
+      backgroundColor: AppTheme.darkDrawerBackground,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF181818),
-        elevation: 0,
+        backgroundColor: AppTheme.darkDrawerBackground,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: Color.fromRGBO(255, 255, 255, 1)),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text('Editar perfil', style: TextStyle(color: Colors.white)),
+        title: const Text('Editar perfil', style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
         centerTitle: true,
       ),
       body: const Center(

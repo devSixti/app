@@ -1,3 +1,5 @@
+// Archivo del buttom "Guardar cambios"
+
 import 'package:flutter/material.dart';
 
 class SaveButton extends StatelessWidget {
@@ -10,18 +12,18 @@ class SaveButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: null, // Deshabilitado
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color.fromRGBO(128, 255, 0, 1), // Verde intenso
-          foregroundColor: Colors.black87,
+          backgroundColor: const Color.fromRGBO(128, 255, 0, 1), // Verde original de la App
+          foregroundColor: Color.fromRGBO(0, 0, 0, 1),
           disabledBackgroundColor: const Color.fromRGBO(128, 255, 0, 1),
-          disabledForegroundColor: Colors.black87,
+          disabledForegroundColor: Color.fromRGBO(0, 0, 0, 1), // Color negro original de la App
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(15),
           ),
           padding: const EdgeInsets.symmetric(vertical: 16),
         ),
         child: const Text(
           'Guardar cambios',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
         ),
       ),
     );

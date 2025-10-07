@@ -1,4 +1,6 @@
-/// Modelo que representa el perfil del usuario
+// Modelo que representa el perfil del usuario
+
+
 class UserProfile {
   final String fullName;
   final String phoneNumber;

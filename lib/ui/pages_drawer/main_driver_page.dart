@@ -66,7 +66,7 @@ class _MainDriverPageState extends State<MainDriverPage> {
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.15),
+                        color: Colors.black.withValues(alpha:0.15),
                         spreadRadius: 0,
                         blurRadius: 2,
                         offset: const Offset(0, 1),
@@ -106,7 +106,7 @@ class _MainDriverPageState extends State<MainDriverPage> {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.25),
+                      color: Colors.black.withValues(alpha:0.25),
                       spreadRadius: 0,
                       blurRadius: 4,
                       offset: const Offset(0, -1),
@@ -155,7 +155,7 @@ class _MainDriverPageState extends State<MainDriverPage> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.white.withOpacity(0.2),
+            color: Colors.white.withValues(alpha:0.2),
             spreadRadius: 2,
             blurRadius: 1,
             offset: const Offset(0, 0),
@@ -265,7 +265,7 @@ class ServiceNotification extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(10)),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.25),
+              color: Colors.black.withValues(alpha:0.25),
               spreadRadius: 0,
               blurRadius: 4,
               offset: const Offset(0, 1),
@@ -349,7 +349,7 @@ class ServiceNotification extends StatelessWidget {
                           borderRadius: const BorderRadius.all(Radius.circular(10)),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.15),
+                              color: Colors.black.withValues(alpha:0.15),
                               spreadRadius: 0,
                               blurRadius: 2,
                               offset: const Offset(0, 1),

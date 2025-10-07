@@ -1,4 +1,6 @@
-// archivo que define la pantalla principal del perfil de usuario Xisti, que incluye un encabezado, una tarjeta de perfil, una sección de calificaciones de conductores y una sección de trabajo en Xisti. También maneja la navegación a la pantalla de edición de perfil.
+// Archivo que define la pantalla principal del perfil de usuario Xisti, que incluye un 
+// encabezado, una tarjeta de perfil, una sección de calificaciones de conductores y una sección de trabajo en Xisti. 
+// También maneja la navegación a la pantalla de edición de perfil.
 
 import 'package:flutter/material.dart';
 import 'package:app/core/theme/app_theme.dart';
@@ -27,7 +29,7 @@ class PerfilUsuarioXistiScreen extends StatefulWidget {
 }
 
 class _PerfilUsuarioXistiScreenState extends State<PerfilUsuarioXistiScreen> {
-  // Datos de ejemplo del usuario (como en la imagen)
+  // Datos de ejemplo del usuario
   final UserProfile _userProfile = const UserProfile(
     fullName: 'David Chacón',
     phoneNumber: '+57 1234567890',

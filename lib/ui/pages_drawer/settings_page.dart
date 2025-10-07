@@ -178,7 +178,7 @@ class _SettingsPageState extends State<SettingsPage> {
           decoration: BoxDecoration(
             color: const Color(0xFF2A2A2A),
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.grey.withOpacity(0.2)),
+            border: Border.all(color: Colors.grey.withValues(alpha:0.2)),
           ),
           child: Row(
             children: [
@@ -186,8 +186,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: isDestructive 
-                      ? Colors.red.withOpacity(0.2)
-                      : AppTheme.primaryColor.withOpacity(0.2),
+                      ? Colors.red.withValues(alpha:0.2)
+                      : AppTheme.primaryColor.withValues(alpha:0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(
@@ -244,14 +244,14 @@ class _SettingsPageState extends State<SettingsPage> {
       decoration: BoxDecoration(
         color: const Color(0xFF2A2A2A),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.withOpacity(0.2)),
+        border: Border.all(color: Colors.grey.withValues(alpha:0.2)),
       ),
       child: Row(
         children: [
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: AppTheme.primaryColor.withOpacity(0.2),
+              color: AppTheme.primaryColor.withValues(alpha:0.2),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(
@@ -286,7 +286,18 @@ class _SettingsPageState extends State<SettingsPage> {
           Switch(
             value: value,
             onChanged: onChanged,
-            activeColor: AppTheme.primaryColor,
+            thumbColor: WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+              if (states.contains(WidgetState.selected)) {
+                return AppTheme.primaryColor;
+              }
+              return null;
+            }),
+            trackColor: WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+              if (states.contains(WidgetState.selected)) {
+                return AppTheme.primaryColor.withValues(alpha: 0.5);
+              }
+              return null;
+            }),
           ),
         ],
       ),
@@ -300,14 +311,14 @@ class _SettingsPageState extends State<SettingsPage> {
       decoration: BoxDecoration(
         color: const Color(0xFF2A2A2A),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.withOpacity(0.2)),
+        border: Border.all(color: Colors.grey.withValues(alpha:0.2)),
       ),
       child: Row(
         children: [
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: AppTheme.primaryColor.withOpacity(0.2),
+              color: AppTheme.primaryColor.withValues(alpha:0.2),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(
@@ -344,7 +355,7 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: AppTheme.primaryColor.withOpacity(0.2),
+                color: AppTheme.primaryColor.withValues(alpha:0.2),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(

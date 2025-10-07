@@ -31,7 +31,7 @@ class CustomTextField extends StatelessWidget {
         color: AppTheme.inputBackgroundDark,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha:0.1),
           width: 1,
         ),
       ),
@@ -101,7 +101,7 @@ class PrimaryButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppTheme.primaryColor,
           foregroundColor: Colors.black,
-          disabledBackgroundColor: AppTheme.primaryColor.withOpacity(0.6),
+          disabledBackgroundColor: AppTheme.primaryColor.withValues(alpha:0.6),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),

@@ -1,4 +1,5 @@
-// Exportaciones principales del perfil de usuario Xisti
+// Archivo que define las exportaciones principales del perfil de usuario Xisti
+
 export 'screens/perfil_usuario_xisti_screen.dart';
 export 'models/user_profile.dart';
 export 'models/driver_rating.dart';

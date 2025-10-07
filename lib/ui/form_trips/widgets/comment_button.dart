@@ -1,5 +1,6 @@
-// Este archivo contiene el botón de comentarios (ícono de conversación)
+// Este archivo contiene el botón de comentarios (ícono de consideraciones)
 
+import 'package:app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,9 +29,9 @@ class CommentButton extends StatelessWidget {
       // ignore: use_build_context_synchronously
       context: context,
       isScrollControlled: true, // Permite que el panel ocupe más espacio
-      backgroundColor: const Color.fromARGB(255, 51, 51, 51), // color de fondo del panel
+      backgroundColor: AppTheme.darkDrawerBackground, // color de fondo del panel
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(16)), // Bordes redondeados arriba
+        borderRadius: BorderRadius.vertical(top: Radius.circular(15)), // Bordes redondeados arriba
       ),
       builder: (BuildContext context) {
         return StatefulBuilder(
@@ -51,9 +52,9 @@ class CommentButton extends StatelessWidget {
                     child: Text(
                       "Consideraciones",
                       style: const TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white, // color del título
+                        color: Color.fromRGBO(255, 255, 255, 1), // color del título
                       ),
                     ),
                   ),
@@ -62,15 +63,15 @@ class CommentButton extends StatelessWidget {
                   // Campo de texto para comentarios
                   TextField(
                     controller: commentController,
-                    maxLines: 3,
-                    style: const TextStyle(color: Colors.white), // color del texto que escribe el usuario
+                    maxLines: 4,
+                    style: const TextStyle(color: Color.fromRGBO(255, 255, 255, 1)), // color del texto que escribe el usuario
                     decoration: InputDecoration(
                       hintText: "Comentarios",
-                      hintStyle: const TextStyle(color: Colors.grey), // color del texto placeholder
+                      hintStyle: const TextStyle(color: Color.fromRGBO(255, 255, 255, 1)), // color del texto placeholder
                       filled: true,
-                      fillColor: Colors.grey[900], // color de fondo del campo de texto
+                      fillColor: Colors.grey[800], // color de fondo del campo de texto
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide.none, // sin borde visible
                       ),
                     ),
@@ -85,7 +86,7 @@ class CommentButton extends StatelessWidget {
                     ),
                     value: moreThan4,
                     activeThumbColor: Color.fromARGB(255, 38, 255, 0), // color cuando está activado
-                    inactiveThumbColor: Color.fromARGB(255, 255, 255, 255), // color del switch apagado
+                    inactiveThumbColor: Color.fromRGBO(255, 255, 255, 1), // color del switch apagado
                     onChanged: (value) {
                       setState(() {
                         moreThan4 = value;
@@ -101,7 +102,7 @@ class CommentButton extends StatelessWidget {
                     ),
                     value: petsOnBoard,
                     activeThumbColor: const Color.fromARGB(255, 38, 255, 0), // color cuando está activado
-                    inactiveThumbColor: const Color.fromARGB(255, 255, 255, 255), // color del switch apagado
+                    inactiveThumbColor: const Color.fromRGBO(255, 255, 255, 1), // color del switch apagado
                     onChanged: (value) {
                       setState(() {
                         petsOnBoard = value;
@@ -111,7 +112,7 @@ class CommentButton extends StatelessWidget {
                   const SizedBox(height: 16),
 
                   // Botón "Listo"
-                  Center( // <-- AQUÍ CENTRÉ EL BOTÓN
+                  Center(
                     child: SizedBox(
                       width: 200, // tamaño fijo del botón
                       child: ElevatedButton(
@@ -119,7 +120,7 @@ class CommentButton extends StatelessWidget {
                           backgroundColor: Color.fromARGB(255, 38, 255, 0), // color de fondo del botón
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(11), // bordes redondeados del botón
+                            borderRadius: BorderRadius.circular(15), // bordes redondeados del botón
                           ),
                         ),
                         onPressed: () async {
@@ -134,7 +135,7 @@ class CommentButton extends StatelessWidget {
                         child: const Text(
                           "Listo",
                           style: TextStyle(
-                            color: Colors.black, // color del texto del botón
+                            color: Color.fromRGBO(0, 0, 0, 1), // color del texto del botón
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                           ),
@@ -162,11 +163,11 @@ class CommentButton extends StatelessWidget {
           padding: const EdgeInsets.all(12), // Padding interno del botón
           decoration: BoxDecoration(
             color: const Color.fromARGB(0, 209, 53, 53), // El botón no tiene fondo, solo el icono
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(15),
           ),
           child: Icon(
             Icons.chat_rounded, // Icono de conversación
-            color: color ?? Colors.white, // Color del ícono
+            color: color ?? Color.fromRGBO(255, 255, 255, 1), // Color del ícono
             size: 28,
           ),
         ),

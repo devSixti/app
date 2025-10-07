@@ -54,7 +54,6 @@ class SupportPage extends StatelessWidget {
               ),
               child: GestureDetector(
                 onTap: () {
-                  // TODO: Implementar navegación a página web de soporte
                   // openWebPage('www.xistiapp.com/soporte-tecnico');
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(

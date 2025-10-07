@@ -89,7 +89,7 @@ class _FareInputState extends State<FareInput> {
         decoration: BoxDecoration(
           // ignore: deprecated_member_use
           color: Colors.white.withOpacity(0.05), // Color de fondo del botón con opacidad
-          borderRadius: BorderRadius.circular(12), // Bordes redondeados de todo el botón
+          borderRadius: BorderRadius.circular(15), // Bordes redondeados de todo el botón
           border: Border.all(
             // ignore: deprecated_member_use
             color: Colors.white.withOpacity(0.2), // Color del borde del botón con opacidad
@@ -103,7 +103,7 @@ class _FareInputState extends State<FareInput> {
               style: TextStyle(
                 fontSize: 18, // Tamaño de la fuente de "COP"
                 fontWeight: FontWeight.bold, // Negrita
-                color: effectiveColor,  // Color del texto
+                color: Color.fromRGBO(255, 255, 255, 1),  // Color del texto
               ),
             ),
             const SizedBox(width: 10),
@@ -116,7 +116,7 @@ class _FareInputState extends State<FareInput> {
                   FilteringTextInputFormatter.digitsOnly,
                 ],
                 style: const TextStyle(
-                  fontSize: 20, // más grande
+                  fontSize: 18, // más grande
                   fontWeight: FontWeight.w700, // más fuerte/negrita
                   color: Colors.white, // blanco brillante
                 ),
@@ -126,7 +126,7 @@ class _FareInputState extends State<FareInput> {
                   border: InputBorder.none,
                   hintStyle: TextStyle(
                     color: Colors.white54,
-                    fontSize: 16,
+                    fontSize: 18,
                   ),
                 ),
                 // onChanged no necesario porque usamos el listener del controller

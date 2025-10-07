@@ -1,3 +1,6 @@
+// Archivo sobre la parte para "Editar"
+
+import 'package:app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'profile_avatar.dart';
 import 'profile_text_field.dart';
@@ -13,8 +16,8 @@ class EditProfileForm extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
         child: Container(
           decoration: BoxDecoration(
-            color: const Color(0xFF232323),
-            borderRadius: BorderRadius.circular(24),
+            color: AppTheme.darkDrawerBackground,
+            borderRadius: BorderRadius.circular(15), // Border del menu de editar
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
