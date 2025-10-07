@@ -9,7 +9,7 @@ class DriverRatingsSection extends StatelessWidget {
     super.key,
     required this.driverRatings,
   });
-
+  
   @override
   Widget build(BuildContext context) {
     return Container(

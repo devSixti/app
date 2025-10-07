@@ -19,7 +19,7 @@ class SocialMediaLinks extends StatelessWidget {
               _buildSocialIcon(
                 icon: Icons.facebook,
                 onTap: () {
-                  _openUrl(context, "https://www.facebook.com/xistiapp?locale=es_LA");
+                  _openUrl(context, "https://www.facebook.com/xistiapp?locale=es_LA"); // Abrir facebook
                 },
               ),
               _buildSocialIcon(
@@ -43,8 +43,8 @@ class SocialMediaLinks extends StatelessWidget {
           const Text(
             'Síguenos en nuestras redes sociales',
             style: TextStyle(
-              color: Colors.white70,
-              fontSize: 12,
+              color: Color.fromRGBO(255, 255, 255, 1),
+              fontSize: 12 ,
             ),
             textAlign: TextAlign.center,
           ),
@@ -70,7 +70,7 @@ class SocialMediaLinks extends StatelessWidget {
         ),
         child: Icon(
           icon,
-          color: Colors.white70,
+          color: Color.fromRGBO(255, 255, 255, 1), // Color de los iconos de (Ig, fb y Tik Tok)
           size: 20,
         ),
       ),  

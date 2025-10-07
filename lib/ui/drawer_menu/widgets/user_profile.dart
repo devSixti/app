@@ -21,12 +21,12 @@ class UserProfile extends StatelessWidget {
             height: 60,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.grey[700],
+              color: Color.fromRGBO(255, 255, 255, 1), // Color del circulo del avatar
             ),
             child: const Icon(
               Icons.person,
               size: 35,
-              color: Colors.white,
+              color: Color.fromRGBO(0, 0, 0, 1), // Color del avatar
             ),
           ),
           
@@ -41,8 +41,8 @@ class UserProfile extends StatelessWidget {
                 const Text(
                   'David',
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+                    color: Color.fromRGBO(255, 255, 255, 1),
+                    fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -65,8 +65,8 @@ class UserProfile extends StatelessWidget {
                     const Text(
                       '5.066',
                       style: TextStyle(
-                        color: Colors.white70,
-                        fontSize: 14,
+                        color: Color.fromRGBO(255, 255, 255, 1), // Color e la puntuación
+                        fontSize: 18,
                       ),
                     ),
                   ],

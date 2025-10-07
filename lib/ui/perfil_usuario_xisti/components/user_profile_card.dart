@@ -1,7 +1,8 @@
+// Archivo que muestra el avatar, nombre y información del usuario
+
 import 'package:flutter/material.dart';
 import '../models/user_profile.dart';
 
-/// Componente que muestra el avatar, nombre y información del usuario
 class UserProfileCard extends StatelessWidget {
   final UserProfile userProfile;
 
@@ -22,12 +23,12 @@ class UserProfileCard extends StatelessWidget {
             minHeight: 220,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xFF232323),
-            borderRadius: BorderRadius.circular(32),
+            color: const Color(0xFF232323), // Color del contenedor de la parte de arrriba.
+            borderRadius: BorderRadius.circular(15),
             boxShadow: [
               BoxShadow(
                 // ignore: deprecated_member_use
-                color: Colors.black.withOpacity(0.18),
+                color: Color.fromRGBO(0, 0, 0, 1).withOpacity(0.18),
                 blurRadius: 16,
                 offset: const Offset(0, 8),
               ),
@@ -43,9 +44,9 @@ class UserProfileCard extends StatelessWidget {
                 height: 120,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.grey.shade300,
+                  color: Color.fromRGBO(255, 255, 255, 1),
                   border: Border.all(
-                    color: Colors.grey.shade400,
+                    color: Color.fromRGBO(255, 255, 255, 1),
                     width: 2.5,
                   ),
                 ),
@@ -65,7 +66,7 @@ class UserProfileCard extends StatelessWidget {
               Text(
                 userProfile.fullName,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Color.fromRGBO(255, 255, 255, 1),
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),
@@ -76,8 +77,8 @@ class UserProfileCard extends StatelessWidget {
               Text(
                 '${userProfile.phoneNumber} | ${userProfile.location}',
                 style: TextStyle(
-                  color: Colors.grey.shade400,
-                  fontSize: 16,
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                  fontSize: 18,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -92,7 +93,7 @@ class UserProfileCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      color: Colors.grey.shade300,
+      color: Color.fromRGBO(255, 255, 255, 1),
       child: Icon(
         Icons.person,
         size: 50,

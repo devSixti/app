@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   // COLORES PRINCIPALES DE LA APLICACIÓN
-  static const Color primaryColor = Color.fromRGBO(128, 255, 0, 1); // Color principal (verde neón)
-  static const Color purpleColor = Color.fromRGBO(96, 43, 201, 1); // Color morado principal
+  static const Color primaryColor = Color(0xFF80FF00); // Color principal (verde neón)
+  static const Color purpleColor = Color(0xFF602BC9); // Color morado principal
   static const Color purpleLigth = Color.fromRGBO(185, 150, 255, 1); // Morado claro (versión suave del anterior)
   static const Color lightPrimaryContainer = Color.fromRGBO(244, 244, 244, 1); // Fondo gris muy claro para modo claro
   static const Color whiteContainer = Color.fromRGBO(255, 255, 255, 1); // Blanco puro para contenedores o texto

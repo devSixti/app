@@ -4,6 +4,8 @@
 // Ajustado para: recibir valores iniciales (opcionales) y devolver las direcciones al cerrar.
 
 import 'package:flutter/material.dart';
+// agregado para usar tu mismo botón personalizado
+import 'package:app/ui/form_trips/widgets/back_button.dart' as custom;
 
 class LocationPanel extends StatefulWidget {
   // Valores iniciales opcionales (pueden ser null)
@@ -43,6 +45,11 @@ class _LocationPanelState extends State<LocationPanel> {
     super.dispose();
   }
 
+  // función idéntica al comportamiento del "Volver" en FormTrips
+  void _handleMainBackButton() {
+    widget.onClose(_startController.text, _endController.text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,7 +57,7 @@ class _LocationPanelState extends State<LocationPanel> {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       decoration: const BoxDecoration(
         color: Color(0xFF1C1C1C), // Fondo oscuro
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -58,7 +65,7 @@ class _LocationPanelState extends State<LocationPanel> {
           // Input Ubicación inicial
           TextField(
             controller: _startController, // controlador vinculado para mantener el texto
-            style: const TextStyle(color: Colors.white, fontSize: 20), // Tamaño de letra
+            style: const TextStyle(color: Color.fromRGBO(255, 255, 255, 1), fontSize: 18), // Tamaño de letra
             decoration: InputDecoration(
               filled: true,
               fillColor: const Color(0xFF2B2B2B),
@@ -66,7 +73,7 @@ class _LocationPanelState extends State<LocationPanel> {
               hintStyle: const TextStyle(color: Colors.white54),
               prefixIcon: const Icon(Icons.location_on, color: Color.fromARGB(255, 0, 255, 8)),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(15),
                 borderSide: BorderSide.none,
               ),
               contentPadding: const EdgeInsets.symmetric(vertical: 16),
@@ -77,15 +84,15 @@ class _LocationPanelState extends State<LocationPanel> {
           // Input Ubicación final
           TextField(
             controller: _endController, // controlador vinculado para mantener el texto
-            style: const TextStyle(color: Colors.white, fontSize: 20), // Tamaño de letra
+            style: const TextStyle(color: Color.fromRGBO(255, 255, 255, 1), fontSize: 18), // Tamaño de letra
             decoration: InputDecoration(
               filled: true,
               fillColor: const Color(0xFF2B2B2B),
               hintText: "Ubicación final",
               hintStyle: const TextStyle(color: Colors.white54),
-              prefixIcon: const Icon(Icons.location_on, color: Color.fromARGB(255, 92, 23, 230)),
+              prefixIcon: const Icon(Icons.location_on, color: Color.fromRGBO(96, 43, 201, 1)),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(15),
                 borderSide: BorderSide.none,
               ),
               contentPadding: const EdgeInsets.symmetric(vertical: 16),
@@ -94,30 +101,15 @@ class _LocationPanelState extends State<LocationPanel> {
 
           const Spacer(), // Empuja el botón hacia abajo
 
-          // Botón Volver
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF2B2B2B),
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  side: const BorderSide(color: Colors.black, width: 1),
-                ),
-              ),
-              onPressed: () {
-                // Devolvemos las direcciones al widget que abrió el panel.
-                // Nota: quemar el Navigator.pop aquí no es necesario porque
-                // en tu FormTrips pasas una función que ya hace Navigator.pop(...)
-                widget.onClose(_startController.text, _endController.text);
-              },
-              child: const Text(
-                "Volver",
-                style: TextStyle(color:Color.fromRGBO(0, 0, 0, 1), fontSize: 16),
+          // Botón Volver secundario (El del panel de ubicacion)
+              Center(
+                child: custom.BackButton(
+                onPressed: _handleMainBackButton,
+                text: "Volver",
+                width: MediaQuery.of(context).size.width * 0.5,
+                textColor: const Color.fromRGBO(255, 255, 255, 1),
               ),
             ),
-          ),
         ],
       ),
     );

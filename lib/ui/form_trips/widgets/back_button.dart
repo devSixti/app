@@ -34,7 +34,7 @@ class BackButton extends StatelessWidget { // Botón de regresar
           foregroundColor: textColor ?? Colors.white,
           padding: const EdgeInsets.symmetric(vertical: 14), // Espaciado interno vertical del botón
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(11), // Bordes redondeados del botón
+            borderRadius: BorderRadius.circular(15), // Bordes redondeados del botón
             side: const BorderSide(color: Colors.white24), // Borde del botón y color del borde
           ),
         ),

@@ -17,17 +17,17 @@ class DriverModeButton extends StatelessWidget {
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Color.fromRGBO(128, 255, 0, 1),
-          foregroundColor: Colors.black,
+          foregroundColor: Color.fromRGBO(0, 0, 0, 1),
           padding: const EdgeInsets.symmetric(vertical: 12),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(15),
           ),
           elevation: 0,
         ),
         child: const Text(
           'Modo Conductor',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: FontWeight.w600,
           ),
         ),

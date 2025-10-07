@@ -46,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // Fondo oscuro del estilo Xisti
-      backgroundColor: const Color.fromARGB(255, 23, 23, 23),
+      backgroundColor: const Color.fromRGBO(0, 0, 0, 1),
 
       body: SafeArea(
         child: Center(

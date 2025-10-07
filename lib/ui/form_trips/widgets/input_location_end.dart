@@ -14,7 +14,7 @@ class InputLocationEnd extends StatelessWidget {
       // Decoración del contenedor: color de fondo y bordes redondeados
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.tertiaryContainer, // Usa un color del tema
-        borderRadius: BorderRadius.circular(12), // Bordes redondeados de 12px
+        borderRadius: BorderRadius.circular(15), // Bordes redondeados de 15px
       ),
 
       // Contenido interno del contenedor

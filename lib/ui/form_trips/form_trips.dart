@@ -96,15 +96,14 @@ class _FormTripsState extends State<FormTrips> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: AppTheme.darkBackground,
+      backgroundColor:AppTheme.darkDrawerBackground,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 51, 51, 51),
-        elevation: 1,
+        backgroundColor: AppTheme.darkDrawerBackground,
         leading: Builder(
           builder: (context) => IconButton(
             icon: const Icon(
               Icons.menu,
-              color: Color.fromARGB(255, 179, 177, 177),
+              color: Color.fromARGB(255, 179, 177, 177), // color del menu
             ),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
@@ -122,7 +121,7 @@ class _FormTripsState extends State<FormTrips> {
             builder: (context, scrollController) {
               return Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.darkScaffold,
+                  color: AppTheme.darkDrawerBackground, // Color de la pestaña principal
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(1),
                   ),
@@ -224,7 +223,7 @@ class _FormTripsState extends State<FormTrips> {
                             onPressed: _handleMainBackButton,
                             text: "Volver",
                             width: screenWidth * 0.5,
-                            textColor: Color.fromRGBO(0, 0, 0, 1),
+                            textColor: Color.fromRGBO(255, 255, 255, 1)
                           ),
                         ),
                       ],
