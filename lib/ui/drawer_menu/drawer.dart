@@ -7,13 +7,13 @@ import 'widgets/driver_mode_button.dart';
 import 'widgets/social_media_links.dart';
 import 'widgets/menu_option.dart';
 import '../form_trips/form_trips.dart';
-import '../pages_drawer/security_page.dart';
-import '../pages_drawer/settings_page.dart';
-import '../pages_drawer/support_page.dart';
-import '../pages_drawer/driver_wallet_page.dart';
-import '../pages_drawer/travels_history_page.dart';
+import '../pages_drawer/security/security_page.dart';
+import '../pages_drawer/settings/settings_page.dart';
+import '../pages_drawer/support/support_page.dart';
+import '../pages_drawer/wallet/driver_wallet_page.dart';
+import '../pages_drawer/travels_history/travels_history_page.dart';
 import '../login/login_page.dart';
-import '../pages_drawer/help_page_final.dart';
+import '../pages_drawer/help/help_page_final.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key, this.isLogedIn = false});
