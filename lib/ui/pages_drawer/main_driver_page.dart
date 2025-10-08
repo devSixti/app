@@ -41,7 +41,7 @@ class _MainDriverPageState extends State<MainDriverPage> {
               Text(
                 'Activa tu ubicación',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: AppTheme.smallSize,
                   color: Colors.red.shade600,
                   height: 0,
                 ),
@@ -66,14 +66,14 @@ class _MainDriverPageState extends State<MainDriverPage> {
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withValues(alpha:0.15),
+                        color: Colors.black.withValues(alpha: 0.15),
                         spreadRadius: 0,
                         blurRadius: 2,
                         offset: const Offset(0, 1),
                       ),
                     ],
                     color: const Color.fromRGBO(21, 21, 21, 0.9),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: AppTheme.border,
                   ),
                   child: const Icon(Icons.menu_rounded, color: Colors.white),
                 ),
@@ -91,9 +91,7 @@ class _MainDriverPageState extends State<MainDriverPage> {
               // Barra de botones
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ButtonGroupCustom('RECEPCIÓN DE SERVICIOS XISTI'),
-                ],
+                children: [ButtonGroupCustom('RECEPCIÓN DE SERVICIOS XISTI')],
               ),
               // Contenedor principal
               Container(
@@ -106,7 +104,7 @@ class _MainDriverPageState extends State<MainDriverPage> {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha:0.25),
+                      color: Colors.black.withValues(alpha: 0.25),
                       spreadRadius: 0,
                       blurRadius: 4,
                       offset: const Offset(0, -1),
@@ -131,7 +129,7 @@ class _MainDriverPageState extends State<MainDriverPage> {
                           'Actívate como conductor para recibir servicios',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: AppTheme.mediumSize,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -152,10 +150,10 @@ class _MainDriverPageState extends State<MainDriverPage> {
       height: size.height * 0.055,
       decoration: BoxDecoration(
         color: AppTheme.inputBackgroundDark,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: AppTheme.border,
         boxShadow: [
           BoxShadow(
-            color: Colors.white.withValues(alpha:0.2),
+            color: Colors.white.withValues(alpha: 0.2),
             spreadRadius: 2,
             blurRadius: 1,
             offset: const Offset(0, 0),
@@ -175,15 +173,19 @@ class _MainDriverPageState extends State<MainDriverPage> {
               width: size.width * 0.24,
               height: size.height * 0.045,
               decoration: BoxDecoration(
-                color: isDriverActive ? const Color.fromRGBO(20, 20, 20, 1) : null,
-                borderRadius: BorderRadius.circular(20),
+                color: isDriverActive
+                    ? const Color.fromRGBO(20, 20, 20, 1)
+                    : null,
+                borderRadius: AppTheme.border,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
                     Icons.person,
-                    color: isDriverActive ? AppTheme.primaryColor : Colors.white,
+                    color: isDriverActive
+                        ? AppTheme.primaryColor
+                        : Colors.white,
                     size: size.width * 0.04,
                   ),
                   SizedBox(width: size.width * 0.01),
@@ -191,7 +193,9 @@ class _MainDriverPageState extends State<MainDriverPage> {
                     'Libre',
                     style: TextStyle(
                       fontSize: size.width * 0.04,
-                      color: isDriverActive ? AppTheme.primaryColor : Colors.white,
+                      color: isDriverActive
+                          ? AppTheme.primaryColor
+                          : Colors.white,
                     ),
                   ),
                 ],
@@ -210,15 +214,19 @@ class _MainDriverPageState extends State<MainDriverPage> {
               width: size.width * 0.24,
               height: size.height * 0.045,
               decoration: BoxDecoration(
-                color: !isDriverActive ? const Color.fromRGBO(20, 20, 20, 1) : null,
-                borderRadius: BorderRadius.circular(20),
+                color: !isDriverActive
+                    ? const Color.fromRGBO(20, 20, 20, 1)
+                    : null,
+                borderRadius: AppTheme.border,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
                     Icons.block,
-                    color: !isDriverActive ? AppTheme.primaryColor : Colors.white,
+                    color: !isDriverActive
+                        ? AppTheme.primaryColor
+                        : Colors.white,
                     size: size.width * 0.04,
                   ),
                   SizedBox(width: size.width * 0.01),
@@ -226,7 +234,9 @@ class _MainDriverPageState extends State<MainDriverPage> {
                     'Ocupado',
                     style: TextStyle(
                       fontSize: size.width * 0.035,
-                      color: !isDriverActive ? AppTheme.primaryColor : Colors.white,
+                      color: !isDriverActive
+                          ? AppTheme.primaryColor
+                          : Colors.white,
                     ),
                   ),
                 ],
@@ -265,7 +275,7 @@ class ServiceNotification extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(10)),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha:0.25),
+              color: Colors.black.withValues(alpha: 0.25),
               spreadRadius: 0,
               blurRadius: 4,
               offset: const Offset(0, 1),
@@ -291,7 +301,11 @@ class ServiceNotification extends StatelessWidget {
                           color: Colors.green,
                           shape: BoxShape.circle,
                         ),
-                        child: const Icon(Icons.place, color: Colors.white, size: 12),
+                        child: const Icon(
+                          Icons.place,
+                          color: Colors.white,
+                          size: 12,
+                        ),
                       ),
                       SizedBox(width: size.width * 0.01),
                       Expanded(
@@ -320,7 +334,11 @@ class ServiceNotification extends StatelessWidget {
                           color: Colors.purple,
                           shape: BoxShape.circle,
                         ),
-                        child: const Icon(Icons.place, color: Colors.white, size: 12),
+                        child: const Icon(
+                          Icons.place,
+                          color: Colors.white,
+                          size: 12,
+                        ),
                       ),
                       SizedBox(width: size.width * 0.01),
                       Expanded(
@@ -346,10 +364,12 @@ class ServiceNotification extends StatelessWidget {
                         padding: const EdgeInsets.all(3),
                         decoration: BoxDecoration(
                           color: AppTheme.primaryColor,
-                          borderRadius: const BorderRadius.all(Radius.circular(10)),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(10),
+                          ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withValues(alpha:0.15),
+                              color: Colors.black.withValues(alpha: 0.15),
                               spreadRadius: 0,
                               blurRadius: 2,
                               offset: const Offset(0, 1),
@@ -434,7 +454,10 @@ class ServiceNotification extends StatelessWidget {
                 ),
                 if (serviceData['payMethod'] != 'cash')
                   Container(
-                    padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 6),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 1,
+                      horizontal: 6,
+                    ),
                     decoration: BoxDecoration(
                       color: AppTheme.purpleColor,
                       borderRadius: const BorderRadius.all(Radius.circular(10)),

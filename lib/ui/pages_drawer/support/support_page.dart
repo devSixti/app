@@ -12,7 +12,10 @@ class SupportPage extends StatelessWidget {
       backgroundColor: const Color(0xFF181818),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Text('Soporte XISTI', style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'Soporte XISTI',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
         elevation: 0,
         foregroundColor: Colors.white,
@@ -21,16 +24,19 @@ class SupportPage extends StatelessWidget {
       body: Container(
         width: size.width,
         height: size.height * 0.8,
-        padding: EdgeInsets.symmetric(horizontal: size.width * 0.07, vertical: size.height * 0.06),
+        padding: EdgeInsets.symmetric(
+          horizontal: size.width * 0.07,
+          vertical: size.height * 0.06,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Te brindamos ayuda en tus solicitudes', 
-              textAlign: TextAlign.center, 
+              'Te brindamos ayuda en tus solicitudes',
+              textAlign: TextAlign.center,
               style: TextStyle(
-                fontFamily: 'HeavyNexa', 
+                fontFamily: 'HeavyNexa',
                 fontSize: size.width * 0.1,
                 color: Colors.white,
               ),
@@ -43,7 +49,7 @@ class SupportPage extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 color: AppTheme.inputBackgroundDark,
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: AppTheme.border,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black26,
@@ -68,7 +74,7 @@ class SupportPage extends StatelessWidget {
                       'Contactar soporte',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: AppTheme.mediumSize,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

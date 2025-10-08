@@ -29,9 +29,9 @@ class CustomTextField extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppTheme.inputBackgroundDark,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: AppTheme.border,
         border: Border.all(
-          color: Colors.white.withValues(alpha:0.1),
+          color: Colors.white.withValues(alpha: 0.1),
           width: 1,
         ),
       ),
@@ -42,24 +42,18 @@ class CustomTextField extends StatelessWidget {
         validator: validator,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 16,
+          fontSize: AppTheme.mediumSize,
         ),
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: TextStyle(
             color: Colors.grey.shade400,
-            fontSize: 16,
+            fontSize: AppTheme.mediumSize,
           ),
-          prefixIcon: Icon(
-            prefixIcon,
-            color: Colors.grey.shade400,
-          ),
+          prefixIcon: Icon(prefixIcon, color: Colors.grey.shade400),
           suffixIcon: suffixIcon != null
               ? IconButton(
-                  icon: Icon(
-                    suffixIcon,
-                    color: Colors.grey.shade400,
-                  ),
+                  icon: Icon(suffixIcon, color: Colors.grey.shade400),
                   onPressed: onSuffixIconPressed,
                 )
               : null,
@@ -101,10 +95,8 @@ class PrimaryButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppTheme.primaryColor,
           foregroundColor: Colors.black,
-          disabledBackgroundColor: AppTheme.primaryColor.withValues(alpha:0.6),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
+          disabledBackgroundColor: AppTheme.primaryColor.withValues(alpha: 0.6),
+          shape: RoundedRectangleBorder(borderRadius: AppTheme.border),
           elevation: 0,
         ),
         child: isLoading
@@ -119,7 +111,7 @@ class PrimaryButton extends StatelessWidget {
             : Text(
                 text,
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: AppTheme.mediumSize,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -152,18 +144,13 @@ class SecondaryButton extends StatelessWidget {
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
           foregroundColor: Colors.white,
-          side: const BorderSide(
-            color: AppTheme.primaryColor,
-            width: 1.5,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
+          side: const BorderSide(color: AppTheme.primaryColor, width: 1.5),
+          shape: RoundedRectangleBorder(borderRadius: AppTheme.border),
         ),
         child: Text(
           text,
           style: const TextStyle(
-            fontSize: 16,
+            fontSize: AppTheme.mediumSize,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -176,37 +163,24 @@ class SecondaryButton extends StatelessWidget {
 class DividerWithText extends StatelessWidget {
   final String text;
 
-  const DividerWithText({
-    super.key,
-    required this.text,
-  });
+  const DividerWithText({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(
-          child: Divider(
-            color: Colors.grey.shade600,
-            thickness: 1,
-          ),
-        ),
+        Expanded(child: Divider(color: Colors.grey.shade600, thickness: 1)),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             text,
             style: TextStyle(
               color: Colors.grey.shade400,
-              fontSize: 14,
+              fontSize: AppTheme.smallSize,
             ),
           ),
         ),
-        Expanded(
-          child: Divider(
-            color: Colors.grey.shade600,
-            thickness: 1,
-          ),
-        ),
+        Expanded(child: Divider(color: Colors.grey.shade600, thickness: 1)),
       ],
     );
   }

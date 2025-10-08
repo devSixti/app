@@ -17,7 +17,7 @@ class _DriverWalletState extends State<DriverWallet> {
       'date': '15/10/2024 - 14:30',
       'value': 50000,
       'percentage': null,
-      'status': 'APPROVED'
+      'status': 'APPROVED',
     },
     {
       'type': 'consumo',
@@ -25,7 +25,7 @@ class _DriverWalletState extends State<DriverWallet> {
       'date': '14/10/2024 - 09:15',
       'value': -25000,
       'percentage': 15,
-      'status': 'APPROVED'
+      'status': 'APPROVED',
     },
   ];
 
@@ -62,7 +62,7 @@ class _DriverWalletState extends State<DriverWallet> {
               margin: EdgeInsets.only(
                 left: size.width * 0.07,
                 right: size.width * 0.2,
-                top: size.height * 0.06
+                top: size.height * 0.06,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,7 +91,7 @@ class _DriverWalletState extends State<DriverWallet> {
                       ),
                       decoration: BoxDecoration(
                         color: AppTheme.inputBackgroundDark,
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: AppTheme.border,
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black26,
@@ -128,12 +128,12 @@ class _DriverWalletState extends State<DriverWallet> {
         height: size.height * 0.52,
         padding: EdgeInsets.symmetric(
           horizontal: size.width * 0.07,
-          vertical: size.height * 0.03
+          vertical: size.height * 0.03,
         ),
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
-            topRight: Radius.circular(20)
+            topRight: Radius.circular(20),
           ),
           color: AppTheme.inputBackgroundDark,
         ),
@@ -144,7 +144,7 @@ class _DriverWalletState extends State<DriverWallet> {
               'Movimientos',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 18,
+                fontSize: AppTheme.mediumSize,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -170,11 +170,7 @@ class _DriverWalletState extends State<DriverWallet> {
 }
 
 class MovementsList extends StatelessWidget {
-  const MovementsList({
-    super.key,
-    required this.size,
-    required this.movements,
-  });
+  const MovementsList({super.key, required this.size, required this.movements});
 
   final Size size;
   final List<Map<String, dynamic>> movements;
@@ -186,7 +182,7 @@ class MovementsList extends StatelessWidget {
       itemBuilder: (context, index) {
         final movement = movements[index];
         final isIncome = movement['type'] == 'recarga';
-        
+
         return Container(
           width: size.width,
           height: size.height * 0.075,
@@ -228,7 +224,9 @@ class MovementsList extends StatelessWidget {
                 ],
               ),
               Text(
-                movement['percentage'] != null ? '${movement['percentage']}%' : '-',
+                movement['percentage'] != null
+                    ? '${movement['percentage']}%'
+                    : '-',
                 style: TextStyle(
                   fontSize: size.width * 0.04,
                   fontFamily: 'XboldNexa',
@@ -262,16 +260,24 @@ class PaymentMethodsModal extends StatelessWidget {
         color: Color(0xFF181818),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
-          topRight: Radius.circular(20)
+          topRight: Radius.circular(20),
         ),
       ),
       child: IntrinsicHeight(
         child: Column(
           children: [
-            _buildPaymentMethodButton(context, 'Bancolombia', 'bancolombia.png'),
+            _buildPaymentMethodButton(
+              context,
+              'Bancolombia',
+              'bancolombia.png',
+            ),
             _buildPaymentMethodButton(context, 'Nequi', 'nequi.webp'),
             _buildPaymentMethodButton(context, 'Daviplata', 'daviplata.png'),
-            _buildPaymentMethodButton(context, 'Tarjeta Débito / Crédito', 'visa_master.webp'),
+            _buildPaymentMethodButton(
+              context,
+              'Tarjeta Débito / Crédito',
+              'visa_master.webp',
+            ),
             _buildPaymentMethodButton(context, 'PSE', 'pse.png'),
           ],
         ),
@@ -279,7 +285,11 @@ class PaymentMethodsModal extends StatelessWidget {
     );
   }
 
-  Widget _buildPaymentMethodButton(BuildContext context, String text, String image) {
+  Widget _buildPaymentMethodButton(
+    BuildContext context,
+    String text,
+    String image,
+  ) {
     return GestureDetector(
       onTap: () {
         Navigator.pop(context);
@@ -305,8 +315,8 @@ class PaymentMethodsModal extends StatelessWidget {
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
-                  bottomLeft: Radius.circular(20)
-                )
+                  bottomLeft: Radius.circular(20),
+                ),
               ),
               child: ClipRRect(
                 borderRadius: const BorderRadius.only(
@@ -325,7 +335,7 @@ class PaymentMethodsModal extends StatelessWidget {
             Text(
               text,
               style: const TextStyle(
-                fontSize: 18,
+                fontSize: AppTheme.mediumSize,
                 fontFamily: 'XboldNexa',
                 color: Colors.white,
               ),

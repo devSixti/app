@@ -9,7 +9,7 @@ import 'package:app/core/theme/app_theme.dart';
 // Importamos los widgets personalizados
 import 'package:app/ui/form_trips/widgets/drag_handle.dart';
 import 'package:app/ui/form_trips/widgets/input_location_start.dart';
-import 'package:app/ui/form_trips/widgets/back_button.dart';
+import 'package:app/ui/form_trips/widgets/custom_back_button.dart';
 import 'package:app/ui/form_trips/widgets/fare_input.dart';
 import 'package:app/ui/form_trips/widgets/comment_button.dart';
 import 'package:app/ui/form_trips/widgets/location_panel.dart'; 
@@ -183,7 +183,6 @@ class _FormTripsState extends State<FormTrips> {
 
                         SizedBox(height: screenHeight * 0.02),
 
-                        // Vehículo + Buscar conductor
                         Row(
                           children: [
                             Flexible(
@@ -219,7 +218,7 @@ class _FormTripsState extends State<FormTrips> {
                         SizedBox(height: screenHeight * 0.38),
 
                         Center(
-                          child: BackButton(
+                          child: CustomBackButton(
                             onPressed: _handleMainBackButton,
                             text: "Volver",
                             width: screenWidth * 0.5,

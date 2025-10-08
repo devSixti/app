@@ -1,5 +1,6 @@
 // Este archivo es para la ubicacion final del viaje.
 
+import 'package:app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class InputLocationEnd extends StatelessWidget {
@@ -13,8 +14,10 @@ class InputLocationEnd extends StatelessWidget {
 
       // Decoración del contenedor: color de fondo y bordes redondeados
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.tertiaryContainer, // Usa un color del tema
-        borderRadius: BorderRadius.circular(15), // Bordes redondeados de 15px
+        color: Theme.of(
+          context,
+        ).colorScheme.tertiaryContainer, // Usa un color del tema
+        borderRadius: AppTheme.border, // Bordes redondeados de 15px
       ),
 
       // Contenido interno del contenedor
@@ -31,8 +34,13 @@ class InputLocationEnd extends StatelessWidget {
             child: Text(
               "Ubicación final", // Texto mostrado dentro del campo
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Color.fromRGBO(255, 255, 255, 1) // Color del texto en blanco original de xisti.
-                  ),
+                color: Color.fromRGBO(
+                  255,
+                  255,
+                  255,
+                  1,
+                ), // Color del texto en blanco original de xisti.
+              ),
             ),
           ),
         ],

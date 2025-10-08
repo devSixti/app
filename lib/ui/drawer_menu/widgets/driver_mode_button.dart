@@ -24,15 +24,13 @@ class DriverModeButton extends StatelessWidget {
           backgroundColor: AppTheme.primaryColor,
           foregroundColor: Color.fromRGBO(0, 0, 0, 1),
           padding: const EdgeInsets.symmetric(vertical: 12),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: AppTheme.border),
           elevation: 0,
         ),
         child: const Text(
           'Modo Conductor',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: AppTheme.mediumSize,
             fontWeight: FontWeight.w600,
           ),
         ),

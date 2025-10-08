@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:app/core/theme/app_theme.dart';
 
 class ProfileHeader extends StatelessWidget {
   final VoidCallback? onEditTap;
 
-  const ProfileHeader({
-    super.key,
-    this.onEditTap,
-  });
+  const ProfileHeader({super.key, this.onEditTap});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +19,7 @@ class ProfileHeader extends StatelessWidget {
               'Editar',
               style: TextStyle(
                 color: Color(0xFF80FF00),
-                fontSize: 18,
+                fontSize: AppTheme.mediumSize,
                 fontWeight: FontWeight.w500,
               ),
             ),
