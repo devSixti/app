@@ -17,6 +17,7 @@ class AppTheme {
   static const Color inputBackgroundDark = Color.fromRGBO(45, 45, 45, 1); // Fondo de inputs en modo oscuro
   static const Color inputBackgroundLigth = Color.fromRGBO(240, 240, 240, 1); // Fondo de inputs en modo claro
   static const Color darkScaffold = Color.fromRGBO(32, 31, 31, 1); // Fondo principal del Scaffold en modo oscuro
+  static const double fontSizeLarge = 28.0;
 
   // CONFIGURACIÓN DEL TEMA CLARO 
   static ThemeData get lightTheme {
@@ -110,5 +111,7 @@ class AppTheme {
   static Color? get secondaryTextColor => null; // Color de texto secundario (sin definir)
   static Color? get primaryTextColor => null; // Color de texto principal (sin definir)
   static Color? get buttonTextColor => null; // Color del texto en botones (sin definir)
-  static Color? get primaryButtonColor => null; // Color del botón principal (sin definir)
+  static Color? get primaryButtonColor => null;
+
+  static Color? get green => null; // Color del botón principal (sin definir)
 }

@@ -37,15 +37,44 @@ class _CustomDrawerState extends State<CustomDrawer> {
               const SizedBox(height: 20),
             ] else ...[
               // boton de iniciar sesión
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()),
-                  );
-                },
-                child: const Text("Iniciar sesión"),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color:  Color.fromRGBO(185, 150, 255, 1), // Borde morado
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                        );
+                      },
+                      borderRadius: BorderRadius.circular(16),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        child: const Center(
+                          child: Text(
+                            "Inicio sesión",
+                            style: TextStyle(
+                              color: Color.fromRGBO(185, 150, 255, 1),
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
             // Perfil de usuario
