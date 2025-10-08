@@ -155,21 +155,4 @@ class AppTheme {
       ),
     );
   }
-
-  // === PROPIEDADES ADICIONALES (ACTUALMENTE NO DEFINIDAS) ===
-  static Color? get backgroundColor =>
-      null; // Color de fondo general (sin definir)
-  static Color? get cardColor => null; // Color de las tarjetas (sin definir)
-  static Color? get dividerColor =>
-      null; // Color de las líneas divisoras (sin definir)
-  static Color? get inputBackgroundColor =>
-      null; // Fondo de inputs (sin definir)
-  static Color? get secondaryTextColor =>
-      null; // Color de texto secundario (sin definir)
-  static Color? get primaryTextColor =>
-      null; // Color de texto principal (sin definir)
-  static Color? get buttonTextColor =>
-      null; // Color del texto en botones (sin definir)
-  static Color? get primaryButtonColor =>
-      null; // Color del botón principal (sin definir)
 }

@@ -16,7 +16,7 @@ import '../login/login_page.dart';
 import '../pages_drawer/help/help_page_final.dart';
 
 class CustomDrawer extends StatefulWidget {
-  const CustomDrawer({super.key, this.isLogedIn = false}); // true = logueado, false = no logueado
+  const CustomDrawer({super.key, this.isLogedIn = true}); // true = logueado, false = no logueado
   
   final bool isLogedIn;
 
@@ -34,7 +34,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
           children: [
             if (widget.isLogedIn) ...[
               const UserProfile(),
-              const SizedBox(height: 20),
             ] else ...[
               // boton de iniciar sesión
               Padding(
@@ -77,8 +76,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
               ),
             ],
-            // Perfil de usuario
-            
             // Opciones del menú
             Expanded(
               child: ListView(
