@@ -111,5 +111,7 @@ class AppTheme {
   static Color? get secondaryTextColor => null; // Color de texto secundario (sin definir)
   static Color? get primaryTextColor => null; // Color de texto principal (sin definir)
   static Color? get buttonTextColor => null; // Color del texto en botones (sin definir)
-  static Color? get primaryButtonColor => null; // Color del botón principal (sin definir)
+  static Color? get primaryButtonColor => null;
+
+  static Color? get green => null; // Color del botón principal (sin definir)
 }
