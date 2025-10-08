@@ -57,18 +57,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF181818),
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return SingleChildScrollView(
-              physics: const ClampingScrollPhysics(),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: constraints.maxHeight,
-                ),
-                child: IntrinsicHeight(
-                  child: Padding(
+        child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: Form(
                       key: _formKey,
@@ -242,8 +233,8 @@ class _LoginPageState extends State<LoginPage> {
                             isLoading: _isLoading,
                           ),
                           
-                          // Espaciado flexible
-                          const Expanded(child: SizedBox()),
+                          // Espaciado flexible para empujar el footer hacia abajo
+                          const Spacer(),
                           
                           // Footer fijo con términos y "Rápido y Seguro"
                           Column(
@@ -262,7 +253,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                               
-                              const SizedBox(height: 30),
+                              const SizedBox(height: 40),
                               
                               // Texto Rápido y Seguro
                               Center(
@@ -292,11 +283,6 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
                     ),
-                  ),
-                ),
-              ),
-            );
-          },
         ),
       ),
     );
