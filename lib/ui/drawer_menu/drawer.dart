@@ -16,7 +16,7 @@ import '../login/login_page.dart';
 import '../pages_drawer/help/help_page_final.dart';
 
 class CustomDrawer extends StatefulWidget {
-  const CustomDrawer({super.key, this.isLogedIn = false});
+  const CustomDrawer({super.key, this.isLogedIn = false}); // true = logueado, false = no logueado
   
   final bool isLogedIn;
 
@@ -88,77 +88,133 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     icon: Icons.directions_car,
                     title: 'Pedir servicio',
                     onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const FormTrips()),
-                      );
+                      if (widget.isLogedIn) {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const FormTrips()),
+                        );
+                      } else {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                        );
+                      }
                     },
                   ),
                   MenuOption(
                     icon: Icons.history,
                     title: 'Historial de solicitudes',
                     onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const TravelsHistoryPage()),
-                      );
+                      if (widget.isLogedIn) {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const TravelsHistoryPage()),
+                        );
+                      } else {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                        );
+                      }
                     },
                   ),
                   MenuOption(
                     icon: Icons.security,
                     title: 'Seguridad',
                     onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const SecurityPage()),
-                      );
+                      if (widget.isLogedIn) {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SecurityPage()),
+                        );
+                      } else {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                        );
+                      }
                     },
                   ),
                   MenuOption(
                     icon: Icons.settings,
                     title: 'Configuración',
                     onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const SettingsPage()),
-                      );
+                      if (widget.isLogedIn) {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SettingsPage()),
+                        );
+                      } else {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                        );
+                      }
                     },
                   ),
                   MenuOption(
                     icon: Icons.help_outline,
                     title: 'Ayuda',
                     onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const HelpPage()),
-                      );
+                      if (widget.isLogedIn) {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const HelpPage()),
+                        );
+                      } else {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                        );
+                      }
                     },
                   ),
                   MenuOption(
                     icon: Icons.support_agent,
                     title: 'Soporte',
                     onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const SupportPage()),
-                      );
+                      if (widget.isLogedIn) {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SupportPage()),
+                        );
+                      } else {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                        );
+                      }
                     },
                   ),
                   MenuOption(
                     icon: Icons.account_balance_wallet,
                     title: 'Billetera',
                     onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const DriverWallet()),
-                      );
+                      if (widget.isLogedIn) {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const DriverWallet()),
+                        );
+                      } else {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                        );
+                      }
                     },
                   ),
                 ],

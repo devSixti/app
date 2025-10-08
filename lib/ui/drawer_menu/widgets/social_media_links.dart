@@ -100,10 +100,11 @@ Future<void> _openUrl(BuildContext context, String url) async {
   try {
     // Se verifica si el enlace puede ser abierto
     if (!await canLaunchUrl(uri)) {
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("No se pudo abrir el enlace.")),
-      );
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("No se pudo abrir el enlace.")),
+        );
+      }
       return;
     }
 
@@ -112,8 +113,10 @@ Future<void> _openUrl(BuildContext context, String url) async {
     await launchUrl(uri, mode: LaunchMode.externalApplication);
   } catch (e) {
     // Si ocurre un error, se muestra un mensaje en pantalla
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text("Error al abrir enlace: $e")));
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error al abrir enlace: $e")),
+      );
+    }
   }
 }
