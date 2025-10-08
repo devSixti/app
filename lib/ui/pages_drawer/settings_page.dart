@@ -22,7 +22,10 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       backgroundColor: const Color(0xFF181818),
       appBar: AppBar(
-        title: const Text('Configuración', style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'Configuración',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -31,12 +34,18 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: size.width * 0.03, vertical: size.height * 0.01),
-          padding: EdgeInsets.symmetric(horizontal: size.width * 0.05, vertical: size.height * 0.02),
+          margin: EdgeInsets.symmetric(
+            horizontal: size.width * 0.03,
+            vertical: size.height * 0.01,
+          ),
+          padding: EdgeInsets.symmetric(
+            horizontal: size.width * 0.05,
+            vertical: size.height * 0.02,
+          ),
           width: size.width,
           decoration: BoxDecoration(
             color: AppTheme.inputBackgroundDark,
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: AppTheme.border,
             boxShadow: [
               BoxShadow(
                 color: Colors.black26,
@@ -52,7 +61,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 'Configuración General',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 22,
+                  fontSize: AppTheme.largeSize,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -154,7 +163,7 @@ class _SettingsPageState extends State<SettingsPage> {
         title,
         style: TextStyle(
           color: AppTheme.primaryColor,
-          fontSize: 18,
+          fontSize: AppTheme.mediumSize,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -172,23 +181,23 @@ class _SettingsPageState extends State<SettingsPage> {
       margin: const EdgeInsets.only(bottom: 12),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: AppTheme.border,
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: const Color(0xFF2A2A2A),
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.grey.withValues(alpha:0.2)),
+            borderRadius: AppTheme.border,
+            border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
           ),
           child: Row(
             children: [
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: isDestructive 
-                      ? Colors.red.withValues(alpha:0.2)
-                      : AppTheme.primaryColor.withValues(alpha:0.2),
-                  borderRadius: BorderRadius.circular(8),
+                  color: isDestructive
+                      ? Colors.red.withValues(alpha: 0.2)
+                      : AppTheme.primaryColor.withValues(alpha: 0.2),
+                  borderRadius: AppTheme.border,
                 ),
                 child: Icon(
                   icon,
@@ -205,7 +214,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       title,
                       style: TextStyle(
                         color: isDestructive ? Colors.red : Colors.white,
-                        fontSize: 16,
+                        fontSize: AppTheme.mediumSize,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -213,17 +222,13 @@ class _SettingsPageState extends State<SettingsPage> {
                       subtitle,
                       style: TextStyle(
                         color: Colors.grey[400],
-                        fontSize: 14,
+                        fontSize: AppTheme.smallSize,
                       ),
                     ),
                   ],
                 ),
               ),
-              const Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.grey,
-                size: 16,
-              ),
+              const Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 16),
             ],
           ),
         ),
@@ -243,22 +248,18 @@ class _SettingsPageState extends State<SettingsPage> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: const Color(0xFF2A2A2A),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.withValues(alpha:0.2)),
+        borderRadius: AppTheme.border,
+        border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
       ),
       child: Row(
         children: [
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: AppTheme.primaryColor.withValues(alpha:0.2),
-              borderRadius: BorderRadius.circular(8),
+              color: AppTheme.primaryColor.withValues(alpha: 0.2),
+              borderRadius: AppTheme.border,
             ),
-            child: Icon(
-              icon,
-              color: AppTheme.primaryColor,
-              size: 20,
-            ),
+            child: Icon(icon, color: AppTheme.primaryColor, size: 20),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -269,7 +270,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   title,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: AppTheme.mediumSize,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -277,7 +278,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   subtitle,
                   style: TextStyle(
                     color: Colors.grey[400],
-                    fontSize: 14,
+                    fontSize: AppTheme.mediumSize,
                   ),
                 ),
               ],
@@ -286,13 +287,17 @@ class _SettingsPageState extends State<SettingsPage> {
           Switch(
             value: value,
             onChanged: onChanged,
-            thumbColor: WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+            thumbColor: WidgetStateProperty.resolveWith<Color?>((
+              Set<WidgetState> states,
+            ) {
               if (states.contains(WidgetState.selected)) {
                 return AppTheme.primaryColor;
               }
               return null;
             }),
-            trackColor: WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+            trackColor: WidgetStateProperty.resolveWith<Color?>((
+              Set<WidgetState> states,
+            ) {
               if (states.contains(WidgetState.selected)) {
                 return AppTheme.primaryColor.withValues(alpha: 0.5);
               }
@@ -310,22 +315,18 @@ class _SettingsPageState extends State<SettingsPage> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: const Color(0xFF2A2A2A),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.withValues(alpha:0.2)),
+        borderRadius: AppTheme.border,
+        border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
       ),
       child: Row(
         children: [
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: AppTheme.primaryColor.withValues(alpha:0.2),
-              borderRadius: BorderRadius.circular(8),
+              color: AppTheme.primaryColor.withValues(alpha: 0.2),
+              borderRadius: AppTheme.border,
             ),
-            child: Icon(
-              Icons.language,
-              color: AppTheme.primaryColor,
-              size: 20,
-            ),
+            child: Icon(Icons.language, color: AppTheme.primaryColor, size: 20),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -336,7 +337,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   'Idioma',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: AppTheme.mediumSize,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -344,7 +345,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   'Selecciona tu idioma preferido',
                   style: TextStyle(
                     color: Colors.grey[400],
-                    fontSize: 14,
+                    fontSize: AppTheme.mediumSize,
                   ),
                 ),
               ],
@@ -355,8 +356,8 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: AppTheme.primaryColor.withValues(alpha:0.2),
-                borderRadius: BorderRadius.circular(8),
+                color: AppTheme.primaryColor.withValues(alpha: 0.2),
+                borderRadius: AppTheme.border,
               ),
               child: Text(
                 selectedLanguage,
@@ -377,7 +378,10 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: AppTheme.inputBackgroundDark,
-        title: const Text('Perfil de Usuario', style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'Perfil de Usuario',
+          style: TextStyle(color: Colors.white),
+        ),
         content: const Text(
           'Función en desarrollo. Pronto podrás editar tu perfil desde aquí.',
           style: TextStyle(color: Colors.white),
@@ -397,7 +401,10 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: AppTheme.inputBackgroundDark,
-        title: const Text('Cambiar Email', style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'Cambiar Email',
+          style: TextStyle(color: Colors.white),
+        ),
         content: const Text(
           'Función en desarrollo. Pronto podrás cambiar tu email desde aquí.',
           style: TextStyle(color: Colors.white),
@@ -417,21 +424,34 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: AppTheme.inputBackgroundDark,
-        title: const Text('Seleccionar Idioma', style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'Seleccionar Idioma',
+          style: TextStyle(color: Colors.white),
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              title: const Text('Español', style: TextStyle(color: Colors.white)),
-              trailing: selectedLanguage == 'Español' ? Icon(Icons.check, color: AppTheme.primaryColor) : null,
+              title: const Text(
+                'Español',
+                style: TextStyle(color: Colors.white),
+              ),
+              trailing: selectedLanguage == 'Español'
+                  ? Icon(Icons.check, color: AppTheme.primaryColor)
+                  : null,
               onTap: () {
                 setState(() => selectedLanguage = 'Español');
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('English', style: TextStyle(color: Colors.white)),
-              trailing: selectedLanguage == 'English' ? Icon(Icons.check, color: AppTheme.primaryColor) : null,
+              title: const Text(
+                'English',
+                style: TextStyle(color: Colors.white),
+              ),
+              trailing: selectedLanguage == 'English'
+                  ? Icon(Icons.check, color: AppTheme.primaryColor)
+                  : null,
               onTap: () {
                 setState(() => selectedLanguage = 'English');
                 Navigator.pop(context);
@@ -448,7 +468,10 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: AppTheme.inputBackgroundDark,
-        title: const Text('Acerca de XISTI', style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'Acerca de XISTI',
+          style: TextStyle(color: Colors.white),
+        ),
         content: const Text(
           'XISTI App v1.0.0\n\nTu aplicación de transporte confiable.\n\n© 2024 XISTI. Todos los derechos reservados.',
           style: TextStyle(color: Colors.white),
@@ -468,7 +491,10 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: AppTheme.inputBackgroundDark,
-        title: const Text('Términos y Condiciones', style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'Términos y Condiciones',
+          style: TextStyle(color: Colors.white),
+        ),
         content: const Text(
           'Al usar esta aplicación, aceptas nuestros términos de servicio y política de privacidad.',
           style: TextStyle(color: Colors.white),
@@ -488,7 +514,10 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: AppTheme.inputBackgroundDark,
-        title: const Text('Cerrar Sesión', style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'Cerrar Sesión',
+          style: TextStyle(color: Colors.white),
+        ),
         content: const Text(
           '¿Estás seguro que quieres cerrar sesión?',
           style: TextStyle(color: Colors.white),
@@ -496,7 +525,10 @@ class _SettingsPageState extends State<SettingsPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancelar', style: TextStyle(color: Colors.white)),
+            child: const Text(
+              'Cancelar',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           TextButton(
             onPressed: () {
@@ -505,7 +537,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 const SnackBar(content: Text('Función en desarrollo')),
               );
             },
-            child: const Text('Cerrar Sesión', style: TextStyle(color: Colors.red)),
+            child: const Text(
+              'Cerrar Sesión',
+              style: TextStyle(color: Colors.red),
+            ),
           ),
         ],
       ),

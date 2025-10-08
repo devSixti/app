@@ -2,14 +2,12 @@
 
 import 'package:flutter/material.dart';
 import '../models/user_profile.dart';
+import 'package:app/core/theme/app_theme.dart';
 
 class UserProfileCard extends StatelessWidget {
   final UserProfile userProfile;
 
-  const UserProfileCard({
-    super.key,
-    required this.userProfile,
-  });
+  const UserProfileCard({super.key, required this.userProfile});
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +21,14 @@ class UserProfileCard extends StatelessWidget {
             minHeight: 220,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xFF232323), // Color del contenedor de la parte de arrriba.
-            borderRadius: BorderRadius.circular(15),
+            color: const Color(
+              0xFF232323,
+            ), // Color del contenedor de la parte de arrriba.
+            borderRadius: AppTheme.border,
             boxShadow: [
               BoxShadow(
                 // ignore: deprecated_member_use
-                color: Color.fromRGBO(0, 0, 0, 1).withValues(alpha:0.18),
+                color: Color.fromRGBO(0, 0, 0, 1).withValues(alpha: 0.18),
                 blurRadius: 16,
                 offset: const Offset(0, 8),
               ),
@@ -55,7 +55,7 @@ class UserProfileCard extends StatelessWidget {
                       ? Image.network(
                           userProfile.avatarUrl!,
                           fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) => 
+                          errorBuilder: (context, error, stackTrace) =>
                               _buildDefaultAvatar(),
                         )
                       : _buildDefaultAvatar(),
@@ -67,7 +67,7 @@ class UserProfileCard extends StatelessWidget {
                 userProfile.fullName,
                 style: const TextStyle(
                   color: Color.fromRGBO(255, 255, 255, 1),
-                  fontSize: 26,
+                  fontSize: AppTheme.largeSize,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
@@ -78,7 +78,7 @@ class UserProfileCard extends StatelessWidget {
                 '${userProfile.phoneNumber} | ${userProfile.location}',
                 style: TextStyle(
                   color: Color.fromRGBO(255, 255, 255, 1),
-                  fontSize: 18,
+                  fontSize: AppTheme.mediumSize,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -94,11 +94,7 @@ class UserProfileCard extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       color: Color.fromRGBO(255, 255, 255, 1),
-      child: Icon(
-        Icons.person,
-        size: 50,
-        color: Colors.grey.shade600,
-      ),
+      child: Icon(Icons.person, size: 50, color: Colors.grey.shade600),
     );
   }
 }

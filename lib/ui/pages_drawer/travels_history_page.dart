@@ -37,7 +37,10 @@ class _TravelsHistoryPageState extends State<TravelsHistoryPage> {
     return Scaffold(
       backgroundColor: const Color(0xFF181818),
       appBar: AppBar(
-        title: const Text('Historial de viajes', style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'Historial de viajes',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -49,17 +52,14 @@ class _TravelsHistoryPageState extends State<TravelsHistoryPage> {
               itemCount: history.length,
               itemBuilder: (context, index) {
                 final travelData = history[index];
-                return TripInfoWidget(
-                  size: size,
-                  travelData: travelData,
-                );
+                return TripInfoWidget(size: size, travelData: travelData);
               },
             )
           : const Center(
               child: Text(
                 'No has realizado ningún viaje aún',
                 style: TextStyle(color: Colors.white),
-              )
+              ),
             ),
     );
   }
@@ -84,13 +84,11 @@ class TripInfoWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: AppTheme.inputBackgroundDark,
-          border: Border(
-            bottom: BorderSide(color: Colors.grey.shade400)
-          ),
+          border: Border(bottom: BorderSide(color: Colors.grey.shade400)),
         ),
         padding: EdgeInsets.symmetric(
           horizontal: size.width * 0.05,
-          vertical: size.height * 0.02
+          vertical: size.height * 0.02,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,7 +100,7 @@ class TripInfoWidget extends StatelessWidget {
                   Text(
                     travelData['date'],
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: AppTheme.smallSize,
                       fontFamily: 'XboldNexa',
                       color: Colors.grey.shade400,
                     ),
@@ -167,7 +165,7 @@ class TripInfoWidget extends StatelessWidget {
                   Text(
                     'Valor carrera: \$${_formatNumber(int.tryParse(travelData['price']) ?? 0)} COP',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: AppTheme.mediumSize,
                       fontFamily: 'XboldNexa',
                       color: Colors.grey.shade400,
                     ),
@@ -175,10 +173,7 @@ class TripInfoWidget extends StatelessWidget {
                 ],
               ),
             ),
-            const Icon(
-              Icons.keyboard_arrow_right_rounded,
-              color: Colors.white,
-            ),
+            const Icon(Icons.keyboard_arrow_right_rounded, color: Colors.white),
           ],
         ),
       ),

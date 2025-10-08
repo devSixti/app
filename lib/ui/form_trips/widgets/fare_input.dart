@@ -3,16 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:app/core/theme/app_theme.dart';
 
 class FareInput extends StatefulWidget {
   final Color? color;
   final ValueChanged<String>? onChanged;
 
-  const FareInput({
-    super.key,
-    this.color,
-    this.onChanged,
-  });
+  const FareInput({super.key, this.color, this.onChanged});
 
   @override
   State<FareInput> createState() => _FareInputState();
@@ -84,15 +81,20 @@ class _FareInputState extends State<FareInput> {
 
     return Material(
       color: Colors.transparent, // Esto evita que Material tire fondo blanco
-      child: Container( // Contenedor del input
+      child: Container(
+        // Contenedor del input
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
           // ignore: deprecated_member_use
-          color: Colors.white.withOpacity(0.05), // Color de fondo del botón con opacidad
-          borderRadius: BorderRadius.circular(15), // Bordes redondeados de todo el botón
+          color: Colors.white.withOpacity(
+            0.05,
+          ), // Color de fondo del botón con opacidad
+          borderRadius: AppTheme.border, // Bordes redondeados de todo el botón
           border: Border.all(
             // ignore: deprecated_member_use
-            color: Colors.white.withOpacity(0.2), // Color del borde del botón con opacidad
+            color: Colors.white.withOpacity(
+              0.2,
+            ), // Color del borde del botón con opacidad
             width: 1, // Ancho del borde
           ),
         ),
@@ -101,9 +103,9 @@ class _FareInputState extends State<FareInput> {
             Text(
               "COP",
               style: TextStyle(
-                fontSize: 18, // Tamaño de la fuente de "COP"
+                fontSize: AppTheme.mediumSize, // Tamaño de la fuente de "COP"
                 fontWeight: FontWeight.bold, // Negrita
-                color: Color.fromRGBO(255, 255, 255, 1),  // Color del texto
+                color: Color.fromRGBO(255, 255, 255, 1), // Color del texto
               ),
             ),
             const SizedBox(width: 10),
@@ -116,7 +118,7 @@ class _FareInputState extends State<FareInput> {
                   FilteringTextInputFormatter.digitsOnly,
                 ],
                 style: const TextStyle(
-                  fontSize: 18, // más grande
+                  fontSize: AppTheme.mediumSize, // más grande
                   fontWeight: FontWeight.w700, // más fuerte/negrita
                   color: Colors.white, // blanco brillante
                 ),
@@ -126,13 +128,14 @@ class _FareInputState extends State<FareInput> {
                   border: InputBorder.none,
                   hintStyle: TextStyle(
                     color: Colors.white54,
-                    fontSize: 18,
+                    fontSize: AppTheme.mediumSize,
                   ),
                 ),
                 // onChanged no necesario porque usamos el listener del controller
               ),
             ),
-            Icon( // Icono de moneda de la tarifa ($)
+            Icon(
+              // Icono de moneda de la tarifa ($)
               Icons.attach_money,
               color: effectiveColor, // Color del icono
               size: 28, // Tamaño del icono
@@ -143,4 +146,3 @@ class _FareInputState extends State<FareInput> {
     );
   }
 }
-
