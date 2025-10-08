@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/theme/app_theme.dart';
+import '../../../core/theme/app_theme.dart';
 
 class TravelsHistoryPage extends StatefulWidget {
   const TravelsHistoryPage({super.key});

@@ -7,13 +7,13 @@ import 'widgets/driver_mode_button.dart';
 import 'widgets/social_media_links.dart';
 import 'widgets/menu_option.dart';
 import '../form_trips/form_trips.dart';
-import '../pages_drawer/security_page.dart';
-import '../pages_drawer/settings_page.dart';
-import '../pages_drawer/support_page.dart';
-import '../pages_drawer/driver_wallet_page.dart';
-import '../pages_drawer/travels_history_page.dart';
+import '../pages_drawer/security/security_page.dart';
+import '../pages_drawer/settings/settings_page.dart';
+import '../pages_drawer/support/support_page.dart';
+import '../pages_drawer/wallet/driver_wallet_page.dart';
+import '../pages_drawer/travels_history/travels_history_page.dart';
 import '../login/login_page.dart';
-import '../pages_drawer/help_page_final.dart';
+import '../pages_drawer/help/help_page_final.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key, this.isLogedIn = false});
@@ -37,15 +37,44 @@ class _CustomDrawerState extends State<CustomDrawer> {
               const SizedBox(height: 20),
             ] else ...[
               // boton de iniciar sesión
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()),
-                  );
-                },
-                child: const Text("Iniciar sesión"),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color:  Color.fromRGBO(185, 150, 255, 1), // Borde morado
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                        );
+                      },
+                      borderRadius: BorderRadius.circular(16),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        child: const Center(
+                          child: Text(
+                            "Inicio sesión",
+                            style: TextStyle(
+                              color: Color.fromRGBO(185, 150, 255, 1),
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
             // Perfil de usuario
