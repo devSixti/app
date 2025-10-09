@@ -7,110 +7,76 @@ class SecurityHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      expandedHeight: 220.0,
+      expandedHeight: 200.0,
       floating: false,
       pinned: true,
-      backgroundColor: AppTheme.darkScaffold,
+      snap: false,
+      backgroundColor: AppTheme.inputBackgroundDark,
+      surfaceTintColor: AppTheme.inputBackgroundDark,
+      shadowColor: AppTheme.inputBackgroundDark,
+      automaticallyImplyLeading: false,
       elevation: 0,
-      leading: Container(
-        margin: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: AppTheme.blackContainer.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: AppTheme.primaryColor.withOpacity(0.3),
-            width: 1,
-          ),
-        ),
-        child: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, 
-            color: AppTheme.whiteContainer),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
       flexibleSpace: FlexibleSpaceBar(
-        background: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                AppTheme.purpleColor.withOpacity(0.15),
-                AppTheme.primaryColor.withOpacity(0.15),
-                AppTheme.inputBackgroundDark,
-              ],
+        centerTitle: true,
+
+        title: Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: const Text(
+            'Seguridad',
+            style: TextStyle(
+              color: AppTheme.whiteContainer,
+              fontSize: AppTheme.mediumSize,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0.3,
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 60),
-              Container(
-                padding: const EdgeInsets.all(24),
-                decoration: BoxDecoration(
-                  gradient: RadialGradient(
-                    colors: [
-                      AppTheme.purpleColor.withOpacity(0.3),
-                      AppTheme.primaryColor.withOpacity(0.2),
-                      Colors.transparent,
-                    ],
-                  ),
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: AppTheme.purpleColor.withOpacity(0.4),
-                    width: 2,
-                  ),
-                ),
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        AppTheme.purpleColor.withOpacity(0.2),
-                        AppTheme.primaryColor.withOpacity(0.2),
+        ),
+        background: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromARGB(255, 78, 78, 78),
+                AppTheme.darkGreyContainer,
+              ],
+              stops: [0.0, 1.0],
+            ),
+          ),
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 30),
+
+                  // Icono principal mejorado
+                  Container(
+                    width: 90,
+                    height: 90,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: AppTheme.primaryColor, width: 2),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppTheme.primaryColor.withOpacity(0.3),
+                          blurRadius: 12,
+                          offset: const Offset(0, 1),
+                        ),
                       ],
                     ),
-                    shape: BoxShape.circle,
+                    child: const Icon(
+                      Icons.security_rounded,
+                      color: AppTheme.primaryColor,
+                      size: 40,
+                    ),
                   ),
-                  child: const Icon(
-                    Icons.shield_rounded,
-                    color: AppTheme.whiteContainer,
-                    size: 40,
-                  ),
-                ),
+
+                  const SizedBox(height: 32),
+                ],
               ),
-              const SizedBox(height: 20),
-              const Text(
-                'Seguridad',
-                style: TextStyle(
-                  color: AppTheme.whiteContainer,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: 1,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                decoration: BoxDecoration(
-                  color: AppTheme.blackContainer.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: AppTheme.purpleColor.withOpacity(0.3),
-                    width: 1,
-                  ),
-                ),
-                child: const Text(
-                  'Tu protección es nuestra prioridad',
-                  style: TextStyle(
-                    color: AppTheme.lightGreyContainer,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 0.3,
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),

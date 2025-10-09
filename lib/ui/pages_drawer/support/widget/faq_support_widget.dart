@@ -105,7 +105,7 @@ class FaqSupportWidget extends StatelessWidget {
               child: InkWell(
                 borderRadius: BorderRadius.circular(16),
                 onTap: () {
-                  // Navegar a página completa de FAQ
+                  Navigator.of(context).pushNamed('/helpPageFinal');
                 },
                 child: const Padding(
                   padding: EdgeInsets.all(16),
@@ -119,7 +119,7 @@ class FaqSupportWidget extends StatelessWidget {
                       ),
                       SizedBox(width: 8),
                       Text(
-                        'Ver Todas las Preguntas',
+                        'Ver todas las preguntas',
                         style: TextStyle(
                           color: AppTheme.primaryColor,
                           fontSize: 16,

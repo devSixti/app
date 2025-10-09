@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
 
-class SettingsHeaderWidget extends StatelessWidget {
-  const SettingsHeaderWidget({super.key});
+class SupportHeaderWidget extends StatelessWidget {
+  const SupportHeaderWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class SettingsHeaderWidget extends StatelessWidget {
         title: Padding(
           padding: const EdgeInsets.only(top: 10.0),
           child: const Text(
-            'Configuración',
+            'Soporte',
             style: TextStyle(
               color: AppTheme.whiteContainer,
               fontSize: AppTheme.mediumSize,
@@ -67,7 +67,7 @@ class SettingsHeaderWidget extends StatelessWidget {
                       ],
                     ),
                     child: const Icon(
-                      Icons.settings,
+                      Icons.support_agent_rounded,
                       color: AppTheme.primaryColor,
                       size: 40,
                     ),

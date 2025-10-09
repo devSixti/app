@@ -13,7 +13,7 @@ import '../pages_drawer/support/support_page.dart';
 import '../pages_drawer/wallet/driver_wallet_page.dart';
 import '../pages_drawer/travels_history/travels_history_page.dart';
 import '../login/login_page.dart';
-import '../pages_drawer/help/help_page_final.dart';
+import '../pages_drawer/help/help_page.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key, this.isLogedIn = true}); // true = logueado, false = no logueado

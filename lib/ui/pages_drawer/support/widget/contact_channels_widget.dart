@@ -11,17 +11,9 @@ class ContactChannelsWidget extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            AppTheme.inputBackgroundDark,
-            AppTheme.darkGreyContainer,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: AppTheme.purpleColor.withOpacity(0.3),
+          color: AppTheme.silver.withOpacity(0.3),
           width: 1,
         ),
         boxShadow: [
@@ -40,17 +32,11 @@ class ContactChannelsWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      AppTheme.purpleColor.withOpacity(0.2),
-                      AppTheme.purpleColor.withOpacity(0.1),
-                    ],
-                  ),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(
                   Icons.contact_phone_rounded,
-                  color: AppTheme.purpleColor,
+                  color: AppTheme.silver,
                   size: 24,
                 ),
               ),
@@ -81,7 +67,7 @@ class ContactChannelsWidget extends StatelessWidget {
             'Llamada Telefónica',
             '+57 (1) 234-5678 - Disponible 24/7',
             Icons.phone_rounded,
-            AppTheme.purpleColor,
+            AppTheme.silver,
             () => _showCallDialog(context),
           ),
           const SizedBox(height: 12),
@@ -225,17 +211,17 @@ class ContactChannelsWidget extends StatelessWidget {
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
-            side: BorderSide(color: AppTheme.purpleColor.withOpacity(0.3)),
+            side: BorderSide(color: AppTheme.silver.withOpacity(0.3)),
           ),
           title: Row(
             children: [
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: AppTheme.purpleColor.withOpacity(0.2),
+                  color: AppTheme.silver.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Icon(Icons.phone_rounded, color: AppTheme.purpleColor),
+                child: const Icon(Icons.phone_rounded, color: AppTheme.silver),
               ),
               const SizedBox(width: 12),
               const Text(
@@ -256,7 +242,7 @@ class ContactChannelsWidget extends StatelessWidget {
             ElevatedButton(
               onPressed: () => Navigator.of(context).pop(),
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppTheme.purpleColor,
+                backgroundColor: AppTheme.silver,
                 foregroundColor: AppTheme.whiteContainer,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               ),
