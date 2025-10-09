@@ -30,7 +30,6 @@ class AppTheme {
   // BORDER RADIUS
   static const BorderRadius border = BorderRadius.all(Radius.circular(15));
 
-
   // CONFIGURACIÓN DEL TEMA CLARO
   static ThemeData get lightTheme {
     return ThemeData(

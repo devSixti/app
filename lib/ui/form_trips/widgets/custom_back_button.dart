@@ -1,3 +1,5 @@
+//Archivo de la opcion "Volver" principal
+
 import 'package:flutter/material.dart';
 import 'package:app/core/theme/app_theme.dart';
 
@@ -36,7 +38,7 @@ class CustomBackButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: color ?? const Color.fromRGBO(71, 70, 70, 1),
+          backgroundColor: color ?? AppTheme.inputBackgroundDark,
           foregroundColor: textColor ?? Colors.white,
           padding: const EdgeInsets.symmetric(vertical: 14),
           shape: RoundedRectangleBorder(

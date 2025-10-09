@@ -31,7 +31,7 @@ const Map<String, List<VehicleOption>> vehicleOptionsMap = {
       iconColor: Color.fromARGB(255, 255, 255, 255),
     ),
     VehicleOption(
-      name: "Confort",
+      name: "Confort ",
       iconData: Icons.local_taxi,
       category: "Autos",
       iconColor: Color.fromARGB(255, 255, 255, 255),
@@ -51,7 +51,7 @@ const Map<String, List<VehicleOption>> vehicleOptionsMap = {
   ],
   "Motos": [
     VehicleOption(
-      name: "Economy",
+      name: "Economy ",
       iconData: Icons.motorcycle,
       category: "Motos",
       iconColor: Color.fromARGB(255, 255, 255, 255),
@@ -71,7 +71,7 @@ const Map<String, List<VehicleOption>> vehicleOptionsMap = {
       iconColor: Color.fromARGB(255, 255, 255, 255),
     ),
     VehicleOption(
-      name: "Eléctrico",
+      name: "Eléctrico ",
       iconData: Icons.electric_rickshaw,
       category: "Taxi",
       iconColor: Color.fromARGB(255, 255, 255, 255),
@@ -119,7 +119,7 @@ class VehicleSelector extends StatefulWidget {
 }
 
 class _VehicleSelectorState extends State<VehicleSelector> {
-  String _selectedVehicle = "Moto Economy";
+  String _selectedVehicle = "Economy";
 
   // Aqui guardamos la opción seleccionada completa para mostrar también el ícono
   VehicleOption? _selectedOption;
@@ -137,30 +137,30 @@ class _VehicleSelectorState extends State<VehicleSelector> {
           borderRadius: AppTheme.border, // Bordes redondeados
           color: const Color.fromRGBO(66, 66, 66, 1),
         ),
-        padding: const EdgeInsets.all(11), // Espaciado interno
+        padding: const EdgeInsets.all(13), // Espaciado interno
         child: Row(
           children: [
             // Aqui podemos mostrar el ícono de la opción seleccionada en lugar de fijo
             Icon(
               _selectedOption?.iconData ?? Icons.directions_car,
-              color: _selectedOption?.iconColor ?? Colors.white,
+              color: _selectedOption?.iconColor ?? AppTheme.lightPrimaryContainer,
+                size: 43, // Tamaño del icono principal
             ),
-            const SizedBox(width: 7), // Espacio entre el icono y el texto
+            const SizedBox(width: 15), // Espacio entre el icono y el texto
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   _selectedVehicle, // Esto hace que muestre los textos.
                   style: const TextStyle(
-                    color: Color.fromRGBO(255, 255, 255, 1),
-                    fontSize: AppTheme
-                        .smallSize, // Aqui se puede editar el tamaño de la letras principales.
+                    color: AppTheme.lightPrimaryContainer,
+                    fontSize: AppTheme.mediumSize, // Aqui se puede editar el tamaño de las letras principales.
                   ), // Estilo del texto
                 ),
                 const Text(
                   "Cambiar >",
                   style: TextStyle(
-                    color: Color.fromRGBO(255, 255, 255, 1),
+                    color: AppTheme.lightPrimaryContainer,
                     fontSize: AppTheme.smallSize,
                   ), // Estilo del texto secundario
                 ),
@@ -181,8 +181,8 @@ class _VehicleSelectorState extends State<VehicleSelector> {
     return InkWell(
       onTap: () => Navigator.pop(
         context,
-        "${option.category} ${option.name}",
-      ), // Devuelve la combinación Categoría + Nombre
+        option.name, // Cambiado para que solo devuelva el nombre
+      ), // Devuelve solo el nombre
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -206,7 +206,7 @@ class _VehicleSelectorState extends State<VehicleSelector> {
             style: TextStyle(
               color: isSelected
                   ? Colors.blue
-                  : const Color.fromRGBO(255, 255, 255, 1),
+                  : AppTheme.inputBackgroundLigth,
               fontSize: AppTheme.smallSize,
             ),
             textAlign: TextAlign.center,
@@ -229,7 +229,7 @@ class _VehicleSelectorState extends State<VehicleSelector> {
           child: Text(
             "$categoryName:",
             style: const TextStyle(
-              color: Color.fromRGBO(255, 255, 255, 1),
+              color: AppTheme.lightPrimaryContainer,
               fontSize: AppTheme.mediumSize,
               fontWeight: FontWeight.bold,
             ),
@@ -241,7 +241,7 @@ class _VehicleSelectorState extends State<VehicleSelector> {
             spacing: 20.0,
             runSpacing: 10.0,
             children: options.map((option) {
-              final String optionKey = "${option.category} ${option.name}";
+              final String optionKey = option.name; // Comparación solo por nombre
               final bool isSelected = _selectedVehicle == optionKey;
               return _buildVehicleItem(context, option, isSelected);
             }).toList(),
@@ -285,7 +285,7 @@ class _VehicleSelectorState extends State<VehicleSelector> {
         // Aqui podemos buscar la opción seleccionada en el mapa y guardarla
         for (final entry in vehicleOptionsMap.entries) {
           for (final option in entry.value) {
-            final optionKey = "${option.category} ${option.name}";
+            final optionKey = option.name; // Solo comparando por nombre
             if (optionKey == selected) {
               _selectedOption = option;
               break;

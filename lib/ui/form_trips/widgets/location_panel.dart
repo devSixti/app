@@ -33,7 +33,6 @@ class _LocationPanelState extends State<LocationPanel> {
   @override
   void initState() {
     super.initState();
-    // Inicializamos los controladores con los valores recibidos (si los hay)
     _startController = TextEditingController(text: widget.initialStart ?? "");
     _endController = TextEditingController(text: widget.initialEnd ?? "");
   }
@@ -45,88 +44,91 @@ class _LocationPanelState extends State<LocationPanel> {
     super.dispose();
   }
 
-  // función idéntica al comportamiento del "Volver" en FormTrips
   void _handleMainBackButton() {
     widget.onClose(_startController.text, _endController.text);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height:
-          MediaQuery.of(context).size.height *
-          0.86, // Ayuda a subir el panel de la pantalla
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-      decoration: const BoxDecoration(
-        color: Color(0xFF1C1C1C), // Fondo oscuro
-        borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // Input Ubicación inicial
-          TextField(
-            controller:
-                _startController, // controlador vinculado para mantener el texto
-            style: const TextStyle(
-              color: Color.fromRGBO(255, 255, 255, 1),
-              fontSize: AppTheme.mediumSize,
-            ), // Tamaño de letra
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: const Color(0xFF2B2B2B),
-              hintText: "Ubicación inicial",
-              hintStyle: const TextStyle(color: Colors.white54),
-              prefixIcon: const Icon(
-                Icons.location_on,
-                color: Color.fromARGB(255, 0, 255, 8),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: AppTheme.border,
-                borderSide: BorderSide.none,
-              ),
-              contentPadding: const EdgeInsets.symmetric(vertical: 16),
-            ),
+    return DraggableScrollableSheet(
+      initialChildSize: 0.86, // altura inicial
+      minChildSize: 0.5, // altura mínima al arrastrar hacia abajo
+      maxChildSize: 0.95, // altura máxima al arrastrar hacia arriba
+      builder: (context, scrollController) {
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+          decoration: const BoxDecoration(
+            color: Color(0xFF1C1C1C),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
           ),
-          const SizedBox(height: 16),
+          child: SingleChildScrollView(
+            controller: scrollController,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // Input Ubicación inicial
+                TextField(
+                  controller: _startController,
+                  style: const TextStyle(
+                    color: Color.fromRGBO(255, 255, 255, 1),
+                    fontSize: AppTheme.mediumSize,
+                  ),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: const Color(0xFF2B2B2B),
+                    hintText: "Ubicación inicial",
+                    hintStyle: const TextStyle(color:   Colors.white54),
+                    prefixIcon: const Icon(
+                      Icons.location_on,
+                      color: AppTheme.primaryColor,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: AppTheme.border,
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 16),
+                  ),
+                ),
+                const SizedBox(height: 16),
 
-          // Input Ubicación final
-          TextField(
-            controller:
-                _endController, // controlador vinculado para mantener el texto
-            style: const TextStyle(
-              color: Color.fromRGBO(255, 255, 255, 1),
-              fontSize: AppTheme.mediumSize,
-            ), // Tamaño de letra
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: const Color(0xFF2B2B2B),
-              hintText: "Ubicación final",
-              hintStyle: const TextStyle(color: Colors.white54),
-              prefixIcon: const Icon(
-                Icons.location_on,
-                color: Color.fromRGBO(96, 43, 201, 1),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: AppTheme.border,
-                borderSide: BorderSide.none,
-              ),
-              contentPadding: const EdgeInsets.symmetric(vertical: 16),
+                // Input Ubicación final
+                TextField(
+                  controller: _endController,
+                  style: const TextStyle(
+                    color: Color.fromRGBO(255, 255, 255, 1),
+                    fontSize: AppTheme.mediumSize,
+                  ),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: const Color(0xFF2B2B2B),
+                    hintText: "Ubicación final",
+                    hintStyle: const TextStyle(color: Colors.white54),
+                    prefixIcon: const Icon(
+                      Icons.location_on,
+                      color: AppTheme.purpleColor,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: AppTheme.border,
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 16),
+                  ),
+                ),
+                const SizedBox(height: 480), // Altura de la opcion "Volver"
+                // Botón Volver
+                Center(
+                  child: CustomBackButton(
+                    onPressed: _handleMainBackButton,
+                    text: "Volver",
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    textColor: AppTheme.lightPrimaryContainer
+                  ),
+                ),
+              ],
             ),
           ),
-
-          const Spacer(), // Empuja el botón hacia abajo
-          // Botón Volver secundario (El del panel de ubicacion)
-          Center(
-            child: CustomBackButton(
-              onPressed: _handleMainBackButton,
-              text: "Volver",
-              width: MediaQuery.of(context).size.width * 0.5,
-              textColor: const Color.fromRGBO(255, 255, 255, 1),
-            ),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
