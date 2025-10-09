@@ -54,10 +54,10 @@ class HelpHeaderWidget extends StatelessWidget {
                     height: 90,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(color: AppTheme.purpleLight, width: 2),
+                      border: Border.all(color: AppTheme.primaryColor, width: 2),
                       boxShadow: [
                         BoxShadow(
-                          color: AppTheme.purpleLight.withOpacity(0.3),
+                          color: AppTheme.primaryColor.withOpacity(0.3),
                           blurRadius: 12,
                           offset: const Offset(0, 1),
                         ),
@@ -65,7 +65,7 @@ class HelpHeaderWidget extends StatelessWidget {
                     ),
                     child: const Icon(
                       Icons.help,
-                      color: AppTheme.purpleLight,
+                      color: AppTheme.primaryColor,
                       size: 40,
                     ),
                   ),

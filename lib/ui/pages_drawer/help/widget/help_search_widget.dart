@@ -51,7 +51,7 @@ class HelpSearchWidget extends StatelessWidget {
             ),
             child: const Icon(
               Icons.search_rounded,
-              color: AppTheme.purpleLight,
+              color: AppTheme.primaryColor,
               size: 20,
             ),
           ),

@@ -43,7 +43,7 @@ class FaqWidget extends StatelessWidget {
                 ),
                 child: const Icon(
                   Icons.quiz_rounded,
-                  color: AppTheme.purpleLight,
+                  color: AppTheme.primaryColor,
                   size: 24,
                 ),
               ),

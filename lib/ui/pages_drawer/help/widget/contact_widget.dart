@@ -13,7 +13,7 @@ class ContactWidget extends StatelessWidget {
         color: AppTheme.darkGreyContainer,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: AppTheme.purpleLight,
+          color: AppTheme.primaryColor,
           width: 2,
         ),
         boxShadow: [
@@ -32,16 +32,16 @@ class ContactWidget extends StatelessWidget {
             width: 72,
             height: 72,
             decoration: BoxDecoration(
-              color: AppTheme.purpleLight.withOpacity(0.15),
+              color: AppTheme.primaryColor.withOpacity(0.15),
               shape: BoxShape.circle,
               border: Border.all(
-                color: AppTheme.purpleLight,
+                color: AppTheme.primaryColor,
                 width: 2,
               ),
             ),
             child: const Icon(
               Icons.help,
-              color: AppTheme.purpleLight,
+              color: AppTheme.primaryColor,
               size: 32,
             ),
           ),
@@ -84,7 +84,7 @@ class ContactWidget extends StatelessWidget {
                   context,
                   'Chat',
                   Icons.chat_rounded,
-                  AppTheme.purpleLight,
+                  AppTheme.primaryColor,
                   () => _showChatDialog(context),
                 ),
               ),
@@ -94,7 +94,7 @@ class ContactWidget extends StatelessWidget {
                   context,
                   'Llamar',
                   Icons.phone_rounded,
-                  AppTheme.purpleLight,
+                  AppTheme.primaryColor,
                   () => _showCallDialog(context),
                 ),
               ),
@@ -107,7 +107,7 @@ class ContactWidget extends StatelessWidget {
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
-              color: AppTheme.purpleLight.withOpacity(0.1),
+              color: AppTheme.primaryColor.withOpacity(0.1),
               borderRadius: BorderRadius.circular(16),
             ),
             child: Material(
@@ -122,14 +122,14 @@ class ContactWidget extends StatelessWidget {
                     children: [
                       const Icon(
                         Icons.email_rounded,
-                        color: AppTheme.purpleLight,
+                        color: AppTheme.primaryColor,
                         size: 18,
                       ),
                       const SizedBox(width: 12),
                       const Text(
                         'Enviar Email',
                         style: TextStyle(
-                          color: AppTheme.purpleLight,
+                          color: AppTheme.primaryColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
@@ -192,7 +192,7 @@ class ContactWidget extends StatelessWidget {
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),
-            side: BorderSide(color: AppTheme.purpleLight, width: 2),
+            side: BorderSide(color: AppTheme.primaryColor, width: 2),
           ),
           contentPadding: const EdgeInsets.all(24),
           title: Row(
@@ -200,12 +200,12 @@ class ContactWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: AppTheme.purpleLight.withOpacity(0.15),
+                  color: AppTheme.primaryColor.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Icon(
                   Icons.chat_rounded, 
-                  color: AppTheme.purpleLight,
+                  color: AppTheme.primaryColor,
                   size: 22,
                 ),
               ),
@@ -236,7 +236,7 @@ class ContactWidget extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () => Navigator.of(context).pop(),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppTheme.purpleLight,
+                  backgroundColor: AppTheme.primaryColor,
                   foregroundColor: AppTheme.whiteContainer,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
@@ -266,7 +266,7 @@ class ContactWidget extends StatelessWidget {
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),
-            side: BorderSide(color: AppTheme.purpleLight, width: 2),
+            side: BorderSide(color: AppTheme.primaryColor, width: 2),
           ),
           contentPadding: const EdgeInsets.all(24),
           title: Row(
@@ -274,12 +274,12 @@ class ContactWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: AppTheme.purpleLight.withOpacity(0.15),
+                  color: AppTheme.primaryColor.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Icon(
                   Icons.phone_rounded, 
-                  color: AppTheme.purpleLight,
+                  color: AppTheme.primaryColor,
                   size: 22,
                 ),
               ),
@@ -334,7 +334,7 @@ class ContactWidget extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () => Navigator.of(context).pop(),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppTheme.purpleLight,
+                      backgroundColor: AppTheme.primaryColor,
                       foregroundColor: AppTheme.whiteContainer,
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(
@@ -366,7 +366,7 @@ class ContactWidget extends StatelessWidget {
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),
-            side: BorderSide(color: AppTheme.purpleLight, width: 2),
+            side: BorderSide(color: AppTheme.primaryColor, width: 2),
           ),
           contentPadding: const EdgeInsets.all(24),
           title: Row(
@@ -374,12 +374,12 @@ class ContactWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: AppTheme.purpleLight.withOpacity(0.15),
+                  color: AppTheme.primaryColor.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Icon(
                   Icons.email_rounded, 
-                  color: AppTheme.purpleLight,
+                  color: AppTheme.primaryColor,
                   size: 22,
                 ),
               ),
@@ -410,7 +410,7 @@ class ContactWidget extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () => Navigator.of(context).pop(),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppTheme.purpleLight,
+                  backgroundColor: AppTheme.primaryColor,
                   foregroundColor: AppTheme.whiteContainer,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
