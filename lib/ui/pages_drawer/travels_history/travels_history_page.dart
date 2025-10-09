@@ -1,5 +1,10 @@
+import 'package:app/ui/pages_drawer/travels_history/widget/list.dart';
+import 'package:app/ui/pages_drawer/travels_history/widget/stast.dart';
+import 'package:app/ui/pages_drawer/travels_history/widget/travels_filters_widget.dart';
+import 'package:app/ui/pages_drawer/travels_history/widget/travels_header_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
+
 
 class TravelsHistoryPage extends StatefulWidget {
   const TravelsHistoryPage({super.key});
@@ -9,230 +14,259 @@ class TravelsHistoryPage extends StatefulWidget {
 }
 
 class _TravelsHistoryPageState extends State<TravelsHistoryPage> {
-  final List<Map<String, dynamic>> history = [
+  final TextEditingController _searchController = TextEditingController();
+  String selectedFilter = 'all';
+  List<Map<String, dynamic>> filteredTrips = [];
+
+  // Datos de ejemplo
+  final List<Map<String, dynamic>> allTrips = [
     {
-      'date': '2024/10/15 - 14:30',
-      'pickUp': 'Centro Comercial Santa Fe',
-      'destination': 'Universidad Nacional de Colombia',
-      'price': '15000',
+      'id': '1',
+      'date': '15 Oct 2024',
+      'time': '2:30 PM',
+      'from': 'Centro Comercial Santafé',
+      'to': 'Universidad Nacional',
+      'driverName': 'Carlos Mendoza',
+      'driverPhoto': 'https://randomuser.me/api/portraits/men/1.jpg',
+      'rating': 4.8,
+      'price': 25000,
+      'duration': 32,
+      'status': 'completed',
     },
     {
-      'date': '2024/10/14 - 09:15',
-      'pickUp': 'Aeropuerto José María Córdova',
-      'destination': 'Hotel Intercontinental',
-      'price': '65000',
+      'id': '2',
+      'date': '14 Oct 2024',
+      'time': '8:15 AM',
+      'from': 'Aeropuerto El Dorado',
+      'to': 'Hotel Dann Carlton',
+      'driverName': 'María García',
+      'driverPhoto': 'https://randomuser.me/api/portraits/women/2.jpg',
+      'rating': 4.9,
+      'price': 45000,
+      'duration': 28,
+      'status': 'completed',
     },
     {
-      'date': '2024/10/13 - 16:45',
-      'pickUp': 'Estadio Atanasio Girardot',
-      'destination': 'Centro Comercial El Tesoro',
-      'price': '22000',
+      'id': '3',
+      'date': '12 Oct 2024',
+      'time': '6:45 PM',
+      'from': 'Zona Rosa',
+      'to': 'Chapinero Norte',
+      'driverName': 'Luis Rodríguez',
+      'driverPhoto': 'https://randomuser.me/api/portraits/men/3.jpg',
+      'rating': 4.7,
+      'price': 18000,
+      'duration': 15,
+      'status': 'cancelled',
+    },
+    {
+      'id': '4',
+      'date': '10 Oct 2024',
+      'time': '11:20 AM',
+      'from': 'Terminal de Transporte',
+      'to': 'Centro Histórico',
+      'driverName': 'Ana Martínez',
+      'driverPhoto': 'https://randomuser.me/api/portraits/women/4.jpg',
+      'rating': 5.0,
+      'price': 22000,
+      'duration': 25,
+      'status': 'completed',
     },
   ];
 
   @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
-    return Scaffold(
-      backgroundColor: const Color(0xFF181818),
-      appBar: AppBar(
-        title: const Text(
-          'Historial de viajes',
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: Colors.white,
-        iconTheme: const IconThemeData(color: Colors.white),
-      ),
-      body: history.isNotEmpty
-          ? ListView.builder(
-              itemCount: history.length,
-              itemBuilder: (context, index) {
-                final travelData = history[index];
-                return TripInfoWidget(size: size, travelData: travelData);
-              },
-            )
-          : const Center(
-              child: Text(
-                'No has realizado ningún viaje aún',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-    );
+  void initState() {
+    super.initState();
+    filteredTrips = allTrips;
   }
-}
-
-class TripInfoWidget extends StatelessWidget {
-  final Map<String, dynamic> travelData;
-  final Size size;
-
-  const TripInfoWidget({
-    super.key,
-    required this.size,
-    required this.travelData,
-  });
 
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        _showTravelDetails(context);
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppTheme.inputBackgroundDark,
-          border: Border(bottom: BorderSide(color: Colors.grey.shade400)),
-        ),
-        padding: EdgeInsets.symmetric(
-          horizontal: size.width * 0.05,
-          vertical: size.height * 0.02,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    travelData['date'],
-                    style: TextStyle(
-                      fontSize: AppTheme.smallSize,
-                      fontFamily: 'XboldNexa',
-                      color: Colors.grey.shade400,
-                    ),
-                  ),
-                  SizedBox(height: size.height * 0.01),
-                  Row(
-                    children: [
-                      Container(
-                        width: size.width * 0.05,
-                        height: size.width * 0.05,
-                        decoration: const BoxDecoration(
-                          color: Colors.green,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.place,
-                          color: Colors.white,
-                          size: 12,
-                        ),
-                      ),
-                      const SizedBox(width: 4),
-                      Expanded(
-                        child: Text(
-                          travelData['pickUp'],
-                          style: const TextStyle(
-                            fontFamily: 'ExtraLightNexa',
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: size.height * 0.01),
-                  Row(
-                    children: [
-                      Container(
-                        width: size.width * 0.05,
-                        height: size.width * 0.05,
-                        decoration: const BoxDecoration(
-                          color: Colors.purple,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.place,
-                          color: Colors.white,
-                          size: 12,
-                        ),
-                      ),
-                      const SizedBox(width: 4),
-                      Expanded(
-                        child: Text(
-                          travelData['destination'],
-                          style: const TextStyle(
-                            fontFamily: 'ExtraLightNexa',
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: size.height * 0.02),
-                  Text(
-                    'Valor carrera: \$${_formatNumber(int.tryParse(travelData['price']) ?? 0)} COP',
-                    style: TextStyle(
-                      fontSize: AppTheme.mediumSize,
-                      fontFamily: 'XboldNexa',
-                      color: Colors.grey.shade400,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const Icon(Icons.keyboard_arrow_right_rounded, color: Colors.white),
-          ],
-        ),
-      ),
-    );
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
   }
 
-  String _formatNumber(int number) {
-    return number.toString().replaceAllMapped(
-      RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-      (Match m) => '${m[1]},',
-    );
+  void _filterTrips() {
+    List<Map<String, dynamic>> filtered = allTrips;
+
+    // Filtrar por texto de búsqueda
+    if (_searchController.text.isNotEmpty) {
+      final query = _searchController.text.toLowerCase();
+      filtered = filtered.where((trip) {
+        return trip['from'].toString().toLowerCase().contains(query) ||
+               trip['to'].toString().toLowerCase().contains(query) ||
+               trip['driverName'].toString().toLowerCase().contains(query);
+      }).toList();
+    }
+
+    // Filtrar por categoría
+    switch (selectedFilter) {
+      case 'completed':
+        filtered = filtered.where((trip) => trip['status'] == 'completed').toList();
+        break;
+      case 'cancelled':
+        filtered = filtered.where((trip) => trip['status'] == 'cancelled').toList();
+        break;
+      case 'week':
+        // Filtrar última semana (simulado)
+        filtered = filtered.take(3).toList();
+        break;
+      case 'month':
+        // Filtrar último mes (simulado)
+        break;
+    }
+
+    setState(() {
+      filteredTrips = filtered;
+    });
   }
 
-  void _showTravelDetails(BuildContext context) {
+  void _onSearchChanged(String query) {
+    _filterTrips();
+  }
+
+  void _onFilterChanged(String filter) {
+    setState(() {
+      selectedFilter = filter;
+    });
+    _filterTrips();
+  }
+
+  void _onTripTap(Map<String, dynamic> trip) {
+    _showTripDetailsDialog(trip);
+  }
+
+  void _showTripDetailsDialog(Map<String, dynamic> trip) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           backgroundColor: AppTheme.inputBackgroundDark,
-          title: const Text(
-            'Detalles del viaje',
-            style: TextStyle(color: Colors.white),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(color: AppTheme.primaryColor.withOpacity(0.3)),
+          ),
+          title: Text(
+            'Detalles del Viaje',
+            style: const TextStyle(
+              color: AppTheme.whiteContainer,
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+            ),
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Fecha: ${travelData['date']}',
-                style: const TextStyle(color: Colors.white),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Origen: ${travelData['pickUp']}',
-                style: const TextStyle(color: Colors.white),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Destino: ${travelData['destination']}',
-                style: const TextStyle(color: Colors.white),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Precio: \$${_formatNumber(int.tryParse(travelData['price']) ?? 0)} COP',
-                style: const TextStyle(color: Colors.white),
-              ),
+              _buildDetailRow('Fecha:', trip['date']),
+              _buildDetailRow('Hora:', trip['time']),
+              _buildDetailRow('Desde:', trip['from']),
+              _buildDetailRow('Hasta:', trip['to']),
+              _buildDetailRow('Conductor:', trip['driverName']),
+              _buildDetailRow('Precio:', '\$${trip['price']}'),
+              _buildDetailRow('Duración:', '${trip['duration']} min'),
+              _buildDetailRow('Estado:', trip['status']),
             ],
           ),
           actions: [
-            TextButton(
+            ElevatedButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text(
-                'Cerrar',
-                style: TextStyle(color: Colors.white),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppTheme.primaryColor,
+                foregroundColor: AppTheme.blackContainer,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               ),
+              child: const Text('Cerrar'),
             ),
           ],
         );
       },
+    );
+  }
+
+  Widget _buildDetailRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 80,
+            child: Text(
+              label,
+              style: const TextStyle(
+                color: AppTheme.lightGreyContainer,
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              value,
+              style: const TextStyle(
+                color: AppTheme.whiteContainer,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Calcular estadísticas
+    final totalTrips = allTrips.length;
+    final completedTrips = allTrips.where((trip) => trip['status'] == 'completed').toList();
+    final totalSpent = completedTrips.fold<double>(
+      0.0, 
+      (sum, trip) => sum + (trip['price'] as int).toDouble()
+    ) / 1000; // Convertir a miles
+    final thisMonth = allTrips.length; // Simplificado para el ejemplo
+
+    return Scaffold(
+      backgroundColor: AppTheme.darkScaffold,
+      body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          // Header
+          const TravelsHeaderWidget(),
+          
+          // Contenido principal
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  // Estadísticas
+                  TravelsStatsWidget(
+                    totalTrips: totalTrips,
+                    totalSpent: totalSpent,
+                    thisMonth: thisMonth,
+                  ),
+                  
+                  // Filtros y búsqueda
+                  TravelsFiltersWidget(
+                    searchController: _searchController,
+                    selectedFilter: selectedFilter,
+                    onSearchChanged: _onSearchChanged,
+                    onFilterChanged: _onFilterChanged,
+                  ),
+                  
+                  // Lista de viajes
+                  TravelsListWidget(
+                    trips: filteredTrips,
+                    onTripTap: _onTripTap,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

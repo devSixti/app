@@ -135,7 +135,7 @@ class _VehicleSelectorState extends State<VehicleSelector> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: AppTheme.border, // Bordes redondeados
-          color: Colors.grey.shade800,
+          color: const Color.fromRGBO(66, 66, 66, 1),
         ),
         padding: const EdgeInsets.all(13), // Espaciado interno
         child: Row(

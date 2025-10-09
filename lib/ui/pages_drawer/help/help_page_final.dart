@@ -1,211 +1,143 @@
+import 'package:app/ui/pages_drawer/help/widget/contact_widget.dart';
+import 'package:app/ui/pages_drawer/help/widget/faq_widget.dart';
+import 'package:app/ui/pages_drawer/help/widget/help_search_widget.dart';
+import 'package:app/ui/pages_drawer/help/widget/quick_categories_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
+import 'widget/help_header_widget.dart';
 
-class HelpPage extends StatelessWidget {
+class HelpPage extends StatefulWidget {
   const HelpPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    const textStyle = TextStyle(
-      color: Colors.white,
-      fontSize: AppTheme.mediumSize,
-    );
+  State<HelpPage> createState() => _HelpPageState();
+}
 
+class _HelpPageState extends State<HelpPage> {
+  final TextEditingController _searchController = TextEditingController();
+  List<Map<String, dynamic>> filteredFaqItems = [];
+  
+  final List<Map<String, dynamic>> faqItems = [
+    {
+      'question': '¿Cómo puedo cambiar mi método de pago?',
+      'answer': 'Puedes cambiar tu método de pago dirigiéndote a la sección "Billetera" en el menú principal, luego selecciona "Métodos de pago" y agrega o modifica tus opciones de pago preferidas.',
+      'category': 'Pagos',
+    },
+    {
+      'question': '¿Qué hago si mi conductor canceló el viaje?',
+      'answer': 'Si tu conductor cancela el viaje, no te preocupes. El sistema automáticamente buscará otro conductor disponible cerca de ti. Si no encuentra uno inmediatamente, puedes intentar solicitar un nuevo viaje.',
+      'category': 'Viajes',
+    },
+    {
+      'question': '¿Cómo actualizar mi información personal?',
+      'answer': 'Ve a "Configuración" en el menú lateral, selecciona "Editar Perfil" donde podrás actualizar tu nombre, teléfono, email y foto de perfil de manera segura.',
+      'category': 'Cuenta',
+    },
+    {
+      'question': '¿Es seguro compartir mi ubicación?',
+      'answer': 'Sí, tu ubicación está completamente segura. Solo la utilizamos para conectarte con conductores cercanos y mejorar tu experiencia. Nunca compartimos tu ubicación con terceros sin tu consentimiento.',
+      'category': 'Seguridad',
+    },
+    {
+      'question': '¿Cómo puedo contactar al conductor?',
+      'answer': 'Durante el viaje, puedes contactar a tu conductor a través del botón "Llamar" o "Mensaje" que aparece en la pantalla principal. Todas las comunicaciones están protegidas por privacidad.',
+      'category': 'Viajes',
+    },
+    {
+      'question': '¿Qué hacer si olvidé algo en el vehículo?',
+      'answer': 'Si olvidaste algo, contacta inmediatamente al conductor a través de la aplicación. También puedes reportar el objeto perdido en "Soporte" y te ayudaremos a recuperarlo.',
+      'category': 'Soporte',
+    },
+    {
+      'question': '¿Cómo calificar a mi conductor?',
+      'answer': 'Al finalizar cada viaje, aparecerá automáticamente una pantalla para calificar tu experiencia. Puedes dar de 1 a 5 estrellas y agregar comentarios opcionales.',
+      'category': 'Viajes',
+    },
+    {
+      'question': '¿Por qué se cobró una tarifa diferente?',
+      'answer': 'El precio puede variar por factores como tráfico, demanda alta, distancia real recorrida, o tarifas nocturnas. Siempre puedes revisar el desglose del costo en tu historial de viajes.',
+      'category': 'Pagos',
+    },
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    filteredFaqItems = faqItems;
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _filterFaqItems(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        filteredFaqItems = faqItems;
+      } else {
+        filteredFaqItems = faqItems.where((item) {
+          return item['question']
+                  .toLowerCase()
+                  .contains(query.toLowerCase()) ||
+              item['answer'].toLowerCase().contains(query.toLowerCase()) ||
+              item['category'].toLowerCase().contains(query.toLowerCase());
+        }).toList();
+      }
+    });
+  }
+
+  void _filterByCategory(String category) {
+    setState(() {
+      filteredFaqItems = faqItems.where((item) {
+        return item['category'].toLowerCase() == category.toLowerCase();
+      }).toList();
+      _searchController.text = category;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
-      appBar: AppBar(
-        backgroundColor: AppTheme.backgroundColor,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: const Text(
-          'Ayuda y Soporte',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppTheme.inputBackgroundDark,
-            borderRadius: AppTheme.border,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 8,
-                offset: const Offset(0, 2),
+      backgroundColor: AppTheme.darkGreyContainer,
+      body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          // Header
+          const HelpHeaderWidget(),
+          
+          // Contenido principal
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  // Buscador
+                  HelpSearchWidget(
+                    searchController: _searchController,
+                    onSearchChanged: _filterFaqItems,
+                  ),
+                  
+                  // Categorías rápidas
+                  QuickCategoriesWidget(
+                    onCategorySelected: _filterByCategory,
+                  ),
+                  
+                  // Preguntas frecuentes
+                  FaqWidget(
+                    filteredFaqItems: filteredFaqItems,
+                  ),
+                  
+                  const SizedBox(height: 24),
+                  
+                  // Widget de contacto
+                  const ContactWidget(),
+                ],
               ),
-            ],
+            ),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              ExpansionTile(
-                title: const Text(
-                  'Registro y Cuenta',
-                  style: TextStyle(color: Colors.white),
-                ),
-                children: <Widget>[
-                  const Text(
-                    '•\t¿Cómo me registro en el Aplicativo?',
-                    style: TextStyle(
-                      fontFamily: 'XboldNexa',
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    'Para registrarse, descargue el Aplicativo, abra la aplicación y seleccione "Registrarse". Complete la información requerida, incluyendo su nombre, correo electrónico, y número de teléfono. Asegúrese de verificar su correo electrónico para activar su cuenta.',
-                    style: textStyle,
-                  ),
-                  const SizedBox(height: 7),
-                  const Text(
-                    '•\t¿Qué hago si olvido mi contraseña?',
-                    style: TextStyle(
-                      fontFamily: 'XboldNexa',
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    'Si olvida su contraseña, seleccione "Olvidé mi contraseña" en la pantalla de inicio de sesión y siga las instrucciones para restablecerla.',
-                    style: textStyle,
-                  ),
-                ],
-              ),
-              const Divider(),
-              ExpansionTile(
-                title: const Text(
-                  'Seguridad',
-                  style: TextStyle(color: Colors.white),
-                ),
-                children: <Widget>[
-                  const Text(
-                    '•\t¿Cómo protejo mi información personal?',
-                    style: TextStyle(
-                      fontFamily: 'XboldNexa',
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    'Su información personal está protegida mediante medidas de seguridad avanzadas. No comparta su información de acceso con otros y asegúrese de cerrar sesión cuando use un dispositivo compartido.',
-                    style: textStyle,
-                  ),
-                  const SizedBox(height: 7),
-                  const Text(
-                    '•\t¿Qué debo hacer si sospecho que mi cuenta ha sido comprometida?',
-                    style: TextStyle(
-                      fontFamily: 'XboldNexa',
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    'Si sospecha que su cuenta ha sido comprometida, comuníquese con el soporte del Aplicativo de inmediato para que se tomen las medidas necesarias para proteger su cuenta.',
-                    style: textStyle,
-                  ),
-                ],
-              ),
-              const Divider(),
-              ExpansionTile(
-                title: const Text(
-                  'Pagos',
-                  style: TextStyle(color: Colors.white),
-                ),
-                children: <Widget>[
-                  const Text(
-                    '•\t¿Cómo puedo agregar un método de pago?',
-                    style: TextStyle(
-                      fontFamily: 'XboldNexa',
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    'El aplicativo cuenta con diferentes métodos de pago como Nequi, Bancolombia, Daviplata y pagos en efectivo. Deberá comunicar previamente al viaje cuál método de pago utilizará, la transferencia de dinero se realiza directamente a las cuentas de cada conductor.',
-                    style: textStyle,
-                  ),
-                  const SizedBox(height: 7),
-                  const Text(
-                    '•\t¿Cómo se calculan las tarifas mínimas de los viajes?',
-                    style: TextStyle(
-                      fontFamily: 'XboldNexa',
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    'Las tarifas se calculan según la distancia, tiempo del viaje y demanda en la zona. Puede ver el estimado de tarifa antes de confirmar su viaje.',
-                    style: textStyle,
-                  ),
-                ],
-              ),
-              const Divider(),
-              ExpansionTile(
-                title: const Text(
-                  'Servicios de Viaje',
-                  style: TextStyle(color: Colors.white),
-                ),
-                children: <Widget>[
-                  const Text(
-                    '•\t¿Puedo cambiar mi ubicación de recogida después de solicitar un viaje?',
-                    style: TextStyle(
-                      fontFamily: 'XboldNexa',
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    'Sí, puede cambiar su ubicación de recogida antes de que el conductor llegue. Vaya a los detalles del viaje y actualice la ubicación de recogida.',
-                    style: textStyle,
-                  ),
-                  const SizedBox(height: 7),
-                  const Text(
-                    '•\t¿Qué hago si tengo problemas con mi viaje?',
-                    style: TextStyle(
-                      fontFamily: 'XboldNexa',
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    'Si tiene problemas durante el viaje, puede usar la función de ayuda en la aplicación o comunicarse con el soporte al cliente. Su seguridad es nuestra prioridad.',
-                    style: textStyle,
-                  ),
-                ],
-              ),
-              const Divider(),
-              const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Text(
-                      '¿Necesita más ayuda?',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: AppTheme.mediumSize,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      'Contáctenos en soporte@xisti.com\no llame al +57 123 456 7890',
-                      style: TextStyle(
-                        color: Colors.white70,
-                        fontSize: AppTheme.mediumSize,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+        ],
       ),
     );
   }

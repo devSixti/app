@@ -16,7 +16,7 @@ import '../login/login_page.dart';
 import '../pages_drawer/help/help_page_final.dart';
 
 class CustomDrawer extends StatefulWidget {
-  const CustomDrawer({super.key, this.isLogedIn = false}); // true = logueado, false = no logueado
+  const CustomDrawer({super.key, this.isLogedIn = true}); // true = logueado, false = no logueado
   
   final bool isLogedIn;
 
@@ -34,7 +34,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
           children: [
             if (widget.isLogedIn) ...[
               const UserProfile(),
-              const SizedBox(height: 20),
             ] else ...[
               // boton de iniciar sesión
               Padding(
@@ -77,8 +76,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
               ),
             ],
-            // Perfil de usuario
-            
             // Opciones del menú
             Expanded(
               child: ListView(
@@ -93,25 +90,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => const FormTrips()),
-                        );
-                      } else {
-                        Navigator.pop(context);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const LoginPage()),
-                        );
-                      }
-                    },
-                  ),
-                  MenuOption(
-                    icon: Icons.history,
-                    title: 'Historial de solicitudes',
-                    onTap: () {
-                      if (widget.isLogedIn) {
-                        Navigator.pop(context);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const TravelsHistoryPage()),
                         );
                       } else {
                         Navigator.pop(context);
@@ -206,7 +184,27 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         Navigator.pop(context);
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const DriverWallet()),
+                          MaterialPageRoute(builder: (context) => const DriverWalletPage()),
+                        );
+                      } else {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                        );
+                      }
+                    },
+                  ),
+                  
+                  MenuOption(
+                    icon: Icons.history,
+                    title: 'Historial de solicitudes',
+                    onTap: () {
+                      if (widget.isLogedIn) {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const TravelsHistoryPage()),
                         );
                       } else {
                         Navigator.pop(context);
