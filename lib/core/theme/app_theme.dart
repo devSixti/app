@@ -43,6 +43,7 @@ class AppTheme {
   static const Color darkScaffold = Color(
     0xFF201F1F,
   ); // Fondo principal del Scaffold en modo oscuro
+  static const Color trasparent = Color(0x00000000);
 
   // TAMAÑOS DE LETRAS PREDETERMINADOS
   static const double extraLargeSize = 32.0; // (30 hasta 35)
@@ -53,7 +54,6 @@ class AppTheme {
 
   // BORDER RADIUS
   static const BorderRadius border = BorderRadius.all(Radius.circular(15));
-
 
   // CONFIGURACIÓN DEL TEMA CLARO
   static ThemeData get lightTheme {

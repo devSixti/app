@@ -47,7 +47,15 @@ class _FareInputState extends State<FareInput> {
     }
 
     // parse seguro
-    final intValue = int.tryParse(digitsOnly) ?? 0;
+    int intValue = int.tryParse(digitsOnly) ?? 0;
+
+    // *** Límite máximo permitido (1 millón) ***
+    // Si el valor supera el millón, lo limitamos
+    const int maxValue = 1000000;
+    if (intValue > maxValue) {
+      intValue = maxValue;
+    }
+
     // formateamos con separador (NumberFormat devuelve con coma por defecto en muchos locales)
     String formatted = _formatter.format(intValue);
     // sustituimos coma por punto para obtener 20.000 (si el formatter usa coma)
@@ -86,17 +94,17 @@ class _FareInputState extends State<FareInput> {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
           // ignore: deprecated_member_use
-          color: Colors.white.withOpacity(
-            0.05,
-          ), // Color de fondo del botón con opacidad
+          color:  AppTheme.inputBackgroundDark, // Color de fondo del botón con opacidad
           borderRadius: AppTheme.border, // Bordes redondeados de todo el botón
           border: Border.all(
-            // ignore: deprecated_member_use
-            color: Colors.white.withOpacity(
-              0.2,
-            ), // Color del borde del botón con opacidad
+            color: AppTheme.darkBackground, // Color del borde del botón con opacidad
             width: 1, // Ancho del borde
           ),
+        ),
+        // Ajuste tamaño fijo del campo:
+        // Se define una altura mínima fija para evitar que el campo cambie de tamaño al hacer foco.
+        constraints: const BoxConstraints(
+          minHeight: 40, // altura fija mínima (ajustable manualmente si se desea)
         ),
         child: Row(
           children: [
@@ -105,7 +113,7 @@ class _FareInputState extends State<FareInput> {
               style: TextStyle(
                 fontSize: AppTheme.mediumSize, // Tamaño de la fuente de "COP"
                 fontWeight: FontWeight.bold, // Negrita
-                color: Color.fromRGBO(255, 255, 255, 1), // Color del texto
+                color: AppTheme.lightBackground // Color del texto
               ),
             ),
             const SizedBox(width: 10),
@@ -120,16 +128,19 @@ class _FareInputState extends State<FareInput> {
                 style: const TextStyle(
                   fontSize: AppTheme.mediumSize, // más grande
                   fontWeight: FontWeight.w700, // más fuerte/negrita
-                  color: Colors.white, // blanco brillante
+                  color: AppTheme.inputBackgroundLigth, // blanco brillante
                 ),
                 decoration: const InputDecoration(
                   isDense: true,
                   hintText: "Ofrezca su tarifa",
-                  border: InputBorder.none,
+                  // Ajuste opacidad del hint:
+                  // Se incrementa ligeramente la opacidad para que se vea más visible sin perder el tono suave.
                   hintStyle: TextStyle(
-                    color: Colors.white54,
+                    color: Color.fromRGBO(255, 255, 255, 0.75), // antes era white54 (0.54), ahora un poco más visible
                     fontSize: AppTheme.mediumSize,
                   ),
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.zero, // elimina variaciones de altura del focus
                 ),
                 // onChanged no necesario porque usamos el listener del controller
               ),

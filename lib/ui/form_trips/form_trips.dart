@@ -98,17 +98,22 @@ class _FormTripsState extends State<FormTrips> {
     return Scaffold(
       backgroundColor:AppTheme.darkDrawerBackground,
       appBar: AppBar(
-        backgroundColor: AppTheme.darkDrawerBackground,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        surfaceTintColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        automaticallyImplyLeading: false,
         leading: Builder(
           builder: (context) => IconButton(
             icon: const Icon(
               Icons.menu,
-              color: Color.fromARGB(255, 179, 177, 177), // color del menu
+              color: AppTheme.whiteContainer // Solo el ícono visible
             ),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
       ),
+
       drawer: const CustomDrawer(),
       body: Stack(
         children: [
@@ -222,7 +227,7 @@ class _FormTripsState extends State<FormTrips> {
                             onPressed: _handleMainBackButton,
                             text: "Volver",
                             width: screenWidth * 0.5,
-                            textColor: Color.fromRGBO(255, 255, 255, 1)
+                            textColor: AppTheme.lightPrimaryContainer
                           ),
                         ),
                       ],
