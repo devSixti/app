@@ -151,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                               return Text(
                               '$currentLength/$maxLength',
                               style: TextStyle(
-                                color: AppTheme.purpleLigth, // Cambia el color aquí
+                                color: AppTheme.purpleLight, // Cambia el color aquí
                                 fontSize: 12,
                               ),
                               );

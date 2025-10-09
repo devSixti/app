@@ -101,25 +101,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     },
                   ),
                   MenuOption(
-                    icon: Icons.history,
-                    title: 'Historial de solicitudes',
-                    onTap: () {
-                      if (widget.isLogedIn) {
-                        Navigator.pop(context);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const TravelsHistoryPage()),
-                        );
-                      } else {
-                        Navigator.pop(context);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const LoginPage()),
-                        );
-                      }
-                    },
-                  ),
-                  MenuOption(
                     icon: Icons.security,
                     title: 'Seguridad',
                     onTap: () {
@@ -203,7 +184,27 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         Navigator.pop(context);
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const DriverWallet()),
+                          MaterialPageRoute(builder: (context) => const DriverWalletPage()),
+                        );
+                      } else {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                        );
+                      }
+                    },
+                  ),
+                  
+                  MenuOption(
+                    icon: Icons.history,
+                    title: 'Historial de solicitudes',
+                    onTap: () {
+                      if (widget.isLogedIn) {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const TravelsHistoryPage()),
                         );
                       } else {
                         Navigator.pop(context);

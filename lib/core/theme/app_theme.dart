@@ -3,46 +3,22 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   // COLORES PRINCIPALES DE LA APLICACIÓN
-  static const Color primaryColor = Color(
-    0xFF80FF00,
-  ); // Color principal (verde neón)
+  static const Color primaryColor = Color(0xFF80FF00); // Color principal (verde neón)
   static const Color purpleColor = Color(0xFF602BC9); // Color morado principal
-  static const Color purpleLigth = Color(
-    0xFFB996FF,
-  ); // Morado claro (versión suave del anterior)
-  static const Color lightPrimaryContainer = Color(
-    0xFFF4F4F4,
-  ); // Fondo gris muy claro para modo claro
-  static const Color whiteContainer = Color(
-    0xFFFFFFFF,
-  ); // Blanco puro para contenedores o texto
-  static const Color blackContainer = Color(
-    0xFF000000,
-  ); // Negro puro para texto o fondos oscuros
-  static const Color lightBackground = Color(
-    0xFFF8F8F8,
-  ); // Fondo general del modo claro
-  static const Color darkBackground = Color(
-    0xFF333333,
-  ); // Fondo general del modo oscuro
-  static const Color lightGreyContainer = Color(
-    0xFFF0F0F0,
-  ); // Gris claro para campos o tarjetas
-  static const Color darkGreyContainer = Color(
-    0xFF1A1A1A,
-  ); // Gris oscuro para cajas o paneles en modo oscuro
-  static const Color darkDrawerBackground = Color(
-    0xFF1D1B1F,
-  ); // Fondo del Drawer (menú lateral) oscuro
-  static const Color inputBackgroundDark = Color(
-    0xFF2D2D2D,
-  ); // Fondo de inputs en modo oscuro
-  static const Color inputBackgroundLigth = Color(
-    0xFFF0F0F0,
-  ); // Fondo de inputs en modo claro
-  static const Color darkScaffold = Color(
-    0xFF201F1F,
-  ); // Fondo principal del Scaffold en modo oscuro
+  static const Color purpleLight = Color(0xFFB996FF); // Morado claro (versión suave del anterior)
+  static const Color lightPrimaryContainer = Color(0xFFF4F4F4); // Fondo gris muy claro para modo claro
+  static const Color whiteContainer = Color(0xFFFFFFFF); // Blanco puro para contenedores o texto
+  static const Color blackContainer = Color(0xFF000000); // Negro puro para texto o fondos oscuros
+  static const Color lightBackground = Color(0xFFF8F8F8); // Fondo general del modo claro
+  static const Color darkBackground = Color(0xFF333333); // Fondo general del modo oscuro
+  static const Color lightGreyContainer = Color(0xFFF0F0F0); // Gris claro para campos o tarjetas
+  static const Color darkGreyContainer = Color(0xFF1A1A1A); // Gris oscuro para cajas o paneles en modo oscuro
+  static const Color darkDrawerBackground = Color(0xFF1D1B1F); // Fondo del Drawer (menú lateral) oscuro
+  static const Color inputBackgroundDark = Color(0xFF2D2D2D); // Fondo de inputs en modo oscuro
+  static const Color inputBackgroundLigth = Color(0xFFF0F0F0); // Fondo de inputs en modo claro
+  static const Color darkScaffold = Color(0xFF201F1F); // Fondo principal del Scaffold en modo oscuro
+  static const Color transparent = Color(0x00000000); // Color transparente
+  static const Color silver = Color(0xFF848484); // Color plateado
 
   // TAMAÑOS DE LETRAS PREDETERMINADOS
   static const double extraLargeSize = 32.0; // (30 hasta 35)
@@ -77,7 +53,7 @@ class AppTheme {
         seedColor: Colors.white, // Color base del esquema
         primary: Colors.white, // Color principal (líneas de texto o bordes)
         secondary: purpleColor, // Color secundario (botones, íconos destacados)
-        secondaryFixed: purpleLigth, // Variante más clara del color secundario
+        secondaryFixed: purpleLight, // Variante más clara del color secundario
         tertiary: lightPrimaryContainer, // Fondo alternativo para contenedores
         primaryContainer:
             lightPrimaryContainer, // Fondo de contenedores primarios
@@ -129,7 +105,7 @@ class AppTheme {
         ), // Color semilla (verde neón)
         primary: primaryColor, // Color principal de acento
         secondary: purpleColor, // Color secundario (morado)
-        secondaryFixed: purpleLigth, // Versión clara del color secundario
+        secondaryFixed: purpleLight, // Versión clara del color secundario
         tertiary: inputBackgroundDark, // Fondo alternativo oscuro para inputs
         primaryContainer:
             inputBackgroundDark, // Fondo principal de contenedores oscuros

@@ -5,14 +5,14 @@ import 'package:app/ui/pages_drawer/wallet/widget/wallet_head.dart';
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
 
-class DriverWalletPage extends StatefulWidget {
-  const DriverWalletPage({super.key});
+class MainDriverPage extends StatefulWidget {
+  const MainDriverPage({super.key});
 
   @override
-  State<DriverWalletPage> createState() => _DriverWalletPageState();
+  State<MainDriverPage> createState() => _MainDriverPageState();
 }
 
-class _DriverWalletPageState extends State<DriverWalletPage> {
+class _MainDriverPageState extends State<MainDriverPage> {
   double currentBalance = 340000.0;
   double dailyEarnings = 85000.0;
   double weeklyEarnings = 450000.0;
@@ -171,11 +171,9 @@ class _DriverWalletPageState extends State<DriverWalletPage> {
             child: Icon(icon, color: color),
           ),
           const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              title,
-              style: const TextStyle(color: AppTheme.whiteContainer, fontSize: 18),
-            ),
+          Text(
+            title,
+            style: const TextStyle(color: AppTheme.whiteContainer, fontSize: 18),
           ),
         ],
       ),
