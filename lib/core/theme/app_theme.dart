@@ -19,6 +19,7 @@ class AppTheme {
   static const Color darkScaffold = Color(0xFF201F1F); // Fondo principal del Scaffold en modo oscuro
   static const Color transparent = Color(0x00000000); // Color transparente
   static const Color silver = Color(0xFF848484); // Color plateado
+  static const Color silverDark = Color(0xFF5B5B5B); // Color plateado oscuro
 
   // TAMAÑOS DE LETRAS PREDETERMINADOS
   static const double extraLargeSize = 32.0; // (30 hasta 35)

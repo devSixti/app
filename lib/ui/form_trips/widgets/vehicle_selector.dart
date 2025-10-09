@@ -144,9 +144,9 @@ class _VehicleSelectorState extends State<VehicleSelector> {
             Icon(
               _selectedOption?.iconData ?? Icons.directions_car,
               color: _selectedOption?.iconColor ?? AppTheme.lightPrimaryContainer,
-                size: 43, // Tamaño del icono principal
+                size: 38, // Tamaño del icono principal
             ),
-            const SizedBox(width: 15), // Espacio entre el icono y el texto
+            const SizedBox(width: 11), // Espacio entre el icono y el texto
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

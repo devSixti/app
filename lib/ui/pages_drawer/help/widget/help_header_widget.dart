@@ -12,6 +12,9 @@ class HelpHeaderWidget extends StatelessWidget {
       pinned: true,
       snap: false,
       backgroundColor: AppTheme.inputBackgroundDark,
+      surfaceTintColor: AppTheme.inputBackgroundDark,
+      shadowColor: AppTheme.inputBackgroundDark,
+        automaticallyImplyLeading: false,
       elevation: 0,
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
