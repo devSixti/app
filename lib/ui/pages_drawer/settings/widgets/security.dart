@@ -18,7 +18,8 @@ class SecuritySettingsWidget extends StatelessWidget {
     return SettingsSectionWidget(
       title: 'Seguridad',
       icon: Icons.security_rounded,
-      accentColor: AppTheme.purpleColor,
+      iconColor: AppTheme.primaryColor,
+      borderColor: AppTheme.silver,
       children: [
         SettingsSwitchWidget(
           title: 'Autenticación Biométrica',
