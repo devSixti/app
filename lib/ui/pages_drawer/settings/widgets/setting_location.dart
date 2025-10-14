@@ -19,6 +19,7 @@ class LocationSettingsWidget extends StatelessWidget {
       title: 'Ubicación',
       icon: Icons.location_on_rounded,
       iconColor: AppTheme.primaryColor,
+      iconBackgroundColor: AppTheme.primaryColor,
       borderColor: AppTheme.silver,
       children: [
         SettingsSwitchWidget(
@@ -28,6 +29,7 @@ class LocationSettingsWidget extends StatelessWidget {
           onChanged: onLocationChanged,
           icon: Icons.gps_fixed_rounded,
           accentColor: AppTheme.silver,
+          onChangedColor: AppTheme.purpleColor,
         ),
       ],
     );

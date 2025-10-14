@@ -206,7 +206,7 @@ class _VehicleSelectorState extends State<VehicleSelector> {
             style: TextStyle(
               color: isSelected
                   ? Colors.blue
-                  : AppTheme.inputBackgroundLigth,
+                  : AppTheme.inputBackgroundLight,
               fontSize: AppTheme.smallSize,
             ),
             textAlign: TextAlign.center,

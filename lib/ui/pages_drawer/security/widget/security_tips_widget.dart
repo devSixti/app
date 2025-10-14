@@ -13,26 +13,17 @@ class SecurityTipsWidget extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            AppTheme.purpleColor.withOpacity(0.1),
-            AppTheme.primaryColor.withOpacity(0.1),
-            AppTheme.blackContainer.withOpacity(0.5),
+            AppTheme.inputBackgroundDark,
+            AppTheme.darkGreyContainer,
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          stops: const [0.0, 0.4, 1.0],
         ),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: AppTheme.purpleColor.withOpacity(0.3),
-          width: 2,
+          color: AppTheme.silver.withOpacity(0.3),
+          width: 1,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.purpleColor.withOpacity(0.1),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
-          ),
-        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,17 +33,12 @@ class SecurityTipsWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      AppTheme.purpleColor.withOpacity(0.2),
-                      AppTheme.primaryColor.withOpacity(0.2),
-                    ],
-                  ),
+                  color: AppTheme.primaryColor.withOpacity(0.3),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(
                   Icons.lightbulb_rounded,
-                  color: AppTheme.whiteContainer,
+                  color: AppTheme.primaryColor,
                   size: 24,
                 ),
               ),
@@ -75,28 +61,28 @@ class SecurityTipsWidget extends StatelessWidget {
             Icons.password_rounded,
             'Usa contraseñas únicas',
             'Nunca reutilices contraseñas entre diferentes servicios',
-            AppTheme.primaryColor,
+            AppTheme.silver,
           ),
           const SizedBox(height: 16),
           _buildSecurityTip(
             Icons.wifi_protected_setup_rounded,
             'Evita redes WiFi públicas',
             'No uses WiFi público para transacciones importantes',
-            AppTheme.purpleColor,
+            AppTheme.silver,
           ),
           const SizedBox(height: 16),
           _buildSecurityTip(
             Icons.update_rounded,
             'Mantén la app actualizada',
             'Las actualizaciones incluyen mejoras de seguridad',
-            AppTheme.primaryColor,
+            AppTheme.silver,
           ),
           const SizedBox(height: 16),
           _buildSecurityTip(
             Icons.warning_rounded,
             'No compartas tu información',
             'Nunca compartas credenciales con terceros',
-            AppTheme.purpleColor,
+            AppTheme.silver,
           ),
         ],
       ),

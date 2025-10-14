@@ -100,7 +100,7 @@ class _HelpPageState extends State<HelpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.darkGreyContainer,
+      backgroundColor: AppTheme.darkDrawerBackground,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [

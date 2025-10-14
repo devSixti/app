@@ -1,4 +1,4 @@
-import 'package:app/ui/pages_drawer/settings/widgets/setting.dart';
+import 'package:app/ui/pages_drawer/settings/widgets/setting_location.dart';
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
 import 'widgets/settings_header_widget.dart';
@@ -78,7 +78,6 @@ class _SettingsPageState extends State<SettingsPage> {
                       });
                     },
                   ),
-
                 ],
               ),
             ),

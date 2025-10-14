@@ -37,8 +37,8 @@ class SecurityHeaderWidget extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color.fromARGB(255, 78, 78, 78),
-                AppTheme.darkGreyContainer,
+                AppTheme.inputBackgroundDark,
+                AppTheme.darkDrawerBackground,
               ],
               stops: [0.0, 1.0],
             ),

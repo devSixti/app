@@ -5,7 +5,11 @@ class SecurityOptionWidget extends StatelessWidget {
   final String title;
   final String subtitle;
   final IconData icon;
-  final Color accentColor;
+  final Color iconColor;
+  final Color backgroundIcon;
+  final Color border;
+  final Color titleColor;
+  final Color subtitleColor;
   final VoidCallback onTap;
 
   const SecurityOptionWidget({
@@ -13,7 +17,11 @@ class SecurityOptionWidget extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.icon,
-    required this.accentColor,
+    required this.iconColor,
+    required this.backgroundIcon,
+    required this.border,
+    required this.titleColor,
+    required this.subtitleColor,
     required this.onTap,
   });
 
@@ -24,14 +32,14 @@ class SecurityOptionWidget extends StatelessWidget {
         color: AppTheme.blackContainer.withOpacity(0.2),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: accentColor.withOpacity(0.2),
+          color: border.withOpacity(0.2),
           width: 1,
         ),
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: AppTheme.border,
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -40,10 +48,10 @@ class SecurityOptionWidget extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: accentColor.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(12),
+                    color: backgroundIcon.withOpacity(0.2),
+                    borderRadius: AppTheme.border,
                   ),
-                  child: Icon(icon, color: accentColor, size: 20),
+                  child: Icon(icon, color: iconColor, size: 20),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
@@ -52,8 +60,8 @@ class SecurityOptionWidget extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: const TextStyle(
-                          color: AppTheme.whiteContainer,
+                        style: TextStyle(
+                          color: titleColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
@@ -61,8 +69,8 @@ class SecurityOptionWidget extends StatelessWidget {
                       const SizedBox(height: 4),
                       Text(
                         subtitle,
-                        style: const TextStyle(
-                          color: AppTheme.lightGreyContainer,
+                        style: TextStyle(
+                          color: subtitleColor,
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
                         ),
@@ -72,7 +80,7 @@ class SecurityOptionWidget extends StatelessWidget {
                 ),
                 Icon(
                   Icons.arrow_forward_ios_rounded,
-                  color: accentColor.withOpacity(0.6),
+                  color: iconColor.withOpacity(0.6),
                   size: 16,
                 ),
               ],

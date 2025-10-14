@@ -9,6 +9,7 @@ class SettingsSelectorWidget extends StatelessWidget {
   final ValueChanged<String> onChanged;
   final IconData icon;
   final Color accentColor;
+  final Color idiomColor;
 
   const SettingsSelectorWidget({
     super.key,
@@ -19,6 +20,7 @@ class SettingsSelectorWidget extends StatelessWidget {
     required this.onChanged,
     required this.icon,
     required this.accentColor,
+    required this.idiomColor,
   });
 
   @override
@@ -77,17 +79,17 @@ class SettingsSelectorWidget extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: accentColor.withOpacity(0.1),
+                    color: idiomColor,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: accentColor.withOpacity(0.3),
+                      color: idiomColor.withOpacity(0.3),
                       width: 1,
                     ),
                   ),
                   child: Text(
                     currentValue,
                     style: TextStyle(
-                      color: accentColor,
+                      color: AppTheme.inputBackgroundLight,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),

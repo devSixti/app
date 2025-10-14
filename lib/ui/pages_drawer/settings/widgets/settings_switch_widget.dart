@@ -8,6 +8,7 @@ class SettingsSwitchWidget extends StatelessWidget {
   final ValueChanged<bool> onChanged;
   final IconData icon;
   final Color accentColor;
+  final Color onChangedColor;
 
   const SettingsSwitchWidget({
     super.key,
@@ -17,6 +18,7 @@ class SettingsSwitchWidget extends StatelessWidget {
     required this.onChanged,
     required this.icon,
     required this.accentColor,
+    required this.onChangedColor,
   });
 
   @override
@@ -75,7 +77,8 @@ class SettingsSwitchWidget extends StatelessWidget {
               activeColor: accentColor,
               inactiveThumbColor: AppTheme.lightGreyContainer,
               inactiveTrackColor: AppTheme.darkGreyContainer,
-              activeTrackColor: accentColor.withOpacity(0.3),
+              activeThumbColor: AppTheme.whiteContainer,
+              activeTrackColor: onChangedColor,
             ),
           ),
         ],

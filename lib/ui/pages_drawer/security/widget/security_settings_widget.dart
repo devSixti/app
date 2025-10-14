@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
 import 'security_option_widget.dart';
 
-class PrivacyDataWidget extends StatelessWidget {
+class SecuritySettingsWidget extends StatelessWidget {
   final Function(String) onOptionTap;
 
-  const PrivacyDataWidget({
+  const SecuritySettingsWidget({
     super.key,
-    required this.onOptionTap,
+    required this.onOptionTap, required bool biometricEnabled, required Null Function(dynamic value) onBiometricChanged,
   });
 
   @override
@@ -48,7 +48,7 @@ class PrivacyDataWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(
-                  Icons.privacy_tip_rounded,
+                  Icons.security_rounded,
                   color: AppTheme.primaryColor,
                   size: 24,
                 ),
@@ -56,7 +56,7 @@ class PrivacyDataWidget extends StatelessWidget {
               const SizedBox(width: 16),
               const Expanded(
                 child: Text(
-                  'Privacidad y Datos',
+                  'Configuración de Seguridad',
                   style: TextStyle(
                     color: AppTheme.whiteContainer,
                     fontSize: 20,
@@ -68,44 +68,53 @@ class PrivacyDataWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
-
           SecurityOptionWidget(
-            title: 'Descargar mis Datos',
-            subtitle: 'Obtén una copia de tu información',
-            icon: Icons.download_rounded,
+            title: 'Cambiar Contraseña',
+            subtitle: 'Actualiza tu contraseña regularmente',
+            icon: Icons.lock_reset_rounded,
             iconColor: AppTheme.silver,
             backgroundIcon: AppTheme.silver.withOpacity(0.3),
             border: AppTheme.silver.withOpacity(0.3),
             titleColor: AppTheme.whiteContainer,
             subtitleColor: AppTheme.whiteContainer,
-            onTap: () => onOptionTap('downloadData'),
+            onTap: () => onOptionTap('password'),
           ),
           const SizedBox(height: 12),
-          
           SecurityOptionWidget(
-            title: 'Política de Privacidad',
-            subtitle: 'Lee cómo manejamos tu información',
-            icon: Icons.policy_rounded,
+            title: 'Verificación en Dos Pasos',
+            subtitle: 'Agrega una capa extra de seguridad',
+            icon: Icons.verified_rounded,
             iconColor: AppTheme.silver,
             backgroundIcon: AppTheme.silver.withOpacity(0.3),
             border: AppTheme.silver.withOpacity(0.3),
             titleColor: AppTheme.whiteContainer,
             subtitleColor: AppTheme.whiteContainer,
-            onTap: () => onOptionTap('privacyPolicy'),
-          ),
-
-          SecurityOptionWidget(
-            title: 'Eliminar mi Cuenta',
-            subtitle: 'Eliminar permanentemente tu cuenta',
-            icon: Icons.delete_forever_rounded,
-            iconColor: AppTheme.red,
-            backgroundIcon: AppTheme.red.withOpacity(0.3),
-            border: AppTheme.silver.withOpacity(0.3),
-            titleColor: AppTheme.red,
-            subtitleColor: AppTheme.red,
-            onTap: () => onOptionTap('deleteAccount'),
+            onTap: () => onOptionTap('twoFactor'),
           ),
           const SizedBox(height: 12),
+          SecurityOptionWidget(
+            title: 'Autenticación Biométrica',
+            subtitle: 'Usa huella dactilar o Face ID',
+            icon: Icons.fingerprint_rounded,
+            iconColor: AppTheme.silver,
+            backgroundIcon: AppTheme.silver.withOpacity(0.3),
+            border: AppTheme.silver.withOpacity(0.3),
+            titleColor: AppTheme.whiteContainer,
+            subtitleColor: AppTheme.whiteContainer,
+            onTap: () => onOptionTap('biometric'),
+          ),
+          const SizedBox(height: 12),
+          SecurityOptionWidget(
+            title: 'Dispositivos Conectados',
+            subtitle: 'Administra tus sesiones activas',
+            icon: Icons.devices_rounded,
+            iconColor: AppTheme.silver,
+            backgroundIcon: AppTheme.silver.withOpacity(0.3),
+            border: AppTheme.silver.withOpacity(0.3),
+            titleColor: AppTheme.whiteContainer,
+            subtitleColor: AppTheme.whiteContainer,
+            onTap: () => onOptionTap('devices'),
+          ),
         ],
       ),
     );

@@ -23,6 +23,7 @@ class AppearanceSettingsWidget extends StatelessWidget {
       title: 'Apariencia',
       icon: Icons.palette_rounded,
       iconColor: AppTheme.primaryColor,
+      iconBackgroundColor: AppTheme.primaryColor,
       borderColor: AppTheme.silver,
       children: [
         SettingsSelectorWidget(
@@ -33,6 +34,7 @@ class AppearanceSettingsWidget extends StatelessWidget {
           onChanged: onLanguageChanged,
           icon: Icons.language_rounded,
           accentColor: AppTheme.silver,
+          idiomColor: AppTheme.purpleColor,
         ),
         const SizedBox(height: 12),
         SettingsSelectorWidget(
@@ -43,6 +45,7 @@ class AppearanceSettingsWidget extends StatelessWidget {
           onChanged: onThemeChanged,
           icon: Icons.dark_mode_rounded,
           accentColor: AppTheme.silver,
+          idiomColor: AppTheme.purpleColor,
         ),
       ],
     );

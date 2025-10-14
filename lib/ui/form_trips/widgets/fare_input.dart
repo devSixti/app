@@ -128,7 +128,7 @@ class _FareInputState extends State<FareInput> {
                 style: const TextStyle(
                   fontSize: AppTheme.mediumSize, // más grande
                   fontWeight: FontWeight.w700, // más fuerte/negrita
-                  color: AppTheme.inputBackgroundLigth, // blanco brillante
+                  color: AppTheme.inputBackgroundLight, // blanco brillante
                 ),
                 decoration: const InputDecoration(
                   isDense: true,

@@ -17,16 +17,16 @@ class SecurityContactWidget extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.orange.withOpacity(0.8),
-            Colors.orange.withOpacity(0.6),
+            AppTheme.purpleColor.withOpacity(0.3),
+            AppTheme.purpleColor.withOpacity(0.9),
           ],
         ),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.orange.withOpacity(0.3),
+            color: AppTheme.purpleColor,
             blurRadius: 12,
-            offset: const Offset(0, 6),
+            offset: const Offset(0, 0),
           ),
         ],
       ),
@@ -40,19 +40,12 @@ class SecurityContactWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.security_rounded,
-                  color: AppTheme.whiteContainer,
-                  size: 24,
-                ),
-                SizedBox(width: 12),
                 Text(
                   'Reportar Problema de Seguridad',
                   style: TextStyle(
                     color: AppTheme.whiteContainer,
-                    fontSize: 18,
+                    fontSize: AppTheme.mediumSize,
                     fontWeight: FontWeight.w700,
-                    letterSpacing: 0.5,
                   ),
                 ),
               ],
