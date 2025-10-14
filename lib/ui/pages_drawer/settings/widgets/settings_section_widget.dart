@@ -28,8 +28,8 @@ class SettingsSectionWidget extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            AppTheme.inputBackgroundDark,
-            AppTheme.darkGreyContainer
+            AppTheme.inputBackgroundDark, // Color de los campos completos
+            AppTheme.darkGreyContainer, // Color de los campos completos
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,

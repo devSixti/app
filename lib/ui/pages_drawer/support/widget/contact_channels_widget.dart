@@ -12,35 +12,49 @@ class ContactChannelsWidget extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
+
+        // Borde sutil con opacidad más baja y línea delgada
         border: Border.all(
           color: AppTheme.silver.withOpacity(0.3),
           width: 1,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.blackContainer.withOpacity(0.3),
-            blurRadius: 12,
-            offset: const Offset(0, 6),
-          ),
-        ],
+
+        // Fondo degradado
+        gradient: const LinearGradient(
+          colors: [
+            AppTheme.inputBackgroundDark,
+            AppTheme.darkGreyContainer,
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Encabezado del bloque
           Row(
             children: [
+              // Ícono principal dentro de un contenedor decorado
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
+                  color: AppTheme.primaryColor.withOpacity(0.25),
+                  borderRadius: AppTheme.border,
+                  border: Border.all(
+                    color: AppTheme.silver.withOpacity(0.15),
+                    width: 1,
+                  ),
                 ),
                 child: const Icon(
                   Icons.contact_phone_rounded,
-                  color: AppTheme.silver,
+                  color: AppTheme.primaryColor,
                   size: 24,
                 ),
               ),
+
               const SizedBox(width: 16),
+
               const Expanded(
                 child: Text(
                   'Canales de Contacto',
@@ -54,36 +68,52 @@ class ContactChannelsWidget extends StatelessWidget {
               ),
             ],
           ),
+
           const SizedBox(height: 20),
+
+          // Chat en Vivo
           _buildContactChannel(
             'Chat en Vivo',
             'Conversación instantánea con nuestro equipo',
             Icons.chat_bubble_rounded,
-            AppTheme.primaryColor,
+            AppTheme.silver, // Color del borde
+            AppTheme.silver, // Color del icono
             () => _showChatDialog(context),
           ),
+
           const SizedBox(height: 12),
+
+          // Llamada Telefónica
           _buildContactChannel(
             'Llamada Telefónica',
             '+57 (1) 234-5678 - Disponible 24/7',
             Icons.phone_rounded,
             AppTheme.silver,
+            AppTheme.silver,
             () => _showCallDialog(context),
           ),
+
           const SizedBox(height: 12),
+
+          // Email de Soporte
           _buildContactChannel(
             'Email de Soporte',
             'soporte@xisti.com - Respuesta en 24h',
             Icons.email_rounded,
-            AppTheme.primaryColor,
+            AppTheme.silver,
+            AppTheme.silver,
             () => _showEmailDialog(context),
           ),
+
           const SizedBox(height: 12),
+
+          // WhatsApp
           _buildContactChannel(
             'WhatsApp',
             '+57 300 123 4567 - Mensajes rápidos',
             Icons.message_rounded,
-            Colors.green,
+            AppTheme.silver,
+            AppTheme.silver,
             () => _showWhatsAppDialog(context),
           ),
         ],
@@ -91,14 +121,24 @@ class ContactChannelsWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildContactChannel(String title, String subtitle, IconData icon, Color color, VoidCallback onTap) {
+  // Construye un canal de contacto con borde e icono personalizables
+  Widget _buildContactChannel(
+    String title,
+    String subtitle,
+    IconData icon,
+    Color borderColor,
+    Color iconColor,
+    VoidCallback onTap,
+  ) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.blackContainer.withOpacity(0.2),
+        color: AppTheme.blackContainer.withOpacity(0.18),
         borderRadius: BorderRadius.circular(16),
+
+        // Borde más fino y opaco, siguiendo la estética del bloque principal
         border: Border.all(
-          color: color.withOpacity(0.2),
-          width: 1,
+          color: borderColor.withOpacity(0.25),
+          width: 1.1,
         ),
       ),
       child: Material(
@@ -110,15 +150,23 @@ class ContactChannelsWidget extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
+                // Fondo del ícono con tono suave
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: color.withOpacity(0.2),
+                    color: iconColor.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Icon(icon, color: color, size: 20),
+                  child: Icon(
+                    icon,
+                    color: iconColor,
+                    size: 20,
+                  ),
                 ),
+
                 const SizedBox(width: 16),
+
+                // Título y descripción del canal
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -143,9 +191,11 @@ class ContactChannelsWidget extends StatelessWidget {
                     ],
                   ),
                 ),
+
+                // Flecha direccional con opacidad media
                 Icon(
                   Icons.arrow_forward_ios_rounded,
-                  color: color.withOpacity(0.6),
+                  color: borderColor.withOpacity(0.5),
                   size: 16,
                 ),
               ],
@@ -156,6 +206,7 @@ class ContactChannelsWidget extends StatelessWidget {
     );
   }
 
+  // Diálogos
   void _showChatDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -164,14 +215,14 @@ class ContactChannelsWidget extends StatelessWidget {
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
-            side: BorderSide(color: AppTheme.primaryColor.withOpacity(0.3)),
+            side: BorderSide(color: AppTheme.primaryColor.withOpacity(0.25)),
           ),
           title: Row(
             children: [
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: AppTheme.primaryColor.withOpacity(0.2),
+                  color: AppTheme.primaryColor.withOpacity(0.18),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(Icons.chat_rounded, color: AppTheme.primaryColor),
@@ -211,14 +262,14 @@ class ContactChannelsWidget extends StatelessWidget {
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
-            side: BorderSide(color: AppTheme.silver.withOpacity(0.3)),
+            side: BorderSide(color: AppTheme.silver.withOpacity(0.25)),
           ),
           title: Row(
             children: [
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: AppTheme.silver.withOpacity(0.2),
+                  color: AppTheme.silver.withOpacity(0.18),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(Icons.phone_rounded, color: AppTheme.silver),
@@ -262,14 +313,14 @@ class ContactChannelsWidget extends StatelessWidget {
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
-            side: BorderSide(color: AppTheme.primaryColor.withOpacity(0.3)),
+            side: BorderSide(color: AppTheme.primaryColor.withOpacity(0.25)),
           ),
           title: Row(
             children: [
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: AppTheme.primaryColor.withOpacity(0.2),
+                  color: AppTheme.primaryColor.withOpacity(0.18),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(Icons.email_rounded, color: AppTheme.primaryColor),
@@ -309,17 +360,17 @@ class ContactChannelsWidget extends StatelessWidget {
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
-            side: BorderSide(color: Colors.green.withOpacity(0.3)),
+            side: BorderSide(color: AppTheme.primaryColor.withOpacity(0.25)),
           ),
           title: Row(
             children: [
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.2),
+                  color: AppTheme.primaryColor.withOpacity(0.18),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Icon(Icons.message_rounded, color: Colors.green),
+                child: const Icon(Icons.message_rounded, color: AppTheme.primaryColor),
               ),
               const SizedBox(width: 12),
               const Text(
@@ -340,7 +391,7 @@ class ContactChannelsWidget extends StatelessWidget {
             ElevatedButton(
               onPressed: () => Navigator.of(context).pop(),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: AppTheme.primaryColor,
                 foregroundColor: AppTheme.whiteContainer,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               ),
