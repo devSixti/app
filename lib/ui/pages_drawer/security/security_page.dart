@@ -297,50 +297,7 @@ class SecurityPage extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(width: 16),
-                            const Expanded(
-                              child: Text(
-                                'Configuración de Seguridad',
-                                style: TextStyle(
-                                  color: AppTheme.whiteContainer,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                            ),
                           ],
-                        ),
-                        const SizedBox(height: 20),
-                        _buildSecurityOption(
-                          'Cambiar Contraseña',
-                          'Actualiza tu contraseña regularmente',
-                          Icons.lock_reset_rounded,
-                          AppTheme.purpleColor,
-                          () => _showChangePasswordDialog(context),
-                        ),
-                        const SizedBox(height: 12),
-                        _buildSecurityOption(
-                          'Verificación en Dos Pasos',
-                          'Agrega una capa extra de seguridad',
-                          Icons.verified_rounded,
-                          AppTheme.primaryColor,
-                          () => _showTwoFactorDialog(context),
-                        ),
-                        const SizedBox(height: 12),
-                        _buildSecurityOption(
-                          'Autenticación Biométrica',
-                          'Usa huella dactilar o Face ID',
-                          Icons.fingerprint_rounded,
-                          AppTheme.purpleColor,
-                          () => _showBiometricDialog(context),
-                        ),
-                        const SizedBox(height: 12),
-                        _buildSecurityOption(
-                          'Dispositivos Conectados',
-                          'Administra tus sesiones activas',
-                          Icons.devices_rounded,
-                          AppTheme.primaryColor,
-                          () => _showDevicesDialog(context),
                         ),
                       ],
                     ),
@@ -714,10 +671,6 @@ class SecurityPage extends StatelessWidget {
   }
 
   // Métodos de diálogos
-  void _showChangePasswordDialog(BuildContext context) => _showComingSoonDialog(context, 'Cambiar Contraseña');
-  void _showTwoFactorDialog(BuildContext context) => _showComingSoonDialog(context, 'Verificación en Dos Pasos');
-  void _showBiometricDialog(BuildContext context) => _showComingSoonDialog(context, 'Autenticación Biométrica');
-  void _showDevicesDialog(BuildContext context) => _showComingSoonDialog(context, 'Dispositivos Conectados');
   void _showDownloadDataDialog(BuildContext context) => _showComingSoonDialog(context, 'Descargar Datos');
   void _showPrivacyPolicyDialog(BuildContext context) => _showComingSoonDialog(context, 'Política de Privacidad');
 
