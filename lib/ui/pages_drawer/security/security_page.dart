@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
+import 'widget/security_header_widget.dart';
+import 'widget/security_settings_widget.dart';
+import 'widget/privacy_data_widget.dart';
+import 'widget/security_tips_widget.dart';
+import 'widget/security_contact_widget.dart';
 
 class SecurityPage extends StatelessWidget {
   const SecurityPage({super.key});
@@ -11,116 +16,7 @@ class SecurityPage extends StatelessWidget {
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          // SliverAppBar moderno
-          SliverAppBar(
-            expandedHeight: 220.0,
-            floating: false,
-            pinned: true,
-            backgroundColor: AppTheme.darkScaffold,
-            elevation: 0,
-            leading: Container(
-              margin: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: AppTheme.blackContainer.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: AppTheme.primaryColor.withOpacity(0.3),
-                  width: 1,
-                ),
-              ),
-              child: IconButton(
-                icon: const Icon(Icons.arrow_back_ios_new_rounded, 
-                  color: AppTheme.whiteContainer),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-            ),
-            flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      AppTheme.purpleColor.withOpacity(0.15),
-                      AppTheme.primaryColor.withOpacity(0.15),
-                      AppTheme.inputBackgroundDark,
-                    ],
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 60),
-                    Container(
-                      padding: const EdgeInsets.all(24),
-                      decoration: BoxDecoration(
-                        gradient: RadialGradient(
-                          colors: [
-                            AppTheme.purpleColor.withOpacity(0.3),
-                            AppTheme.primaryColor.withOpacity(0.2),
-                            Colors.transparent,
-                          ],
-                        ),
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: AppTheme.purpleColor.withOpacity(0.4),
-                          width: 2,
-                        ),
-                      ),
-                      child: Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              AppTheme.purpleColor.withOpacity(0.2),
-                              AppTheme.primaryColor.withOpacity(0.2),
-                            ],
-                          ),
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.shield_rounded,
-                          color: AppTheme.whiteContainer,
-                          size: 40,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    const Text(
-                      'Seguridad',
-                      style: TextStyle(
-                        color: AppTheme.whiteContainer,
-                        fontSize: 32,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 1,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                      decoration: BoxDecoration(
-                        color: AppTheme.blackContainer.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: AppTheme.purpleColor.withOpacity(0.3),
-                          width: 1,
-                        ),
-                      ),
-                      child: const Text(
-                        'Tu protección es nuestra prioridad',
-                        style: TextStyle(
-                          color: AppTheme.lightGreyContainer,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 0.3,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          const SecurityHeaderWidget(),
           
           // Contenido principal
           SliverToBoxAdapter(
@@ -128,465 +24,26 @@ class SecurityPage extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
-                  // Estado de seguridad
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          AppTheme.primaryColor.withOpacity(0.1),
-                          AppTheme.inputBackgroundDark,
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(24),
-                      border: Border.all(
-                        color: AppTheme.primaryColor.withOpacity(0.3),
-                        width: 1,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppTheme.blackContainer.withOpacity(0.3),
-                          blurRadius: 12,
-                          offset: const Offset(0, 6),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    AppTheme.primaryColor.withOpacity(0.2),
-                                    AppTheme.primaryColor.withOpacity(0.1),
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: const Icon(
-                                Icons.verified_user_rounded,
-                                color: AppTheme.primaryColor,
-                                size: 24,
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            const Expanded(
-                              child: Text(
-                                'Estado de Seguridad',
-                                style: TextStyle(
-                                  color: AppTheme.whiteContainer,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: AppTheme.blackContainer.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(
-                              color: AppTheme.primaryColor.withOpacity(0.2),
-                              width: 1,
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: Colors.green.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: const Icon(
-                                  Icons.check_circle_rounded,
-                                  color: Colors.green,
-                                  size: 20,
-                                ),
-                              ),
-                              const SizedBox(width: 16),
-                              const Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Cuenta Segura',
-                                      style: TextStyle(
-                                        color: AppTheme.whiteContainer,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    SizedBox(height: 4),
-                                    Text(
-                                      'Tu cuenta está protegida correctamente',
-                                      style: TextStyle(
-                                        color: AppTheme.lightGreyContainer,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                  SecuritySettingsWidget(
+                    onOptionTap: (opt) => _onOptionTap(context, opt),
+                    biometricEnabled: false,
+                    onBiometricChanged: (_) {},
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  PrivacyDataWidget(
+                    onOptionTap: (opt) => _onOptionTap(context, opt),
                   ),
                   
                   const SizedBox(height: 24),
-                  
-                  // Opciones de seguridad
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          AppTheme.inputBackgroundDark,
-                          AppTheme.darkGreyContainer,
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(24),
-                      border: Border.all(
-                        color: AppTheme.purpleColor.withOpacity(0.3),
-                        width: 1,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppTheme.blackContainer.withOpacity(0.3),
-                          blurRadius: 12,
-                          offset: const Offset(0, 6),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    AppTheme.purpleColor.withOpacity(0.2),
-                                    AppTheme.purpleColor.withOpacity(0.1),
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: const Icon(
-                                Icons.security_rounded,
-                                color: AppTheme.purpleColor,
-                                size: 24,
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            const Expanded(
-                              child: Text(
-                                'Configuración de Seguridad',
-                                style: TextStyle(
-                                  color: AppTheme.whiteContainer,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        _buildSecurityOption(
-                          'Cambiar Contraseña',
-                          'Actualiza tu contraseña regularmente',
-                          Icons.lock_reset_rounded,
-                          AppTheme.purpleColor,
-                          () => _showChangePasswordDialog(context),
-                        ),
-                        const SizedBox(height: 12),
-                        _buildSecurityOption(
-                          'Verificación en Dos Pasos',
-                          'Agrega una capa extra de seguridad',
-                          Icons.verified_rounded,
-                          AppTheme.primaryColor,
-                          () => _showTwoFactorDialog(context),
-                        ),
-                        const SizedBox(height: 12),
-                        _buildSecurityOption(
-                          'Autenticación Biométrica',
-                          'Usa huella dactilar o Face ID',
-                          Icons.fingerprint_rounded,
-                          AppTheme.purpleColor,
-                          () => _showBiometricDialog(context),
-                        ),
-                        const SizedBox(height: 12),
-                        _buildSecurityOption(
-                          'Dispositivos Conectados',
-                          'Administra tus sesiones activas',
-                          Icons.devices_rounded,
-                          AppTheme.primaryColor,
-                          () => _showDevicesDialog(context),
-                        ),
-                      ],
-                    ),
-                  ),
+
+                  const SecurityTipsWidget(),
                   
                   const SizedBox(height: 24),
-                  
-                  // Privacidad y datos
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          AppTheme.inputBackgroundDark,
-                          AppTheme.darkGreyContainer,
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(24),
-                      border: Border.all(
-                        color: AppTheme.primaryColor.withOpacity(0.3),
-                        width: 1,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppTheme.blackContainer.withOpacity(0.3),
-                          blurRadius: 12,
-                          offset: const Offset(0, 6),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    AppTheme.primaryColor.withOpacity(0.2),
-                                    AppTheme.primaryColor.withOpacity(0.1),
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: const Icon(
-                                Icons.privacy_tip_rounded,
-                                color: AppTheme.primaryColor,
-                                size: 24,
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            const Expanded(
-                              child: Text(
-                                'Privacidad y Datos',
-                                style: TextStyle(
-                                  color: AppTheme.whiteContainer,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        _buildSecurityOption(
-                          'Descargar mis Datos',
-                          'Obtén una copia de tu información',
-                          Icons.download_rounded,
-                          AppTheme.primaryColor,
-                          () => _showDownloadDataDialog(context),
-                        ),
-                        const SizedBox(height: 12),
-                        _buildSecurityOption(
-                          'Eliminar mi Cuenta',
-                          'Eliminar permanentemente tu cuenta',
-                          Icons.delete_forever_rounded,
-                          Colors.red,
-                          () => _showDeleteAccountDialog(context),
-                        ),
-                        const SizedBox(height: 12),
-                        _buildSecurityOption(
-                          'Política de Privacidad',
-                          'Lee cómo manejamos tu información',
-                          Icons.policy_rounded,
-                          AppTheme.purpleColor,
-                          () => _showPrivacyPolicyDialog(context),
-                        ),
-                      ],
-                    ),
-                  ),
-                  
-                  const SizedBox(height: 24),
-                  
-                  // Tips de seguridad
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          AppTheme.purpleColor.withOpacity(0.1),
-                          AppTheme.primaryColor.withOpacity(0.1),
-                          AppTheme.blackContainer.withOpacity(0.5),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        stops: const [0.0, 0.4, 1.0],
-                      ),
-                      borderRadius: BorderRadius.circular(24),
-                      border: Border.all(
-                        color: AppTheme.purpleColor.withOpacity(0.3),
-                        width: 2,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppTheme.purpleColor.withOpacity(0.1),
-                          blurRadius: 20,
-                          offset: const Offset(0, 8),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    AppTheme.purpleColor.withOpacity(0.2),
-                                    AppTheme.primaryColor.withOpacity(0.2),
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: const Icon(
-                                Icons.lightbulb_rounded,
-                                color: AppTheme.whiteContainer,
-                                size: 24,
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            const Expanded(
-                              child: Text(
-                                'Consejos de Seguridad',
-                                style: TextStyle(
-                                  color: AppTheme.whiteContainer,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        _buildSecurityTip(
-                          Icons.password_rounded,
-                          'Usa contraseñas únicas',
-                          'Nunca reutilices contraseñas entre diferentes servicios',
-                          AppTheme.primaryColor,
-                        ),
-                        const SizedBox(height: 16),
-                        _buildSecurityTip(
-                          Icons.wifi_protected_setup_rounded,
-                          'Evita redes WiFi públicas',
-                          'No uses WiFi público para transacciones importantes',
-                          AppTheme.purpleColor,
-                        ),
-                        const SizedBox(height: 16),
-                        _buildSecurityTip(
-                          Icons.update_rounded,
-                          'Mantén la app actualizada',
-                          'Las actualizaciones incluyen mejoras de seguridad',
-                          AppTheme.primaryColor,
-                        ),
-                        const SizedBox(height: 16),
-                        _buildSecurityTip(
-                          Icons.warning_rounded,
-                          'No compartas tu información',
-                          'Nunca compartas credenciales con terceros',
-                          AppTheme.purpleColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                  
-                  const SizedBox(height: 24),
-                  
-                  // Contacto de seguridad
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.orange.withOpacity(0.8),
-                          Colors.orange.withOpacity(0.6),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.orange.withOpacity(0.3),
-                          blurRadius: 12,
-                          offset: const Offset(0, 6),
-                        ),
-                      ],
-                    ),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(20),
-                        onTap: () => _showSecurityContactDialog(context),
-                        child: const Padding(
-                          padding: EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.security_rounded,
-                                color: AppTheme.whiteContainer,
-                                size: 24,
-                              ),
-                              SizedBox(width: 12),
-                              Text(
-                                'Reportar Problema de Seguridad',
-                                style: TextStyle(
-                                  color: AppTheme.whiteContainer,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+
+                  SecurityContactWidget(
+                    onContactSecurity: () => _showSecurityContactDialog(context),
                   ),
                 ],
               ),
@@ -597,129 +54,36 @@ class SecurityPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSecurityOption(String title, String subtitle, IconData icon, Color accentColor, VoidCallback onTap) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppTheme.blackContainer.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: accentColor.withOpacity(0.2),
-          width: 1,
-        ),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(16),
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: accentColor.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Icon(icon, color: accentColor, size: 20),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: const TextStyle(
-                          color: AppTheme.whiteContainer,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        subtitle,
-                        style: const TextStyle(
-                          color: AppTheme.lightGreyContainer,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  color: accentColor.withOpacity(0.6),
-                  size: 16,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSecurityTip(IconData icon, String title, String description, Color accentColor) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppTheme.blackContainer.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: accentColor.withOpacity(0.2),
-          width: 1,
-        ),
-      ),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: accentColor.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(icon, color: accentColor, size: 18),
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    color: AppTheme.whiteContainer,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  description,
-                  style: const TextStyle(
-                    color: AppTheme.lightGreyContainer,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+  // Handle option taps from the widgets
+  void _onOptionTap(BuildContext context, String option) {
+    switch (option) {
+      case 'password':
+        _showComingSoonDialog(context, 'Cambiar Contraseña');
+        break;
+      case 'twoFactor':
+        _showComingSoonDialog(context, 'Verificación en Dos Pasos');
+        break;
+      case 'biometric':
+        _showComingSoonDialog(context, 'Autenticación Biométrica');
+        break;
+      case 'devices':
+        _showComingSoonDialog(context, 'Dispositivos Conectados');
+        break;
+      case 'downloadData':
+        _showComingSoonDialog(context, 'Descargar Datos');
+        break;
+      case 'deleteAccount':
+        _showDeleteAccountDialog(context);
+        break;
+      case 'privacyPolicy':
+        _showComingSoonDialog(context, 'Política de Privacidad');
+        break;
+      default:
+        _showComingSoonDialog(context, 'Función');
+    }
   }
 
   // Métodos de diálogos
-  void _showChangePasswordDialog(BuildContext context) => _showComingSoonDialog(context, 'Cambiar Contraseña');
-  void _showTwoFactorDialog(BuildContext context) => _showComingSoonDialog(context, 'Verificación en Dos Pasos');
-  void _showBiometricDialog(BuildContext context) => _showComingSoonDialog(context, 'Autenticación Biométrica');
-  void _showDevicesDialog(BuildContext context) => _showComingSoonDialog(context, 'Dispositivos Conectados');
-  void _showDownloadDataDialog(BuildContext context) => _showComingSoonDialog(context, 'Descargar Datos');
-  void _showPrivacyPolicyDialog(BuildContext context) => _showComingSoonDialog(context, 'Política de Privacidad');
 
   void _showDeleteAccountDialog(BuildContext context) {
     showDialog(

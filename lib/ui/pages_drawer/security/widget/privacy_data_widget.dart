@@ -27,16 +27,9 @@ class PrivacyDataWidget extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: AppTheme.primaryColor.withOpacity(0.3),
+          color: AppTheme.silver.withOpacity(0.3),
           width: 1,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.blackContainer.withOpacity(0.3),
-            blurRadius: 12,
-            offset: const Offset(0, 6),
-          ),
-        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,29 +68,44 @@ class PrivacyDataWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
+
           SecurityOptionWidget(
             title: 'Descargar mis Datos',
             subtitle: 'Obtén una copia de tu información',
             icon: Icons.download_rounded,
-            accentColor: AppTheme.primaryColor,
+            iconColor: AppTheme.silver,
+            backgroundIcon: AppTheme.silver.withOpacity(0.3),
+            border: AppTheme.silver.withOpacity(0.3),
+            titleColor: AppTheme.whiteContainer,
+            subtitleColor: AppTheme.whiteContainer,
             onTap: () => onOptionTap('downloadData'),
           ),
           const SizedBox(height: 12),
-          SecurityOptionWidget(
-            title: 'Eliminar mi Cuenta',
-            subtitle: 'Eliminar permanentemente tu cuenta',
-            icon: Icons.delete_forever_rounded,
-            accentColor: Colors.red,
-            onTap: () => onOptionTap('deleteAccount'),
-          ),
-          const SizedBox(height: 12),
+          
           SecurityOptionWidget(
             title: 'Política de Privacidad',
             subtitle: 'Lee cómo manejamos tu información',
             icon: Icons.policy_rounded,
-            accentColor: AppTheme.purpleColor,
+            iconColor: AppTheme.silver,
+            backgroundIcon: AppTheme.silver.withOpacity(0.3),
+            border: AppTheme.silver.withOpacity(0.3),
+            titleColor: AppTheme.whiteContainer,
+            subtitleColor: AppTheme.whiteContainer,
             onTap: () => onOptionTap('privacyPolicy'),
           ),
+
+          SecurityOptionWidget(
+            title: 'Eliminar mi Cuenta',
+            subtitle: 'Eliminar permanentemente tu cuenta',
+            icon: Icons.delete_forever_rounded,
+            iconColor: AppTheme.red,
+            backgroundIcon: AppTheme.red.withOpacity(0.3),
+            border: AppTheme.silver.withOpacity(0.3),
+            titleColor: AppTheme.red,
+            subtitleColor: AppTheme.red,
+            onTap: () => onOptionTap('deleteAccount'),
+          ),
+          const SizedBox(height: 12),
         ],
       ),
     );

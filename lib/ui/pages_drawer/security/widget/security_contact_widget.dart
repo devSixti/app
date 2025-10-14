@@ -17,16 +17,16 @@ class SecurityContactWidget extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.orange.withOpacity(0.8),
-            Colors.orange.withOpacity(0.6),
+            AppTheme.purpleColor.withOpacity(0.3),
+            AppTheme.purpleColor.withOpacity(0.9),
           ],
         ),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.orange.withOpacity(0.3),
+            color: AppTheme.purpleColor,
             blurRadius: 12,
-            offset: const Offset(0, 6),
+            offset: const Offset(0, 0),
           ),
         ],
       ),
@@ -52,7 +52,6 @@ class SecurityContactWidget extends StatelessWidget {
                     color: AppTheme.whiteContainer,
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
-                    letterSpacing: 0.5,
                   ),
                 ),
               ],
