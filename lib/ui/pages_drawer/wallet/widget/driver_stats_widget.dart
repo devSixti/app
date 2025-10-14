@@ -35,7 +35,7 @@ class DriverStatsWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(28),
         border: Border.all(
           color: AppTheme.primaryColor.withOpacity(0.3),
-          width: 2,
+          width: 1,
         ),
         boxShadow: [
           BoxShadow(

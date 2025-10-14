@@ -15,7 +15,7 @@ class AppTheme {
   static const Color darkGreyContainer = Color(0xFF1A1A1A); // Gris oscuro para cajas o paneles en modo oscuro
   static const Color darkDrawerBackground = Color(0xFF1D1B1F); // Fondo del Drawer (menú lateral) oscuro
   static const Color inputBackgroundDark = Color(0xFF2D2D2D); // Fondo de inputs en modo oscuro
-  static const Color inputBackgroundLigth = Color(0xFFF0F0F0); // Fondo de inputs en modo claro
+  static const Color inputBackgroundLight = Color(0xFFF0F0F0); // Fondo de inputs en modo claro
   static const Color darkScaffold = Color(0xFF201F1F); // Fondo principal del Scaffold en modo oscuro
   static const Color transparent = Color(0x00000000); // Color transparente
   static const Color silver = Color(0xFF848484); // Color plateado
@@ -42,7 +42,7 @@ class AppTheme {
         centerTitle: true, // Centra el título en el AppBar
       ),
       scaffoldBackgroundColor:
-          inputBackgroundLigth, // Fondo general de las pantallas claras
+          inputBackgroundLight, // Fondo general de las pantallas claras
       iconTheme: const IconThemeData(
         color: blackContainer, // Color de íconos en modo claro (negro)
       ),

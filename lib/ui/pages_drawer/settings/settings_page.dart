@@ -1,5 +1,4 @@
-import 'package:app/ui/pages_drawer/security/widget/security_settings_widget.dart';
-import 'package:app/ui/pages_drawer/settings/widgets/setting.dart';
+import 'package:app/ui/pages_drawer/settings/widgets/setting_location.dart';
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
 import 'widgets/settings_header_widget.dart';
@@ -25,7 +24,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.darkScaffold,
+      backgroundColor: AppTheme.darkDrawerBackground,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
@@ -78,16 +77,6 @@ class _SettingsPageState extends State<SettingsPage> {
                         selectedTheme = value;
                       });
                     },
-                  ),
-                  
-                  // Seguridad
-                  SecuritySettingsWidget(
-                    biometricEnabled: biometricEnabled,
-                    onBiometricChanged: (value) {
-                      setState(() {
-                        biometricEnabled = value;
-                      });
-                    }, onOptionTap: (String p1) {  },
                   ),
                 ],
               ),

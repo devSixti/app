@@ -233,7 +233,7 @@ class TravelItemWidget extends StatelessWidget {
             children: [
               const SizedBox(width: 6),
               Container(
-                width: 2,
+                width: 1,
                 height: 20,
                 decoration: BoxDecoration(
                   color: AppTheme.lightGreyContainer.withOpacity(0.3),

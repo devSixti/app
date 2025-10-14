@@ -12,7 +12,7 @@ class SecurityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.darkScaffold,
+      backgroundColor: AppTheme.darkDrawerBackground,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [

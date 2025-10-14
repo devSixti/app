@@ -66,7 +66,7 @@ class TravelsListWidget extends StatelessWidget {
                 shape: BoxShape.circle,
                 border: Border.all(
                   color: AppTheme.primaryColor.withOpacity(0.3),
-                  width: 2,
+                  width: 1,
                 ),
               ),
               child: const Icon(

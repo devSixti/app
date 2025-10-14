@@ -53,11 +53,11 @@ class _FaqItemWidgetState extends State<FaqItemWidget>
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: AppTheme.inputBackgroundDark,
+        color: AppTheme.darkGreyContainer,
         borderRadius: AppTheme.border,
         border: Border.all(
-          color: _accentColor,
-          width: 2,
+          color: AppTheme.silver.withOpacity(0.3),
+          width: 1,
         ),
       ),
       child: Material(
@@ -124,7 +124,7 @@ class _FaqItemWidgetState extends State<FaqItemWidget>
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: AppTheme.blackContainer.withOpacity(0.3),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppTheme.border,
                       border: Border.all(
                         color: _accentColor.withOpacity(0.2),
                         width: 1,

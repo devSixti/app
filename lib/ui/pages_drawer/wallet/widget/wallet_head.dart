@@ -65,7 +65,7 @@ class WalletHeaderWidget extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(
                     color: AppTheme.primaryColor.withOpacity(0.4),
-                    width: 2,
+                    width: 1,
                   ),
                 ),
                 child: Container(

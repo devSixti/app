@@ -4,14 +4,18 @@ import '../../../../core/theme/app_theme.dart';
 class SettingsSectionWidget extends StatelessWidget {
   final String title;
   final IconData icon;
-  final Color accentColor;
+  final Color iconColor;
+  final Color iconBackgroundColor;
+  final Color borderColor;
   final List<Widget> children;
 
   const SettingsSectionWidget({
     super.key,
     required this.title,
     required this.icon,
-    required this.accentColor,
+    required this.iconColor,
+    required this.iconBackgroundColor,
+    required this.borderColor,
     required this.children,
   });
 
@@ -25,23 +29,13 @@ class SettingsSectionWidget extends StatelessWidget {
         gradient: LinearGradient(
           colors: [
             AppTheme.inputBackgroundDark,
-            AppTheme.darkGreyContainer,
+            AppTheme.darkGreyContainer
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(
-          color: accentColor.withOpacity(0.3),
-          width: 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.blackContainer.withOpacity(0.3),
-            blurRadius: 12,
-            offset: const Offset(0, 6),
-          ),
-        ],
+        borderRadius: AppTheme.border,
+        border: Border.all(color: borderColor.withOpacity(0.3), width: 1),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,19 +45,10 @@ class SettingsSectionWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      accentColor.withOpacity(0.2),
-                      accentColor.withOpacity(0.1),
-                    ],
-                  ),
+                  color: iconBackgroundColor.withOpacity(0.3),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Icon(
-                  icon,
-                  color: accentColor,
-                  size: 24,
-                ),
+                child: Icon(icon, color: iconColor, size: 24),
               ),
               const SizedBox(width: 16),
               Expanded(

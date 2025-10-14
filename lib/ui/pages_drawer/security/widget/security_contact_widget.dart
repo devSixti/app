@@ -40,17 +40,11 @@ class SecurityContactWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.security_rounded,
-                  color: AppTheme.whiteContainer,
-                  size: 24,
-                ),
-                SizedBox(width: 12),
                 Text(
                   'Reportar Problema de Seguridad',
                   style: TextStyle(
                     color: AppTheme.whiteContainer,
-                    fontSize: 18,
+                    fontSize: AppTheme.mediumSize,
                     fontWeight: FontWeight.w700,
                   ),
                 ),

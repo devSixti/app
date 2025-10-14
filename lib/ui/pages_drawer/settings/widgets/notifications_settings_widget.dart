@@ -22,7 +22,9 @@ class NotificationsSettingsWidget extends StatelessWidget {
     return SettingsSectionWidget(
       title: 'Notificaciones',
       icon: Icons.notifications_rounded,
-      accentColor: AppTheme.primaryColor,
+      iconColor: AppTheme.primaryColor,
+      iconBackgroundColor: AppTheme.primaryColor,
+      borderColor: AppTheme.silver.withOpacity(0.3),
       children: [
         SettingsSwitchWidget(
           title: 'Notificaciones Push',
@@ -30,7 +32,8 @@ class NotificationsSettingsWidget extends StatelessWidget {
           value: notificationsEnabled,
           onChanged: onNotificationsChanged,
           icon: Icons.notifications_active_rounded,
-          accentColor: AppTheme.primaryColor,
+          accentColor: AppTheme.silver,
+          onChangedColor: AppTheme.purpleColor,
         ),
         SettingsSwitchWidget(
           title: 'Sonidos',
@@ -38,7 +41,8 @@ class NotificationsSettingsWidget extends StatelessWidget {
           value: soundEnabled,
           onChanged: onSoundChanged,
           icon: Icons.volume_up_rounded,
-          accentColor: AppTheme.primaryColor,
+          accentColor: AppTheme.silver,
+          onChangedColor: AppTheme.purpleColor,
         ),
       ],
     );
