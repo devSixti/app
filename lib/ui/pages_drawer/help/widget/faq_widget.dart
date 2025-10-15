@@ -28,7 +28,7 @@ class FaqWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: AppTheme.primaryColor.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppTheme.border,
                 ),
                 child: const Icon(
                   Icons.quiz_rounded,

@@ -18,26 +18,8 @@ class TransactionsHistoryWidget extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            AppTheme.inputBackgroundDark,
-            AppTheme.darkGreyContainer,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(
-          color: AppTheme.purpleColor.withOpacity(0.3),
-          width: 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.blackContainer.withOpacity(0.3),
-            blurRadius: 12,
-            offset: const Offset(0, 6),
-          ),
-        ],
+        color: AppTheme.inputBackgroundDark,
+        borderRadius: AppTheme.border,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,17 +29,12 @@ class TransactionsHistoryWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      AppTheme.purpleColor.withOpacity(0.2),
-                      AppTheme.purpleColor.withOpacity(0.1),
-                    ],
-                  ),
-                  borderRadius: BorderRadius.circular(12),
+                  color: AppTheme.primaryColor.withOpacity(0.1),
+                  borderRadius: AppTheme.border,
                 ),
                 child: const Icon(
                   Icons.history_rounded,
-                  color: AppTheme.purpleColor,
+                  color: AppTheme.primaryColor,
                   size: 24,
                 ),
               ),
@@ -111,7 +88,7 @@ class TransactionsHistoryWidget extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppTheme.blackContainer.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: AppTheme.border,
         border: Border.all(
           color: color.withOpacity(0.2),
           width: 1,
@@ -123,7 +100,7 @@ class TransactionsHistoryWidget extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: color.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: AppTheme.border,
             ),
             child: Icon(
               _getTransactionIcon(type),
@@ -163,7 +140,7 @@ class TransactionsHistoryWidget extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: _getStatusColor(transaction['status']).withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: AppTheme.border
                       ),
                       child: Text(
                         _getStatusText(transaction['status']),
@@ -201,7 +178,7 @@ class TransactionsHistoryWidget extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: AppTheme.purpleColor.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: AppTheme.border,
               border: Border.all(
                 color: AppTheme.purpleColor.withOpacity(0.3),
                 width: 1,

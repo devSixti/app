@@ -22,28 +22,8 @@ class DriverStatsWidget extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            AppTheme.primaryColor.withOpacity(0.1),
-            AppTheme.purpleColor.withOpacity(0.1),
-            AppTheme.blackContainer.withOpacity(0.5),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          stops: const [0.0, 0.4, 1.0],
-        ),
-        borderRadius: BorderRadius.circular(28),
-        border: Border.all(
-          color: AppTheme.primaryColor.withOpacity(0.3),
-          width: 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.primaryColor.withOpacity(0.1),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
-          ),
-        ],
+        color: AppTheme.inputBackgroundDark,
+        borderRadius: AppTheme.border,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,17 +33,12 @@ class DriverStatsWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      AppTheme.primaryColor.withOpacity(0.2),
-                      AppTheme.purpleColor.withOpacity(0.2),
-                    ],
-                  ),
-                  borderRadius: BorderRadius.circular(12),
+                  color: AppTheme.primaryColor.withOpacity(0.1),
+                  borderRadius: AppTheme.border,
                 ),
                 child: const Icon(
                   Icons.analytics_rounded,
-                  color: AppTheme.whiteContainer,
+                  color: AppTheme.primaryColor,
                   size: 24,
                 ),
               ),
@@ -91,7 +66,7 @@ class DriverStatsWidget extends StatelessWidget {
                   'Hoy',
                   dailyEarnings,
                   Icons.today_rounded,
-                  AppTheme.primaryColor,
+                  AppTheme.silver,
                 ),
               ),
               const SizedBox(width: 12),
@@ -100,7 +75,7 @@ class DriverStatsWidget extends StatelessWidget {
                   'Esta Semana',
                   weeklyEarnings,
                   Icons.date_range_rounded,
-                  AppTheme.purpleColor,
+                  AppTheme.silver,
                 ),
               ),
             ],
@@ -113,7 +88,7 @@ class DriverStatsWidget extends StatelessWidget {
                   'Este Mes',
                   monthlyEarnings,
                   Icons.calendar_month_rounded,
-                  AppTheme.primaryColor,
+                  AppTheme.silver,
                 ),
               ),
               const SizedBox(width: 12),
@@ -122,7 +97,7 @@ class DriverStatsWidget extends StatelessWidget {
                   'Viajes Totales',
                   totalTrips.toDouble(),
                   Icons.directions_car_rounded,
-                  AppTheme.purpleColor,
+                  AppTheme.silver,
                   isCount: true,
                 ),
               ),
@@ -137,12 +112,8 @@ class DriverStatsWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppTheme.blackContainer.withOpacity(0.3),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: color.withOpacity(0.3),
-          width: 1,
-        ),
+        color: AppTheme.darkDrawerBackground,
+        borderRadius: AppTheme.border,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,7 +122,7 @@ class DriverStatsWidget extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: color.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: AppTheme.border,
             ),
             child: Icon(icon, color: color, size: 18),
           ),

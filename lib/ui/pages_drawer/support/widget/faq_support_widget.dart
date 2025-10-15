@@ -17,7 +17,7 @@ class FaqSupportWidget extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: AppTheme.border,
         border: Border.all(color: AppTheme.silver.withOpacity(0.3), width: 1),
         boxShadow: [
           BoxShadow(
@@ -109,7 +109,7 @@ class FaqSupportWidget extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               color: AppTheme.blackContainer.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: AppTheme.border,
               border: Border.all(
                 color: AppTheme.silver.withOpacity(0.3),
                 width: 1,
@@ -118,7 +118,7 @@ class FaqSupportWidget extends StatelessWidget {
             child: Material(
               color: Colors.transparent,
               child: InkWell(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: AppTheme.border,
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.push(
@@ -169,7 +169,7 @@ class FaqSupportWidget extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppTheme.blackContainer.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: AppTheme.border,
         border: Border.all(
           color: borderColor.withOpacity(0.3), // Borde visible e independiente
           width: 1.5,
@@ -185,7 +185,7 @@ class FaqSupportWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: iconColor.withOpacity(0.2), // Fondo del ícono
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: AppTheme.border,
                   border: Border.all(
                     color: iconColor.withOpacity(
                       0.4,

@@ -28,7 +28,7 @@ class PaymentMethodsWidget extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: AppTheme.border,
         border: Border.all(
           color: AppTheme.primaryColor.withOpacity(0.3),
           width: 1,
@@ -55,7 +55,7 @@ class PaymentMethodsWidget extends StatelessWidget {
                       AppTheme.primaryColor.withOpacity(0.1),
                     ],
                   ),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppTheme.border,
                 ),
                 child: const Icon(
                   Icons.credit_card_rounded,
@@ -78,7 +78,7 @@ class PaymentMethodsWidget extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   color: AppTheme.primaryColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppTheme.border,
                   border: Border.all(
                     color: AppTheme.primaryColor.withOpacity(0.3),
                     width: 1,
@@ -87,7 +87,7 @@ class PaymentMethodsWidget extends StatelessWidget {
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: AppTheme.border,
                     onTap: onAddMethod,
                     child: const Padding(
                       padding: EdgeInsets.all(8),
@@ -122,7 +122,7 @@ class PaymentMethodsWidget extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         color: AppTheme.blackContainer.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: AppTheme.border,
         border: Border.all(
           color: isDefault 
             ? AppTheme.primaryColor.withOpacity(0.5)
@@ -133,7 +133,7 @@ class PaymentMethodsWidget extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: AppTheme.border,
           onTap: () => onMethodTap(method),
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -143,7 +143,7 @@ class PaymentMethodsWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: color.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: AppTheme.border,
                   ),
                   child: Icon(_getCardIcon(type), color: color, size: 20),
                 ),
@@ -171,7 +171,7 @@ class PaymentMethodsWidget extends StatelessWidget {
                               ),
                               decoration: BoxDecoration(
                                 color: AppTheme.primaryColor.withOpacity(0.2),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: AppTheme.border
                               ),
                               child: const Text(
                                 'Principal',
@@ -219,7 +219,7 @@ class PaymentMethodsWidget extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: AppTheme.primaryColor.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: AppTheme.border,
               border: Border.all(
                 color: AppTheme.primaryColor.withOpacity(0.3),
                 width: 1,

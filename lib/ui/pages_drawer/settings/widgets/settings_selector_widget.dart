@@ -108,7 +108,7 @@ class SettingsSelectorWidget extends StatelessWidget {
         return AlertDialog(
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: AppTheme.border,
             side: BorderSide(color: accentColor.withOpacity(0.3)),
           ),
           title: Text(
