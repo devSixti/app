@@ -99,22 +99,17 @@ class TravelsListWidget extends StatelessWidget {
           ),
           const SizedBox(height: 32),
           Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  AppTheme.primaryColor.withOpacity(0.8),
-                  AppTheme.purpleColor.withOpacity(0.8),
-                ],
-              ),
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: AppTheme.primaryColor.withOpacity(0.3),
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
+  decoration: BoxDecoration(
+    color: AppTheme.primaryColor.withOpacity(0.8),
+    borderRadius: BorderRadius.circular(16),
+    boxShadow: [
+      BoxShadow(
+        color: AppTheme.primaryColor.withOpacity(0.3),
+        blurRadius: 8,
+        offset: const Offset(0, 4),
+      ),
+    ],
+  ),
             child: Material(
               color: Colors.transparent,
               child: InkWell(

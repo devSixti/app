@@ -19,26 +19,12 @@ class TravelItemWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            AppTheme.inputBackgroundDark,
-            AppTheme.darkGreyContainer,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+        color: AppTheme.inputBackgroundDark,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: statusColor.withOpacity(0.3),
           width: 1,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.blackContainer.withOpacity(0.3),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
       ),
       child: Material(
         color: Colors.transparent,
@@ -275,9 +261,9 @@ class TravelItemWidget extends StatelessWidget {
   Color _getStatusColor(String status) {
     switch (status.toLowerCase()) {
       case 'completed':
-        return Colors.green;
+        return AppTheme.primaryColor;
       case 'cancelled':
-        return Colors.red;
+        return AppTheme.red;
       case 'ongoing':
         return AppTheme.primaryColor;
       default:
