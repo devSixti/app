@@ -16,19 +16,8 @@ class FaqWidget extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            AppTheme.inputBackgroundDark,
-            AppTheme.darkGreyContainer,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(
-          color: AppTheme.silver.withOpacity(0.3),
-          width: 1,
-        ),
+        color: AppTheme.inputBackgroundDark,
+        borderRadius: AppTheme.border,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,10 +52,6 @@ class FaqWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
                   borderRadius: AppTheme.border,
-                  border: Border.all(
-                    color: AppTheme.silver.withOpacity(0.3),
-                    width: 1,
-                  ),
                 ),
                 child: Text(
                   '${filteredFaqItems.length}',
@@ -99,12 +84,12 @@ class FaqWidget extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: AppTheme.silver.withOpacity(0.1),
+                      color: AppTheme.darkGreyContainer,
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
                       Icons.search_off_rounded,
-                      color: AppTheme.silver,
+                      color: AppTheme.whiteContainer,
                       size: 48,
                     ),
                   ),
@@ -122,7 +107,7 @@ class FaqWidget extends StatelessWidget {
                   const Text(
                     'Intenta con otras palabras clave o contacta nuestro soporte',
                     style: TextStyle(
-                      color: AppTheme.lightGreyContainer,
+                      color: AppTheme.whiteContainer,
                       fontSize: 14,
                     ),
                     textAlign: TextAlign.center,

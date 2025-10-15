@@ -20,7 +20,6 @@ class LocationSettingsWidget extends StatelessWidget {
       icon: Icons.location_on_rounded,
       iconColor: AppTheme.primaryColor,
       iconBackgroundColor: AppTheme.primaryColor,
-      borderColor: AppTheme.silver,
       children: [
         SettingsSwitchWidget(
           title: 'Ubicación GPS',

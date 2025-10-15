@@ -55,10 +55,6 @@ class _FaqItemWidgetState extends State<FaqItemWidget>
       decoration: BoxDecoration(
         color: AppTheme.darkGreyContainer,
         borderRadius: AppTheme.border,
-        border: Border.all(
-          color: AppTheme.silver.withOpacity(0.3),
-          width: 1,
-        ),
       ),
       child: Material(
         color: Colors.transparent,
@@ -123,12 +119,8 @@ class _FaqItemWidgetState extends State<FaqItemWidget>
                     margin: const EdgeInsets.only(top: 16),
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: AppTheme.blackContainer.withOpacity(0.3),
+                      color: AppTheme.inputBackgroundDark,
                       borderRadius: AppTheme.border,
-                      border: Border.all(
-                        color: _accentColor.withOpacity(0.2),
-                        width: 1,
-                      ),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,7 +145,7 @@ class _FaqItemWidgetState extends State<FaqItemWidget>
                         Text(
                           widget.answer,
                           style: const TextStyle(
-                            color: AppTheme.lightGreyContainer,
+                            color: AppTheme.whiteContainer,
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
                             height: 1.5,

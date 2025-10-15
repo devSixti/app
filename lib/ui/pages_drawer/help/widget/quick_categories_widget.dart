@@ -31,35 +31,30 @@ class QuickCategoriesWidget extends StatelessWidget {
                 _buildCategoryChip(
                   'Pagos',
                   Icons.payment_rounded,
-                  borderColor: AppTheme.silver.withOpacity(0.3),
                   iconColor: AppTheme.primaryColor,
                   textColor: AppTheme.silver,
                 ),
                 _buildCategoryChip(
                   'Viajes',
                   Icons.directions_car_rounded,
-                  borderColor: AppTheme.silver.withOpacity(0.3),
                   iconColor: AppTheme.primaryColor,
                   textColor: AppTheme.silver,
                 ),
                 _buildCategoryChip(
                   'Cuenta',
                   Icons.account_circle_rounded,
-                  borderColor: AppTheme.silver.withOpacity(0.3),
                   iconColor: AppTheme.primaryColor,
                   textColor: AppTheme.silver,
                 ),
                 _buildCategoryChip(
                   'Seguridad',
                   Icons.security_rounded,
-                  borderColor: AppTheme.silver.withOpacity(0.3),
                   iconColor: AppTheme.primaryColor,
                   textColor: AppTheme.silver,
                 ),
                 _buildCategoryChip(
                   'Soporte',
                   Icons.support_agent_rounded,
-                  borderColor: AppTheme.silver.withOpacity(0.3),
                   iconColor: AppTheme.primaryColor,
                   textColor: AppTheme.silver,
                 ),
@@ -74,21 +69,19 @@ class QuickCategoriesWidget extends StatelessWidget {
   Widget _buildCategoryChip(
     String label,
     IconData icon, {
-    required Color borderColor,
     required Color iconColor,
     required Color textColor,
   }) {
     return Container(
       margin: const EdgeInsets.only(right: 12),
       decoration: BoxDecoration(
-        color: AppTheme.darkScaffold,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: borderColor, width: 1),
+        color: AppTheme.inputBackgroundDark,
+        borderRadius: AppTheme.border,
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: AppTheme.border,
           onTap: () => onCategorySelected(label),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),

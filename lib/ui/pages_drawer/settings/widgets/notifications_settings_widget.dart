@@ -23,8 +23,7 @@ class NotificationsSettingsWidget extends StatelessWidget {
       title: 'Notificaciones',
       icon: Icons.notifications_rounded,
       iconColor: AppTheme.primaryColor,
-      iconBackgroundColor: AppTheme.primaryColor,
-      borderColor: AppTheme.silver.withOpacity(0.3),
+      iconBackgroundColor: AppTheme.primaryColor.withOpacity(0.1),
       children: [
         SettingsSwitchWidget(
           title: 'Notificaciones Push',

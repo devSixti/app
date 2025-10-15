@@ -6,7 +6,6 @@ class SettingsSectionWidget extends StatelessWidget {
   final IconData icon;
   final Color iconColor;
   final Color iconBackgroundColor;
-  final Color borderColor;
   final List<Widget> children;
 
   const SettingsSectionWidget({
@@ -15,7 +14,6 @@ class SettingsSectionWidget extends StatelessWidget {
     required this.icon,
     required this.iconColor,
     required this.iconBackgroundColor,
-    required this.borderColor,
     required this.children,
   });
 
@@ -26,16 +24,8 @@ class SettingsSectionWidget extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            AppTheme.inputBackgroundDark, // Color de los campos completos
-            AppTheme.darkGreyContainer, // Color de los campos completos
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+        color: AppTheme.inputBackgroundDark,
         borderRadius: AppTheme.border,
-        border: Border.all(color: borderColor.withOpacity(0.3), width: 1),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +36,7 @@ class SettingsSectionWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: iconBackgroundColor.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppTheme.border,
                 ),
                 child: Icon(icon, color: iconColor, size: 24),
               ),

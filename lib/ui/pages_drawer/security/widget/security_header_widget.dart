@@ -11,13 +11,13 @@ class SecurityHeaderWidget extends StatelessWidget {
       floating: false,
       pinned: true,
       snap: false,
-      backgroundColor: AppTheme.inputBackgroundDark,
-      surfaceTintColor: AppTheme.inputBackgroundDark,
-      shadowColor: AppTheme.inputBackgroundDark,
+      backgroundColor: AppTheme.darkGreyContainer,
+      surfaceTintColor: AppTheme.darkGreyContainer,
+      shadowColor: AppTheme.darkGreyContainer,
       automaticallyImplyLeading: false,
       elevation: 0,
       flexibleSpace: FlexibleSpaceBar(
-        centerTitle: true,
+      centerTitle: true,
 
         title: Padding(
           padding: const EdgeInsets.only(top: 10.0),
@@ -33,15 +33,7 @@ class SecurityHeaderWidget extends StatelessWidget {
         ),
         background: Container(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                AppTheme.inputBackgroundDark,
-                AppTheme.darkDrawerBackground,
-              ],
-              stops: [0.0, 1.0],
-            ),
+            color: AppTheme.darkGreyContainer,
           ),
           child: SafeArea(
             child: Padding(

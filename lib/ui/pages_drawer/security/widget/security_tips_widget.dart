@@ -11,19 +11,8 @@ class SecurityTipsWidget extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            AppTheme.inputBackgroundDark,
-            AppTheme.darkGreyContainer,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(
-          color: AppTheme.silver.withOpacity(0.3),
-          width: 1,
-        ),
+        color: AppTheme.inputBackgroundDark,
+        borderRadius: AppTheme.border,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,8 +22,8 @@ class SecurityTipsWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppTheme.primaryColor.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(12),
+                  color: AppTheme.primaryColor.withOpacity(0.1),
+                  borderRadius: AppTheme.border,
                 ),
                 child: const Icon(
                   Icons.lightbulb_rounded,
@@ -93,20 +82,16 @@ class SecurityTipsWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppTheme.blackContainer.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: accentColor.withOpacity(0.2),
-          width: 1,
-        ),
+        color: AppTheme.darkDrawerBackground,
+        borderRadius: AppTheme.border,
       ),
       child: Row(
         children: [
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: accentColor.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(10),
+              color: accentColor.withOpacity(0.1),
+              borderRadius: AppTheme.border,
             ),
             child: Icon(icon, color: accentColor, size: 18),
           ),
@@ -129,7 +114,6 @@ class SecurityTipsWidget extends StatelessWidget {
                   style: const TextStyle(
                     color: AppTheme.lightGreyContainer,
                     fontSize: 13,
-                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ],

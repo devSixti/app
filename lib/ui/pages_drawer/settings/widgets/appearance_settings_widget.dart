@@ -24,7 +24,6 @@ class AppearanceSettingsWidget extends StatelessWidget {
       icon: Icons.palette_rounded,
       iconColor: AppTheme.primaryColor,
       iconBackgroundColor: AppTheme.primaryColor,
-      borderColor: AppTheme.silver,
       children: [
         SettingsSelectorWidget(
           title: 'Idioma',

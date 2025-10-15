@@ -28,11 +28,7 @@ class SettingsSwitchWidget extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         color: AppTheme.blackContainer.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: accentColor.withOpacity(0.2),
-          width: 1,
-        ),
+        borderRadius: AppTheme.border,
       ),
       child: Row(
         children: [
@@ -40,7 +36,7 @@ class SettingsSwitchWidget extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: accentColor.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: AppTheme.border,
             ),
             child: Icon(icon, color: accentColor, size: 20),
           ),

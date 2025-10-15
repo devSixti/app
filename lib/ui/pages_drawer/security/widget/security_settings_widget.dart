@@ -17,19 +17,8 @@ class SecuritySettingsWidget extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            AppTheme.inputBackgroundDark,
-            AppTheme.darkGreyContainer,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(
-          color: AppTheme.silver.withOpacity(0.3),
-          width: 1,
-        ),
+        color: AppTheme.inputBackgroundDark,
+        borderRadius: AppTheme.border,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,13 +28,8 @@ class SecuritySettingsWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      AppTheme.primaryColor.withOpacity(0.2),
-                      AppTheme.primaryColor.withOpacity(0.1),
-                    ],
-                  ),
-                  borderRadius: BorderRadius.circular(12),
+                  color: AppTheme.primaryColor.withOpacity(0.1),
+                  borderRadius: AppTheme.border,
                 ),
                 child: const Icon(
                   Icons.security_rounded,
@@ -74,7 +58,6 @@ class SecuritySettingsWidget extends StatelessWidget {
             icon: Icons.lock_reset_rounded,
             iconColor: AppTheme.silver,
             backgroundIcon: AppTheme.silver.withOpacity(0.3),
-            border: AppTheme.silver.withOpacity(0.3),
             titleColor: AppTheme.whiteContainer,
             subtitleColor: AppTheme.whiteContainer,
             onTap: () => onOptionTap('password'),
@@ -86,7 +69,6 @@ class SecuritySettingsWidget extends StatelessWidget {
             icon: Icons.verified_rounded,
             iconColor: AppTheme.silver,
             backgroundIcon: AppTheme.silver.withOpacity(0.3),
-            border: AppTheme.silver.withOpacity(0.3),
             titleColor: AppTheme.whiteContainer,
             subtitleColor: AppTheme.whiteContainer,
             onTap: () => onOptionTap('twoFactor'),
@@ -98,7 +80,6 @@ class SecuritySettingsWidget extends StatelessWidget {
             icon: Icons.fingerprint_rounded,
             iconColor: AppTheme.silver,
             backgroundIcon: AppTheme.silver.withOpacity(0.3),
-            border: AppTheme.silver.withOpacity(0.3),
             titleColor: AppTheme.whiteContainer,
             subtitleColor: AppTheme.whiteContainer,
             onTap: () => onOptionTap('biometric'),
@@ -110,7 +91,6 @@ class SecuritySettingsWidget extends StatelessWidget {
             icon: Icons.devices_rounded,
             iconColor: AppTheme.silver,
             backgroundIcon: AppTheme.silver.withOpacity(0.3),
-            border: AppTheme.silver.withOpacity(0.3),
             titleColor: AppTheme.whiteContainer,
             subtitleColor: AppTheme.whiteContainer,
             onTap: () => onOptionTap('devices'),

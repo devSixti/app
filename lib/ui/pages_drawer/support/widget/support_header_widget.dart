@@ -11,9 +11,9 @@ class SupportHeaderWidget extends StatelessWidget {
       floating: false,
       pinned: true,
       snap: false,
-      backgroundColor: AppTheme.inputBackgroundDark,
-      surfaceTintColor: AppTheme.inputBackgroundDark,
-      shadowColor: AppTheme.inputBackgroundDark,
+      backgroundColor: AppTheme.darkDrawerBackground,
+      surfaceTintColor: AppTheme.darkDrawerBackground,
+      shadowColor: AppTheme.darkDrawerBackground,
       automaticallyImplyLeading: false,
       elevation: 0,
       flexibleSpace: FlexibleSpaceBar(
@@ -33,15 +33,7 @@ class SupportHeaderWidget extends StatelessWidget {
         ),
         background: Container(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(255, 78, 78, 78),
-                AppTheme.darkGreyContainer,
-              ],
-              stops: [0.0, 1.0],
-            ),
+            color: AppTheme.darkDrawerBackground,
           ),
           child: SafeArea(
             child: Padding(

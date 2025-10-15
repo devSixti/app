@@ -28,16 +28,12 @@ class SettingsSelectorWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppTheme.blackContainer.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: accentColor.withOpacity(0.2),
-          width: 1,
-        ),
+        borderRadius: AppTheme.border,
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: AppTheme.border,
           onTap: () => _showOptionsDialog(context),
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -47,7 +43,7 @@ class SettingsSelectorWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: accentColor.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: AppTheme.border,
                   ),
                   child: Icon(icon, color: accentColor, size: 20),
                 ),
@@ -80,11 +76,7 @@ class SettingsSelectorWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
                     color: idiomColor,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: idiomColor.withOpacity(0.3),
-                      width: 1,
-                    ),
+                    borderRadius: AppTheme.border,
                   ),
                   child: Text(
                     currentValue,
@@ -136,7 +128,7 @@ class SettingsSelectorWidget extends StatelessWidget {
                   color: currentValue == option 
                     ? accentColor.withOpacity(0.1)
                     : AppTheme.blackContainer.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppTheme.border,
                   border: Border.all(
                     color: currentValue == option 
                       ? accentColor.withOpacity(0.5)
@@ -147,7 +139,7 @@ class SettingsSelectorWidget extends StatelessWidget {
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: AppTheme.border,
                     onTap: () {
                       onChanged(option);
                       Navigator.of(context).pop();

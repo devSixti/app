@@ -16,19 +16,8 @@ class HelpSearchWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        color: AppTheme.darkGreyContainer,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: AppTheme.silver.withOpacity(0.3),
-          width: 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.blackContainer.withOpacity(0.2),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        color: AppTheme.inputBackgroundDark,
+        borderRadius: AppTheme.border,
       ),
       child: TextField(
         controller: searchController,
@@ -47,7 +36,7 @@ class HelpSearchWidget extends StatelessWidget {
             margin: const EdgeInsets.all(12),
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: AppTheme.border,
             ),
             child: const Icon(
               Icons.search_rounded,

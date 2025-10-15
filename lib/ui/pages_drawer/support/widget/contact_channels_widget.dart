@@ -11,23 +11,8 @@ class ContactChannelsWidget extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24),
-
-        // Borde sutil con opacidad más baja y línea delgada
-        border: Border.all(
-          color: AppTheme.silver.withOpacity(0.3),
-          width: 1,
-        ),
-
-        // Fondo degradado
-        gradient: const LinearGradient(
-          colors: [
-            AppTheme.inputBackgroundDark,
-            AppTheme.darkGreyContainer,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+        borderRadius: AppTheme.border,
+        color: AppTheme.inputBackgroundDark,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,12 +24,8 @@ class ContactChannelsWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppTheme.primaryColor.withOpacity(0.25),
+                  color: AppTheme.primaryColor.withOpacity(0.1),
                   borderRadius: AppTheme.border,
-                  border: Border.all(
-                    color: AppTheme.silver.withOpacity(0.15),
-                    width: 1,
-                  ),
                 ),
                 child: const Icon(
                   Icons.contact_phone_rounded,
@@ -76,7 +57,6 @@ class ContactChannelsWidget extends StatelessWidget {
             'Chat en Vivo',
             'Conversación instantánea con nuestro equipo',
             Icons.chat_bubble_rounded,
-            AppTheme.silver, // Color del borde
             AppTheme.silver, // Color del icono
             () => _showChatDialog(context),
           ),
@@ -89,7 +69,6 @@ class ContactChannelsWidget extends StatelessWidget {
             '+57 (1) 234-5678 - Disponible 24/7',
             Icons.phone_rounded,
             AppTheme.silver,
-            AppTheme.silver,
             () => _showCallDialog(context),
           ),
 
@@ -101,7 +80,6 @@ class ContactChannelsWidget extends StatelessWidget {
             'soporte@xisti.com - Respuesta en 24h',
             Icons.email_rounded,
             AppTheme.silver,
-            AppTheme.silver,
             () => _showEmailDialog(context),
           ),
 
@@ -112,7 +90,6 @@ class ContactChannelsWidget extends StatelessWidget {
             'WhatsApp',
             '+57 300 123 4567 - Mensajes rápidos',
             Icons.message_rounded,
-            AppTheme.silver,
             AppTheme.silver,
             () => _showWhatsAppDialog(context),
           ),
@@ -126,25 +103,18 @@ class ContactChannelsWidget extends StatelessWidget {
     String title,
     String subtitle,
     IconData icon,
-    Color borderColor,
     Color iconColor,
     VoidCallback onTap,
   ) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.blackContainer.withOpacity(0.18),
-        borderRadius: BorderRadius.circular(16),
-
-        // Borde más fino y opaco, siguiendo la estética del bloque principal
-        border: Border.all(
-          color: borderColor.withOpacity(0.25),
-          width: 1.1,
-        ),
+        color: AppTheme.darkGreyContainer,
+        borderRadius: AppTheme.border,
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: AppTheme.border,
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -154,8 +124,8 @@ class ContactChannelsWidget extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: iconColor.withOpacity(0.15),
-                    borderRadius: BorderRadius.circular(12),
+                    color: iconColor.withOpacity(0.1),
+                    borderRadius: AppTheme.border,
                   ),
                   child: Icon(
                     icon,
@@ -195,7 +165,7 @@ class ContactChannelsWidget extends StatelessWidget {
                 // Flecha direccional con opacidad media
                 Icon(
                   Icons.arrow_forward_ios_rounded,
-                  color: borderColor.withOpacity(0.5),
+                  color: iconColor,
                   size: 16,
                 ),
               ],
@@ -212,7 +182,7 @@ class ContactChannelsWidget extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: AppTheme.inputBackgroundDark,
+          backgroundColor: AppTheme.darkDrawerBackground,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
             side: BorderSide(color: AppTheme.primaryColor.withOpacity(0.25)),

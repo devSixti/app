@@ -21,7 +21,7 @@ class SecurityContactWidget extends StatelessWidget {
             AppTheme.purpleColor.withOpacity(0.9),
           ],
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: AppTheme.border,
         boxShadow: [
           BoxShadow(
             color: AppTheme.purpleColor,

@@ -11,14 +11,13 @@ class SettingsHeaderWidget extends StatelessWidget {
       floating: false,
       pinned: true,
       snap: false,
-      backgroundColor: AppTheme.inputBackgroundDark,
-      surfaceTintColor: AppTheme.inputBackgroundDark,
-      shadowColor: AppTheme.inputBackgroundDark,
+      backgroundColor: AppTheme.darkDrawerBackground,
+      surfaceTintColor: AppTheme.darkDrawerBackground,
+      shadowColor: AppTheme.darkDrawerBackground,
       automaticallyImplyLeading: false,
       elevation: 0,
       flexibleSpace: FlexibleSpaceBar(
-        centerTitle: true,
-
+      centerTitle: true,
         title: Padding(
           padding: const EdgeInsets.only(top: 10.0),
           child: const Text(
@@ -33,15 +32,7 @@ class SettingsHeaderWidget extends StatelessWidget {
         ),
         background: Container(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                AppTheme.inputBackgroundDark,
-                AppTheme.darkDrawerBackground,
-              ],
-              stops: [0.0, 1.0],
-            ),
+            color: AppTheme.darkDrawerBackground,
           ),
           child: SafeArea(
             child: Padding(
@@ -62,7 +53,7 @@ class SettingsHeaderWidget extends StatelessWidget {
                         BoxShadow(
                           color: AppTheme.primaryColor.withOpacity(0.3),
                           blurRadius: 12,
-                          offset: const Offset(0, 1),
+                          offset: const Offset(0, 0),
                         ),
                       ],
                     ),

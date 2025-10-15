@@ -7,7 +7,6 @@ class SecurityOptionWidget extends StatelessWidget {
   final IconData icon;
   final Color iconColor;
   final Color backgroundIcon;
-  final Color border;
   final Color titleColor;
   final Color subtitleColor;
   final VoidCallback onTap;
@@ -19,7 +18,6 @@ class SecurityOptionWidget extends StatelessWidget {
     required this.icon,
     required this.iconColor,
     required this.backgroundIcon,
-    required this.border,
     required this.titleColor,
     required this.subtitleColor,
     required this.onTap,
@@ -29,12 +27,8 @@ class SecurityOptionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.blackContainer.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: border.withOpacity(0.2),
-          width: 1,
-        ),
+        color: AppTheme.darkGreyContainer,
+        borderRadius: AppTheme.border,
       ),
       child: Material(
         color: Colors.transparent,
