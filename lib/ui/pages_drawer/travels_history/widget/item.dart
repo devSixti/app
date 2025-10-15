@@ -20,7 +20,7 @@ class TravelItemWidget extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
         color: AppTheme.inputBackgroundDark,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: AppTheme.border,
         border: Border.all(
           color: statusColor.withOpacity(0.3),
           width: 1,
@@ -29,7 +29,7 @@ class TravelItemWidget extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: AppTheme.border,
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.all(20),
@@ -43,7 +43,7 @@ class TravelItemWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color: statusColor.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: AppTheme.border,
                       ),
                       child: Icon(
                         _getStatusIcon(status),
@@ -80,7 +80,7 @@ class TravelItemWidget extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                       decoration: BoxDecoration(
                         color: statusColor.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: AppTheme.border,
                         border: Border.all(
                           color: statusColor.withOpacity(0.3),
                           width: 1,
@@ -195,7 +195,7 @@ class TravelItemWidget extends StatelessWidget {
               height: 12,
               decoration: BoxDecoration(
                 color: AppTheme.primaryColor,
-                borderRadius: BorderRadius.circular(6),
+                borderRadius: AppTheme.border
               ),
             ),
             const SizedBox(width: 16),
@@ -223,7 +223,7 @@ class TravelItemWidget extends StatelessWidget {
                 height: 20,
                 decoration: BoxDecoration(
                   color: AppTheme.lightGreyContainer.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(1),
+                  borderRadius: AppTheme.border
                 ),
               ),
             ],
@@ -238,7 +238,7 @@ class TravelItemWidget extends StatelessWidget {
               height: 12,
               decoration: BoxDecoration(
                 color: AppTheme.purpleColor,
-                borderRadius: BorderRadius.circular(6),
+                borderRadius: AppTheme.border
               ),
             ),
             const SizedBox(width: 16),

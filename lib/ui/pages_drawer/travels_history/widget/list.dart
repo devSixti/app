@@ -101,7 +101,7 @@ class TravelsListWidget extends StatelessWidget {
           Container(
   decoration: BoxDecoration(
     color: AppTheme.primaryColor.withOpacity(0.8),
-    borderRadius: BorderRadius.circular(16),
+    borderRadius: AppTheme.border,
     boxShadow: [
       BoxShadow(
         color: AppTheme.primaryColor.withOpacity(0.3),
@@ -113,7 +113,7 @@ class TravelsListWidget extends StatelessWidget {
             child: Material(
               color: Colors.transparent,
               child: InkWell(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: AppTheme.border,
                 onTap: () {
                   // Navegar a solicitar viaje
                 },

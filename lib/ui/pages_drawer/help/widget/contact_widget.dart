@@ -11,7 +11,7 @@ class ContactWidget extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: AppTheme.darkGreyContainer,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: AppTheme.border,
         border: Border.all(
           color: AppTheme.purpleColor,
           width: 1,
@@ -101,12 +101,12 @@ class ContactWidget extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               color: AppTheme.purpleColor.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: AppTheme.border,
             ),
             child: Material(
               color: Colors.transparent,
               child: InkWell(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: AppTheme.border,
                 onTap: () => _showEmailDialog(context),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
@@ -143,12 +143,12 @@ class ContactWidget extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: AppTheme.border,
       ),
       child: Material(
         color: AppTheme.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: AppTheme.border,
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
@@ -184,7 +184,7 @@ class ContactWidget extends StatelessWidget {
         return AlertDialog(
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: AppTheme.border,
             side: BorderSide(color: AppTheme.purpleColor, width: 2),
           ),
           contentPadding: const EdgeInsets.all(24),
@@ -194,7 +194,7 @@ class ContactWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: AppTheme.purpleColor.withOpacity(0.15),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: AppTheme.border,
                 ),
                 child: const Icon(
                   Icons.chat_rounded, 
@@ -233,7 +233,7 @@ class ContactWidget extends StatelessWidget {
                   foregroundColor: AppTheme.whiteContainer,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: AppTheme.border,
                   ),
                 ),
                 child: const Text(
@@ -258,7 +258,7 @@ class ContactWidget extends StatelessWidget {
         return AlertDialog(
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: AppTheme.border,
             side: BorderSide(color: AppTheme.purpleColor, width: 2),
           ),
           contentPadding: const EdgeInsets.all(24),
@@ -268,7 +268,7 @@ class ContactWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: AppTheme.purpleColor.withOpacity(0.15),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: AppTheme.border,
                 ),
                 child: const Icon(
                   Icons.phone_rounded, 
@@ -306,7 +306,7 @@ class ContactWidget extends StatelessWidget {
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: AppTheme.border,
                         side: BorderSide(
                           color: AppTheme.lightGreyContainer.withOpacity(0.4),
                         ),
@@ -331,7 +331,7 @@ class ContactWidget extends StatelessWidget {
                       foregroundColor: AppTheme.whiteContainer,
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: AppTheme.border,
                       ),
                     ),
                     child: const Text(
@@ -358,7 +358,7 @@ class ContactWidget extends StatelessWidget {
         return AlertDialog(
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: AppTheme.border,
             side: BorderSide(color: AppTheme.purpleColor, width: 2),
           ),
           contentPadding: const EdgeInsets.all(24),
@@ -368,7 +368,7 @@ class ContactWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: AppTheme.purpleColor.withOpacity(0.15),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: AppTheme.border,
                 ),
                 child: const Icon(
                   Icons.email_rounded, 
@@ -407,7 +407,7 @@ class ContactWidget extends StatelessWidget {
                   foregroundColor: AppTheme.whiteContainer,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: AppTheme.border,
                   ),
                 ),
                 child: const Text(

@@ -92,7 +92,7 @@ class SecurityPage extends StatelessWidget {
         return AlertDialog(
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: AppTheme.border,
             side: const BorderSide(color: Colors.red),
           ),
           title: const Row(
@@ -119,7 +119,7 @@ class SecurityPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
                 foregroundColor: AppTheme.whiteContainer,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(borderRadius: AppTheme.border),
               ),
               child: const Text('Eliminar Cuenta'),
             ),
@@ -136,7 +136,7 @@ class SecurityPage extends StatelessWidget {
         return AlertDialog(
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: AppTheme.border,
             side: BorderSide(color: Colors.orange.withOpacity(0.3)),
           ),
           title: const Row(
@@ -159,7 +159,7 @@ class SecurityPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orange,
                 foregroundColor: AppTheme.whiteContainer,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(borderRadius: AppTheme.border),
               ),
               child: const Text('Entendido'),
             ),
@@ -176,7 +176,7 @@ class SecurityPage extends StatelessWidget {
         return AlertDialog(
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: AppTheme.border,
             side: BorderSide(color: AppTheme.primaryColor.withOpacity(0.3)),
           ),
           title: Text(
@@ -193,7 +193,7 @@ class SecurityPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppTheme.primaryColor,
                 foregroundColor: AppTheme.blackContainer,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(borderRadius: AppTheme.border),
               ),
               child: const Text('Entendido'),
             ),

@@ -1,7 +1,7 @@
 import 'package:app/ui/pages_drawer/wallet/widget/driver_stats_widget.dart';
 import 'package:app/ui/pages_drawer/wallet/widget/transactions_history_widget.dart';
 import 'package:app/ui/pages_drawer/wallet/widget/wallet_actions_widget.dart';
-import 'package:app/ui/pages_drawer/wallet/widget/wallet_head.dart';
+import 'package:app/ui/pages_drawer/wallet/widget/wallet_header.dart';
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
 
@@ -58,15 +58,12 @@ class _DriverWalletPageState extends State<DriverWalletPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.darkScaffold,
+      backgroundColor: AppTheme.darkDrawerBackground,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
           // Header con balance
-          WalletHeaderWidget(
-            currentBalance: currentBalance,
-            isDriver: true,
-          ),
+          WalletHeaderWidget(),
           
           // Contenido principal
           SliverToBoxAdapter(
@@ -157,7 +154,7 @@ class _DriverWalletPageState extends State<DriverWalletPage> {
     return AlertDialog(
       backgroundColor: AppTheme.inputBackgroundDark,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: AppTheme.border,
         side: BorderSide(color: color.withOpacity(0.3)),
       ),
       title: Row(
@@ -166,7 +163,7 @@ class _DriverWalletPageState extends State<DriverWalletPage> {
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: color.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: AppTheme.border,
             ),
             child: Icon(icon, color: color),
           ),
@@ -189,7 +186,7 @@ class _DriverWalletPageState extends State<DriverWalletPage> {
           style: ElevatedButton.styleFrom(
             backgroundColor: color,
             foregroundColor: AppTheme.whiteContainer,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(borderRadius: AppTheme.border),
           ),
           child: const Text('Entendido'),
         ),

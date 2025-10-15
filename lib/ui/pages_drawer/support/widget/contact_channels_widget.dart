@@ -184,7 +184,7 @@ class ContactChannelsWidget extends StatelessWidget {
         return AlertDialog(
           backgroundColor: AppTheme.darkDrawerBackground,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: AppTheme.border,
             side: BorderSide(color: AppTheme.primaryColor.withOpacity(0.25)),
           ),
           title: Row(
@@ -193,7 +193,7 @@ class ContactChannelsWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: AppTheme.primaryColor.withOpacity(0.18),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppTheme.border,
                 ),
                 child: const Icon(Icons.chat_rounded, color: AppTheme.primaryColor),
               ),
@@ -214,7 +214,7 @@ class ContactChannelsWidget extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppTheme.primaryColor,
                 foregroundColor: AppTheme.blackContainer,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(borderRadius: AppTheme.border),
               ),
               child: const Text('Entendido'),
             ),
@@ -231,7 +231,7 @@ class ContactChannelsWidget extends StatelessWidget {
         return AlertDialog(
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: AppTheme.border,
             side: BorderSide(color: AppTheme.silver.withOpacity(0.25)),
           ),
           title: Row(
@@ -240,7 +240,7 @@ class ContactChannelsWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: AppTheme.silver.withOpacity(0.18),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppTheme.border,
                 ),
                 child: const Icon(Icons.phone_rounded, color: AppTheme.silver),
               ),
@@ -265,7 +265,7 @@ class ContactChannelsWidget extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppTheme.silver,
                 foregroundColor: AppTheme.whiteContainer,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(borderRadius: AppTheme.border),
               ),
               child: const Text('Llamar'),
             ),
@@ -282,7 +282,7 @@ class ContactChannelsWidget extends StatelessWidget {
         return AlertDialog(
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: AppTheme.border,
             side: BorderSide(color: AppTheme.primaryColor.withOpacity(0.25)),
           ),
           title: Row(
@@ -291,7 +291,7 @@ class ContactChannelsWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: AppTheme.primaryColor.withOpacity(0.18),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppTheme.border,
                 ),
                 child: const Icon(Icons.email_rounded, color: AppTheme.primaryColor),
               ),
@@ -312,7 +312,7 @@ class ContactChannelsWidget extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppTheme.primaryColor,
                 foregroundColor: AppTheme.blackContainer,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(borderRadius: AppTheme.border),
               ),
               child: const Text('Entendido'),
             ),
@@ -329,7 +329,7 @@ class ContactChannelsWidget extends StatelessWidget {
         return AlertDialog(
           backgroundColor: AppTheme.inputBackgroundDark,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: AppTheme.border,
             side: BorderSide(color: AppTheme.primaryColor.withOpacity(0.25)),
           ),
           title: Row(
@@ -338,7 +338,7 @@ class ContactChannelsWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: AppTheme.primaryColor.withOpacity(0.18),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppTheme.border,
                 ),
                 child: const Icon(Icons.message_rounded, color: AppTheme.primaryColor),
               ),
@@ -363,7 +363,7 @@ class ContactChannelsWidget extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppTheme.primaryColor,
                 foregroundColor: AppTheme.whiteContainer,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(borderRadius: AppTheme.border),
               ),
               child: const Text('Abrir WhatsApp'),
             ),

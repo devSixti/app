@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                         width: 100,
                         decoration: BoxDecoration(
                           color: Colors.grey.shade800,
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: AppTheme.border,
                         ),
                         child: const Icon(
                           Icons.image_not_supported,
@@ -169,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             decoration: BoxDecoration(
                               color: Colors.grey.shade800,
-                              borderRadius: BorderRadius.circular(6),
+                              borderRadius: AppTheme.border,
                             ),
                             child: const Row(
                               mainAxisSize: MainAxisSize.min,
@@ -195,26 +195,26 @@ class _LoginPageState extends State<LoginPage> {
                     filled: true,
                     fillColor: Colors.grey.shade900,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(1),
+                      borderRadius: AppTheme.border,
                       borderSide: BorderSide.none,
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppTheme.border,
                       borderSide: BorderSide(color: Colors.grey.shade700),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppTheme.border,
                       borderSide: const BorderSide(
                         color: Color(0xFF6B46C1),
                         width: 2,
                       ),
                     ),
                     errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppTheme.border,
                       borderSide: const BorderSide(color: Colors.red, width: 2),
                     ),
                     focusedErrorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppTheme.border,
                       borderSide: const BorderSide(color: Colors.red, width: 2),
                     ),
                     contentPadding: const EdgeInsets.symmetric(

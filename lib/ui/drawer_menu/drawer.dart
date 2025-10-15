@@ -19,7 +19,7 @@ class CustomDrawer extends StatefulWidget {
   const CustomDrawer({
     super.key,
     this.isLogedIn = true,
-    this.isDriver = false,
+    this.isDriver = true,
   }); // true = logueado, false = no logueado
 
   final bool isLogedIn;
@@ -52,7 +52,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       color: Color.fromRGBO(185, 150, 255, 1), // Borde morado
                       width: 2.0,
                     ),
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: AppTheme.border,
                   ),
                   child: Material(
                     color: Colors.transparent,
@@ -66,7 +66,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                           ),
                         );
                       },
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: AppTheme.border,
                       child: Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 24,

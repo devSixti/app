@@ -33,7 +33,7 @@ class SecurityContactWidget extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: AppTheme.border,
           onTap: onContactSecurity,
           child: const Padding(
             padding: EdgeInsets.all(20),

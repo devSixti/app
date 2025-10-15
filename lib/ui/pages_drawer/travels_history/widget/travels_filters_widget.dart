@@ -26,7 +26,7 @@ class TravelsFiltersWidget extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 16),
             decoration: BoxDecoration(
               color: AppTheme.inputBackgroundDark,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: AppTheme.border,
             ),
             child: TextField(
               controller: searchController,
@@ -45,7 +45,7 @@ class TravelsFiltersWidget extends StatelessWidget {
                   margin: const EdgeInsets.all(12),
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: AppTheme.border,
                   ),
                   child: const Icon(
                     Icons.search_rounded,
@@ -111,12 +111,12 @@ class TravelsFiltersWidget extends StatelessWidget {
                   color.withOpacity(0.05),
                 ],
         ),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: AppTheme.border,
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: AppTheme.border,
           onTap: () => onFilterChanged(value),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),

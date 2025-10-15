@@ -23,7 +23,7 @@ class SupportStatusWidget extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: AppTheme.border,
 
         // Borde visible y elegante
         border: Border.all(
@@ -49,7 +49,7 @@ class SupportStatusWidget extends StatelessWidget {
                       iconColor.withOpacity(0.4),
                     ],
                   ),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppTheme.border,
                 ),
                 child: Icon(
                   Icons.support_rounded,
@@ -125,7 +125,7 @@ class SupportStatusWidget extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppTheme.blackContainer.withOpacity(0.2), // Fondo semitransparente
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: AppTheme.border,
         border: Border.all(
           color: borderColor, // Color del borde de la tarjeta
           width: 1,

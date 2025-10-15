@@ -81,7 +81,7 @@ class _FaqItemWidgetState extends State<FaqItemWidget>
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: _accentColor.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: AppTheme.border,
                       ),
                       child: Icon(
                         _getCategoryIcon(),
@@ -129,7 +129,7 @@ class _FaqItemWidgetState extends State<FaqItemWidget>
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
                             color: _accentColor.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: AppTheme.border,
                           ),
                           child: Text(
                             widget.category.toUpperCase(),

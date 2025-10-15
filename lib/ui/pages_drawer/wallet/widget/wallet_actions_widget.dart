@@ -27,34 +27,22 @@ class WalletActionsWidget extends StatelessWidget {
             child: _buildActionButton(
               'Agregar\nDinero',
               Icons.add_card_rounded,
-              AppTheme.primaryColor,
               onAddMoney,
             ),
           ),
           const SizedBox(width: 12),
           Expanded(
             child: _buildActionButton(
-              isDriver ? 'Retirar' : 'Retirar\nDinero',
+              'Retirar\nDinero',
               Icons.money_rounded,
-              AppTheme.purpleColor,
               onWithdraw,
             ),
           ),
           const SizedBox(width: 12),
           Expanded(
             child: _buildActionButton(
-              'Transferir',
-              Icons.send_rounded,
-              AppTheme.primaryColor,
-              onTransfer,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: _buildActionButton(
-              isDriver ? 'Ganancias' : 'Pagos',
+              'Pagos\n',
               isDriver ? Icons.trending_up_rounded : Icons.payment_rounded,
-              AppTheme.purpleColor,
               onPayments,
             ),
           ),
@@ -63,34 +51,16 @@ class WalletActionsWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildActionButton(String title, IconData icon, Color color, VoidCallback onTap) {
+  Widget _buildActionButton(String title, IconData icon, VoidCallback onTap) {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            color.withOpacity(0.1),
-            AppTheme.inputBackgroundDark,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: color.withOpacity(0.3),
-          width: 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.blackContainer.withOpacity(0.2),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        color: AppTheme.darkBackground,
+        borderRadius: AppTheme.border,
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: AppTheme.border,
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
@@ -99,16 +69,16 @@ class WalletActionsWidget extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: color.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(16),
+                    color: AppTheme.silver.withOpacity(0.3),
+                    borderRadius: AppTheme.border,
                   ),
-                  child: Icon(icon, color: color, size: 24),
+                  child: Icon(icon, color: AppTheme.silver, size: 24),
                 ),
                 const SizedBox(height: 12),
                 Text(
                   title,
                   style: TextStyle(
-                    color: color,
+                    color: AppTheme.silver,
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
                     height: 1.2,
