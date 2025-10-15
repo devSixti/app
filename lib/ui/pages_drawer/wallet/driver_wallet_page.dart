@@ -106,10 +106,10 @@ class _DriverWalletPageState extends State<DriverWalletPage> {
     showDialog(
       context: context,
       builder: (context) => _buildActionDialog(
-        'Retirar Ganancias',
-        'Retira tus ganancias a tu cuenta bancaria',
-        Icons.money_rounded,
-        AppTheme.purpleColor,
+        'No Disponible',
+        'En desarrollo',
+        Icons.info_rounded,
+        Colors.orange,
       ),
     );
   }
@@ -118,10 +118,10 @@ class _DriverWalletPageState extends State<DriverWalletPage> {
     showDialog(
       context: context,
       builder: (context) => _buildActionDialog(
-        'Transferir Dinero',
-        'Envía dinero a otros conductores',
-        Icons.send_rounded,
-        AppTheme.primaryColor,
+        'No Disponible',
+        'En desarrollo',
+        Icons.info_rounded,
+        Colors.orange,
       ),
     );
   }
@@ -130,10 +130,10 @@ class _DriverWalletPageState extends State<DriverWalletPage> {
     showDialog(
       context: context,
       builder: (context) => _buildActionDialog(
-        'Reporte de Ganancias',
-        'Ver reporte detallado de tus ingresos',
-        Icons.trending_up_rounded,
-        AppTheme.purpleColor,
+        'No Disponible',
+        'En desarrollo',
+        Icons.info_rounded,
+        Colors.orange,
       ),
     );
   }
@@ -143,7 +143,7 @@ class _DriverWalletPageState extends State<DriverWalletPage> {
       context: context,
       builder: (context) => _buildActionDialog(
         'No Disponible',
-        'Los conductores no pueden agregar dinero directamente',
+        'En desarrollo',
         Icons.info_rounded,
         Colors.orange,
       ),
