@@ -33,13 +33,13 @@ class TravelsStatsWidget extends StatelessWidget {
               'Gastado Total',
               '\$${totalSpent.toStringAsFixed(0)}K',
               Icons.attach_money_rounded,
-              AppTheme.purpleColor,
+              AppTheme.primaryColor,
             ),
           ),
           const SizedBox(width: 12),
           Expanded(
             child: _buildStatCard(
-              'Este Mes',
+                'Este Mes\n',
               thisMonth.toString(),
               Icons.calendar_today_rounded,
               AppTheme.primaryColor,
@@ -54,26 +54,8 @@ class TravelsStatsWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            color.withOpacity(0.1),
-            AppTheme.inputBackgroundDark,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: color.withOpacity(0.3),
-          width: 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.blackContainer.withOpacity(0.2),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
+          color: color.withOpacity(0.1),
+        borderRadius: AppTheme.border,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +64,7 @@ class TravelsStatsWidget extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: color.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: AppTheme.border,
             ),
             child: Icon(icon, color: color, size: 20),
           ),

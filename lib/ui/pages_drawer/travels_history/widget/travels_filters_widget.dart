@@ -25,26 +25,8 @@ class TravelsFiltersWidget extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 16),
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  AppTheme.inputBackgroundDark,
-                  AppTheme.darkGreyContainer,
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
+              color: AppTheme.inputBackgroundDark,
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: AppTheme.primaryColor.withOpacity(0.3),
-                width: 1,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: AppTheme.blackContainer.withOpacity(0.3),
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),
-                ),
-              ],
             ),
             child: TextField(
               controller: searchController,
@@ -63,12 +45,6 @@ class TravelsFiltersWidget extends StatelessWidget {
                   margin: const EdgeInsets.all(12),
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        AppTheme.primaryColor.withOpacity(0.2),
-                        AppTheme.primaryColor.withOpacity(0.1),
-                      ],
-                    ),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Icon(
@@ -119,7 +95,7 @@ class TravelsFiltersWidget extends StatelessWidget {
 
   Widget _buildFilterChip(String label, String value) {
     final isSelected = selectedFilter == value;
-    final color = isSelected ? AppTheme.primaryColor : AppTheme.purpleColor;
+    final color = AppTheme.silver;
     
     return Container(
       margin: const EdgeInsets.only(right: 12),
@@ -136,10 +112,6 @@ class TravelsFiltersWidget extends StatelessWidget {
                 ],
         ),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: color.withOpacity(isSelected ? 0.5 : 0.3),
-          width: 1,
-        ),
       ),
       child: Material(
         color: Colors.transparent,

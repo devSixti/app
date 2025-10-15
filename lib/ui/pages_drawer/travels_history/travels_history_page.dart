@@ -228,7 +228,7 @@ class _TravelsHistoryPageState extends State<TravelsHistoryPage> {
     final thisMonth = allTrips.length; // Simplificado para el ejemplo
 
     return Scaffold(
-      backgroundColor: AppTheme.darkScaffold,
+      backgroundColor: AppTheme.darkGreyContainer,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [

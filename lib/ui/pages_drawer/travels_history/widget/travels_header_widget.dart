@@ -7,110 +7,68 @@ class TravelsHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      expandedHeight: 220.0,
+      expandedHeight: 200.0,
       floating: false,
       pinned: true,
-      backgroundColor: AppTheme.darkScaffold,
+      snap: false,
+      backgroundColor: AppTheme.darkGreyContainer,
+      surfaceTintColor: AppTheme.darkGreyContainer,
+      shadowColor: AppTheme.darkGreyContainer,
+      automaticallyImplyLeading: false,
       elevation: 0,
-      leading: Container(
-        margin: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: AppTheme.blackContainer.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: AppTheme.primaryColor.withOpacity(0.3),
-            width: 1,
-          ),
-        ),
-        child: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, 
-            color: AppTheme.whiteContainer),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
       flexibleSpace: FlexibleSpaceBar(
-        background: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                AppTheme.primaryColor.withOpacity(0.15),
-                AppTheme.purpleColor.withOpacity(0.15),
-                AppTheme.inputBackgroundDark,
-              ],
+        centerTitle: true,
+
+        title: Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: const Text(
+            'Mis viajes',
+            style: TextStyle(
+              color: AppTheme.whiteContainer,
+              fontSize: AppTheme.mediumSize,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0.3,
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 60),
-              Container(
-                padding: const EdgeInsets.all(24),
-                decoration: BoxDecoration(
-                  gradient: RadialGradient(
-                    colors: [
-                      AppTheme.primaryColor.withOpacity(0.3),
-                      AppTheme.purpleColor.withOpacity(0.2),
-                      Colors.transparent,
-                    ],
-                  ),
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: AppTheme.primaryColor.withOpacity(0.4),
-                    width: 1,
-                  ),
-                ),
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        AppTheme.primaryColor.withOpacity(0.2),
-                        AppTheme.purpleColor.withOpacity(0.2),
+        ),
+        background: Container(
+          decoration: const BoxDecoration(
+            color: AppTheme.darkGreyContainer,
+          ),
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 30),
+
+                  // Icono principal mejorado
+                  Container(
+                    width: 90,
+                    height: 90,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: AppTheme.primaryColor, width: 2),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppTheme.primaryColor.withOpacity(0.3),
+                          blurRadius: 12,
+                          offset: const Offset(0, 1),
+                        ),
                       ],
                     ),
-                    shape: BoxShape.circle,
+                    child: const Icon(
+                      Icons.history_rounded,
+                      color: AppTheme.primaryColor,
+                      size: 40,
+                    ),
                   ),
-                  child: const Icon(
-                    Icons.history_rounded,
-                    color: AppTheme.whiteContainer,
-                    size: 40,
-                  ),
-                ),
+
+                  const SizedBox(height: 32),
+                ],
               ),
-              const SizedBox(height: 20),
-              const Text(
-                'Historial de Viajes',
-                style: TextStyle(
-                  color: AppTheme.whiteContainer,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: 1,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                decoration: BoxDecoration(
-                  color: AppTheme.blackContainer.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: AppTheme.purpleColor.withOpacity(0.3),
-                    width: 1,
-                  ),
-                ),
-                child: const Text(
-                  'Todos tus viajes en un lugar',
-                  style: TextStyle(
-                    color: AppTheme.lightGreyContainer,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 0.3,
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),

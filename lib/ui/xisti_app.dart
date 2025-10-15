@@ -14,7 +14,7 @@ class NewXistiApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, // Quita la etiqueta DEBUG
       title: 'Xisti', // Nombre mostrado en el launcher
-      theme: AppTheme.lightTheme,
+      theme: AppTheme.darkTheme,
       darkTheme: AppTheme.darkTheme,
 
       home: const SplashScreen(),

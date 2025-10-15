@@ -80,12 +80,7 @@ class SocialMediaLinks extends StatelessWidget {
         ),
         child: Icon(
           icon,
-          color: Color.fromRGBO(
-            255,
-            255,
-            255,
-            1,
-          ), // Color de los iconos de (Ig, fb y Tik Tok)
+          color: AppTheme.inputBackgroundLight, // Color de los iconos de (Ig, fb y Tik Tok)
           size: 20,
         ),
       ),
