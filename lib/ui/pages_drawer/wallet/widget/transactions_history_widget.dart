@@ -29,19 +29,19 @@ class TransactionsHistoryWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppTheme.primaryColor.withOpacity(0.1),
+                  color: AppTheme.purpleColor.withOpacity(0.1),
                   borderRadius: AppTheme.border,
                 ),
                 child: const Icon(
                   Icons.history_rounded,
-                  color: AppTheme.primaryColor,
+                  color: AppTheme.purpleColor,
                   size: 24,
                 ),
               ),
               const SizedBox(width: 16),
               Expanded(
                 child: Text(
-                  isDriver ? 'Historial de Ganancias' : 'Transacciones Recientes',
+                  'Transacciones Recientes',
                   style: const TextStyle(
                     color: AppTheme.whiteContainer,
                     fontSize: 20,
@@ -81,7 +81,7 @@ class TransactionsHistoryWidget extends StatelessWidget {
     final type = transaction['type'] as String;
     final amount = transaction['amount'] as double;
     final isPositive = amount > 0;
-    final color = isPositive ? Colors.green : Colors.red;
+    final color = isPositive ? AppTheme.primaryColor : AppTheme.red;
     
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -90,8 +90,8 @@ class TransactionsHistoryWidget extends StatelessWidget {
         color: AppTheme.blackContainer.withOpacity(0.2),
         borderRadius: AppTheme.border,
         border: Border.all(
-          color: color.withOpacity(0.2),
-          width: 1,
+          color: color.withOpacity(0.1),
+          width: 2,
         ),
       ),
       child: Row(
@@ -124,15 +124,6 @@ class TransactionsHistoryWidget extends StatelessWidget {
                 const SizedBox(height: 4),
                 Row(
                   children: [
-                    Text(
-                      transaction['date'] as String,
-                      style: const TextStyle(
-                        color: AppTheme.lightGreyContainer,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 8,
@@ -237,11 +228,11 @@ class TransactionsHistoryWidget extends StatelessWidget {
   Color _getStatusColor(String status) {
     switch (status.toLowerCase()) {
       case 'completed':
-        return Colors.green;
+        return AppTheme.primaryColor;
       case 'pending':
         return Colors.orange;
       case 'failed':
-        return Colors.red;
+        return AppTheme.red;
       default:
         return AppTheme.lightGreyContainer;
     }
