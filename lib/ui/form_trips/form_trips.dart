@@ -15,6 +15,9 @@ import 'package:app/ui/form_trips/widgets/comment_button.dart';
 import 'package:app/ui/form_trips/widgets/location_panel.dart'; 
 import "package:app/ui/drawer_menu/drawer.dart";
 
+// Importacion del mapa
+import 'package:app/ui/map/map_widget.dart';
+
 class FormTrips extends StatefulWidget {
   const FormTrips({super.key});
 
@@ -96,7 +99,7 @@ class _FormTripsState extends State<FormTrips> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor:AppTheme.darkDrawerBackground,
+      backgroundColor: AppTheme.darkDrawerBackground,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -115,9 +118,16 @@ class _FormTripsState extends State<FormTrips> {
       ),
 
       drawer: const CustomDrawer(),
+
       body: Stack(
         children: [
-          Container(color: AppTheme.darkGreyContainer),
+          // Antes teniamos el Container(color: AppTheme.darkGreyContainer)
+          // Ahora ponemos el mapa en toda la parte inferior del Stack
+          const Positioned.fill(
+            child: MapScreen(), // Mapa gratuito con OpenStreetMap
+          ),
+
+          // Mantenemos el panel deslizable encima del mapa
           DraggableScrollableSheet(
             controller: _draggableController,
             initialChildSize: 0.5,
@@ -126,7 +136,7 @@ class _FormTripsState extends State<FormTrips> {
             builder: (context, scrollController) {
               return Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.darkDrawerBackground, // Color de la pestaña principal
+                  color: AppTheme.darkDrawerBackground,
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(1),
                   ),
@@ -143,8 +153,8 @@ class _FormTripsState extends State<FormTrips> {
 
                         // Campo Ubicación inicial
                         InputsLocation(
-                          icon: Icons.location_on,
-                          iconColor: Color.fromRGBO(128, 255, 0, 1),
+                          icon: 'assets/images/pin_verde.png',
+                          iconColor: AppTheme.primaryColor,
                           hintText: "Ubicación inicial",
                           controller: _startController,
                           onTap: _openLocationPanel,
@@ -153,8 +163,8 @@ class _FormTripsState extends State<FormTrips> {
 
                         // Campo Ubicación final
                         InputsLocation(
-                          icon: Icons.location_on,
-                          iconColor: const Color.fromRGBO(96, 43, 201, 1),
+                          icon: 'assets/images/pin_morado.png',
+                          iconColor: AppTheme.purpleColor,
                           hintText: "Ubicación final",
                           controller: _endController,
                           onTap: _openLocationPanel,
@@ -227,7 +237,7 @@ class _FormTripsState extends State<FormTrips> {
                             onPressed: _handleMainBackButton,
                             text: "Volver",
                             width: screenWidth * 0.5,
-                            textColor: AppTheme.lightPrimaryContainer
+                            textColor: AppTheme.lightPrimaryContainer,
                           ),
                         ),
                       ],

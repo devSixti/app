@@ -18,7 +18,7 @@ class ProfileHeader extends StatelessWidget {
             child: Text(
               'Editar',
               style: TextStyle(
-                color: Color(0xFF80FF00),
+                color: AppTheme.primaryColor,
                 fontSize: AppTheme.mediumSize,
                 fontWeight: FontWeight.w500,
               ),

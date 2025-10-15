@@ -80,12 +80,12 @@ class CommentButton extends StatelessWidget {
                     controller: commentController,
                     maxLines: 4,
                     style: const TextStyle(
-                      color: Color.fromRGBO(255, 255, 255, 1),
+                      color: AppTheme.inputBackgroundLight,
                     ), // color del texto que escribe el usuario
                     decoration: InputDecoration(
                       hintText: "Comentarios",
                       hintStyle: const TextStyle(
-                        color: Color.fromRGBO(255, 255, 255, 1),
+                        color: AppTheme.inputBackgroundLight
                       ), // color del texto placeholder
                       filled: true,
                       fillColor:
@@ -102,22 +102,11 @@ class CommentButton extends StatelessWidget {
                     title: const Text(
                       "Más de 4 pasajeros",
                       style: TextStyle(
-                        color: Colors.white,
-                      ), // color del texto del switch
+                        color: Colors.white,), // color del texto del switch
                     ),
                     value: moreThan4,
-                    activeThumbColor: Color.fromARGB(
-                      255,
-                      38,
-                      255,
-                      0,
-                    ), // color cuando está activado
-                    inactiveThumbColor: Color.fromRGBO(
-                      255,
-                      255,
-                      255,
-                      1,
-                    ), // color del switch apagado
+                    activeThumbColor: AppTheme.purpleColor, // color cuando está activado
+                    inactiveThumbColor: AppTheme.lightPrimaryContainer, // color del switch apagado
                     onChanged: (value) {
                       setState(() {
                         moreThan4 = value;
@@ -134,18 +123,8 @@ class CommentButton extends StatelessWidget {
                       ), // color del texto del switch
                     ),
                     value: petsOnBoard,
-                    activeThumbColor: const Color.fromARGB(
-                      255,
-                      38,
-                      255,
-                      0,
-                    ), // color cuando está activado
-                    inactiveThumbColor: const Color.fromRGBO(
-                      255,
-                      255,
-                      255,
-                      1,
-                    ), // color del switch apagado
+                    activeThumbColor: AppTheme.purpleColor, // color cuando está activado
+                    inactiveThumbColor: AppTheme.lightPrimaryContainer, // color del switch apagado
                     onChanged: (value) {
                       setState(() {
                         petsOnBoard = value;
@@ -160,12 +139,7 @@ class CommentButton extends StatelessWidget {
                       width: 200, // tamaño fijo del botón
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(
-                            255,
-                            38,
-                            255,
-                            0,
-                          ), // color de fondo del botón
+                          backgroundColor: AppTheme.primaryColor, // color de fondo del botón
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: AppTheme.border,
@@ -186,12 +160,7 @@ class CommentButton extends StatelessWidget {
                         child: const Text(
                           "Listo",
                           style: TextStyle(
-                            color: Color.fromRGBO(
-                              0,
-                              0,
-                              0,
-                              1,
-                            ), // color del texto del botón
+                            color: AppTheme.blackContainer, // color del texto del botón
                             fontWeight: FontWeight.bold,
                             fontSize: AppTheme.mediumSize,
                           ),
@@ -211,12 +180,7 @@ class CommentButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: const Color.fromARGB(
-        0,
-        223,
-        3,
-        3,
-      ), // Evita fondo blanco en Material
+      color: const Color.fromARGB(0,223,3,3,), // Evita fondo blanco en Material
       child: InkWell(
         borderRadius: AppTheme.border,
         onTap: () => _openCommentPanel(context), // Al presionar abre el panel
@@ -233,7 +197,7 @@ class CommentButton extends StatelessWidget {
           ),
           child: Icon(
             Icons.chat_rounded, // Icono de conversación
-            color: color ?? Color.fromRGBO(255, 255, 255, 1), // Color del ícono
+            color: AppTheme.lightPrimaryContainer, // Color del ícono
             size: 28,
           ),
         ),

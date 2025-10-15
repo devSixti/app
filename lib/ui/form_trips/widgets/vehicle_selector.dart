@@ -191,7 +191,7 @@ class _VehicleSelectorState extends State<VehicleSelector> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: isSelected
-                  ? Colors.blue.shade700
+                  ? AppTheme.purpleColor
                   : const Color.fromARGB(0, 255, 255, 255),
             ),
             child: Icon(
@@ -205,7 +205,7 @@ class _VehicleSelectorState extends State<VehicleSelector> {
             option.name,
             style: TextStyle(
               color: isSelected
-                  ? Colors.blue
+                  ? AppTheme.inputBackgroundLight
                   : AppTheme.inputBackgroundLight,
               fontSize: AppTheme.smallSize,
             ),

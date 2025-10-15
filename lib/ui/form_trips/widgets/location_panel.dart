@@ -1,5 +1,5 @@
 // Este archivo contiene el widget LocationPanel.
-// Sirve para mostrar un panel deslizable con los campos de Ubicación inicial
+// Sirve para mostrar un panel deslizable con los campos de Ubicación inicial,
 // Ubicación final y un botón "Volver".
 // Ajustado para: recibir valores iniciales (opcionales) y devolver las direcciones al cerrar.
 
@@ -48,12 +48,53 @@ class _LocationPanelState extends State<LocationPanel> {
     widget.onClose(_startController.text, _endController.text);
   }
 
+  Widget _buildLocationField({
+    required TextEditingController controller,
+    required String hintText,
+    required String iconPath, required Color iconColor,
+  }) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      decoration: BoxDecoration(
+        color: const Color(0xFF2B2B2B),
+        borderRadius: AppTheme.border,
+      ),
+      child: Row(
+        children: [
+          Image.asset(
+            iconPath,
+            width: 28, // tamaño ajustable
+            height: 28, // tamaño ajustable
+            fit: BoxFit.contain,
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: TextField(
+              controller: controller,
+              readOnly: false,
+              style: const TextStyle(
+                color: Color.fromRGBO(255, 255, 255, 1),
+                fontSize: AppTheme.mediumSize,
+              ),
+              decoration: InputDecoration(
+                hintText: hintText,
+                hintStyle: const TextStyle(color: Colors.white54),
+                border: InputBorder.none,
+                contentPadding: const EdgeInsets.symmetric(vertical: 16),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
-      initialChildSize: 0.86, // altura inicial
-      minChildSize: 0.5, // altura mínima al arrastrar hacia abajo
-      maxChildSize: 0.95, // altura máxima al arrastrar hacia arriba
+      initialChildSize: 0.86,
+      minChildSize: 0.5,
+      maxChildSize: 0.95,
       builder: (context, scrollController) {
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
@@ -67,61 +108,31 @@ class _LocationPanelState extends State<LocationPanel> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // Input Ubicación inicial
-                TextField(
+                _buildLocationField(
                   controller: _startController,
-                  style: const TextStyle(
-                    color: Color.fromRGBO(255, 255, 255, 1),
-                    fontSize: AppTheme.mediumSize,
-                  ),
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: const Color(0xFF2B2B2B),
-                    hintText: "Ubicación inicial",
-                    hintStyle: const TextStyle(color:   Colors.white54),
-                    prefixIcon: const Icon(
-                      Icons.location_on,
-                      color: AppTheme.primaryColor,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: AppTheme.border,
-                      borderSide: BorderSide.none,
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
+                  hintText: "Ubicación inicial",
+                  iconPath: 'assets/images/pin_verde.png',
+                  iconColor: AppTheme.primaryColor,
                 ),
                 const SizedBox(height: 16),
 
                 // Input Ubicación final
-                TextField(
+                _buildLocationField(
                   controller: _endController,
-                  style: const TextStyle(
-                    color: Color.fromRGBO(255, 255, 255, 1),
-                    fontSize: AppTheme.mediumSize,
-                  ),
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: const Color(0xFF2B2B2B),
-                    hintText: "Ubicación final",
-                    hintStyle: const TextStyle(color: Colors.white54),
-                    prefixIcon: const Icon(
-                      Icons.location_on,
-                      color: AppTheme.purpleColor,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: AppTheme.border,
-                      borderSide: BorderSide.none,
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
+                  hintText: "Ubicación final",
+                  iconPath: 'assets/images/pin_morado.png',
+                  iconColor: AppTheme.purpleColor,
                 ),
-                const SizedBox(height: 480), // Altura de la opcion "Volver"
+
+                const SizedBox(height: 480), // Altura de la opción "Volver"
+
                 // Botón Volver
                 Center(
                   child: CustomBackButton(
                     onPressed: _handleMainBackButton,
                     text: "Volver",
                     width: MediaQuery.of(context).size.width * 0.5,
-                    textColor: AppTheme.lightPrimaryContainer
+                    textColor: AppTheme.lightPrimaryContainer,
                   ),
                 ),
               ],
