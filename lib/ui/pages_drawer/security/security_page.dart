@@ -5,7 +5,7 @@ import 'widget/security_settings_widget.dart';
 import 'widget/privacy_data_widget.dart';
 import 'widget/security_tips_widget.dart';
 import 'widget/security_contact_widget.dart';
-import 'change_password_page.dart';
+import '../../change_password/change_password_page.dart';
 
 class SecurityPage extends StatelessWidget {
   const SecurityPage({super.key});
