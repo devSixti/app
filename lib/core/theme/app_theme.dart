@@ -132,4 +132,6 @@ class AppTheme {
       ),
     );
   }
+
+  static Color? get purple => null;
 }

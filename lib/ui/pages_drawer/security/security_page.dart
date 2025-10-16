@@ -5,6 +5,7 @@ import 'widget/security_settings_widget.dart';
 import 'widget/privacy_data_widget.dart';
 import 'widget/security_tips_widget.dart';
 import 'widget/security_contact_widget.dart';
+import '../../verification_step_two/widgets/two_step_verification.dart';
 
 class SecurityPage extends StatelessWidget {
   const SecurityPage({super.key});
@@ -61,7 +62,7 @@ class SecurityPage extends StatelessWidget {
         _showComingSoonDialog(context, 'Cambiar Contraseña');
         break;
       case 'twoFactor':
-        _showComingSoonDialog(context, 'Verificación en Dos Pasos');
+        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TwoStepVerificationScreen()));
         break;
       case 'biometric':
         _showComingSoonDialog(context, 'Autenticación Biométrica');
