@@ -6,7 +6,7 @@ import 'package:app/ui/work_in_xisti/widgets/work_app_bar.dart';
 import 'package:app/ui/work_in_xisti/widgets/work_option_button.dart';
 import 'package:flutter/material.dart';
 
-/// Pantalla de selección de tipo de repartidor: Repartidor / Repartidor en moto
+/// Pantalla de selección de tipo de repartidor: Repartidor / Repartidor en moto.
 class WorkDeliveryTypePage extends StatelessWidget {
   const WorkDeliveryTypePage({super.key});
 
@@ -17,23 +17,49 @@ class WorkDeliveryTypePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const WorkAppBar(title: 'Vas a trabajar de:', showBack: true),
+            // Barra superior personalizada con texto “Vas a trabajar de:”.
+            const WorkAppBar(
+              title: 'Vas a trabajar de:',
+              showBack: true,
+            ),
 
+            // Contenido principal.
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 child: Column(
                   children: [
+                    // Botón para seleccionar "Repartidor".
                     WorkOptionButton(
-                      leading: _defaultIconPlaceholder(Icons.local_shipping),
-                      label: 'Repartidor',
-                      onTap: () => Navigator.of(context).pop(),
+                      // Ícono real del repartidor.
+                      leading: Image.asset(
+                        '/Users/macxisti/Desktop/app/assets/images/iconografia/dark/delivery_card.png',
+                        width: 48,
+                        height: 48,
+                        fit: BoxFit.contain,
+                      ),
+                      label: 'Repartidor en carro',
+                      onTap: () {
+                        // Aquí podrías redirigir a un formulario o acción correspondiente.
+                        Navigator.of(context).pop();
+                      },
                     ),
-                    const SizedBox(height: 12),
+
+                    const SizedBox(height: 16),
+
+                    // Botón para seleccionar "Repartidor en moto".
                     WorkOptionButton(
-                      leading: _defaultIconPlaceholder(Icons.delivery_dining),
+                      // Ícono real del repartidor en moto.
+                      leading: Image.asset(
+                        '/Users/macxisti/Desktop/app/assets/images/iconografia/dark/delivery.png',
+                        width: 48,
+                        height: 48,
+                        fit: BoxFit.contain,
+                      ),
                       label: 'Repartidor en moto',
-                      onTap: () => Navigator.of(context).pop(),
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
                     ),
                   ],
                 ),
@@ -41,20 +67,6 @@ class WorkDeliveryTypePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  static Widget _defaultIconPlaceholder(IconData icon) {
-    return Container(
-      width: 56,
-      height: 56,
-      decoration: BoxDecoration(
-        color: AppTheme.inputBackgroundDark,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Center(
-        child: Icon(icon, size: 28, color: AppTheme.whiteContainer),
       ),
     );
   }

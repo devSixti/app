@@ -1,11 +1,9 @@
 // Este widget representa la tarjeta informativa de la pantalla inicial.
-// Muestra el título principal, una lista de beneficios y un espacio para una imagen ilustrativa.
+// Muestra el título principal, una lista de beneficios y una imagen ilustrativa a la derecha.
 
 import 'package:flutter/material.dart';
 import 'package:app/core/theme/app_theme.dart';
 
-/// Tarjeta informativa que aparece en la primera pantalla.
-/// Recibe título y una lista de bullets. Se puede ampliar para aceptar una imagen.
 class WorkInfoCard extends StatelessWidget {
   final String title;
   final List<String> bullets;
@@ -13,67 +11,87 @@ class WorkInfoCard extends StatelessWidget {
   const WorkInfoCard({
     super.key,
     required this.title,
-    required this.bullets,
+    required this.bullets, required TextAlign textAlign,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      // Fondo oscuro para destacar sobre darkScaffold
       decoration: BoxDecoration(
         color: AppTheme.darkGreyContainer,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(16),
       ),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Izquierda: lista de bullets
+          // Columna izquierda: título centrado y lista de bullets
           Expanded(
             flex: 3,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center, // centramos el título
               children: [
+                // Título centrado horizontalmente
                 Text(
                   title,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: AppTheme.whiteContainer,
-                    fontSize: 20,
+                    fontSize: 22,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                const SizedBox(height: 12),
-                ...bullets.map((b) => Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Row(
-                        children: [
-                          Icon(Icons.check_circle, color: AppTheme.primaryColor, size: 18),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: Text(
-                              b,
-                              style: TextStyle(
-                                color: AppTheme.whiteContainer,
-                                fontSize: 14,
-                              ),
+                const SizedBox(height: 18),
+
+                // Lista de beneficios alineados a la izquierda
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: bullets
+                        .map(
+                          (b) => Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.check_circle,
+                                  color: AppTheme.primaryColor,
+                                  size: 20,
+                                ),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: Text(
+                                    b,
+                                    style: TextStyle(
+                                      color: AppTheme.whiteContainer,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    )),
+                        )
+                        .toList(),
+                  ),
+                ),
               ],
             ),
           ),
 
-          const SizedBox(width: 12),
+          const SizedBox(width: 10),
 
-          // Derecha: placeholder para imagen (fácil de cambiar por un Image.asset o Svg)
-             Expanded(
-            flex: 3,
-             child: Align(
-                alignment: Alignment.centerRight,
-                child: Image.asset(
+          // Imagen a la derecha centrada verticalmente
+          Expanded(
+            flex: 2,
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Image.asset(
                 'assets/images/Citydriver-rafiki.png',
-                height: 300,
+                width: 300,
+                height:200,
                 fit: BoxFit.contain,
               ),
             ),

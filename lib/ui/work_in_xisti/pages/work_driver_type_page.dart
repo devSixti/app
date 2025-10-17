@@ -2,11 +2,12 @@
 // Permite elegir el tipo de vehículo con el que el usuario desea trabajar (Carro o Moto).
 
 import 'package:app/core/theme/app_theme.dart';
+import 'package:app/ui/work_in_xisti/pages/work_driver_register_page.dart';
 import 'package:app/ui/work_in_xisti/widgets/work_app_bar.dart';
 import 'package:app/ui/work_in_xisti/widgets/work_option_button.dart';
 import 'package:flutter/material.dart';
 
-/// Pantalla de selección de tipo de conductor: Carro / Moto
+/// Pantalla de selección de tipo de conductor: Carro / Moto.
 class WorkDriverTypePage extends StatelessWidget {
   const WorkDriverTypePage({super.key});
 
@@ -17,27 +18,52 @@ class WorkDriverTypePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const WorkAppBar(title: 'Vas a trabajar con', showBack: true),
+            // Barra superior con el título de la pantalla.
+            const WorkAppBar(
+              title: 'Vas a trabajar con',
+              showBack: true,
+            ),
 
+            // Contenido principal.
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 child: Column(
                   children: [
+                    // Botón para seleccionar "Carro".
                     WorkOptionButton(
-                      leading: _defaultIconPlaceholder(Icons.directions_car),
+                      leading: Image.asset(
+                        '/Users/macxisti/Desktop/app/assets/images/iconografia/dark/car_location.png',
+                        width: 48,
+                        height: 48,
+                        fit: BoxFit.contain,
+                      ),
                       label: 'Carro',
                       onTap: () {
-                        // Por ahora solo navegamos atrás o podrías redirigir a un formulario.
-                        Navigator.of(context).pop(); // ejemplo de acción
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const WorkDriverRegisterPage(vehicleType: 'Carro'),
+                          ),
+                        );
                       },
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 16),
+
+                    // Botón para seleccionar "Moto".
                     WorkOptionButton(
-                      leading: _defaultIconPlaceholder(Icons.motorcycle),
+                      leading: Image.asset(
+                        '/Users/macxisti/Desktop/app/assets/images/iconografia/dark/motorbike.png',
+                        width: 48,
+                        height: 48,
+                        fit: BoxFit.contain,
+                      ),
                       label: 'Moto',
                       onTap: () {
-                        Navigator.of(context).pop(); // ejemplo de acción
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const WorkDriverRegisterPage(vehicleType: 'Moto'),
+                          ),
+                        );
                       },
                     ),
                   ],
@@ -46,20 +72,6 @@ class WorkDriverTypePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  static Widget _defaultIconPlaceholder(IconData icon) {
-    return Container(
-      width: 56,
-      height: 56,
-      decoration: BoxDecoration(
-        color: AppTheme.inputBackgroundDark,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Center(
-        child: Icon(icon, size: 28, color: AppTheme.whiteContainer),
       ),
     );
   }

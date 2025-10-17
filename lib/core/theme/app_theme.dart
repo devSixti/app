@@ -134,4 +134,10 @@ class AppTheme {
   }
 
   static Color? get purple => null;
+
+  static Color? get greyTextColor => null;
+
+  static Color? get successColor => null;
+
+  static Color? get textDark => null;
 }

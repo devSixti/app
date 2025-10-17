@@ -11,97 +11,100 @@ import 'work_driver_type_page.dart';
 import 'work_delivery_type_page.dart';
 
 /// Primera pantalla: "Trabaja en Xisti"
-/// Muestra info y opciones: Conductor / Repartidor
+/// Muestra info y opciones: Conductor / Repartidor.
 class WorkIntroPage extends StatelessWidget {
   const WorkIntroPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // Barra superior personalizada
-        const WorkAppBar(
-          title: 'Trabaja en Xisti',
-          showBack: true,
-        ),
-
-        // Contenido principal en scroll
-        Expanded(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-            child: Column(
-              children: [
-                // Tarjeta informativa (imagen + bullets)
-                const WorkInfoCard(
-                  title: 'Trabaja en Xisti',
-                  bullets: [
-                    'Tus precios',
-                    'Ordena tu tiempo',
-                    'La menor tasa de pago por servicio de Colombia',
-                  ],
-                  // Icono o imagen opcional: se puede reemplazar por un Image.asset/SVG
-                  // Por defecto usamos un Container ilustrativo.
-                ),
-
-                const SizedBox(height: 24),
-
-                // Título para continuar registro
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Continuar registro como:',
-                    style: TextStyle(
-                      color: AppTheme.whiteContainer,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-
-                const SizedBox(height: 12),
-
-                // Botón Conductor -> al seleccionar abre la pantalla de tipos de conductor
-                WorkOptionButton(
-                  // icon: Icon(Icons.directions_car, size: 36), // ejemplo
-                  leading: _defaultIconPlaceholder(Icons.directions_car),
-                  label: 'Conductor',
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const WorkDriverTypePage()),
-                    );
-                  },
-                ),
-
-                const SizedBox(height: 12),
-
-                // Botón Repartidor -> abre pantalla de tipos de repartidor
-                WorkOptionButton(
-                  leading: _defaultIconPlaceholder(Icons.delivery_dining),
-                  label: 'Repartidor',
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const WorkDeliveryTypePage()),
-                    );
-                  },
-                ),
-              ],
+    return Scaffold(
+      backgroundColor: AppTheme.darkScaffold,
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Barra superior personalizada con texto “Regresar”.
+            const WorkAppBar(
+              title: 'Regresar',
+              showBack: true,
             ),
-          ),
-        ),
-      ],
-    );
-  }
 
-  /// Helper que devuelve un contenedor con icono para que sea fácil reemplazarlo luego.
-  static Widget _defaultIconPlaceholder(IconData icon) {
-    return Container(
-      width: 56,
-      height: 56,
-      decoration: BoxDecoration(
-        color: AppTheme.inputBackgroundDark,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Center(
-        child: Icon(icon, size: 28, color: AppTheme.whiteContainer),
+            // Contenido principal desplazable.
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    // Tarjeta informativa con título centrado y lista de beneficios.
+                    const WorkInfoCard(
+                      textAlign: TextAlign.center,
+                      title: 'Trabaja en Xisti',
+                      bullets: [
+                        'Tus precios.',
+                        'Ordena tu tiempo.',
+                        'La menor tasa de pago por servicio de Colombia.',
+                      ],
+                    ),
+
+                    const SizedBox(height: 32),
+
+                    // Subtítulo centrado que indica el paso siguiente.
+                    Text(
+                      'Continuar registro como:',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: AppTheme.whiteContainer,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    // Botón para acceder a la vista de conductor.
+                    WorkOptionButton(
+                      // Imagen real del icono de conductor.
+                      leading: Image.asset(
+                        '/Users/macxisti/Desktop/app/assets/images/iconografia/dark/car_tool.png',
+                        width: 42,
+                        height: 42,
+                        fit: BoxFit.contain,
+                      ),
+                      label: 'Conductor',
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const WorkDriverTypePage(),
+                          ),
+                        );
+                      },
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    // Botón para acceder a la vista de repartidor.
+                    WorkOptionButton(
+                      leading: Image.asset(
+                        '/Users/macxisti/Desktop/app/assets/images/iconografia/dark/delivery_fast.png',
+                        width: 42,
+                        height: 42,
+                        fit: BoxFit.contain,
+                      ),
+                      label: 'Repartidor',
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const WorkDeliveryTypePage(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
