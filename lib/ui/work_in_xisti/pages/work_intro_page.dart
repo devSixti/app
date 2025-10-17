@@ -65,7 +65,7 @@ class WorkIntroPage extends StatelessWidget {
                     WorkOptionButton(
                       // Imagen real del icono de conductor.
                       leading: Image.asset(
-                        '/Users/macxisti/Desktop/app/assets/images/iconografia/dark/car_tool.png',
+                        'assets/images/iconografia/dark/car_tool.png',
                         width: 42,
                         height: 42,
                         fit: BoxFit.contain,
@@ -85,7 +85,7 @@ class WorkIntroPage extends StatelessWidget {
                     // Botón para acceder a la vista de repartidor.
                     WorkOptionButton(
                       leading: Image.asset(
-                        '/Users/macxisti/Desktop/app/assets/images/iconografia/dark/delivery_fast.png',
+                        'assets/images/iconografia/dark/delivery_fast.png',
                         width: 42,
                         height: 42,
                         fit: BoxFit.contain,
