@@ -1,11 +1,13 @@
 // este archivo define un widget UserProfile que muestra el perfil del usuario en un drawer.
 
-import 'package:app/ui/perfil_usuario_xisti/screens/perfil_usuario_xisti_screen.dart';
+import 'package:app/ui/profile_user_xisti/profile_user.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class UserProfile extends StatelessWidget {
-  const UserProfile({super.key});
+  final bool isDriver;
+
+  const UserProfile({super.key, this.isDriver = false});
 
   // Este widget muestra el perfil del usuario con su avatar, nombre y puntuación.
   @override
@@ -101,7 +103,7 @@ class UserProfile extends StatelessWidget {
     // Navegar a la pantalla de perfil
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const PerfilUsuarioXistiScreen()),
+      MaterialPageRoute(builder: (context) => PerfilUsuarioXistiScreen(isDriver: isDriver)),
     );
   }
 }

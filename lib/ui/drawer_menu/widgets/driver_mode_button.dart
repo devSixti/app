@@ -1,11 +1,15 @@
 // este archivo define un widget DriverModeButton que representa un botón para activar el modo conductor en un drawer.
 
+import 'package:app/ui/work_in_xisti/work_in_xisti.dart';
 import 'package:flutter/material.dart';
 import 'package:app/core/theme/app_theme.dart';
 import '../../pages_drawer/main_driver_page.dart';
 
 class DriverModeButton extends StatelessWidget {
-  const DriverModeButton({super.key});
+  const DriverModeButton({super.key, this.isDriver = false});
+
+  // Indica si el usuario está en modo conductor
+  final bool isDriver;
 
   @override
   Widget build(BuildContext context) {
@@ -14,15 +18,24 @@ class DriverModeButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         onPressed: () {
-          Navigator.pop(context);
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const MainDriverPage()),
-          );
+          // Usar la propiedad recibida en lugar de widget (es StatelessWidget)
+          if (isDriver) {
+            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const MainDriverPage()),
+            );
+          } else {
+            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const WorkInXisti()),
+            );
+          }
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppTheme.primaryColor,
-          foregroundColor: Color.fromRGBO(0, 0, 0, 1),
+          foregroundColor: const Color.fromRGBO(0, 0, 0, 1),
           padding: const EdgeInsets.symmetric(vertical: 12),
           shape: RoundedRectangleBorder(borderRadius: AppTheme.border),
           elevation: 0,

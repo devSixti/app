@@ -5,6 +5,7 @@ import 'widget/security_settings_widget.dart';
 import 'widget/privacy_data_widget.dart';
 import 'widget/security_tips_widget.dart';
 import 'widget/security_contact_widget.dart';
+import '../../change_password/change_password_page.dart';
 
 class SecurityPage extends StatelessWidget {
   const SecurityPage({super.key});
@@ -58,16 +59,14 @@ class SecurityPage extends StatelessWidget {
   void _onOptionTap(BuildContext context, String option) {
     switch (option) {
       case 'password':
-        _showComingSoonDialog(context, 'Cambiar Contraseña');
-        break;
-      case 'twoFactor':
-        _showComingSoonDialog(context, 'Verificación en Dos Pasos');
-        break;
+       // Navegación a la pantalla de cambio de contraseña
+      Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ChangePasswordPage()),
+        );
+      break;
       case 'biometric':
         _showComingSoonDialog(context, 'Autenticación Biométrica');
-        break;
-      case 'devices':
-        _showComingSoonDialog(context, 'Dispositivos Conectados');
         break;
       case 'downloadData':
         _showComingSoonDialog(context, 'Descargar Datos');
@@ -184,7 +183,7 @@ class SecurityPage extends StatelessWidget {
             style: const TextStyle(color: AppTheme.whiteContainer, fontSize: 18),
           ),
           content: Text(
-            'Esta función de seguridad estará disponible próximamente para brindarte mayor protección.',
+            'Esta función de seguridad estará disponible próximamente para brindarte mayor protección.', // Mensaje en el menu de cambiar contraseña
             style: const TextStyle(color: AppTheme.lightGreyContainer, fontSize: 16),
           ),
           actions: [

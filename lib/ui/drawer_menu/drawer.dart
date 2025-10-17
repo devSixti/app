@@ -19,7 +19,7 @@ class CustomDrawer extends StatefulWidget {
   const CustomDrawer({
     super.key,
     this.isLogedIn = true,
-    this.isDriver = true,
+    this.isDriver = false,
   }); // true = logueado, false = no logueado
 
   final bool isLogedIn;
@@ -38,7 +38,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
         child: Column(
           children: [
             if (widget.isLogedIn) ...[
-              const UserProfile(),
+              UserProfile(isDriver: widget.isDriver),
             ] else ...[
               // boton de iniciar sesión
               Padding(
@@ -261,7 +261,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ),
             ),
             // Botón Modo Conductor
-            const DriverModeButton(),
+            DriverModeButton(isDriver: widget.isDriver),
             // Redes sociales
             const SocialMediaLinks(),
             // Espacio inferior
