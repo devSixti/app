@@ -89,7 +89,7 @@ class WorkInfoCard extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerRight,
               child: Image.asset(
-                'assets/images/Citydriver-rafiki.png',
+                'assets/images/Citydriver-rafiki.png', // Imagen
                 width: 300,
                 height:200,
                 fit: BoxFit.contain,
