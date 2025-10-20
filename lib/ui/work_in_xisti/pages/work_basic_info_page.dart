@@ -2,9 +2,12 @@
 // Permite al conductor ingresar sus datos personales y de contacto antes de continuar con el registro.
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter/services.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/ui/work_in_xisti/widgets/work_app_bar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:app/ui/work_in_xisti/widgets/work_date_field.dart';
+import 'package:app/ui/work_in_xisti/widgets/work_dropdown_field.dart';
 
 class WorkBasicInfoPage extends StatefulWidget {
   final String vehicleType; // Carro o Moto
@@ -28,13 +31,19 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
 
   String? _selectedGender;
 
-
   // Lista de géneros disponibles
   final List<String> _genders = [
     'Masculino',
     'Femenino',
     'Otro',
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    // Al abrir, intentamos cargar información previa guardada para este tipo de vehículo.
+    _loadSavedData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,18 +86,15 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
 
                     _buildInputField(
                       controller: _secondLastNameController,
-                      hint: 'Segundo apellido (opcional)',
+                      hint: 'Segundo apellido',
                       keyboardType: TextInputType.name,
                     ),
                     const SizedBox(height: 14),
 
                     // Fecha de nacimiento
-                    _buildInputField(
-                      controller: _birthDateController,
+                    WorkDateField(
                       hint: 'Fecha de nacimiento',
-                      readOnly: true,
-                      onTap: _selectDate,
-                      suffixIcon: Icon(Icons.calendar_today_rounded, color: AppTheme.greyTextColor),
+                      controller: _birthDateController,
                     ),
                     const SizedBox(height: 14),
 
@@ -101,18 +107,24 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
                     const SizedBox(height: 14),
 
                     // Número de teléfono
+                    // Solo números y máximo 10 dígitos para teléfono
                     _buildInputField(
                       controller: _phoneController,
                       hint: 'Número de teléfono',
                       keyboardType: TextInputType.phone,
+                      // Formateadores: permite solo dígitos y limita a 10
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                        LengthLimitingTextInputFormatter(10),
+                      ],
                     ),
                     const SizedBox(height: 14),
 
                     // Género
-                    _buildDropdownField(
-                      hint: 'Género',
-                      value: _selectedGender,
+                    WorkDropdownField(
+                      hint: 'Sexo',
                       items: _genders,
+                      value: _selectedGender,
                       onChanged: (value) {
                         setState(() => _selectedGender = value);
                       },
@@ -130,9 +142,12 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
+                          // Guardamos la información y marcamos como completado de forma persistente.
+                          await _saveDataAndMarkCompleted();
                           // Retorna true al panel de registro indicando que se completó la información básica
-                          Navigator.pop(context, true);
+                          // ignore: use_build_context_synchronously
+                          if (mounted) Navigator.pop(context, true);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppTheme.primaryColor,
@@ -169,10 +184,13 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
     bool readOnly = false,
     void Function()? onTap,
     Widget? suffixIcon,
+    // Permite pasar formateadores de entrada (por ejemplo: solo dígitos, límite de longitud)
+    List<TextInputFormatter>? inputFormatters,
   }) {
     return TextField(
       controller: controller,
       keyboardType: keyboardType,
+      inputFormatters: inputFormatters,
       readOnly: readOnly,
       onTap: onTap,
       style: TextStyle(color: AppTheme.whiteContainer),
@@ -207,71 +225,43 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
     );
   }
 
-  // Construye un campo Dropdown
-  Widget _buildDropdownField({
-    required String hint,
-    required List<String> items,
-    required Function(String?) onChanged,
-    String? value,
-  }) {
-    return DropdownButtonFormField<String>(
-      value: value,
-      isExpanded: true,
-      decoration: InputDecoration(
-        hintText: hint,
-        hintStyle: TextStyle(color: AppTheme.greyTextColor),
-        filled: true,
-        fillColor: AppTheme.darkGreyContainer,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Colors.transparent, width: 1),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Colors.transparent, width: 1),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Colors.transparent, width: 1),
-        ),
-      ),
-      icon: Icon(Icons.arrow_drop_down, color: AppTheme.greyTextColor),
-      dropdownColor: AppTheme.darkGreyContainer,
-      items: items
-          .map((item) => DropdownMenuItem<String>(
-                value: item,
-                child: Text(item, style: TextStyle(color: AppTheme.whiteContainer)),
-              ))
-          .toList(),
-      onChanged: onChanged,
-    );
+  // Carga datos guardados previamente para el vehicleType actual.
+  Future<void> _loadSavedData() async {
+    final prefs = await SharedPreferences.getInstance();
+    final prefix = 'basic_info_${widget.vehicleType}_';
+
+    _firstNameController.text = prefs.getString('${prefix}firstName') ?? '';
+    _middleNameController.text = prefs.getString('${prefix}middleName') ?? '';
+    _lastNameController.text = prefs.getString('${prefix}lastName') ?? '';
+    _secondLastNameController.text = prefs.getString('${prefix}secondLastName') ?? '';
+    _birthDateController.text = prefs.getString('${prefix}birthDate') ?? '';
+    _emailController.text = prefs.getString('${prefix}email') ?? '';
+    _phoneController.text = prefs.getString('${prefix}phone') ?? '';
+    _otherGenderController.text = prefs.getString('${prefix}otherGender') ?? '';
+    setState(() {
+      final savedGender = prefs.getString('${prefix}gender');
+      _selectedGender = (savedGender != null && savedGender.isNotEmpty && _genders.contains(savedGender))
+          ? savedGender
+          : null;
+    });
   }
 
-  // Selector de fecha de nacimiento
-  Future<void> _selectDate() async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime(1995),
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
-      locale: const Locale('es', 'ES'),
-      builder: (context, child) {
-        return Theme(
-          data: ThemeData.dark().copyWith(
-            colorScheme: ColorScheme.dark(
-              primary: AppTheme.primaryColor,
-              onSurface: AppTheme.whiteContainer,
-            ),
-          ),
-          child: child!,
-        );
-      },
-    );
-    if (picked != null) {
-      setState(() {
-        _birthDateController.text = DateFormat('dd/MM/yyyy', 'es_ES').format(picked);
-      });
-    }
+  // Guarda los datos actuales del formulario y marca el paso como completado de forma persistente.
+  Future<void> _saveDataAndMarkCompleted() async {
+    final prefs = await SharedPreferences.getInstance();
+    final prefix = 'basic_info_${widget.vehicleType}_';
+    // Guardar datos del formulario
+    await prefs.setString('${prefix}firstName', _firstNameController.text.trim());
+    await prefs.setString('${prefix}middleName', _middleNameController.text.trim());
+    await prefs.setString('${prefix}lastName', _lastNameController.text.trim());
+    await prefs.setString('${prefix}secondLastName', _secondLastNameController.text.trim());
+    await prefs.setString('${prefix}birthDate', _birthDateController.text.trim());
+    await prefs.setString('${prefix}email', _emailController.text.trim());
+    await prefs.setString('${prefix}phone', _phoneController.text.trim());
+    await prefs.setString('${prefix}gender', _selectedGender ?? '');
+    await prefs.setString('${prefix}otherGender', _otherGenderController.text.trim());
+    // Marcar completado para este tipo de vehículo
+    await prefs.setBool('basic_info_completed_${widget.vehicleType}', true);
   }
 }
+  
