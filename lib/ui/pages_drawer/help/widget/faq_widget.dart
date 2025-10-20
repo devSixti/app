@@ -14,10 +14,8 @@ class FaqWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppTheme.inputBackgroundDark,
-        borderRadius: AppTheme.border,
+        color: AppTheme.transparent,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,7 +25,7 @@ class FaqWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppTheme.primaryColor.withOpacity(0.3),
+                  color: AppTheme.darkScaffold.withOpacity(0.3),
                   borderRadius: AppTheme.border,
                 ),
                 child: const Icon(
@@ -84,7 +82,7 @@ class FaqWidget extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: AppTheme.darkGreyContainer,
+                      color: AppTheme.darkScaffold,
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(

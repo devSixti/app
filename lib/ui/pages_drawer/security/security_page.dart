@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
-import 'widget/security_header_widget.dart';
 import 'widget/security_settings_widget.dart';
 import 'widget/privacy_data_widget.dart';
 import 'widget/security_tips_widget.dart';
 import 'widget/security_contact_widget.dart';
 import '../../change_password/change_password_page.dart';
+import '../../work_in_xisti/widgets/work_app_bar.dart';
 
 class SecurityPage extends StatelessWidget {
   const SecurityPage({super.key});
@@ -13,18 +13,19 @@ class SecurityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.darkDrawerBackground,
+      backgroundColor: AppTheme.darkScaffold,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          const SecurityHeaderWidget(),
-          
           // Contenido principal
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
+                  const WorkAppBar(title: 'Regresar', showBack: true),
+                  const SizedBox(height: 20),
+
                   SecuritySettingsWidget(
                     onOptionTap: (opt) => _onOptionTap(context, opt),
                     biometricEnabled: false,
@@ -36,15 +37,16 @@ class SecurityPage extends StatelessWidget {
                   PrivacyDataWidget(
                     onOptionTap: (opt) => _onOptionTap(context, opt),
                   ),
-                  
+
                   const SizedBox(height: 24),
 
                   const SecurityTipsWidget(),
-                  
+
                   const SizedBox(height: 24),
 
                   SecurityContactWidget(
-                    onContactSecurity: () => _showSecurityContactDialog(context),
+                    onContactSecurity: () =>
+                        _showSecurityContactDialog(context),
                   ),
                 ],
               ),
@@ -59,12 +61,12 @@ class SecurityPage extends StatelessWidget {
   void _onOptionTap(BuildContext context, String option) {
     switch (option) {
       case 'password':
-       // Navegación a la pantalla de cambio de contraseña
-      Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const ChangePasswordPage()),
+        // Navegación a la pantalla de cambio de contraseña
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ChangePasswordPage()),
         );
-      break;
+        break;
       case 'biometric':
         _showComingSoonDialog(context, 'Autenticación Biométrica');
         break;
@@ -100,7 +102,11 @@ class SecurityPage extends StatelessWidget {
               SizedBox(width: 12),
               Text(
                 'Eliminar Cuenta',
-                style: TextStyle(color: Colors.red, fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),
@@ -111,7 +117,10 @@ class SecurityPage extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancelar', style: TextStyle(color: AppTheme.lightGreyContainer)),
+              child: const Text(
+                'Cancelar',
+                style: TextStyle(color: AppTheme.lightGreyContainer),
+              ),
             ),
             ElevatedButton(
               onPressed: () => Navigator.of(context).pop(),
@@ -180,11 +189,17 @@ class SecurityPage extends StatelessWidget {
           ),
           title: Text(
             feature,
-            style: const TextStyle(color: AppTheme.whiteContainer, fontSize: 18),
+            style: const TextStyle(
+              color: AppTheme.whiteContainer,
+              fontSize: 18,
+            ),
           ),
           content: Text(
             'Esta función de seguridad estará disponible próximamente para brindarte mayor protección.', // Mensaje en el menu de cambiar contraseña
-            style: const TextStyle(color: AppTheme.lightGreyContainer, fontSize: 16),
+            style: const TextStyle(
+              color: AppTheme.lightGreyContainer,
+              fontSize: 16,
+            ),
           ),
           actions: [
             ElevatedButton(
