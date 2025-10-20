@@ -106,6 +106,7 @@ class _WorkIdentityDocumentPageState extends State<WorkIdentityDocumentPage> {
                         onPressed: () async {
                           if (!_validateForm()) return;
                           await _saveDataAndMarkCompleted();
+                          // ignore: use_build_context_synchronously
                           if (mounted) Navigator.pop(context, true);
                         },
                         style: ElevatedButton.styleFrom(

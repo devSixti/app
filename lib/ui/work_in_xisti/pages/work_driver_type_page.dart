@@ -33,7 +33,7 @@ class WorkDriverTypePage extends StatelessWidget {
                     // Botón para seleccionar "Carro".
                     WorkOptionButton(
                       leading: Image.asset(
-                        '/Users/macxisti/Desktop/app/assets/images/iconografia/dark/car_location.png',
+                        'assets/images/iconografia/dark/car_location.png',
                         width: 48,
                         height: 48,
                         fit: BoxFit.contain,
@@ -52,7 +52,7 @@ class WorkDriverTypePage extends StatelessWidget {
                     // Botón para seleccionar "Moto".
                     WorkOptionButton(
                       leading: Image.asset(
-                        '/Users/macxisti/Desktop/app/assets/images/iconografia/dark/motorbike.png',
+                        'assets/images/iconografia/dark/motorbike.png',
                         width: 48,
                         height: 48,
                         fit: BoxFit.contain,

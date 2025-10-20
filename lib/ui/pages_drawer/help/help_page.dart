@@ -2,9 +2,9 @@ import 'package:app/ui/pages_drawer/help/widget/contact_widget.dart';
 import 'package:app/ui/pages_drawer/help/widget/faq_widget.dart';
 import 'package:app/ui/pages_drawer/help/widget/help_search_widget.dart';
 import 'package:app/ui/pages_drawer/help/widget/quick_categories_widget.dart';
+import 'package:app/ui/work_in_xisti/widgets/work_app_bar.dart';
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
-import 'widget/help_header_widget.dart';
 
 class HelpPage extends StatefulWidget {
   const HelpPage({super.key});
@@ -100,19 +100,22 @@ class _HelpPageState extends State<HelpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.darkDrawerBackground,
+      backgroundColor: AppTheme.darkScaffold,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          // Header
-          const HelpHeaderWidget(),
           
           // Contenido principal
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               child: Column(
                 children: [
+                  const WorkAppBar(
+                    title: 'Regresar',
+                    showBack: true,
+                  ),
+                  const SizedBox(height: 20),
                   // Buscador
                   HelpSearchWidget(
                     searchController: _searchController,

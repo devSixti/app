@@ -33,7 +33,7 @@ class WorkDeliveryTypePage extends StatelessWidget {
                     WorkOptionButton(
                       // Ícono real del repartidor.
                       leading: Image.asset(
-                        '/Users/macxisti/Desktop/app/assets/images/iconografia/dark/delivery_card.png',
+                        'assets/images/iconografia/dark/delivery_card.png',
                         width: 48,
                         height: 48,
                         fit: BoxFit.contain,
@@ -51,7 +51,7 @@ class WorkDeliveryTypePage extends StatelessWidget {
                     WorkOptionButton(
                       // Ícono real del repartidor en moto.
                       leading: Image.asset(
-                        '/Users/macxisti/Desktop/app/assets/images/iconografia/dark/delivery.png',
+                        'assets/images/iconografia/dark/delivery.png',
                         width: 48,
                         height: 48,
                         fit: BoxFit.contain,
