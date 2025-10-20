@@ -75,7 +75,7 @@ class QuickCategoriesWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(right: 12),
       decoration: BoxDecoration(
-        color: AppTheme.inputBackgroundDark,
+        color: AppTheme.darkGreyContainer,
         borderRadius: AppTheme.border,
       ),
       child: Material(
@@ -89,7 +89,7 @@ class QuickCategoriesWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(icon, color: iconColor, size: 18),
-                const SizedBox(width: 8),
+                const SizedBox(width: 2),
                 Text(
                   label,
                   style: TextStyle(

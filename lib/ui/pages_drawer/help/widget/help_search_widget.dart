@@ -16,21 +16,21 @@ class HelpSearchWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        color: AppTheme.inputBackgroundDark,
+        color: AppTheme.darkGreyContainer,
         borderRadius: AppTheme.border,
       ),
       child: TextField(
         controller: searchController,
         onChanged: onSearchChanged,
-        style: const TextStyle(
+        style: TextStyle(
           color: AppTheme.whiteContainer,
-          fontSize: 16,
+          fontSize: AppTheme.mediumSize,
         ),
         decoration: InputDecoration(
           hintText: 'Buscar en preguntas frecuentes...',
           hintStyle: TextStyle(
-            color: AppTheme.lightGreyContainer.withOpacity(0.7),
-            fontSize: 16,
+            color: AppTheme.whiteContainer,
+            fontSize: AppTheme.mediumSize,
           ),
           prefixIcon: Container(
             margin: const EdgeInsets.all(12),
@@ -52,7 +52,7 @@ class HelpSearchWidget extends StatelessWidget {
                   },
                   icon: const Icon(
                     Icons.clear_rounded,
-                    color: AppTheme.lightGreyContainer,
+                    color: AppTheme.whiteContainer,
                   ),
                 )
               : null,
