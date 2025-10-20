@@ -17,7 +17,7 @@ class PrivacyDataWidget extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        color: AppTheme.inputBackgroundDark,
+        color: AppTheme.darkScaffold,
         borderRadius: AppTheme.border,
       ),
       child: Column(
