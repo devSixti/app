@@ -1,7 +1,7 @@
 import 'package:app/ui/pages_drawer/wallet/widget/driver_stats_widget.dart';
 import 'package:app/ui/pages_drawer/wallet/widget/transactions_history_widget.dart';
 import 'package:app/ui/pages_drawer/wallet/widget/wallet_actions_widget.dart';
-import 'package:app/ui/pages_drawer/wallet/widget/wallet_header.dart';
+import 'package:app/ui/work_in_xisti/widgets/work_app_bar.dart';
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
 
@@ -62,15 +62,20 @@ class _DriverWalletPageState extends State<DriverWalletPage> {
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          // Header con balance
-          WalletHeaderWidget(),
-          
+
           // Contenido principal
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
+                   const SizedBox(height: 20),
+                  const WorkAppBar(
+                    title: 'Regresar',
+                    showBack: true,
+                  ),
+                  const SizedBox(height: 20),
+
                   // Acciones rápidas del conductor
                   WalletActionsWidget(
                     isDriver: true,
