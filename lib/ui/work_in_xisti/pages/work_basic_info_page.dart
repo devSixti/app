@@ -7,6 +7,7 @@ import 'package:app/core/theme/app_theme.dart';
 import 'package:app/ui/work_in_xisti/widgets/work_app_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:app/ui/work_in_xisti/widgets/work_date_field.dart';
+ 
 import 'package:app/ui/work_in_xisti/widgets/work_dropdown_field.dart';
 
 class WorkBasicInfoPage extends StatefulWidget {
@@ -31,6 +32,8 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
 
   String? _selectedGender;
 
+ 
+
   // Lista de géneros disponibles
   final List<String> _genders = [
     'Masculino',
@@ -54,7 +57,7 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
           children: [
             // Barra superior con título y botón regresar
             WorkAppBar(
-              title: 'Información Básica (${widget.vehicleType})',
+              title: 'Información Básica',
               showBack: true,
             ),
 
@@ -67,6 +70,11 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
                       controller: _firstNameController,
                       hint: 'Primer nombre',
                       keyboardType: TextInputType.name,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                          RegExp(r'[A-Za-zÁÉÍÓÚáéíóúÑñ]'),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 14),
 
@@ -74,6 +82,11 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
                       controller: _middleNameController,
                       hint: 'Segundo nombre (opcional)',
                       keyboardType: TextInputType.name,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                          RegExp(r'[A-Za-zÁÉÍÓÚáéíóúÑñ]'),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 14),
 
@@ -81,6 +94,11 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
                       controller: _lastNameController,
                       hint: 'Primer apellido',
                       keyboardType: TextInputType.name,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                          RegExp(r'[A-Za-zÁÉÍÓÚáéíóúÑñ]'),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 14),
 
@@ -88,6 +106,11 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
                       controller: _secondLastNameController,
                       hint: 'Segundo apellido',
                       keyboardType: TextInputType.name,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                          RegExp(r'[A-Za-zÁÉÍÓÚáéíóúÑñ]'),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 14),
 
@@ -112,6 +135,18 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
                       controller: _phoneController,
                       hint: 'Número de teléfono',
                       keyboardType: TextInputType.phone,
+                      // Prefijo con bandera y código de país, siempre visible
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.only(left: 8, right: 4),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: const [
+                            Text('🇨🇴', style: TextStyle(fontSize: 16)),
+                            SizedBox(width: 6),
+                            Text('+57', style: TextStyle(fontSize: 14)),
+                          ],
+                        ),
+                      ),
                       // Formateadores: permite solo dígitos y limita a 10
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
@@ -138,12 +173,15 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
                       ),
                     const SizedBox(height: 30),
 
+ 
+
                     // Botón Continuar
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () async {
-                          // Guardamos la información y marcamos como completado de forma persistente.
+                          // Validación antes de guardar
+                          if (!_validateForm()) return;
                           await _saveDataAndMarkCompleted();
                           // Retorna true al panel de registro indicando que se completó la información básica
                           // ignore: use_build_context_synchronously
@@ -184,6 +222,8 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
     bool readOnly = false,
     void Function()? onTap,
     Widget? suffixIcon,
+    Widget? prefixIcon,
+    Widget? prefix,
     // Permite pasar formateadores de entrada (por ejemplo: solo dígitos, límite de longitud)
     List<TextInputFormatter>? inputFormatters,
   }) {
@@ -200,6 +240,8 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
         filled: true,
         fillColor: AppTheme.darkGreyContainer,
         suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
+        prefix: prefix,
         contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -243,6 +285,7 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
       _selectedGender = (savedGender != null && savedGender.isNotEmpty && _genders.contains(savedGender))
           ? savedGender
           : null;
+ 
     });
   }
 
@@ -260,8 +303,58 @@ class _WorkBasicInfoPageState extends State<WorkBasicInfoPage> {
     await prefs.setString('${prefix}phone', _phoneController.text.trim());
     await prefs.setString('${prefix}gender', _selectedGender ?? '');
     await prefs.setString('${prefix}otherGender', _otherGenderController.text.trim());
+ 
     // Marcar completado para este tipo de vehículo
     await prefs.setBool('basic_info_completed_${widget.vehicleType}', true);
+  }
+
+  // Validaciones de formulario según lo solicitado
+  bool _validateForm() {
+    final nameRegex = RegExp(r'^[A-Za-zÁÉÍÓÚáéíóúÑñ]+$');
+
+    final firstName = _firstNameController.text.trim();
+    if (firstName.isEmpty || !nameRegex.hasMatch(firstName)) {
+      _showSnack('El primer nombre debe contener solo letras, sin espacios.');
+      return false;
+    }
+
+    final middleName = _middleNameController.text.trim();
+    if (middleName.isNotEmpty && !nameRegex.hasMatch(middleName)) {
+      _showSnack('El segundo nombre (opcional) solo puede tener letras, sin espacios.');
+      return false;
+    }
+
+    final lastName = _lastNameController.text.trim();
+    if (lastName.isEmpty || !nameRegex.hasMatch(lastName)) {
+      _showSnack('El primer apellido debe contener solo letras, sin espacios.');
+      return false;
+    }
+
+    final secondLastName = _secondLastNameController.text.trim();
+    if (secondLastName.isNotEmpty && !nameRegex.hasMatch(secondLastName)) {
+      _showSnack('El segundo apellido debe contener solo letras, sin espacios.');
+      return false;
+    }
+
+    final email = _emailController.text.trim();
+    if (email.isEmpty || !email.contains('@')) {
+      _showSnack('Ingresa un correo válido que contenga @');
+      return false;
+    }
+
+    final phone = _phoneController.text.trim();
+    if (phone.length != 10) {
+      _showSnack('El teléfono debe tener 10 dígitos');
+      return false;
+    }
+
+    return true;
+  }
+
+  void _showSnack(String msg) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(msg)),
+    );
   }
 }
   

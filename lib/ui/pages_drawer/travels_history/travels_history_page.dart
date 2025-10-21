@@ -239,7 +239,7 @@ class _TravelsHistoryPageState extends State<TravelsHistoryPage> {
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
-                   const SizedBox(height: 20),
+                  const SizedBox(height: 50),
                   const WorkAppBar(
                     title: 'Regresar',
                     showBack: true,

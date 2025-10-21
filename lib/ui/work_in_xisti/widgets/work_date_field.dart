@@ -24,13 +24,17 @@ class WorkDateField extends StatelessWidget {
 
   Future<void> _pickDate(BuildContext context) async {
     final DateTime now = DateTime.now();
-    final DateTime init = initialDate ?? DateTime(1995);
     final DateTime first = firstDate ?? DateTime(1900);
     final DateTime last = lastDate ?? now;
 
+    // Selecciona una fecha inicial segura dentro del rango [first, last].
+    DateTime safeInit = initialDate ?? now;
+    if (safeInit.isBefore(first)) safeInit = first;
+    if (safeInit.isAfter(last)) safeInit = last;
+
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: init,
+      initialDate: safeInit,
       firstDate: first,
       lastDate: last,
       locale: locale,
