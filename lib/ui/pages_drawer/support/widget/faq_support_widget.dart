@@ -9,24 +9,9 @@ class FaqSupportWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(24),
       margin: const EdgeInsets.only(bottom: 24),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [AppTheme.inputBackgroundDark, AppTheme.darkGreyContainer],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: AppTheme.border,
-        border: Border.all(color: AppTheme.silver.withOpacity(0.3), width: 1),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.blackContainer.withOpacity(0.3),
-            blurRadius: 12,
-            offset: const Offset(0, 6),
-          ),
-        ],
-      ),
+     color: AppTheme.darkScaffold,
+     
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

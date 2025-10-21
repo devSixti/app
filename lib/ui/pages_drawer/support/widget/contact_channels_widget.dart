@@ -8,11 +8,10 @@ class ContactChannelsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(24),
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
         borderRadius: AppTheme.border,
-        color: AppTheme.inputBackgroundDark,
+        color: AppTheme.darkScaffold,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
