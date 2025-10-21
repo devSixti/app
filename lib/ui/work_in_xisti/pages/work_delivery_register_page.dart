@@ -1,53 +1,45 @@
-// Pantalla de registro de conductor dentro del módulo "Trabaja en Xisti".
-// Muestra el progreso de registro de documentos y un botón para continuar.
-// Desde aquí el conductor puede acceder a las diferentes etapas del proceso de registro.
+// Registro para Repartidor (carro o moto), reutiliza las mismas secciones del flujo de Conductor
+// pero separa la persistencia usando un sufijo de almacenamiento distinto (e.g., 'delivery_carro').
 
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/ui/work_in_xisti/pages/work_basic_info_page.dart';
-import 'package:app/ui/work_in_xisti/widgets/work_app_bar.dart';
 import 'package:app/ui/work_in_xisti/pages/work_identity_document_page.dart';
-import 'package:app/ui/work_in_xisti/pages/work_license_page.dart';
 import 'package:app/ui/work_in_xisti/pages/work_judicial_background_page.dart';
+import 'package:app/ui/work_in_xisti/pages/work_license_page.dart';
 import 'package:app/ui/work_in_xisti/pages/work_soat_page.dart';
 import 'package:app/ui/work_in_xisti/pages/work_vehicle_info_page.dart';
 import 'package:app/ui/work_in_xisti/pages/work_ready_page.dart';
+import 'package:app/ui/work_in_xisti/widgets/work_app_bar.dart';
 import 'package:app/ui/work_in_xisti/pages/work_verification_selfie_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// Página principal del registro de conductor.
-// Se convierte a StatefulWidget para poder reflejar el estado de pasos completados.
-class WorkDriverRegisterPage extends StatefulWidget {
-  final String vehicleType; // Carro o Moto
-
-  const WorkDriverRegisterPage({
+class WorkDeliveryRegisterPage extends StatefulWidget {
+  const WorkDeliveryRegisterPage({
     super.key,
-    required this.vehicleType,
+    required this.vehicleTypeLabel, // 'carro' | 'moto'
+    required this.storageKeySuffix, // 'delivery_carro' | 'delivery_moto'
   });
 
+  final String vehicleTypeLabel;
+  final String storageKeySuffix;
+
   @override
-  State<WorkDriverRegisterPage> createState() => _WorkDriverRegisterPageState();
+  State<WorkDeliveryRegisterPage> createState() => _WorkDeliveryRegisterPageState();
 }
 
-class _WorkDriverRegisterPageState extends State<WorkDriverRegisterPage> {
-  // Flag de estado: indica si la sección "Información Básica" fue completada.
+class _WorkDeliveryRegisterPageState extends State<WorkDeliveryRegisterPage> {
   bool _basicInfoCompleted = false;
-  // Flag de estado: indica si la sección "Documento de Identidad" fue completada.
   bool _identityCompleted = false;
-  // Flag de estado: indica si la sección "Licencia" fue completada.
   bool _licenseCompleted = false;
-  // Flag de estado: indica si la sección "Certificado de antecedentes" fue completada.
   bool _backgroundCompleted = false;
-  // Flag de estado: indica si la sección "SOAT" fue completada.
   bool _soatCompleted = false;
-  // Flag de estado: indica si la sección "Información de vehículo" fue completada.
   bool _vehicleCompleted = false;
   bool _selfieCompleted = false;
 
   @override
   void initState() {
     super.initState();
-    // Al abrir la pantalla, cargamos el estado persistente del paso "Información Básica".
     _loadCompletionFlag();
     _loadIdentityFlag();
     _loadLicenseFlag();
@@ -64,31 +56,24 @@ class _WorkDriverRegisterPageState extends State<WorkDriverRegisterPage> {
       body: SafeArea(
         child: Column(
           children: [
-            // Barra superior con el título dinámico según el tipo de vehículo.
             WorkAppBar(
-              title: 'Registro Conductor (${widget.vehicleType})',
+              title: 'Registro Repartidor',
               showBack: true,
             ),
-
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Lista de pasos del registro con las mismas bolitas en todos los ítems.
                     GestureDetector(
-                      // Al tocar "Información Básica" navegamos a la pantalla y esperamos resultado.
                       onTap: () async {
                         final completed = await Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (_) => WorkBasicInfoPage(vehicleType: widget.vehicleType),
+                            builder: (_) => WorkBasicInfoPage(vehicleType: widget.storageKeySuffix),
                           ),
                         );
-                        // Si la pantalla de info básica retorna true, marcamos el paso como completado.
-                        if (completed == true) {
-                          setState(() => _basicInfoCompleted = true);
-                        }
+                        if (completed == true) setState(() => _basicInfoCompleted = true);
                       },
                       child: _buildRegisterItem('Información Básica', completed: _basicInfoCompleted),
                     ),
@@ -96,12 +81,10 @@ class _WorkDriverRegisterPageState extends State<WorkDriverRegisterPage> {
                       onTap: () async {
                         final completed = await Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (_) => WorkIdentityDocumentPage(vehicleType: widget.vehicleType),
+                            builder: (_) => WorkIdentityDocumentPage(vehicleType: widget.storageKeySuffix),
                           ),
                         );
-                        if (completed == true) {
-                          setState(() => _identityCompleted = true);
-                        }
+                        if (completed == true) setState(() => _identityCompleted = true);
                       },
                       child: _buildRegisterItem('Documento de Identidad', completed: _identityCompleted),
                     ),
@@ -109,12 +92,10 @@ class _WorkDriverRegisterPageState extends State<WorkDriverRegisterPage> {
                       onTap: () async {
                         final completed = await Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (_) => WorkLicensePage(vehicleType: widget.vehicleType),
+                            builder: (_) => WorkLicensePage(vehicleType: widget.storageKeySuffix),
                           ),
                         );
-                        if (completed == true) {
-                          setState(() => _licenseCompleted = true);
-                        }
+                        if (completed == true) setState(() => _licenseCompleted = true);
                       },
                       child: _buildRegisterItem('Licencia', completed: _licenseCompleted),
                     ),
@@ -122,12 +103,10 @@ class _WorkDriverRegisterPageState extends State<WorkDriverRegisterPage> {
                       onTap: () async {
                         final completed = await Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (_) => WorkJudicialBackgroundPage(vehicleType: widget.vehicleType),
+                            builder: (_) => WorkJudicialBackgroundPage(vehicleType: widget.storageKeySuffix),
                           ),
                         );
-                        if (completed == true) {
-                          setState(() => _backgroundCompleted = true);
-                        }
+                        if (completed == true) setState(() => _backgroundCompleted = true);
                       },
                       child: _buildRegisterItem('Certificado de antecedentes', completed: _backgroundCompleted),
                     ),
@@ -135,12 +114,10 @@ class _WorkDriverRegisterPageState extends State<WorkDriverRegisterPage> {
                       onTap: () async {
                         final completed = await Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (_) => WorkSoatPage(vehicleType: widget.vehicleType),
+                            builder: (_) => WorkSoatPage(vehicleType: widget.storageKeySuffix),
                           ),
                         );
-                        if (completed == true) {
-                          setState(() => _soatCompleted = true);
-                        }
+                        if (completed == true) setState(() => _soatCompleted = true);
                       },
                       child: _buildRegisterItem('SOAT', completed: _soatCompleted),
                     ),
@@ -148,12 +125,10 @@ class _WorkDriverRegisterPageState extends State<WorkDriverRegisterPage> {
                       onTap: () async {
                         final completed = await Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (_) => WorkVehicleInfoPage(vehicleType: widget.vehicleType),
+                            builder: (_) => WorkVehicleInfoPage(vehicleType: widget.storageKeySuffix),
                           ),
                         );
-                        if (completed == true) {
-                          setState(() => _vehicleCompleted = true);
-                        }
+                        if (completed == true) setState(() => _vehicleCompleted = true);
                       },
                       child: _buildRegisterItem('Información de vehículo', completed: _vehicleCompleted),
                     ),
@@ -162,28 +137,23 @@ class _WorkDriverRegisterPageState extends State<WorkDriverRegisterPage> {
                       onTap: () async {
                         final completed = await Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (_) => WorkVerificationSelfiePage(vehicleType: widget.vehicleType),
+                            builder: (_) => WorkVerificationSelfiePage(vehicleType: widget.storageKeySuffix),
                           ),
                         );
-                        if (completed == true) {
-                          setState(() => _selfieCompleted = true);
-                        }
+                        if (completed == true) setState(() => _selfieCompleted = true);
                       },
                       child: _buildRegisterItem('Foto de verificación', completed: _selfieCompleted),
                     ),
 
                     const Spacer(),
 
-                    // Botón principal "Continuar"
                     Center(
                       child: ElevatedButton(
                         onPressed: _onContinuePressed,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppTheme.primaryColor,
                           minimumSize: const Size(double.infinity, 48),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                         ),
                         child: Text(
                           'Continuar',
@@ -198,7 +168,6 @@ class _WorkDriverRegisterPageState extends State<WorkDriverRegisterPage> {
 
                     const SizedBox(height: 50),
 
-                    // Texto legal informativo al final de la pantalla
                     Transform.translate(
                       offset: const Offset(0, -35),
                       child: Text(
@@ -221,10 +190,6 @@ class _WorkDriverRegisterPageState extends State<WorkDriverRegisterPage> {
     );
   }
 
-  // Método que construye cada ítem de la lista del registro.
-  // Todas las bolitas tienen el mismo diseño (sin check, sin doble icono).
-  // Ítem de la lista de pasos de registro.
-  // Si completed = true, muestra un ícono de check; de lo contrario, una bolita vacía.
   static Widget _buildRegisterItem(String title, {bool completed = false}) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -235,20 +200,12 @@ class _WorkDriverRegisterPageState extends State<WorkDriverRegisterPage> {
       ),
       child: Row(
         children: [
-          // Texto del ítem
           Expanded(
             child: Text(
               title,
-              style: TextStyle(
-                color: AppTheme.whiteContainer,
-                fontSize: 15,
-              ),
+              style: TextStyle(color: AppTheme.whiteContainer, fontSize: 15),
             ),
           ),
-
-          // Ícono circular (misma bolita para todos)
-          // Si el paso está completado, mostramos un check con color principal.
-          // Si no, mostramos la bolita actual con opacidad.
           Icon(
             completed ? Icons.check_circle : Icons.circle_outlined,
             color: completed ? AppTheme.primaryColor : AppTheme.whiteContainer.withOpacity(0.4),
@@ -259,62 +216,40 @@ class _WorkDriverRegisterPageState extends State<WorkDriverRegisterPage> {
     );
   }
 
-  // Lee desde SharedPreferences si el paso de Información Básica ya fue completado
-  // para el tipo de vehículo actual y actualiza el estado.
   Future<void> _loadCompletionFlag() async {
     final prefs = await SharedPreferences.getInstance();
-    final saved = prefs.getBool('basic_info_completed_${widget.vehicleType}') ?? false;
-    if (mounted) {
-      setState(() => _basicInfoCompleted = saved);
-    }
+    final saved = prefs.getBool('basic_info_completed_${widget.storageKeySuffix}') ?? false;
+    if (mounted) setState(() => _basicInfoCompleted = saved);
   }
 
   Future<void> _loadIdentityFlag() async {
     final prefs = await SharedPreferences.getInstance();
-    final saved = prefs.getBool('identity_completed_${widget.vehicleType}') ?? false;
-    if (mounted) {
-      setState(() => _identityCompleted = saved);
-    }
+    final saved = prefs.getBool('identity_completed_${widget.storageKeySuffix}') ?? false;
+    if (mounted) setState(() => _identityCompleted = saved);
   }
 
-  // Lee desde SharedPreferences si el paso de Licencia ya fue completado
-  // para el tipo de vehículo actual y actualiza el estado.
   Future<void> _loadLicenseFlag() async {
     final prefs = await SharedPreferences.getInstance();
-    final saved = prefs.getBool('license_completed_${widget.vehicleType}') ?? false;
-    if (mounted) {
-      setState(() => _licenseCompleted = saved);
-    }
+    final saved = prefs.getBool('license_completed_${widget.storageKeySuffix}') ?? false;
+    if (mounted) setState(() => _licenseCompleted = saved);
   }
 
-  // Lee desde SharedPreferences si el paso de Certificado de antecedentes ya fue completado
-  // para el tipo de vehículo actual y actualiza el estado.
   Future<void> _loadBackgroundFlag() async {
     final prefs = await SharedPreferences.getInstance();
-    final saved = prefs.getBool('background_completed_${widget.vehicleType}') ?? false;
-    if (mounted) {
-      setState(() => _backgroundCompleted = saved);
-    }
+    final saved = prefs.getBool('background_completed_${widget.storageKeySuffix}') ?? false;
+    if (mounted) setState(() => _backgroundCompleted = saved);
   }
 
-  // Lee desde SharedPreferences si el paso de SOAT ya fue completado
-  // para el tipo de vehículo actual y actualiza el estado.
   Future<void> _loadSoatFlag() async {
     final prefs = await SharedPreferences.getInstance();
-    final saved = prefs.getBool('soat_completed_${widget.vehicleType}') ?? false;
-    if (mounted) {
-      setState(() => _soatCompleted = saved);
-    }
+    final saved = prefs.getBool('soat_completed_${widget.storageKeySuffix}') ?? false;
+    if (mounted) setState(() => _soatCompleted = saved);
   }
 
-  // Lee desde SharedPreferences si el paso de Información de vehículo ya fue completado
-  // para el tipo de vehículo actual y actualiza el estado.
   Future<void> _loadVehicleFlag() async {
     final prefs = await SharedPreferences.getInstance();
-    final saved = prefs.getBool('vehicle_completed_${widget.vehicleType}') ?? false;
-    if (mounted) {
-      setState(() => _vehicleCompleted = saved);
-    }
+    final saved = prefs.getBool('vehicle_completed_${widget.storageKeySuffix}') ?? false;
+    if (mounted) setState(() => _vehicleCompleted = saved);
   }
 
   void _onContinuePressed() {
@@ -338,7 +273,7 @@ class _WorkDriverRegisterPageState extends State<WorkDriverRegisterPage> {
 
   Future<void> _loadSelfieFlag() async {
     final prefs = await SharedPreferences.getInstance();
-    final saved = prefs.getBool('selfie_completed_${widget.vehicleType}') ?? false;
+    final saved = prefs.getBool('selfie_completed_${widget.storageKeySuffix}') ?? false;
     if (mounted) setState(() => _selfieCompleted = saved);
   }
 }

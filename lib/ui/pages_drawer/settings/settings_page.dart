@@ -34,10 +34,10 @@ class _SettingsPageState extends State<SettingsPage> {
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
+                  const SizedBox(height: 50),
                   const WorkAppBar(
                     title: 'Regresar', 
-                    showBack: true)
-                  ,
+                    showBack: true),
                   const SizedBox(height: 20),
 
                   // Notificaciones

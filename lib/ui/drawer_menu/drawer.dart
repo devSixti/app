@@ -18,7 +18,7 @@ import '../pages_drawer/help/help_page.dart';
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({
     super.key,
-    this.isLogedIn = true,
+    this.isLogedIn = false,
     this.isDriver = false,
   }); // true = logueado, false = no logueado
 

@@ -5,6 +5,8 @@ import 'package:app/core/theme/app_theme.dart';
 import 'package:app/ui/work_in_xisti/widgets/work_app_bar.dart';
 import 'package:app/ui/work_in_xisti/widgets/work_option_button.dart';
 import 'package:flutter/material.dart';
+import 'package:app/ui/work_in_xisti/pages/work_delivery_register_page.dart';
+import 'package:app/ui/work_in_xisti/pages/work_delivery_bike_register_page.dart';
 
 /// Pantalla de selección de tipo de repartidor: Repartidor / Repartidor en moto.
 class WorkDeliveryTypePage extends StatelessWidget {
@@ -29,9 +31,8 @@ class WorkDeliveryTypePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 child: Column(
                   children: [
-                    // Botón para seleccionar "Repartidor".
+                    // Repartidor en carro
                     WorkOptionButton(
-                      // Ícono real del repartidor.
                       leading: Image.asset(
                         'assets/images/iconografia/dark/delivery_card.png',
                         width: 48,
@@ -40,16 +41,21 @@ class WorkDeliveryTypePage extends StatelessWidget {
                       ),
                       label: 'Repartidor en carro',
                       onTap: () {
-                        // Aquí podrías redirigir a un formulario o acción correspondiente.
-                        Navigator.of(context).pop();
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const WorkDeliveryRegisterPage(
+                              vehicleTypeLabel: 'carro',
+                              storageKeySuffix: 'repartidor_carro',
+                            ),
+                          ),
+                        );
                       },
                     ),
 
                     const SizedBox(height: 16),
 
-                    // Botón para seleccionar "Repartidor en moto".
+                    // Repartidor en moto
                     WorkOptionButton(
-                      // Ícono real del repartidor en moto.
                       leading: Image.asset(
                         'assets/images/iconografia/dark/delivery.png',
                         width: 48,
@@ -58,7 +64,36 @@ class WorkDeliveryTypePage extends StatelessWidget {
                       ),
                       label: 'Repartidor en moto',
                       onTap: () {
-                        Navigator.of(context).pop();
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const WorkDeliveryRegisterPage(
+                              vehicleTypeLabel: 'moto',
+                              storageKeySuffix: 'repartidor_moto',
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    // Repartidor en bicicleta
+                    WorkOptionButton(
+                      leading: Image.asset(
+                        'assets/images/iconografia/dark/delivery.png',
+                        width: 48,
+                        height: 48,
+                        fit: BoxFit.contain,
+                      ),
+                      label: 'Repartidor en bicicleta',
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const WorkDeliveryBikeRegisterPage(
+                              storageKeySuffix: 'repartidor_bicicleta',
+                            ),
+                          ),
+                        );
                       },
                     ),
                   ],
