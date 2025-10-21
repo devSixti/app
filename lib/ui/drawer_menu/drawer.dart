@@ -19,7 +19,7 @@ class CustomDrawer extends StatefulWidget {
   const CustomDrawer({
     super.key,
     this.isLogedIn = true,
-    this.isDriver = true
+    this.isDriver = true,
   }); // true = logueado, false = no logueado
 
   final bool isLogedIn;
@@ -233,6 +233,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         }
                       },
                     ),
+                  
                   if (!widget.isDriver)
                     MenuOption(
                       icon: Icons.history,
