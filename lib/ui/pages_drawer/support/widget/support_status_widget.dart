@@ -7,29 +7,15 @@ class SupportStatusWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Colores personalizables
-    final Color borderColor = AppTheme.silver.withOpacity(0.3); // Color del borde principal
+
     final Color iconColor = AppTheme.purpleColor; // Color del icono superior
-    final Color gradientStart = AppTheme.inputBackgroundDark.withOpacity(0.3); // Color inicial del degradado
-    final Color gradientEnd = AppTheme.inputBackgroundDark; // Color final del degradado
     
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(24),
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        // Fondo degradado
-        gradient: LinearGradient(
-          colors: [gradientStart, gradientEnd],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: AppTheme.border,
-
-        // Borde visible y elegante
-        border: Border.all(
-          color: borderColor, // Color del borde
-          width: 1,
-        ),
+        color: AppTheme.darkScaffold,
+        borderRadius: AppTheme.border, 
       ),
 
       // Contenido interno
