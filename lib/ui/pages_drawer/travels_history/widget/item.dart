@@ -19,7 +19,7 @@ class TravelItemWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
-        color: AppTheme.inputBackgroundDark,
+        color: AppTheme.darkScaffold,
         borderRadius: AppTheme.border,
         border: Border.all(
           color: statusColor.withOpacity(0.3),

@@ -111,6 +111,7 @@ class _HelpPageState extends State<HelpPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               child: Column(
                 children: [
+                   const SizedBox(height: 20),
                   const WorkAppBar(
                     title: 'Regresar',
                     showBack: true,
