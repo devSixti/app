@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../di/service_locator.dart';
+
 /// Inicializador de la aplicación.
 Future<void> appInitializer({
   required String envFile,
@@ -8,6 +10,9 @@ Future<void> appInitializer({
 }) async {
   // Asegura que el binding esté inicializado para operaciones async antes de runApp
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Setup dependency injection
+  await setupLocator();
 
   // Limpia cualquier dato persistido de Información Básica al iniciar la app
   // El formulario usa claves que inician con 'basic_info_'

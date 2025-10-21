@@ -32,6 +32,12 @@ dependencies:
   # Networking
   # ------------------------
   dio: ^5.7.0
+  http: ^1.2.0
+  
+  # ------------------------
+  # Dependency Injection
+  # ------------------------
+  get_it: ^7.6.7
 
   # ------------------------
   # Local Storage
