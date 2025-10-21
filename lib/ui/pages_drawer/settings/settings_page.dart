@@ -1,9 +1,9 @@
 import 'package:app/ui/pages_drawer/settings/widgets/setting_location.dart';
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
-import 'widgets/settings_header_widget.dart';
 import 'widgets/notifications_settings_widget.dart';
 import 'widgets/appearance_settings_widget.dart';
+import 'package:app/ui/work_in_xisti/widgets/work_app_bar.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -24,19 +24,22 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.darkDrawerBackground,
+      backgroundColor: AppTheme.darkScaffold,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          // Header
-          const SettingsHeaderWidget(),
-          
           // Contenido principal
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
+                  const WorkAppBar(
+                    title: 'Regresar', 
+                    showBack: true)
+                  ,
+                  const SizedBox(height: 20),
+
                   // Notificaciones
                   NotificationsSettingsWidget(
                     notificationsEnabled: notificationsEnabled,
@@ -52,7 +55,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       });
                     },
                   ),
-                  
+
                   // Ubicación
                   LocationSettingsWidget(
                     locationEnabled: locationEnabled,
@@ -62,7 +65,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       });
                     },
                   ),
-                  
+
                   // Apariencia
                   AppearanceSettingsWidget(
                     selectedLanguage: selectedLanguage,
