@@ -2,6 +2,7 @@
 // Muestra el logo centrado y verifica la conexión con el backend
 // Luego entra automáticamente a la pantalla principal (FormTrips)
 
+import 'package:app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:app/ui/form_trips/form_trips.dart';
 import 'package:app/core/di/service_locator.dart';
@@ -34,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
           _isChecking = false;
           _statusMessage = isConnected 
               ? 'Conexión exitosa' 
-              : 'Error en la conexión con el servidor';
+              : '';
           _isConnected = isConnected;
         });
 
@@ -47,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (mounted) {
         setState(() {
           _isChecking = false;
-          _statusMessage = 'Error en la conexión con el servidor';
+          _statusMessage = '';
           _isConnected = false;
         });
       }
@@ -103,18 +104,16 @@ class _SplashScreenState extends State<SplashScreen> {
                 width: 200,
                 height: 200,
                 errorBuilder: (context, error, stackTrace) {
-                  // En caso de que falte el asset, muestra un ícono de error
-                  return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      Icon(Icons.image_not_supported,
-                          size: 80, color: Colors.grey),
-                      SizedBox(height: 8),
-                      Text(
-                        'Logo no encontrado',
-                        style: TextStyle(color: Colors.white70),
+                  return SizedBox(
+                    width: 200,
+                    height: 200,
+                    child: Center(
+                      child: Icon(
+                        Icons.broken_image,
+                        color: Colors.white,
+                        size: 48,
                       ),
-                    ],
+                    ),
                   );
                 },
               ),
@@ -130,7 +129,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   children: [
                     const Icon(
                       Icons.error_outline,
-                      color: Colors.red,
+                      color: AppTheme.purpleColor,
                       size: 48,
                     ),
                     const SizedBox(height: 16),
@@ -149,8 +148,8 @@ class _SplashScreenState extends State<SplashScreen> {
                       icon: const Icon(Icons.refresh),
                       label: const Text('Reintentar conexión'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        foregroundColor: Colors.white,
+                        backgroundColor: AppTheme.purple,
+                        foregroundColor: AppTheme.purpleColor,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 24,
                           vertical: 12,
@@ -163,7 +162,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Text(
                   _statusMessage,
                   style: const TextStyle(
-                    color: Colors.green,
+                    color: AppTheme.purpleColor,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
