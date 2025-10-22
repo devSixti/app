@@ -1,3 +1,7 @@
+// Pantalla de Licencia de Conducción dentro del módulo "Trabaja en Xisti".
+// Recoge y valida: Número de licencia, Categoría, Fecha de expedición y Fecha de vencimiento.
+// Persiste durante la sesión mediante SharedPreferences y retorna "true" al completar para mostrar el chulito.
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -6,38 +10,37 @@ import 'package:app/ui/work_in_xisti/widgets/work_app_bar.dart';
 import 'package:app/ui/work_in_xisti/widgets/work_dropdown_field.dart';
 import 'package:app/ui/work_in_xisti/widgets/work_date_field.dart';
 import 'package:app/ui/work_in_xisti/widgets/work_file_picker.dart';
+ 
 
-class WorkIdentityDocumentPage extends StatefulWidget {
+class WorkLicensePage extends StatefulWidget {
   final String vehicleType; // Carro o Moto
 
-  const WorkIdentityDocumentPage({super.key, required this.vehicleType});
+  const WorkLicensePage({super.key, required this.vehicleType});
 
   @override
-  State<WorkIdentityDocumentPage> createState() => _WorkIdentityDocumentPageState();
+  State<WorkLicensePage> createState() => _WorkLicensePageState();
 }
 
-class _WorkIdentityDocumentPageState extends State<WorkIdentityDocumentPage> {
-  // Controladores
-  final TextEditingController _docNumberController = TextEditingController();
-  final TextEditingController _issuePlaceController = TextEditingController();
+class _WorkLicensePageState extends State<WorkLicensePage> {
+  // Controladores para inputs
+  final TextEditingController _licenseNumberController = TextEditingController();
   final TextEditingController _issueDateController = TextEditingController();
+  final TextEditingController _expiryDateController = TextEditingController();
 
-  // Archivos adjuntos
-  String? _attachedDocName;
-  String? _attachedDocPath;
+  // Archivo de licencia (PDF o imagen)
+  String? _licenseDocName;
+  String? _licenseDocPath;
 
-  // Tipo de documento
-  final List<String> _docTypes = const [
-    'Cédula de ciudadanía',
-    'Cédula de extranjería',
-    'Pasaporte',
+  // Categorías de licencia comunes en Colombia
+  final List<String> _categories = const [
+    'A1', 'A2', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3'
   ];
-  String? _selectedDocType;
+  String? _selectedCategory;
 
-  // Reglas de entrada para C.C.
-  List<TextInputFormatter> get _ccFormatters => [
+  // Reglas de entrada: número de licencia solo dígitos y máx 15 (ajustable)
+  List<TextInputFormatter> get _numberFormatters => [
         FilteringTextInputFormatter.digitsOnly,
-        LengthLimitingTextInputFormatter(10),
+        LengthLimitingTextInputFormatter(15), 
       ];
 
   @override
@@ -53,71 +56,69 @@ class _WorkIdentityDocumentPageState extends State<WorkIdentityDocumentPage> {
       body: SafeArea(
         child: Column(
           children: [
+            // Barra superior
             WorkAppBar(
-              title: 'Documento de Identidad',
+              title: 'Licencia de conducción',
               showBack: true,
             ),
+
+            // Contenido
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 child: Column(
                   children: [
-                    // Tipo de documento
+                    // Número de licencia
+                    _buildInputField(
+                      controller: _licenseNumberController,
+                      hint: 'Número de licencia',
+                      keyboardType: TextInputType.number,
+                      inputFormatters: _numberFormatters,
+                    ),
+                    const SizedBox(height: 14),
+
+                    // Categoría de licencia
                     WorkDropdownField(
-                      hint: 'Tipo de documento',
-                      items: _docTypes,
-                      value: _selectedDocType,
+                      hint: 'Categoría de licencia',
+                      items: _categories,
+                      value: _selectedCategory,
                       onChanged: (value) {
-                        setState(() {
-                          _selectedDocType = value;
-                          // Limpiar número si cambia tipo
-                          _docNumberController.clear();
-                        });
+                        setState(() => _selectedCategory = value);
                       },
                     ),
                     const SizedBox(height: 14),
 
-                    // Número de documento (C.C. solo dígitos y máx 10)
-                    _buildInputField(
-                      controller: _docNumberController,
-                      hint: 'Número de documento',
-                      keyboardType: TextInputType.number,
-                      inputFormatters:
-                          _selectedDocType == 'Cédula de ciudadanía' ? _ccFormatters : null,
-                    ),
-                    const SizedBox(height: 14),
-
-                    // Lugar de expedición
-                    _buildInputField(
-                      controller: _issuePlaceController,
-                      hint: 'Lugar de expedición',
-                      keyboardType: TextInputType.text,
-                    ),
-                    const SizedBox(height: 14),
-
-                    // Fecha de expedición
+                    // Fecha de expedición (hasta hoy)
                     WorkDateField(
                       hint: 'Fecha de expedición',
                       controller: _issueDateController,
-                      // Permite fechas hasta hoy
                       lastDate: DateTime.now(),
                     ),
                     const SizedBox(height: 14),
 
-                    // Adjuntar documento (PDF o imagen)
+                    // Fecha de vencimiento (desde hoy en adelante, hasta 2100)
+                    WorkDateField(
+                      hint: 'Fecha de vencimiento',
+                      controller: _expiryDateController,
+                      firstDate: DateTime.now(),
+                      lastDate: DateTime(2100),
+                    ),
+                    const SizedBox(height: 14),
+
+                    // Adjuntar copia de la licencia (PDF o imagen)
                     WorkFilePicker(
-                      label: 'Documento (PDF o imagen)',
+                      label: 'Licencia (PDF o imagen)',
                       onFileSelected: (file) {
                         setState(() {
-                          _attachedDocName = file?.name;
-                          _attachedDocPath = file?.path;
+                          _licenseDocName = file?.name;
+                          _licenseDocPath = file?.path;
                         });
                       },
                     ),
 
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 24),
 
-                    // Botón Guardar / Continuar
+                    // Botón Continuar
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -154,6 +155,7 @@ class _WorkIdentityDocumentPageState extends State<WorkIdentityDocumentPage> {
     );
   }
 
+  // Construye un TextField con el mismo estilo del módulo
   Widget _buildInputField({
     required TextEditingController controller,
     required String hint,
@@ -195,61 +197,68 @@ class _WorkIdentityDocumentPageState extends State<WorkIdentityDocumentPage> {
     );
   }
 
+  // Validación del formulario
   bool _validateForm() {
-    if (_selectedDocType == null || _selectedDocType!.isEmpty) {
-      _showSnack('Selecciona el tipo de documento');
+    if (_licenseNumberController.text.trim().isEmpty) {
+      _showSnack('Ingresa el número de licencia');
       return false;
     }
-    if (_docNumberController.text.trim().isEmpty) {
-      _showSnack('Ingresa el número de documento');
+    // Validación: solo dígitos (1 a 15). El input ya limita a 15, aquí reforzamos.
+    final licNum = _licenseNumberController.text.trim();
+    if (!RegExp(r'^\d{1,15}$').hasMatch(licNum)) {
+      _showSnack('El número de licencia debe tener máximo 15 dígitos');
       return false;
     }
-    if (_selectedDocType == 'Cédula de ciudadanía') {
-      final num = _docNumberController.text.trim();
-      if (!RegExp(r'^\d{1,10}$').hasMatch(num)) {
-        _showSnack('La C.C. debe tener máximo 10 dígitos');
-        return false;
-      }
-    }
-    if (_issuePlaceController.text.trim().isEmpty) {
-      _showSnack('Ingresa el lugar de expedición');
+    if (_selectedCategory == null || _selectedCategory!.isEmpty) {
+      _showSnack('Selecciona la categoría de licencia');
       return false;
     }
     if (_issueDateController.text.trim().isEmpty) {
       _showSnack('Selecciona la fecha de expedición');
       return false;
     }
+    if (_expiryDateController.text.trim().isEmpty) {
+      _showSnack('Selecciona la fecha de vencimiento');
+      return false;
+    }
+    if (_licenseDocPath == null || _licenseDocPath!.isEmpty) {
+      _showSnack('Sube tu licencia (PDF o imagen) para continuar');
+      return false;
+    }
     return true;
   }
 
+  // Snack helper
   void _showSnack(String msg) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(msg)),
     );
   }
 
+  // Carga datos guardados (durante la sesión)
   Future<void> _loadSavedData() async {
     final prefs = await SharedPreferences.getInstance();
-    final prefix = 'identity_${widget.vehicleType}_';
+    final prefix = 'license_${widget.vehicleType}_';
     setState(() {
-      _selectedDocType = prefs.getString('${prefix}type');
-      _docNumberController.text = prefs.getString('${prefix}number') ?? '';
-      _issuePlaceController.text = prefs.getString('${prefix}place') ?? '';
-      _issueDateController.text = prefs.getString('${prefix}date') ?? '';
-      _attachedDocName = prefs.getString('${prefix}attachedName');
-      _attachedDocPath = prefs.getString('${prefix}attachedPath');
+      _selectedCategory = prefs.getString('${prefix}category');
+      _licenseNumberController.text = prefs.getString('${prefix}number') ?? '';
+      _issueDateController.text = prefs.getString('${prefix}issueDate') ?? '';
+      _expiryDateController.text = prefs.getString('${prefix}expiryDate') ?? '';
+      _licenseDocName = prefs.getString('${prefix}docName');
+      _licenseDocPath = prefs.getString('${prefix}docPath');
     });
   }
 
+  // Guarda datos y marca como completado (para el chulito)
   Future<void> _saveDataAndMarkCompleted() async {
     final prefs = await SharedPreferences.getInstance();
-    final prefix = 'identity_${widget.vehicleType}_';
-    await prefs.setString('${prefix}type', _selectedDocType ?? '');
-    await prefs.setString('${prefix}number', _docNumberController.text.trim());
-    await prefs.setString('${prefix}place', _issuePlaceController.text.trim());
-    await prefs.setString('${prefix}date', _issueDateController.text.trim());
-    await prefs.setString('${prefix}attachedName', _attachedDocName ?? '');
-    await prefs.setString('${prefix}attachedPath', _attachedDocPath ?? '');
-    await prefs.setBool('identity_completed_${widget.vehicleType}', true);
+    final prefix = 'license_${widget.vehicleType}_';
+    await prefs.setString('${prefix}number', _licenseNumberController.text.trim());
+    await prefs.setString('${prefix}category', _selectedCategory ?? '');
+    await prefs.setString('${prefix}issueDate', _issueDateController.text.trim());
+    await prefs.setString('${prefix}expiryDate', _expiryDateController.text.trim());
+    await prefs.setString('${prefix}docName', _licenseDocName ?? '');
+    await prefs.setString('${prefix}docPath', _licenseDocPath ?? '');
+    await prefs.setBool('license_completed_${widget.vehicleType}', true);
   }
 }
