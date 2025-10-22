@@ -122,18 +122,18 @@ class AppException implements Exception {
 }
 
 class FetchDataException extends AppException {
-  FetchDataException(String message)
-      : super(message, prefix: 'Error During Communication');
+  FetchDataException(super.message)
+      : super(prefix: 'Error During Communication');
 }
 
 class BadRequestException extends AppException {
-  BadRequestException(String message) : super(message, prefix: 'Invalid Request');
+  BadRequestException(super.message) : super(prefix: 'Invalid Request');
 }
 
 class UnauthorizedException extends AppException {
-  UnauthorizedException(String message) : super(message, prefix: 'Unauthorized');
+  UnauthorizedException(super.message) : super(prefix: 'Unauthorized');
 }
 
 class NotFoundException extends AppException {
-  NotFoundException(String message) : super(message, prefix: 'Not Found');
+  NotFoundException(super.message) : super(prefix: 'Not Found');
 }
