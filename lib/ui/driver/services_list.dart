@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_theme.dart';
 import '../drawer_menu/drawer.dart';
 
-class MainDriverPage extends StatefulWidget {
-  const MainDriverPage({super.key});
+class ServicesList extends StatefulWidget {
+  const ServicesList({super.key});
 
   @override
-  State<MainDriverPage> createState() => _MainDriverPageState();
+  State<ServicesList> createState() => _ServicesListState();
 }
 
-class _MainDriverPageState extends State<MainDriverPage> {
+class _ServicesListState extends State<ServicesList> {
   bool isDriverActive = false;
   bool isGpsEnabled = true;
   List<Map<String, dynamic>> services = [
@@ -82,7 +82,7 @@ class _MainDriverPageState extends State<MainDriverPage> {
           ),
         ),
       ),
-      drawer: const CustomDrawer(),
+  drawer: const CustomDrawer(isDriver: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: size.height * 0.02),

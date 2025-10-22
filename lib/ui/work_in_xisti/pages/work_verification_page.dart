@@ -1,7 +1,7 @@
 // Pantalla de verificación en proceso, posterior al registro completado.
 
 import 'package:app/core/theme/app_theme.dart';
-import 'package:app/ui/pages_drawer/main_driver_page.dart';
+import 'package:app/ui/driver/main_driver_page.dart';
 import 'package:flutter/material.dart';
 
 class WorkVerificationPage extends StatelessWidget {

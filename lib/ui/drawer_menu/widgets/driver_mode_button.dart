@@ -3,7 +3,7 @@
 import 'package:app/ui/work_in_xisti/work_in_xisti.dart';
 import 'package:flutter/material.dart';
 import 'package:app/core/theme/app_theme.dart';
-import '../../pages_drawer/main_driver_page.dart';
+import '../../driver/main_driver_page.dart';
 
 class DriverModeButton extends StatelessWidget {
   const DriverModeButton({super.key, this.isDriver = false});
