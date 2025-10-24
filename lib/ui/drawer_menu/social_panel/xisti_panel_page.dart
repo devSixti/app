@@ -17,48 +17,30 @@ class XistiPanelPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppTheme.darkScaffold,
       body: SafeArea(
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            SliverToBoxAdapter(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const SizedBox(height: 4),
-                  const WorkAppBar(title: 'Regresar', showBack: true),
-                  const SizedBox(height: 4),
-                  // Encabezado: solo título "Xisti" más grande, sin avatar
-                  const Center(
-                    child: Text(
-                      'Redes sociales',
-                      style: TextStyle(
-                        color: Color.fromRGBO(255, 255, 255, 1),
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                ],
-              ),
-            ),
-            // Grilla 2 columnas de cards
-            SliverPadding(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 4),
+            const WorkAppBar(title: 'Regresar', showBack: true),
+            const SizedBox(height: 8),
+            Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
-              sliver: SliverGrid(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 12,
-                  mainAxisSpacing: 12,
-                  mainAxisExtent: 160, // Más pequeña
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    final link = XistiLinks.all[index];
-                    return SocialCard(link: link);
-                  },
-                  childCount: XistiLinks.all.length,
-                ),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final itemWidth = (constraints.maxWidth - 12) / 2;
+                  return Wrap(
+                    spacing: 12,
+                    runSpacing: 12,
+                    children: [
+                      for (final link in XistiLinks.all)
+                        SizedBox(
+                          width: itemWidth,
+                          height: 160,
+                          child: SocialCard(link: link),
+                        ),
+                    ],
+                  );
+                },
               ),
             ),
           ],

@@ -1,10 +1,19 @@
-// Este archivo centraliza los enlaces y metadatos de las redes sociales.
-// Aquí puedes cambiar nombres/URLs y asignar `assetPath` con el logo original
-// (por ejemplo en `assets/images/iconografia/<red>.png`). Si el asset no existe,
-// la UI mostrará el ícono fallback sin romperse.
+// Archivo que contiene la lista de redes sociales
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'social_link.dart';
+import 'package:flutter/material.dart';
+
+class SocialLink {
+  final IconData icon;
+  final String name;
+  final String url;
+
+  const SocialLink({
+    required this.icon,
+    required this.name,
+    required this.url,
+  });
+}
 
 class XistiLinks {
   XistiLinks._();
