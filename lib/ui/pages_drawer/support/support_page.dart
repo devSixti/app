@@ -12,7 +12,7 @@ class SupportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.darkGreyContainer,
+      backgroundColor: AppTheme.darkScaffold,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [

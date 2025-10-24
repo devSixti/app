@@ -4,18 +4,17 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: ^3.8.1
+  sdk: '>=3.9.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_map: ^7.0.2
-  latlong2: ^0.9.0
-  geolocator: ^10.1.0
-  font_awesome_flutter: ^10.7.0
-  flutter_localizations:
-    sdk: flutter
 
+  # ------------------------
+  # Google Maps
+  # ------------------------
+  google_maps_flutter: ^2.13.1
+  
   # ------------------------
   # State Management
   # ------------------------
@@ -27,6 +26,7 @@ dependencies:
   # UI / Responsiveness
   # ------------------------
   flutter_screenutil: ^5.9.0
+  font_awesome_flutter: ^10.7.0
 
   # ------------------------
   # Networking
@@ -50,6 +50,7 @@ dependencies:
   # ------------------------
   flutter_dotenv: ^5.1.0
 
+  
   # ------------------------
   # Utils
   # ------------------------
@@ -57,8 +58,9 @@ dependencies:
   image_picker: ^1.2.0
   intl: ^0.20.2
   url_launcher: ^6.3.2
-  google_maps_flutter: ^2.13.1
   file_picker: ^8.1.2
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:

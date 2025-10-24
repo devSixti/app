@@ -1,4 +1,4 @@
-// Archivo de menú completo
+// Archivo de menú completo de opciones
 
 import 'package:app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';

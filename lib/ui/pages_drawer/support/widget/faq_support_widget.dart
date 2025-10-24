@@ -57,11 +57,10 @@ class FaqSupportWidget extends StatelessWidget {
           const SizedBox(height: 20),
 
           // Pregunta 1
-          _buildFaqItem(
+            _buildFaqItem(
             '¿Cómo contactar a mi conductor?',
             'Durante el viaje puedes usar los botones de llamada o mensaje.',
             Icons.phone_rounded,
-            AppTheme.silver, // Color del borde
             AppTheme.silver, // Color del ícono
           ),
 
@@ -73,7 +72,6 @@ class FaqSupportWidget extends StatelessWidget {
             'El sistema buscará automáticamente otro conductor disponible.',
             Icons.cancel_rounded,
             AppTheme.silver,
-            AppTheme.silver,
           ),
 
           const SizedBox(height: 12),
@@ -84,7 +82,6 @@ class FaqSupportWidget extends StatelessWidget {
             'Ve a Billetera > Métodos de pago para actualizar tus opciones.',
             Icons.payment_rounded,
             AppTheme.silver,
-            AppTheme.silver,
           ),
 
           const SizedBox(height: 16),
@@ -94,11 +91,6 @@ class FaqSupportWidget extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               color: AppTheme.blackContainer.withOpacity(0.2),
-              borderRadius: AppTheme.border,
-              border: Border.all(
-                color: AppTheme.silver.withOpacity(0.3),
-                width: 1,
-              ),
             ),
             child: Material(
               color: Colors.transparent,
@@ -147,7 +139,6 @@ class FaqSupportWidget extends StatelessWidget {
     String question,
     String answer,
     IconData icon,
-    Color borderColor,
     Color iconColor,
   ) {
     return Container(
@@ -155,10 +146,7 @@ class FaqSupportWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppTheme.blackContainer.withOpacity(0.2),
         borderRadius: AppTheme.border,
-        border: Border.all(
-          color: borderColor.withOpacity(0.3), // Borde visible e independiente
-          width: 1.5,
-        ),
+
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,12 +159,6 @@ class FaqSupportWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: iconColor.withOpacity(0.2), // Fondo del ícono
                   borderRadius: AppTheme.border,
-                  border: Border.all(
-                    color: iconColor.withOpacity(
-                      0.4,
-                    ), // Borde decorativo del ícono
-                    width: 1,
-                  ),
                 ),
                 child: Icon(
                   icon,
