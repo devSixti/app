@@ -10,7 +10,7 @@ import 'package:app/core/theme/app_theme.dart';
 import 'package:app/ui/form_trips/widgets/drag_handle.dart';
 import 'package:app/ui/form_trips/widgets/input_location_start.dart';
 import 'package:app/ui/form_trips/widgets/custom_back_button.dart';
-import 'package:app/ui/form_trips/widgets/fare_input.dart';
+import 'package:app/ui/offer_price_panel/offer_price_field.dart';
 import 'package:app/ui/form_trips/widgets/comment_button.dart';
 import 'package:app/ui/form_trips/widgets/location_panel.dart'; 
 import "package:app/ui/drawer_menu/drawer.dart";
@@ -176,10 +176,10 @@ class _FormTripsState extends State<FormTrips> {
                           children: [
                             Expanded(
                               flex: 4,
-                              child: FareInput(
+                              child: OfferPriceField(
                                 onChanged: (value) {
                                   setState(() {
-                                    offeredFare = double.tryParse(value);
+                                    offeredFare = value;
                                   });
                                 },
                               ),
