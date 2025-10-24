@@ -42,7 +42,7 @@ class _ServicesListState extends State<ServicesList> {
                 'Activa tu ubicación',
                 style: TextStyle(
                   fontSize: AppTheme.smallSize,
-                  color: Colors.red.shade600,
+                  color: AppTheme.purpleColor,
                   height: 0,
                 ),
               ),

@@ -16,7 +16,6 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   late final MapController _mapController; // Controlador del mapa
   LatLng _currentPosition = const LatLng(6.18331, -75.59957); // Ubicación
-  bool _locationError = false;
 
   @override
   void initState() {
@@ -29,7 +28,6 @@ class _MapScreenState extends State<MapScreen> {
     try {
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled(); // Verifica GPS
       if (!serviceEnabled) {
-        setState(() => _locationError = true);
         return;
       }
 
@@ -37,13 +35,12 @@ class _MapScreenState extends State<MapScreen> {
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission(); // Solicita permisos
         if (permission == LocationPermission.denied) {
-          setState(() => _locationError = true);
           return;
         }
       }
 
       if (permission == LocationPermission.deniedForever) {
-        setState(() => _locationError = true); // Permiso denegado permanentemente
+// Permiso denegado permanentemente
         return;
       }
 
@@ -55,8 +52,8 @@ class _MapScreenState extends State<MapScreen> {
         _currentPosition = LatLng(position.latitude, position.longitude); // Asigna ubicación real
         _mapController.move(_currentPosition, 15); // Centra el mapa
       });
+    // ignore: empty_catches
     } catch (e) {
-      setState(() => _locationError = true);
     }
   }
 
@@ -91,18 +88,8 @@ class _MapScreenState extends State<MapScreen> {
             ],
           ),
         ],
+  
       ),
-      bottomNavigationBar: _locationError
-          ? Container(
-              color: AppTheme.silver, // Fondo del mensaje
-              padding: const EdgeInsets.all(12), // Espaciado interno
-              child: const Text(
-                'No se pudo obtener tu ubicación. Mostrando Medellín.', // Mensaje de error
-                textAlign: TextAlign.center,
-                style: TextStyle(color: AppTheme.lightPrimaryContainer), // Estilo del texto
-              ),
-            )
-          : null,
     );
   }
 }
