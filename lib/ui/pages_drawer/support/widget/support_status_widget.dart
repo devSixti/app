@@ -27,16 +27,6 @@ class SupportStatusWidget extends StatelessWidget {
               // Icono dentro de un contenedor decorativo
               Container(
                 padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  // Degradado interno del icono
-                  gradient: LinearGradient(
-                    colors: [
-                      iconColor.withOpacity(0.4),
-                      iconColor.withOpacity(0.4),
-                    ],
-                  ),
-                  borderRadius: AppTheme.border,
-                ),
                 child: Icon(
                   Icons.support_rounded,
                   color: iconColor, // Color del ícono principal
@@ -71,7 +61,7 @@ class SupportStatusWidget extends StatelessWidget {
                   title: 'En Línea',
                   value: 'Disponible 24/7',
                   icon: Icons.circle,
-                  borderColor: AppTheme.silver.withOpacity(0.4), // Borde del cuadro
+
                   iconColor: AppTheme.purpleColor, // Color del ícono
                   valueColor: AppTheme.purpleColor, // Color del texto del valor
                 ),
@@ -84,7 +74,6 @@ class SupportStatusWidget extends StatelessWidget {
                   title: 'Tiempo de Respuesta',
                   value: '< 5 minutos',
                   icon: Icons.schedule_rounded,
-                  borderColor: AppTheme.silver.withOpacity(0.3), // Borde del cuadro
                   iconColor: AppTheme.purpleColor, // Color del ícono
                   valueColor: AppTheme.purpleColor, // Color del valor
                 ),
@@ -103,7 +92,6 @@ class SupportStatusWidget extends StatelessWidget {
     required IconData icon,
 
     // Colores independientes para cada elemento
-    required Color borderColor, // Color del borde del cuadro
     required Color iconColor, // Color del ícono
     required Color valueColor, // Color del valor
   }) {
@@ -112,10 +100,6 @@ class SupportStatusWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppTheme.blackContainer.withOpacity(0.2), // Fondo semitransparente
         borderRadius: AppTheme.border,
-        border: Border.all(
-          color: borderColor, // Color del borde de la tarjeta
-          width: 1,
-        ),
       ),
       child: Column(
         children: [
