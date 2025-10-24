@@ -9,6 +9,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBAIFttq_OvVnLnBPv2LQmYZuzkERpWEy0" />
+            
+        <meta-data
+            android:name="com.google.android.gms.max_map_id"
+            android:value="13c455369194956eed16897c" />
 
         <activity
             android:name=".MainActivity"
