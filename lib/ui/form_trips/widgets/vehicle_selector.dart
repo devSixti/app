@@ -6,11 +6,10 @@ import 'package:app/core/theme/app_theme.dart';
 // Definición de la clase para cada opción de vehículo
 class VehicleOption {
   final String name;
-  final IconData
-  iconData; // Usamos IconData para iconos de Flutter por simplicidad
-  final String category; // Para saber a qué categoría pertenece
-  final Color? iconColor; // Color opcional para el icono
-  final String? assetPath; // Opcional si usas imágenes o assets
+  final IconData iconData;
+  final String category;
+  final Color? iconColor;
+  final String? assetPath;
 
   const VehicleOption({
     required this.name,
@@ -23,44 +22,44 @@ class VehicleOption {
 
 // Estructura de datos completa para todas las opciones
 const Map<String, List<VehicleOption>> vehicleOptionsMap = {
-  "Autos": [
+  "Carros": [
     VehicleOption(
-      name: "Economy",
+      name: "Economico",
       iconData: Icons.directions_car,
-      category: "Autos",
-      iconColor: Color.fromARGB(255, 255, 255, 255),
+      category: "Carros",
+      iconColor: AppTheme.inputBackgroundLight,
     ),
     VehicleOption(
       name: "Confort ",
       iconData: Icons.local_taxi,
-      category: "Autos",
-      iconColor: Color.fromARGB(255, 255, 255, 255),
+      category: "Carros",
+      iconColor: AppTheme.inputBackgroundLight,
     ),
     VehicleOption(
       name: "VIP",
       iconData: Icons.sports_bar,
-      category: "Autos",
-      iconColor: Color.fromARGB(255, 255, 255, 255),
+      category: "Carros",
+      iconColor: AppTheme.inputBackgroundLight,
     ),
     VehicleOption(
       name: "Eléctrico",
       iconData: Icons.electric_car,
-      category: "Autos",
-      iconColor: Color.fromARGB(255, 255, 255, 255),
+      category: "Carros",
+      iconColor: AppTheme.inputBackgroundLight,
     ),
   ],
   "Motos": [
     VehicleOption(
-      name: "Economy ",
+      name: "Economica",
       iconData: Icons.motorcycle,
       category: "Motos",
-      iconColor: Color.fromARGB(255, 255, 255, 255),
+      iconColor: AppTheme.inputBackgroundLight,
     ),
     VehicleOption(
       name: "Confort",
       iconData: Icons.two_wheeler,
       category: "Motos",
-      iconColor: Color.fromARGB(255, 255, 255, 255),
+      iconColor: AppTheme.inputBackgroundLight,
     ),
   ],
   "Taxi": [
@@ -68,13 +67,13 @@ const Map<String, List<VehicleOption>> vehicleOptionsMap = {
       name: "Normal",
       iconData: Icons.local_taxi_sharp,
       category: "Taxi",
-      iconColor: Color.fromARGB(255, 255, 255, 255),
+      iconColor: AppTheme.inputBackgroundLight,
     ),
     VehicleOption(
       name: "Eléctrico ",
       iconData: Icons.electric_rickshaw,
       category: "Taxi",
-      iconColor: Color.fromARGB(255, 255, 255, 255),
+      iconColor: AppTheme.inputBackgroundLight,
     ),
   ],
   "Otros": [
@@ -82,25 +81,25 @@ const Map<String, List<VehicleOption>> vehicleOptionsMap = {
       name: "Envio Moto",
       iconData: Icons.delivery_dining,
       category: "Otros",
-      iconColor: Color.fromARGB(255, 255, 255, 255),
+      iconColor: AppTheme.inputBackgroundLight,
     ),
     VehicleOption(
       name: "Envio Carro",
       iconData: Icons.airport_shuttle,
       category: "Otros",
-      iconColor: Color.fromARGB(255, 255, 255, 255),
+      iconColor: AppTheme.inputBackgroundLight,
     ),
     VehicleOption(
       name: "Envio Cicla",
       iconData: Icons.pedal_bike,
       category: "Otros",
-      iconColor: Color.fromARGB(255, 255, 255, 255),
+      iconColor: AppTheme.inputBackgroundLight,
     ),
     VehicleOption(
       name: "Mascotas",
       iconData: Icons.pets,
       category: "Otros",
-      iconColor: Color.fromARGB(255, 255, 255, 255),
+      iconColor: AppTheme.inputBackgroundLight,
     ),
   ],
 };
@@ -119,9 +118,8 @@ class VehicleSelector extends StatefulWidget {
 }
 
 class _VehicleSelectorState extends State<VehicleSelector> {
-  String _selectedVehicle = "Economy";
+  String _selectedVehicle = "Economico";
 
-  // Aqui guardamos la opción seleccionada completa para mostrar también el ícono
   VehicleOption? _selectedOption;
 
   @override
@@ -134,37 +132,22 @@ class _VehicleSelectorState extends State<VehicleSelector> {
           },
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: AppTheme.border, // Bordes redondeados
-          color: const Color.fromRGBO(66, 66, 66, 1),
+          borderRadius: AppTheme.border,
+          color: AppTheme.inputBackgroundDark,
         ),
-        padding: const EdgeInsets.all(13), // Espaciado interno
+        padding: const EdgeInsets.all(12),
         child: Row(
           children: [
-            // Aqui podemos mostrar el ícono de la opción seleccionada en lugar de fijo
-            Icon(
-              _selectedOption?.iconData ?? Icons.directions_car,
-              color: _selectedOption?.iconColor ?? AppTheme.lightPrimaryContainer,
-                size: 38, // Tamaño del icono principal
-            ),
-            const SizedBox(width: 11), // Espacio entre el icono y el texto
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  _selectedVehicle, // Esto hace que muestre los textos.
-                  style: const TextStyle(
-                    color: AppTheme.lightPrimaryContainer,
-                    fontSize: AppTheme.mediumSize, // Aqui se puede editar el tamaño de las letras principales.
-                  ), // Estilo del texto
-                ),
-                const Text(
-                  "Cambiar >",
-                  style: TextStyle(
-                    color: AppTheme.lightPrimaryContainer,
-                    fontSize: AppTheme.smallSize,
-                  ), // Estilo del texto secundario
-                ),
-              ],
+            Icon(_selectedOption?.iconData ?? Icons.directions_car, size: 38),
+
+            SizedBox(width: 12),
+
+            Text(
+              _selectedVehicle,
+              style: const TextStyle(
+                color: AppTheme.inputBackgroundLight,
+                fontSize: AppTheme.mediumSize,
+              ),
             ),
           ],
         ),
@@ -179,34 +162,22 @@ class _VehicleSelectorState extends State<VehicleSelector> {
     bool isSelected,
   ) {
     return InkWell(
-      onTap: () => Navigator.pop(
-        context,
-        option.name, // Cambiado para que solo devuelva el nombre
-      ), // Devuelve solo el nombre
+      onTap: () => Navigator.pop(context, option.name),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: isSelected
-                  ? AppTheme.purpleColor
-                  : const Color.fromARGB(0, 255, 255, 255),
+              color: isSelected ? AppTheme.purpleColor : AppTheme.transparent,
             ),
-            child: Icon(
-              option.iconData,
-              size: 40, // Con esto podemos ajustar el tamaño de los iconos.
-              color: option.iconColor ?? Colors.white,
-            ),
+            child: Icon(option.iconData, size: 40),
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           Text(
             option.name,
             style: TextStyle(
-              color: isSelected
-                  ? AppTheme.inputBackgroundLight
-                  : AppTheme.inputBackgroundLight,
+              color: AppTheme.inputBackgroundLight,
               fontSize: AppTheme.smallSize,
             ),
             textAlign: TextAlign.center,
@@ -225,55 +196,103 @@ class _VehicleSelectorState extends State<VehicleSelector> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+          padding: const EdgeInsets.all(15.0),
           child: Text(
             "$categoryName:",
             style: const TextStyle(
-              color: AppTheme.lightPrimaryContainer,
+              color: AppTheme.inputBackgroundLight,
               fontSize: AppTheme.mediumSize,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: Wrap(
-            spacing: 20.0,
-            runSpacing: 10.0,
+            spacing: 16,
             children: options.map((option) {
-              final String optionKey = option.name; // Comparación solo por nombre
+              final String optionKey = option.name;
               final bool isSelected = _selectedVehicle == optionKey;
               return _buildVehicleItem(context, option, isSelected);
             }).toList(),
           ),
         ),
-        const Divider(color: Colors.white10, height: 30, thickness: 1),
       ],
     );
   }
 
   void _showVehicleOptions(BuildContext context) async {
+    bool showAllCategories = false;
+
     final selected = await showModalBottomSheet<String>(
       context: context,
       isScrollControlled: true,
-      backgroundColor: const Color.fromARGB(255, 33, 33, 33),
       builder: (context) {
-        return Theme(
-          data: ThemeData.dark().copyWith(
-            canvasColor: const Color.fromARGB(255, 255, 0, 0),
-          ),
-          child: SafeArea(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: vehicleOptionsMap.entries.map((entry) {
-                  return _buildCategorySection(context, entry.key, entry.value);
-                }).toList(),
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return Theme(
+              data: ThemeData.dark().copyWith(
+                canvasColor: AppTheme.darkDrawerBackground,
               ),
-            ),
-          ),
+              child: SafeArea(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // Show only Carros and Motos by default
+                      ...vehicleOptionsMap.entries
+                          .where(
+                            (entry) =>
+                                entry.key == 'Carros' || entry.key == 'Motos',
+                          )
+                          .map((entry) {
+                            return _buildCategorySection(
+                              context,
+                              entry.key,
+                              entry.value,
+                            );
+                          }),
+
+                      // Show other categories if showAllCategories is true
+                      if (showAllCategories)
+                        ...vehicleOptionsMap.entries
+                            .where(
+                              (entry) =>
+                                  entry.key != 'Carros' && entry.key != 'Motos',
+                            )
+                            .map((entry) {
+                              return _buildCategorySection(
+                                context,
+                                entry.key,
+                                entry.value,
+                              );
+                            }),
+
+                      // Show Ver más button if not showing all categories
+                      if (!showAllCategories && vehicleOptionsMap.length > 2)
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              showAllCategories = true;
+                            });
+                          },
+                          child: const Text(
+                            'Ver más servicios',
+                            style: TextStyle(
+                              color: AppTheme.purpleColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
         );
       },
     );
