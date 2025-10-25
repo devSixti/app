@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:app/core/theme/app_theme.dart';
+import 'incoming_service_actions.dart';
 
 class IncomingServiceCard extends StatefulWidget {
   final String passengerName;
@@ -169,60 +170,19 @@ class _IncomingServiceCardState extends State<IncomingServiceCard> {
               ],
             ),
             const SizedBox(height: 12),
-            // Método de pago
-            Text('Método de pago: ${widget.paymentMethod}', style: TextStyle(color: Colors.white.withOpacity(0.85), fontSize: 12)),
-            const SizedBox(height: 8),
-
-            // Barra de progreso de ancho completo colocada encima de los botones
-            Row(
-              children: [
-                Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(6),
-                    child: LinearProgressIndicator(
-                      value: (_totalSeconds > 0) ? (_remaining / _totalSeconds) : 0,
-                      backgroundColor: Colors.white12,
-                      valueColor: AlwaysStoppedAnimation<Color>(AppTheme.purpleColor),
-                      minHeight: 6,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                // Segundos restantes a la derecha de la barra
-                SizedBox(
-                  width: 48,
-                  child: Text('${_remaining}s', style: const TextStyle(color: AppTheme.purpleColor, fontSize: 12), textAlign: TextAlign.right),
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _timer?.cancel();
-                      widget.onAccept();
-                    },
-                    style: ElevatedButton.styleFrom(backgroundColor: AppTheme.primaryColor),
-                    child: const Text('Aceptar', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _timer?.cancel();
-                      widget.onDecline();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppTheme.purpleColor,
-                    ),
-                    child: const Text('Rechazar', style: TextStyle(color: Colors.white)),
-                  ),
-                ),
-              ],
+            // Método de pago + barra de progreso + botones (extraído)
+            IncomingServiceActions(
+              remainingSeconds: _remaining,
+              totalSeconds: _totalSeconds,
+              paymentMethod: widget.paymentMethod,
+              onAccept: () {
+                _timer?.cancel();
+                widget.onAccept();
+              },
+              onDecline: () {
+                _timer?.cancel();
+                widget.onDecline();
+              },
             )
           ],
         ),

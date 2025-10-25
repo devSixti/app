@@ -19,7 +19,7 @@ class CustomDrawer extends StatefulWidget {
   const CustomDrawer({
     super.key,
     this.isLogedIn = true,
-    this.isDriver = false,
+    this.isDriver = true,
   }); // true = logueado, false = no logueado
 
   final bool isLogedIn;
