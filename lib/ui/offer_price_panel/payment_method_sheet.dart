@@ -12,37 +12,61 @@ class PaymentMethodSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final radius = BorderRadius.circular(16);
     final methods = <_MethodItem>[
-      _MethodItem('Efectivo', Icons.attach_money),
-      _MethodItem('nequi', Icons.check_box),
-      _MethodItem('daviplata', Icons.account_balance_wallet),
-      _MethodItem('bancolombia', Icons.account_balance),
+      _MethodItem('Efectivo', 'assets/images/dollars.png'),
+      _MethodItem('nequi', 'assets/images/metodos_pago/nequi.webp'),
+      _MethodItem('daviplata', 'assets/images/metodos_pago/daviplata.png'),
+      _MethodItem('bancolombia', 'assets/images/metodos_pago/bancolombia.png'),
     ];
 
-    Widget item(_MethodItem m) {
-      final isSel = m.label.toLowerCase() == selected.toLowerCase();
-      return InkWell(
-        onTap: () => Navigator.pop(context, m.label),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          child: Row(
-            children: [
-              Icon(m.icon, color: AppTheme.primaryColor),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Text(
-                  m.label,
-                  style: const TextStyle(
-                    color: AppTheme.lightBackground,
-                    fontSize: AppTheme.mediumSize,
-                  ),
-                ),
-              ),
-              Icon(Icons.chevron_right, color: isSel ? AppTheme.primaryColor : AppTheme.lightBackground),
-            ],
+  Widget item(_MethodItem m) {
+  final isSel = m.label.toLowerCase() == selected.toLowerCase();
+
+  // Tamaño del ícono (más pequeño para efectivo)
+  final double iconSize = m.label.toLowerCase().contains('efectivo') ? 18 : 22;
+
+  return InkWell(
+    onTap: () => Navigator.pop(context, m.label),
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: [
+          // Imagen del método de pago
+          ClipRRect(
+            borderRadius: BorderRadius.circular(6),
+            child: Image.asset(
+              m.iconPath,
+              width: iconSize,
+              height: iconSize,
+              fit: BoxFit.contain,
+              alignment: Alignment.center,
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(
+                  Icons.attach_money,
+                  color: AppTheme.primaryColor,
+                  size: iconSize,
+                );
+              },
+            ),
           ),
-        ),
-      );
-    }
+          const SizedBox(width: 12),
+          Expanded(
+            child: Text(
+              m.label,
+              style: const TextStyle(
+                color: AppTheme.lightBackground,
+                fontSize: AppTheme.mediumSize,
+              ),
+            ),
+          ),
+          Icon(
+            Icons.chevron_right,
+            color: isSel ? AppTheme.primaryColor : AppTheme.lightBackground,
+          ),
+        ],
+      ),
+    ),
+  );
+}
 
     return Container(
       decoration: BoxDecoration(
@@ -94,6 +118,6 @@ class PaymentMethodSheet extends StatelessWidget {
 
 class _MethodItem {
   final String label;
-  final IconData icon;
-  const _MethodItem(this.label, this.icon);
+  final String iconPath;
+  const _MethodItem(this.label, this.iconPath);
 }

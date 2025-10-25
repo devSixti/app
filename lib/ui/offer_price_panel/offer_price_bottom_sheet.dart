@@ -156,6 +156,19 @@ class _OfferPriceBottomSheetState extends State<OfferPriceBottomSheet> {
 
   // Eliminado keypad personalizado: ahora solo se usa el teclado del sistema.
 
+  String _getPaymentIcon(String method) {
+    final methodLower = method.toLowerCase();
+    if (methodLower.contains('nequi')) {
+      return 'assets/images/metodos_pago/nequi.webp';
+    } else if (methodLower.contains('daviplata')) {
+      return 'assets/images/metodos_pago/daviplata.png';
+    } else if (methodLower.contains('bancolombia')) {
+      return 'assets/images/metodos_pago/bancolombia.png';
+    } else {
+      return 'assets/images/dollars.png';
+    }
+  }
+
   Future<void> _openPaymentSheet() async {
     final selected = await showModalBottomSheet<String>(
       context: context,
@@ -271,7 +284,19 @@ class _OfferPriceBottomSheetState extends State<OfferPriceBottomSheet> {
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Row(
                       children: [
-                        const Icon(Icons.attach_money, color: AppTheme.primaryColor),
+                        Image.asset(
+                          _getPaymentIcon(_method),
+                          width: 20,
+                          height: 20,
+                          fit: BoxFit.contain,
+                          errorBuilder: (context, error, stackTrace) {
+                            return const Icon(
+                              Icons.attach_money,
+                              color: AppTheme.primaryColor,
+                              size: 20,
+                            );
+                          },
+                        ),
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(

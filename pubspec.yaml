@@ -78,3 +78,7 @@ flutter:
     - assets/images/iconografia/
     - assets/images/iconografia/dark/
     - assets/images/iconografia/dark/delivery.png
+    - assets/images/dollars.png
+    - assets/images/metodos_pago/nequi.webp
+    - assets/images/metodos_pago/daviplata.png
+    - assets/images/metodos_pago/bancolombia.png

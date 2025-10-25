@@ -18,6 +18,9 @@ import "package:app/ui/drawer_menu/drawer.dart";
 // Importacion del mapa
 import 'package:app/ui/map/map_widget.dart';
 
+// Importacion de la pantalla de búsqueda de conductor
+import 'package:app/ui/searching_driver/searching_driver_view.dart';
+
 class FormTrips extends StatefulWidget {
   const FormTrips({super.key});
 
@@ -28,6 +31,7 @@ class FormTrips extends StatefulWidget {
 class _FormTripsState extends State<FormTrips> {
   String selectedVehicle = "Moto";
   double? offeredFare;
+  String paymentMethod = "Efectivo"; // Método de pago seleccionado
 
   // Guardamos las direcciones en el estado principal
   String? startLocation;
@@ -182,6 +186,11 @@ class _FormTripsState extends State<FormTrips> {
                                     offeredFare = value;
                                   });
                                 },
+                                onPaymentMethodChanged: (method) {
+                                  setState(() {
+                                    paymentMethod = method;
+                                  });
+                                },
                               ),
                             ),
                             SizedBox(width: screenWidth * 0.02),
@@ -215,15 +224,49 @@ class _FormTripsState extends State<FormTrips> {
                               flex: 0,
                               child: SearchDriverButton(
                                 onPressed: () {
-                                  if (offeredFare == null) {
-                                    debugPrint(
-                                      "Debes ingresar una tarifa antes de buscar.",
+                                  // Validar que todos los campos estén completos
+                                  if (startLocation == null || startLocation!.isEmpty) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text('Debes ingresar la ubicación inicial'),
+                                        backgroundColor: AppTheme.red,
+                                      ),
                                     );
-                                  } else {
-                                    debugPrint(
-                                      "Buscando conductor para $selectedVehicle con tarifa: $offeredFare",
-                                    );
+                                    return;
                                   }
+                                  
+                                  if (endLocation == null || endLocation!.isEmpty) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text('Debes ingresar la ubicación final'),
+                                        backgroundColor: AppTheme.red,
+                                      ),
+                                    );
+                                    return;
+                                  }
+                                  
+                                  if (offeredFare == null) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text('Debes ingresar una tarifa antes de buscar'),
+                                        backgroundColor: AppTheme.red,
+                                      ),
+                                    );
+                                    return;
+                                  }
+                                  
+                                  // Navegar a la pantalla de búsqueda de conductor
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SearchingDriverView(
+                                        startLocation: startLocation!,
+                                        endLocation: endLocation!,
+                                        offeredPrice: offeredFare!,
+                                        paymentMethod: paymentMethod,
+                                      ),
+                                    ),
+                                  );
                                 },
                               ),
                             ),
