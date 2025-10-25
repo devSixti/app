@@ -78,7 +78,13 @@ class CommentButton extends StatelessWidget {
                   // Campo de texto para comentarios
                   TextField(
                     controller: commentController,
-                    maxLines: 4,
+                    minLines: 1, // altura mínima compacta
+                    maxLines: 4, // se expande hasta 4 líneas al escribir
+                    keyboardType: TextInputType.multiline,
+                    textInputAction: TextInputAction.newline,
+                    autocorrect: false,
+                    enableSuggestions: false,
+                    textCapitalization: TextCapitalization.none,
                     style: const TextStyle(
                       color: AppTheme.inputBackgroundLight,
                     ), // color del texto que escribe el usuario
