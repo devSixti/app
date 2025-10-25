@@ -27,8 +27,9 @@ class PricePaymentCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Sección de precio (izquierda)
+          // Sección de precio (izquierda) - más ancha
           Expanded(
+            flex: 3, // 60% del espacio disponible
             child: PriceSection(
               currentPrice: currentPrice,
               onIncrementPrice: onIncrementPrice,
@@ -36,18 +37,10 @@ class PricePaymentCard extends StatelessWidget {
           ),
           
           const SizedBox(width: 16),
-          
-          // Línea divisoria vertical
-          Container(
-            width: 1,
-            height: 80,
-            color: AppTheme.silver.withOpacity(0.3),
-          ),
-          
-          const SizedBox(width: 16),
-          
-          // Sección de pago (derecha)
+
+          // Sección de pago (derecha) - más angosta
           Expanded(
+            flex: 2, // 40% del espacio disponible
             child: PaymentSection(paymentMethod: paymentMethod),
           ),
         ],

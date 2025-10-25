@@ -22,8 +22,23 @@ class PriceSection extends StatelessWidget {
       decimalDigits: 0,
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      width: double.infinity, // Ocupa todo el ancho disponible
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppTheme.darkBackground,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min, // Ajusta el tamaño al contenido
       children: [
         // Etiqueta "Tu precio"
         const Text(
@@ -69,13 +84,14 @@ class PriceSection extends StatelessWidget {
         
         // Tarifa sugerida
         const Text(
-          'Tarifa sugerida: ???',
+          'Tarifa sugerida: ',
           style: TextStyle(
             fontSize: AppTheme.smallSize,
             color: AppTheme.silver,
           ),
         ),
-      ],
+        ],
+      ),
     );
   }
 }
