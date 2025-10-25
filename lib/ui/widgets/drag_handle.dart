@@ -9,13 +9,12 @@ class DragHandle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      // Centra el manejador de arrastre
       child: Container(
-        width: 40,
+        width: 50,
         height: 5,
-        margin: const EdgeInsets.symmetric(vertical: 8),
+        margin: const EdgeInsets.only(bottom: 8),
         decoration: BoxDecoration(
-          color: Colors.grey[700],
+          color: AppTheme.silverDark,
           borderRadius: AppTheme.border,
         ),
       ),

@@ -7,7 +7,7 @@ import 'package:app/ui/form_trips/widgets/vehicle_selector.dart';
 import 'package:flutter/material.dart' hide BackButton;
 import 'package:app/core/theme/app_theme.dart';
 // Importamos los widgets personalizados
-import 'package:app/ui/form_trips/widgets/drag_handle.dart';
+import 'package:app/ui/widgets/drag_handle.dart';
 import 'package:app/ui/form_trips/widgets/input_location_start.dart';
 import 'package:app/ui/form_trips/widgets/custom_back_button.dart';
 import 'package:app/ui/offer_price_panel/offer_price_field.dart';

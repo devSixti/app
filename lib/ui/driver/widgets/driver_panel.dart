@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/ui/form_trips/widgets/begin_button.dart';
-import 'package:app/ui/form_trips/widgets/drag_handle.dart';
+import 'package:app/ui/widgets/drag_handle.dart';
 
 class DriverPanel extends StatelessWidget {
   final DraggableScrollableController controller;
